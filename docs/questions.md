@@ -26,3 +26,23 @@ Aucun n'a été rencontré ni résolu par l'implémentation des étapes 1.1 à 1
 | Q-P1-12 | Branche de travail créée depuis `origin/main` (commit `c01136b`, README) ; aucune branche `main` locale créée | `feat/phase-1-foundation` suivant `origin/main` | Stratégie Git |
 | Q-P1-13 | Actions GitHub tierces utilisées par la CI (`actions/checkout@v4`, `actions/setup-node@v4`) | Épinglées par version majeure | ADR-0001 |
 | Q-P1-14 | Page d'accueil minimale et métadonnées : aucun contenu produit, aucune règle d'indexation (environnements et `noindex` relèvent de §28 / Phase 8) | Page technique neutre | §23, §28 |
+| Q-P1-15 | **À CONFIRMER — stratégie de mise à jour des GitHub Actions et traitement de la dépréciation Node 20.** (Constat CI : `actions/checkout@v4` et `actions/setup-node@v4` ciblent Node 20, déprécié, et sont exécutés sous Node 24 par le runner.) | Aucune mise à jour effectuée ; aucune stratégie choisie ; à traiter par un ADR dédié | CR-PHASE1-1_3-CLOSE-v1 (AC-5) |
+
+## C. Choix de la tranche Phase 1.1–1.3 restant À CONFIRMER (formulation reprise de CR-PHASE1-1_3-CLOSE-v1)
+
+| ID | Choix | Traçabilité | Statut |
+|---|---|---|---|
+| AC-1 | Identité Git locale `beaunegravure` / `beaunegravure@gmail.com` | Q-P1-11 | À CONFIRMER |
+| AC-2 | Classement en zone stricte produit des fichiers non explicitement cités par §24.6 | Q-P1-02 ; ADR-0002 | À CONFIRMER |
+| AC-3 | Exclusion de `package-lock.json` du lint | Q-P1-03 ; ADR-0002 ; configuration du lint | À CONFIRMER |
+| AC-4 | Emplacement des fichiers du lint | Q-P1-01 ; ADR-0002 | À CONFIRMER |
+| AC-5 | Stratégie future de mise à jour des GitHub Actions (Node 20 déprécié) | Q-P1-15 | À CONFIRMER — ADR dédié à venir |
+
+## D. Tranche préparatoire Phase 1 (documentation uniquement)
+
+« 1.4 » est un identifiant interne de tranche de travail. Il ne constitue pas une phase normative et n'est pas ajouté au §31.
+Documents produits (aucun code) :
+- `docs/spikes/hebergement-protocole.md` — protocole du spike d'hébergement ;
+- `docs/spikes/determinisme-protocole.md` — protocole du spike de déterminisme ;
+- `docs/atelier/questionnaire-gate-1.md` — questionnaire atelier (questions uniquement) ;
+- `docs/da/da-1-preparation.md` — préparation du travail DA-1.

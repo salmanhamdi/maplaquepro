@@ -46,6 +46,16 @@ Le présent ADR est l'ADR exigé par P14 D2.
 6. **Obfuscation** : interdite (P14, règle complémentaire). Elle n'est pas détectable automatiquement de façon fiable ; contrôle en revue (Q-P1-10).
 7. Toute modification de la liste de motifs, des zones ou des exclusions exige un ADR.
 
+### Avenant — tranche préparatoire Phase 1 (documentation uniquement)
+
+Les quatre documents préparatoires sont classés **explicitement, fichier par fichier**, dans la zone **existante** stricte produit. Aucune nouvelle zone, aucune exclusion, aucun glob générique de spike :
+- `docs/spikes/hebergement-protocole.md`
+- `docs/spikes/determinisme-protocole.md`
+- `docs/atelier/questionnaire-gate-1.md`
+- `docs/da/da-1-preparation.md`
+
+Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du backoffice ni de l'historique. Le classement le plus contrôlé est retenu. **À CONFIRMER** avec AC-2.
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.
