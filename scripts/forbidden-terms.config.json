@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "source": "Master Plan v1.5 §4.3, §24.6 ; arbitrages P2 et P14 ; ADR-0002",
+  "patterns": [
+    "\\bpvc\\b",
+    "\\bverres?\\b",
+    "\\bglass(ware)?\\b",
+    "\\bglassora\\b",
+    "\\bd[ée]coupe[_ -]?m[ée]tal\\b",
+    "\\bmetal[_ -]?cut(ting)?\\b"
+  ],
+  "zones": {
+    "strict-product": {
+      "status": "active",
+      "lintTerms": true,
+      "source": "§24.6 zone stricte produit (globs v1.5) + classification ADR-0002 des fichiers non listés",
+      "globs": [
+        "src/**",
+        "content/**",
+        "seeds/**",
+        "fixtures/**",
+        "tests/**",
+        "e2e/**",
+        "fonts/**",
+        "public/**",
+        "emails/**",
+        "docs/product/**",
+        "docs/catalog.md",
+        "docs/questions.md",
+        "docs/ADR/0001-*.md",
+        "docs/ADR/0002-*.md",
+        "docs/ADR/0004-*.md",
+        "README.md",
+        ".gitignore",
+        "package.json",
+        "tsconfig.json",
+        "next.config.ts",
+        "vitest.config.mts",
+        ".github/**",
+        "scripts/check-boundaries.mjs"
+      ]
+    },
+    "audit": {
+      "status": "active",
+      "lintTerms": false,
+      "source": "§24.6 zone documentaire d'audit (Master Plans, audit, CHANGELOG)",
+      "globs": [
+        "docs/audit/**",
+        "docs/master-plan/**",
+        "docs/CHANGELOG.md"
+      ]
+    },
+    "shared-core": {
+      "status": "inactive",
+      "lintTerms": true,
+      "source": "§24.6 / P2 D2 : Shared Core conditionnelle, jamais implicite ; aucune mutualisation décidée",
+      "globs": []
+    }
+  },
+  "exclusions": [
+    {
+      "glob": "scripts/forbidden-terms.mjs",
+      "reason": "Implémentation du lint des termes interdits",
+      "source": "P14 D1, D3 ; ADR-0002"
+    },
+    {
+      "glob": "scripts/forbidden-terms.config.json",
+      "reason": "Liste normative canonique des motifs interdits",
+      "source": "P14 D1, D3, D5 ; ADR-0002"
+    },
+    {
+      "glob": "scripts/forbidden-terms-samples/**",
+      "reason": "Échantillons nécessaires au test du lint lui-même",
+      "source": "P14 D1, D3 ; ADR-0002"
+    },
+    {
+      "glob": "package-lock.json",
+      "reason": "Fichier généré par npm (arbre de dépendances tierces), non rédigé ; aucun contenu produit",
+      "source": "P2 D3 (exclusion explicite justifiée) ; ADR-0002 — À CONFIRMER par le Supervisor"
+    }
+  ]
+}

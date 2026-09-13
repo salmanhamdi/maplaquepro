@@ -1,0 +1,32 @@
+{
+  "name": "maplaquepro",
+  "version": "0.1.0",
+  "private": true,
+  "description": "MaPlaquePro — fondation technique (Master Plan v1.5, Phase 1, étapes 1.1 à 1.3).",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "lint:terms": "node scripts/forbidden-terms.mjs",
+    "lint:boundaries": "node scripts/check-boundaries.mjs",
+    "lint": "npm run lint:terms && npm run lint:boundaries",
+    "test": "vitest run",
+    "ci": "npm run typecheck && npm run lint && npm run test && npm run build"
+  },
+  "dependencies": {
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3",
+    "vitest": "5.0.0"
+  }
+}
