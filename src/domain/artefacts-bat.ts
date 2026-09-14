@@ -36,7 +36,7 @@ export function construireArtefacts(e: {
   };
   const uv = (p: PlanUV) => {
     const canonicalPrintLayer = e.geometry.layers.print ?? [];
-    return { kind: "uv" as const, contractId: "PRODUCTION_UV_CONTRACT_v1" as const, status: p.status, cote: p.cote, encre: p.encre, canonicalPrintLayer, hash: e.hacher(canonicalJson(canonicalPrintLayer)) };
+    return { kind: "uv" as const, contractId: "PRODUCTION_UV_CONTRACT_v1" as const, status: p.status, cote: p.cote, miroir: p.miroir, encre: p.encre, canonicalPrintLayer, hash: e.hacher(canonicalJson(canonicalPrintLayer)) };
   };
 
   const artifacts: ProductionArtifact[] = [];

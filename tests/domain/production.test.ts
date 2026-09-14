@@ -109,7 +109,7 @@ describe("planArtifacts (§13, §14.3) — sélection par workflow", () => {
 
 describe("schéma ProductionArtifact (Annexe A)", () => {
   const laser = { kind: "laser", contractId: "PRODUCTION_SVG_CONTRACT_v1", cote: "envers", miroir: "x", svg: "<svg/>", hash: "h" };
-  const uv = { kind: "uv", contractId: "PRODUCTION_UV_CONTRACT_v1", status: "contract_pending", cote: "envers", encre: "noir_uniquement", canonicalPrintLayer: {}, hash: "h" };
+  const uv = { kind: "uv", contractId: "PRODUCTION_UV_CONTRACT_v1", status: "contract_pending", cote: "envers", miroir: "x", encre: "noir_uniquement", canonicalPrintLayer: {}, hash: "h" };
 
   it("accepte laser, UV contract_pending et hybride ; enregistrement À VALIDER", () => {
     expect(productionArtifactSchema.safeParse(laser).success).toBe(true);

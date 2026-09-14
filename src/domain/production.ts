@@ -78,6 +78,8 @@ export const uvArtifactSchema = z.strictObject({
   contractId: z.literal("PRODUCTION_UV_CONTRACT_v1"),
   status: z.enum(["contract_defined", "contract_pending"]),
   cote: coteSchema,
+  /** §14.3 (arbitrage D1) : miroir porté par l'artefact UV, identique au laser ; issu du plan, sans effet sur le contenu UV (VR-33). */
+  miroir: miroirSchema,
   encre: z.enum(["noir_uniquement", "couleur"]),
   canonicalPrintLayer: z.unknown(),
   /** Format VR-33 : absent tant que le contrat UV n'est pas défini. */
