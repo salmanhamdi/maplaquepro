@@ -23,6 +23,7 @@ export * from "./production-svg";
 export * from "./reference";
 export * from "./referentiels";
 export * from "./resolved-spec";
+export * from "./texte";
 export * from "./thickness";
 export * from "./violation";
 export * from "./workflow";
