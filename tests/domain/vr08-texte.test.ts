@@ -157,3 +157,31 @@ describe("F — tracés de gravure : aucune transformation après conversion (F1
     expect(svg).toContain('<path d="M10.25 20.5 L13.25 20.5 L13.25 24.625 L10.25 24.625 Z" fill="#000000" stroke="none"/>');
   });
 });
+
+describe("S4 (validé Supervisor) — caractère empiétant sur la zone d'un trou ⇒ TEXT_TOO_LONG", () => {
+  // Paramètres de trous FICTIFS de test : VR-22 à VR-24 restent À VALIDER dans le catalogue réel.
+  const avecTrous = (): Catalog => {
+    const c = catalogue();
+    return {
+      ...c,
+      mountingRules: [
+        {
+          ...INITIAL_CATALOG.mountingRules[0]!,
+          holeDiameterMm: definie(4),
+          minEdgeDistanceMm: definie(2),
+          holeKeepOutMarginMm: definie(1.5),
+          edgeDistanceSemantics: definie("edge_to_center"),
+          twoHolesDisposition: definie("horizontal_centered"),
+        },
+      ],
+    };
+  };
+  const trous = { mounting: { count: 2, mode: "standard", edgeDistanceMm: 10 } };
+
+  it("trous (10, 100) et (290, 100), zone de rayon 3,5 : caractère sur la zone ⇒ TEXT_TOO_LONG ; à côté ⇒ fabricable", () => {
+    const sur = evaluateFabricability(config(trous), avecTrous(), { glyphesDisponibles: glyphes, texteTrace: [rect("A", 12, 96, 8, 8), rect("B", 150, 96, 8, 8)] });
+    expect(!sur.ok && codes(sur.violations)).toEqual(["TEXT_TOO_LONG@design.text"]);
+    const cote = evaluateFabricability(config(trous), avecTrous(), { glyphesDisponibles: glyphes, texteTrace: [rect("A", 14, 96, 8, 8), rect("B", 150, 96, 8, 8)] });
+    expect(cote.ok).toBe(true);
+  });
+});

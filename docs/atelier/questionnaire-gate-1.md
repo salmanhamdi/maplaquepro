@@ -193,3 +193,15 @@ Réponses : section 11.5.
 - A5 : aucune liste de polices, droits ni hash inventés.
 - A6 : aucune catégorie ART-1 attribuée aux traits fins.
 - A7 : composition et interligne non résolus.
+
+**Révision Supervisor avant merge (statut des points d'implémentation)** :
+
+| Point | Statut |
+|---|---|
+| S1 — Code et sévérité du trait minimal 1 mm | **OPEN** : aucun code existant ; contrôle conservé en `VALIDATION_REQUIRED` en gravure, non sanctionné |
+| S2 — Méthode de mesure du trait | **OPEN** : aucune méthode fournie ; aucun algorithme inventé ; la boîte englobante ne mesure pas le trait |
+| S3 — Portée de « caractère » (ponctuation, signes isolés) | **OPEN — arbitrage requis** : aucune distinction normative existante ; règle appliquée à tous les caractères tracés, sans nouvelle définition |
+| S4 — Caractère sur la zone d'un trou ⇒ `TEXT_TOO_LONG` | **VALIDÉ** |
+| S5 — Trait fin de l'artwork | **OPEN** (ART-1) ; règle de trait de gravure non transposée |
+| S6 — Bloc texte du BAT, couche texte canonique | **OPEN** : P7 (hash), A7 (composition, taille effective) ; `designRulesVersion` non inventé |
+| S7 — F11 et transformations contractuelles | **VALIDÉ** : F11 = aucune préparation supplémentaire après conversion ; miroir envers et opérations machine contractuelles conservés |
