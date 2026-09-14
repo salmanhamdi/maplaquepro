@@ -2,6 +2,7 @@
 // Aucun import React, Next.js, base de données, système de fichiers ni module Node :
 // règle vérifiée par `npm run lint:boundaries` (ADR-0004).
 export * from "./alternatives";
+export * from "./artefact-laser";
 export * from "./apparence";
 export * from "./artwork";
 export * from "./artwork-evaluation";
