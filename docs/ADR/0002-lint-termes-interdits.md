@@ -60,6 +60,10 @@ Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du b
 
 `docs/ADR/0005-determinisme-geometrie.md` est classé explicitement (chemin exact) dans la zone existante stricte produit, comme les ADR 0001, 0002 et 0004. Aucune nouvelle zone, aucune exclusion.
 
+### Avenant — ADR-0003
+
+`docs/ADR/0003-hebergement.md` est classé explicitement (chemin exact) dans la zone existante stricte produit. Aucune nouvelle zone, aucune exclusion.
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.
