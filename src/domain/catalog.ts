@@ -11,6 +11,7 @@ import { priceRulesSchema } from "./pricing";
 import { productSchema } from "./product";
 import { materialVariantSchema, type MaterialVariant, validateReference } from "./reference";
 import { MAX_PIXELS_MVP, THICKNESS_IDS, WORKFLOW_IDS } from "./referentiels";
+import { findPendingValues } from "./resolved-spec";
 import { THICKNESSES, thicknessSchema } from "./thickness";
 import { type DomainViolation, violation } from "./violation";
 import { PRODUCTION_WORKFLOWS, productionWorkflowSchema, validateWorkflow } from "./workflow";
@@ -69,6 +70,21 @@ export function validateCatalog(catalog: Catalog): DomainViolation[] {
   for (const rules of catalog.artworkRules) {
     if (ENGRAVE_ONLY_WORKFLOWS.includes(rules.workflowId) && !(rules.rasterPolicy.etat === "DEFINIE" && rules.rasterPolicy.valeur === "reject")) {
       out.push(violation("ENGRAVE_WORKFLOW_RASTER_NOT_REJECTED", `artworkRules.${rules.id}.rasterPolicy`, "gravure : raster rejeté (VR-28)"));
+    }
+  }
+
+  // INV-02 (décision Supervisor) : une règle contenant au moins une valeur À VALIDER ne peut pas être déclarée active.
+  // Types de règles portant des états : DimensionRules, MountingRules (surcharges incluses), ArtworkRules, PriceRules.
+  const reglesActives: Array<[string, { id: string }, boolean]> = [
+    ...catalog.dimensionRules.map((r) => ["dimensionRules", r, r.statut === "active"] as [string, { id: string }, boolean]),
+    ...catalog.mountingRules.map((r) => ["mountingRules", r, r.statut === "active"] as [string, { id: string }, boolean]),
+    ...catalog.artworkRules.map((r) => ["artworkRules", r, r.statut === "active"] as [string, { id: string }, boolean]),
+    ...catalog.priceRules.map((r) => ["priceRules", r, r.pricingStatus === "active"] as [string, { id: string }, boolean]),
+  ];
+  for (const [type, regle, active] of reglesActives) {
+    if (!active) continue;
+    for (const p of findPendingValues(regle)) {
+      out.push(violation("ACTIVE_RULE_WITH_PENDING_VALUE", `${type}.${regle.id}.${p}`, "règle active avec valeur À VALIDER (INV-02)"));
     }
   }
 
