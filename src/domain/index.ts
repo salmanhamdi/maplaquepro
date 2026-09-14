@@ -15,6 +15,7 @@ export * from "./machine";
 export * from "./mounting";
 export * from "./pricing";
 export * from "./product";
+export * from "./production";
 export * from "./reference";
 export * from "./referentiels";
 export * from "./thickness";
