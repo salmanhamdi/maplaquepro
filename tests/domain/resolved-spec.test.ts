@@ -101,11 +101,12 @@ describe("resolveSpec (§6, §15, P7)", () => {
   });
 
   it("artwork placé avec des règles d'artwork À VALIDER (catalogue initial) ⇒ BAT non validable", () => {
-    const c = catalogue();
-    const c2 = { ...c, products: c.products.map((p) => p) };
-    const fab = evaluateFabricability(config({ design: { text: null, artwork: { artworkRef: "a", xMm: 10, yMm: 10, widthMm: 50, heightMm: 50, rotationDeg: 0 } } }), c2);
-    expect(fab.ok).toBe(true);
-    if (!fab.ok) return;
+    // L'étape 8 bloque déjà en amont (maxBytes À VALIDER) : on vérifie ici la garde P7 propre à resolveSpec.
+    const c2 = catalogue();
+    const sansArtwork = evaluateFabricability(config(), c2);
+    if (!sansArtwork.ok) throw new Error("attendu fabricable");
+    const placement = { artworkRef: "a", xMm: 10, yMm: 10, widthMm: 50, heightMm: 50, rotationDeg: 0 as const };
+    const fab = { ...sansArtwork, configuration: { ...sansArtwork.configuration, design: { text: null, artwork: placement } } };
     const r = resolveSpec(fab, c2);
     expect(!r.ok && r.violations.every((v) => v.code === "VALIDATION_REQUIRED" && v.path.startsWith("artworkRules.artwork-PLEXIGLASS_UV"))).toBe(true);
   });

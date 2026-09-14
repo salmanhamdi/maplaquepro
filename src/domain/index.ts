@@ -5,6 +5,7 @@ export * from "./apparence";
 export * from "./artwork";
 export * from "./artwork-evaluation";
 export * from "./bat";
+export * from "./bat-brouillon";
 export * from "./catalog";
 export * from "./configuration";
 export * from "./contrats";

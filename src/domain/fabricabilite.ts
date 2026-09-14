@@ -1,13 +1,23 @@
-// Moteur de fabricabilité (Annexe B, étapes 0 à 7). Fonction pure, autorité côté serveur (§16bis).
-// L'étape 8 (artwork et texte) n'est pas couverte : elle dépend de VR-08, VR-27 et ART1-DOC (ouverts).
-// Aucune valeur n'est présumée : une propriété À VALIDER rencontrée ⇒ VALIDATION_REQUIRED.
+// Moteur de fabricabilité (Annexe B, étapes 0 à 8). Fonction pure, autorité côté serveur (§16bis).
+// Étape 8 : artwork et texte. Les données issues du traitement des fichiers (métadonnées d'artwork, jeu de glyphes de la
+// police) sont fournies par le serveur, jamais par la requête client. Les dépendances ouvertes (VR-08, VR-27, ART1-DOC)
+// produisent VALIDATION_REQUIRED ; aucune valeur n'est présumée.
+import { type ArtworkMetadata, type EvaluationArtwork, evaluateArtwork } from "./artwork-evaluation";
 import type { Catalog } from "./catalog";
 import { type Configuration, parseConfiguration, validateConfigurationAgainstCatalog } from "./configuration";
 import { evaluerDimensions, evaluerPoses, type PoseOperation } from "./fabricabilite-machine";
 import type { PlaqueMm } from "./geometry";
 import { generateHoles, type Hole, resolveMountingRules } from "./holes";
 import { type ResolvedOperation, resolveWorkflow } from "./production";
+import { evaluerTexte, type TexteNormalise } from "./texte";
 import { type DomainViolation, violation } from "./violation";
+
+/** Données serveur issues du traitement des fichiers (hors requête client, P13). */
+export type DonneesServeur = {
+  artwork?: ArtworkMetadata;
+  /** Glyphes de la police choisie ; la liste des polices reste OPEN (VR-08). */
+  glyphesDisponibles?: ReadonlySet<string>;
+};
 
 export type Fabricable = {
   ok: true;
@@ -16,6 +26,8 @@ export type Fabricable = {
   operations: ResolvedOperation[];
   posesParOperation: PoseOperation[];
   holes: Hole[];
+  artwork: EvaluationArtwork | null;
+  texte: TexteNormalise | null;
 };
 
 export type NonFabricable = {
@@ -27,7 +39,7 @@ export type NonFabricable = {
 
 export type FabricabilityResult = Fabricable | NonFabricable;
 
-export function evaluateFabricability(input: unknown, catalog: Catalog): FabricabilityResult {
+export function evaluateFabricability(input: unknown, catalog: Catalog, donnees: DonneesServeur = {}): FabricabilityResult {
   // 0. Contrat de requête (P13) : rejet typé, rien n'est ignoré ni recalculé
   const parsed = parseConfiguration(input);
   if (!parsed.ok) return { ok: false, stage: "request", violations: parsed.violations };
@@ -76,6 +88,7 @@ export function evaluateFabricability(input: unknown, catalog: Catalog): Fabrica
 
   // 7. Trous : valeurs reçues validées, jamais adaptées (G.5)
   let holes: Hole[] = [];
+  let holeKeepOutMarginMm: number | null = null;
   if (config.mounting.count > 0) {
     if (!mountingRules) {
       violations.push(violation("MOUNTING_RULES_MISSING", `references.${reference.id}.mountingRulesId`, "règles de trous introuvables"));
@@ -84,6 +97,7 @@ export function evaluateFabricability(input: unknown, catalog: Catalog): Fabrica
       if (!regles.ok) {
         violations.push(...regles.violations);
       } else {
+        holeKeepOutMarginMm = regles.value.holeKeepOutMarginMm;
         const generes = generateHoles(config.mounting, plaque, regles.value);
         if (generes.ok) holes = generes.value;
         else violations.push(...generes.violations);
@@ -91,6 +105,34 @@ export function evaluateFabricability(input: unknown, catalog: Catalog): Fabrica
     }
   }
 
+  // 8a. Artwork
+  let artwork: EvaluationArtwork | null = null;
+  if (config.design.artwork !== null) {
+    const rules = catalog.artworkRules.find((a) => a.id === reference.artworkRulesId);
+    if (!rules) {
+      violations.push(violation("ARTWORK_RULES_MISSING", `references.${reference.id}.artworkRulesId`, "règles d'artwork introuvables"));
+    } else if (!donnees.artwork) {
+      violations.push(violation("ARTWORK_METADATA_MISSING", "design.artwork.artworkRef", "métadonnées serveur du fichier absentes"));
+    } else {
+      artwork = evaluateArtwork({ placement: config.design.artwork, meta: donnees.artwork, rules, reference, plaque, holes, holeKeepOutMarginMm: config.mounting.count > 0 ? holeKeepOutMarginMm : null });
+      violations.push(...artwork.violations);
+    }
+  }
+
+  // 8b. Texte : normalisation et glyphes ; mesure et lisibilité dépendent de VR-08 / SP-3 (non codées)
+  let texte: TexteNormalise | null = null;
+  if (config.design.text !== null) {
+    if (!donnees.glyphesDisponibles) {
+      violations.push(violation("VALIDATION_REQUIRED", "design.text.fontId", "police et glyphes non validés (VR-08)"));
+      texte = evaluerTexte({ lines: config.design.text.lines, glyphesDisponibles: new Set() }).texte;
+    } else {
+      const r = evaluerTexte({ lines: config.design.text.lines, glyphesDisponibles: donnees.glyphesDisponibles });
+      texte = r.texte;
+      violations.push(...r.violations);
+    }
+    violations.push(violation("VALIDATION_REQUIRED", "design.text.effectiveFontSizeMm", "mesure du texte et seuil de lisibilité non définis (VR-08, SP-3)"));
+  }
+
   if (violations.length > 0 || !poses.ok) return { ok: false, stage: "fabrication", violations };
-  return { ok: true, configuration: config, plaque, operations: resolu.operations, posesParOperation: poses.poses, holes };
+  return { ok: true, configuration: config, plaque, operations: resolu.operations, posesParOperation: poses.poses, holes, artwork, texte };
 }

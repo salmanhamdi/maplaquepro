@@ -142,6 +142,13 @@ export function batValidationViolations(bat: BatBrouillon): DomainViolation[] {
   // P7 : aucune propriété À VALIDER
   for (const path of findPendingValues(bat)) out.push(violation("VALIDATION_REQUIRED", path, "propriété À VALIDER : BAT non validable (P7)"));
 
+  // Statut de chaque contrat de production au moment du BAT (§15, P12)
+  for (const id of bat.spec.productionContractIds) {
+    if (!bat.productionContracts.some((c) => c.contractId === id)) {
+      out.push(violation("CONTRACT_STATUS_MISSING", "productionContracts", `statut du contrat ${id} absent du BAT (§15)`));
+    }
+  }
+
   // Procédé affiché et confirmé
   if (bat.confirmations.workflowAcknowledgedAt === undefined) {
     out.push(violation("WORKFLOW_NOT_ACKNOWLEDGED", "confirmations.workflowAcknowledgedAt", "procédé non confirmé par le client (§15)"));

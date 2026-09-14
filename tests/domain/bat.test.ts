@@ -77,7 +77,11 @@ const brouillon = (o: Partial<BatBrouillon> = {}): unknown => ({
     designRulesVersion: definie("test"),
     engineVersions: { design: "t", mounting: "t", geometry: "t", render: "t", production: "t" },
   },
-  productionContracts: [],
+  // Statuts DE TEST : validation atelier fictive, pour exercer les autres invariants
+  productionContracts: [
+    { contractId: "PRODUCTION_SVG_CONTRACT_v1", conformite: "conforme", validationAtelier: definie("validee"), preuveValidationAtelier: "preuve de test" },
+    { contractId: "PRODUCTION_UV_CONTRACT_v1", conformite: "conforme", validationAtelier: definie("validee"), preuveValidationAtelier: "preuve de test" },
+  ],
   spec: specTest(),
   holes: { pattern: { count: 0 } },
   text: null,
