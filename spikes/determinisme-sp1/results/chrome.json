@@ -1,0 +1,316 @@
+{
+  "environment": {
+    "runtime": "chrome",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+    "hash": "WebCrypto crypto.subtle.digest",
+    "secureContext": true,
+    "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+    "proof": "principale pour ce navigateur de bureau (headless)"
+  },
+  "engine": "sp1-geometry-0.1.0",
+  "count": 60,
+  "matrixSha256": "c77670a91cd14827b8ca5c71a6e9b1084af889454a3eced956b9a4840c546272",
+  "globalSha256": "ba0d62b0361ddaf97c9c8956c6a7c7c24954fafb442f9ba5f82bca0557968d59",
+  "results": [
+    {
+      "id": "SP1-001",
+      "sha256": "44629a9a6df28bb9313dac7e5bea0f51b0c92af399563c93aa834c9024845f2f",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":200,\"thicknessMm\":0.8,\"widthMm\":300},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-002",
+      "sha256": "81655261528b15cd86cfdc9ae3eb1c5c0a764d55c498bcae1d3fe9a80825795f",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":10,\"cyMm\":240,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":240,\"diameterMm\":4.5}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":250,\"thicknessMm\":1.6,\"widthMm\":400},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-003",
+      "sha256": "dbe1fbb554a4251c1c05113646a20f17e8b938912fe29f59d73f487810b62a5e",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10.85,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":10.85,\"cyMm\":137.65,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":137.65,\"diameterMm\":5.2}],\"plate\":{\"cornerRadiusMm\":3,\"heightMm\":148.5,\"thicknessMm\":3,\"widthMm\":210},\"safeZoneMm\":2.5}"
+    },
+    {
+      "id": "SP1-004",
+      "sha256": "98e33e329bf6857faa8b3d50f45b66a588aa9ac5145709e0731068453c526591",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":12.3,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":12.3,\"cyMm\":477.7,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":477.7,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":490,\"thicknessMm\":5,\"widthMm\":347},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-005",
+      "sha256": "169902a495daf972fff3a75ddf6d4646cd80e9171e1f6a6305f2e64ea2218790",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":17.1,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":17.1,\"cyMm\":335,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":335,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":347,\"thicknessMm\":0.8,\"widthMm\":490},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-006",
+      "sha256": "1d2077bed79eed5af3f3334a329a15b9f64e3775d5f0811fd432014334167d01",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490,\"thicknessMm\":1.6,\"widthMm\":347.1},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-007",
+      "sha256": "b0b9c379da489a9b461dc3adba53067280cc3706b9ca8e95cc5deba0eb79c85c",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":9.35,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":9.35,\"cyMm\":480.75,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":480.75,\"diameterMm\":3.3}],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490.1,\"thicknessMm\":3,\"widthMm\":347},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-008",
+      "sha256": "498c563f75ed61851b3f6724262dd55213b8b948cedd474d7fc149ef3a6ecf78",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.1,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":20.1,\"cyMm\":579.7,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":579.7,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610,\"thicknessMm\":5,\"widthMm\":1010},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-009",
+      "sha256": "acae951dcd99032e80a1a2b42ae52312a72a974c3a9c18e38780c85256ed05da",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":3.275,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":3.275,\"cyMm\":606.925,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":606.925,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610.2,\"thicknessMm\":0.8,\"widthMm\":1010.1},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-010",
+      "sha256": "6860834e71f6b7d2c1a0e7f9e48a263d7ca72394a8b442527d12431a4578a1da",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":5.555,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":5.555,\"cyMm\":73.345,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":73.345,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":1.234,\"heightMm\":78.9,\"thicknessMm\":1.6,\"widthMm\":123.456},\"safeZoneMm\":1.111}"
+    },
+    {
+      "id": "SP1-011",
+      "sha256": "26fec4a0d8c4496bfc3d56d00333b2935ebe83d7a62300f68de34b4b83c11ee2",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":4.55,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":4.55,\"cyMm\":27.683,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":27.683,\"diameterMm\":2.9}],\"plate\":{\"cornerRadiusMm\":0.5,\"heightMm\":33.333,\"thicknessMm\":3,\"widthMm\":99.999},\"safeZoneMm\":0.3}"
+    },
+    {
+      "id": "SP1-012",
+      "sha256": "17c8a1fd34ff3f906a682a919869afdb912db1f4324b63588f15727cd7944edb",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":0.2,\"thicknessMm\":5,\"widthMm\":0.1},\"safeZoneMm\":0.05}"
+    },
+    {
+      "id": "SP1-013",
+      "sha256": "7d22e3195fb81835ff0cfae77e4acebb3e3b777b597b92b3b960e2638fa432a4",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":2,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":2,\"cyMm\":283.825,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":283.825,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":0.667,\"heightMm\":285.714,\"thicknessMm\":0.8,\"widthMm\":333.333},\"safeZoneMm\":0.143}"
+    },
+    {
+      "id": "SP1-014",
+      "sha256": "fd3d7d3902cdaed9f2a738494fe4e140d021d43e877a47585e915b8c943a5f63",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":11.001,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":11.001,\"cyMm\":169.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":169.001,\"diameterMm\":4}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":180.002,\"thicknessMm\":1.6,\"widthMm\":250.001},\"safeZoneMm\":2.001}"
+    },
+    {
+      "id": "SP1-015",
+      "sha256": "55789d61e340e196e23b6947db4f749fcabfe20d96ee94bb25e185884c575899",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.001,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":20.001,\"cyMm\":375.554,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":375.554,\"diameterMm\":5.003}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":400.556,\"thicknessMm\":3,\"widthMm\":600.445},\"safeZoneMm\":2.223}"
+    },
+    {
+      "id": "SP1-016",
+      "sha256": "52fd7b2d466f15a04da24e4ec308021ced3f386d5a35adfa8f9213a6a6ddad22",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":200,\"thicknessMm\":1.6,\"widthMm\":300},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-017",
+      "sha256": "6c6a759d88187dbf750804f5ca84567bde7eb00062ecb28024384554f637d1a6",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":10,\"cyMm\":240,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":240,\"diameterMm\":4.5}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":250,\"thicknessMm\":3,\"widthMm\":400},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-018",
+      "sha256": "2e83041afbe75b7b79e2c1ff6f47c8ff9600e7fccdffed65735340684adbe601",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10.85,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":10.85,\"cyMm\":137.65,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":137.65,\"diameterMm\":5.2}],\"plate\":{\"cornerRadiusMm\":3,\"heightMm\":148.5,\"thicknessMm\":5,\"widthMm\":210},\"safeZoneMm\":2.5}"
+    },
+    {
+      "id": "SP1-019",
+      "sha256": "0e76d8db1badb4378619922eb6eda7ae36035c17bae75d345eade93451fd67d2",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":12.3,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":12.3,\"cyMm\":477.7,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":477.7,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":490,\"thicknessMm\":0.8,\"widthMm\":347},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-020",
+      "sha256": "8a51fbd298b584d55654e5e03301e00e3c2644ffd441418ce1204f6b56d66d0f",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":17.1,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":17.1,\"cyMm\":335,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":335,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":347,\"thicknessMm\":1.6,\"widthMm\":490},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-021",
+      "sha256": "4182b940be0e38474f6eb0bca6a6bfadafce3dcd0e71077cd8d7abeb0aa5048d",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490,\"thicknessMm\":3,\"widthMm\":347.1},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-022",
+      "sha256": "fe6a52ac01b4ec57758195585e2df7f20ce556cb04a6acef51a4d60ede6180b4",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":9.35,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":9.35,\"cyMm\":480.75,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":480.75,\"diameterMm\":3.3}],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490.1,\"thicknessMm\":5,\"widthMm\":347},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-023",
+      "sha256": "600a5cfb7642336a75be12ccfb18171208b4149d7b7463772ba7d36de3bd3aa5",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.1,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":20.1,\"cyMm\":579.7,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":579.7,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610,\"thicknessMm\":0.8,\"widthMm\":1010},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-024",
+      "sha256": "d7a08c739de891895559f6d8005220489b56a38ae0cfd9f6b676df1ac56d3988",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":3.275,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":3.275,\"cyMm\":606.925,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":606.925,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610.2,\"thicknessMm\":1.6,\"widthMm\":1010.1},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-025",
+      "sha256": "068f5373fb0b13c442725d5d924bcfdbe9d9012d4b5d713c215875863c8e6238",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":5.555,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":5.555,\"cyMm\":73.345,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":73.345,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":1.234,\"heightMm\":78.9,\"thicknessMm\":3,\"widthMm\":123.456},\"safeZoneMm\":1.111}"
+    },
+    {
+      "id": "SP1-026",
+      "sha256": "091ee97e88ddcfa20990b1d532c72adfee4e755b26950b621c8bc55860ee7649",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":4.55,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":4.55,\"cyMm\":27.683,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":27.683,\"diameterMm\":2.9}],\"plate\":{\"cornerRadiusMm\":0.5,\"heightMm\":33.333,\"thicknessMm\":5,\"widthMm\":99.999},\"safeZoneMm\":0.3}"
+    },
+    {
+      "id": "SP1-027",
+      "sha256": "8621ecb208c3ab2d507a05109f635ad0a02e793f06c2fc69ef2137b15628b32b",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":0.2,\"thicknessMm\":0.8,\"widthMm\":0.1},\"safeZoneMm\":0.05}"
+    },
+    {
+      "id": "SP1-028",
+      "sha256": "9c41ff77e35edf75ff4ff746889c1f475d5250a7f0e8820ca073a0e04e874bdc",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":2,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":2,\"cyMm\":283.825,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":283.825,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":0.667,\"heightMm\":285.714,\"thicknessMm\":1.6,\"widthMm\":333.333},\"safeZoneMm\":0.143}"
+    },
+    {
+      "id": "SP1-029",
+      "sha256": "c961d0c243cf77a4c79e7c85bfc9eabd282bbb76c8bcf629f0a05f76c2b11f14",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":11.001,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":11.001,\"cyMm\":169.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":169.001,\"diameterMm\":4}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":180.002,\"thicknessMm\":3,\"widthMm\":250.001},\"safeZoneMm\":2.001}"
+    },
+    {
+      "id": "SP1-030",
+      "sha256": "90550220a34aec789360963974636596064d17046a54b141fb84e50e522818d9",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.001,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":20.001,\"cyMm\":375.554,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":375.554,\"diameterMm\":5.003}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":400.556,\"thicknessMm\":5,\"widthMm\":600.445},\"safeZoneMm\":2.223}"
+    },
+    {
+      "id": "SP1-031",
+      "sha256": "e471b90cc876c83d87ec20cd308641fc69c0916f4153bb646b85184d5c5b0376",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":200,\"thicknessMm\":3,\"widthMm\":300},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-032",
+      "sha256": "6f178dbaaefb1c7d5554f95d3738b8fdb4b07720e7d99ba928a75001e3fd5b91",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":10,\"cyMm\":240,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":240,\"diameterMm\":4.5}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":250,\"thicknessMm\":5,\"widthMm\":400},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-033",
+      "sha256": "362048895b37b2e19b7906005769172dddc2b930b1037eb1b8a61ce22f550bd6",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10.85,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":10.85,\"cyMm\":137.65,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":137.65,\"diameterMm\":5.2}],\"plate\":{\"cornerRadiusMm\":3,\"heightMm\":148.5,\"thicknessMm\":0.8,\"widthMm\":210},\"safeZoneMm\":2.5}"
+    },
+    {
+      "id": "SP1-034",
+      "sha256": "888e256ac793b72b444392995d48b150daa3a9eee59259ce13c5b5c4986372b9",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":12.3,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":12.3,\"cyMm\":477.7,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":477.7,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":490,\"thicknessMm\":1.6,\"widthMm\":347},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-035",
+      "sha256": "080dc575d1df7c8384bead61e88b9c41d4ef5187e0acc42fb7b5cc4bbd960e37",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":17.1,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":17.1,\"cyMm\":335,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":335,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":347,\"thicknessMm\":3,\"widthMm\":490},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-036",
+      "sha256": "759725275df4d4839a1e3470df26d8cfdfc2f3d5d506836b157dd0e9a89e6af2",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490,\"thicknessMm\":5,\"widthMm\":347.1},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-037",
+      "sha256": "f621eae02c6c3534156ad65ae328672af2e7f3cdf4d8dab5d80883d6e636213e",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":9.35,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":9.35,\"cyMm\":480.75,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":480.75,\"diameterMm\":3.3}],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490.1,\"thicknessMm\":0.8,\"widthMm\":347},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-038",
+      "sha256": "656236e485cf506c06200ece2d238c371a7af23fed7d02fcb9973a2c85913c63",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.1,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":20.1,\"cyMm\":579.7,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":579.7,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610,\"thicknessMm\":1.6,\"widthMm\":1010},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-039",
+      "sha256": "002f1b877b75dc9c8d075ba76581ad85c76900aef2ed6515c5f696195e6c3150",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":3.275,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":3.275,\"cyMm\":606.925,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":606.925,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610.2,\"thicknessMm\":3,\"widthMm\":1010.1},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-040",
+      "sha256": "791121afb7fa2536abdbca7fef743309d2745c1819febfd52169feadb0ea9ec9",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":5.555,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":5.555,\"cyMm\":73.345,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":73.345,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":1.234,\"heightMm\":78.9,\"thicknessMm\":5,\"widthMm\":123.456},\"safeZoneMm\":1.111}"
+    },
+    {
+      "id": "SP1-041",
+      "sha256": "05b4e17efd0f8d22f20f2fcb148014ef466fb26c7f852e7f5034048bddaeccec",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":4.55,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":4.55,\"cyMm\":27.683,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":27.683,\"diameterMm\":2.9}],\"plate\":{\"cornerRadiusMm\":0.5,\"heightMm\":33.333,\"thicknessMm\":0.8,\"widthMm\":99.999},\"safeZoneMm\":0.3}"
+    },
+    {
+      "id": "SP1-042",
+      "sha256": "1515a653ec0c5a231f535143edd8caa81a8034ad8a5515e4fae8f51e945a1f1c",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":0.2,\"thicknessMm\":1.6,\"widthMm\":0.1},\"safeZoneMm\":0.05}"
+    },
+    {
+      "id": "SP1-043",
+      "sha256": "a35900df356254141a545286b3409897288b924d2168ad8d660320f6c363cbb8",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":2,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":2,\"cyMm\":283.825,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":283.825,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":0.667,\"heightMm\":285.714,\"thicknessMm\":3,\"widthMm\":333.333},\"safeZoneMm\":0.143}"
+    },
+    {
+      "id": "SP1-044",
+      "sha256": "afa2c23e37e2db45edffec99fe3644d1315f2bf78bdf6a7a78e9f112f8cc9208",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":11.001,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":11.001,\"cyMm\":169.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":169.001,\"diameterMm\":4}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":180.002,\"thicknessMm\":5,\"widthMm\":250.001},\"safeZoneMm\":2.001}"
+    },
+    {
+      "id": "SP1-045",
+      "sha256": "8fc0da1d78b518ea46441792ebebed059130d1b361cd75992d4f1fd0ddc15621",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.001,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":20.001,\"cyMm\":375.554,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":375.554,\"diameterMm\":5.003}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":400.556,\"thicknessMm\":0.8,\"widthMm\":600.445},\"safeZoneMm\":2.223}"
+    },
+    {
+      "id": "SP1-046",
+      "sha256": "9f5851d871192f1e8d16bb250f991dd946a7581c2af54784f00598f6e38ffd14",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":200,\"thicknessMm\":5,\"widthMm\":300},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-047",
+      "sha256": "3d97760957951b6f95f0ebbe7eb55fea8fb3b314bc95a48690fbc542d72b826f",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":10,\"diameterMm\":4.5},{\"cxMm\":10,\"cyMm\":240,\"diameterMm\":4.5},{\"cxMm\":390,\"cyMm\":240,\"diameterMm\":4.5}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":250,\"thicknessMm\":0.8,\"widthMm\":400},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-048",
+      "sha256": "be5803fe9dfdf0cdc6f666d8ed45cf993127fc40e36b3c95a50221db7a96f076",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":10.85,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":10.85,\"diameterMm\":5.2},{\"cxMm\":10.85,\"cyMm\":137.65,\"diameterMm\":5.2},{\"cxMm\":199.15,\"cyMm\":137.65,\"diameterMm\":5.2}],\"plate\":{\"cornerRadiusMm\":3,\"heightMm\":148.5,\"thicknessMm\":1.6,\"widthMm\":210},\"safeZoneMm\":2.5}"
+    },
+    {
+      "id": "SP1-049",
+      "sha256": "029268e31b93f1bdb401afc6a674c365f6016d374dbe7320acfcd34f6d2ee798",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":12.3,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":12.3,\"diameterMm\":4.1},{\"cxMm\":12.3,\"cyMm\":477.7,\"diameterMm\":4.1},{\"cxMm\":334.7,\"cyMm\":477.7,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":490,\"thicknessMm\":3,\"widthMm\":347},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-050",
+      "sha256": "eb650fdae54bd888ef45ee0ec3cf42167d8972642f69a4cc0424e7887e469092",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":17.1,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":12,\"diameterMm\":4.1},{\"cxMm\":17.1,\"cyMm\":335,\"diameterMm\":4.1},{\"cxMm\":472.9,\"cyMm\":335,\"diameterMm\":4.1}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":347,\"thicknessMm\":5,\"widthMm\":490},\"safeZoneMm\":2}"
+    },
+    {
+      "id": "SP1-051",
+      "sha256": "c29ed61ec15b0d437c8e7aa4b2bb51c76dfd2c8115ade527355475f0fd63971c",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490,\"thicknessMm\":0.8,\"widthMm\":347.1},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-052",
+      "sha256": "ba68bb991289f9c30662a7cd741132a4d1451afd80de9869a4b7111d3056fda4",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":9.35,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":9.35,\"diameterMm\":3.3},{\"cxMm\":9.35,\"cyMm\":480.75,\"diameterMm\":3.3},{\"cxMm\":337.65,\"cyMm\":480.75,\"diameterMm\":3.3}],\"plate\":{\"cornerRadiusMm\":2,\"heightMm\":490.1,\"thicknessMm\":1.6,\"widthMm\":347},\"safeZoneMm\":1.75}"
+    },
+    {
+      "id": "SP1-053",
+      "sha256": "a7a694a0a11ddbc61975f56ad859f99bdb122e1ddab76ff76ee7287afb47a5dc",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.1,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":30.3,\"diameterMm\":6.35},{\"cxMm\":20.1,\"cyMm\":579.7,\"diameterMm\":6.35},{\"cxMm\":989.9,\"cyMm\":579.7,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610,\"thicknessMm\":3,\"widthMm\":1010},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-054",
+      "sha256": "cd804b5bad6d98e2d2e55a09e688e30c0f80792d74c7b8706b61743099326817",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":3.275,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":3.275,\"diameterMm\":6.35},{\"cxMm\":3.275,\"cyMm\":606.925,\"diameterMm\":6.35},{\"cxMm\":1006.825,\"cyMm\":606.925,\"diameterMm\":6.35}],\"plate\":{\"cornerRadiusMm\":10,\"heightMm\":610.2,\"thicknessMm\":5,\"widthMm\":1010.1},\"safeZoneMm\":3}"
+    },
+    {
+      "id": "SP1-055",
+      "sha256": "0d491fa2e3e84caa06525394a80c47cfba117b39adb6240ce260a97ba21e3f70",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":5.555,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":5.555,\"diameterMm\":3.333},{\"cxMm\":5.555,\"cyMm\":73.345,\"diameterMm\":3.333},{\"cxMm\":117.901,\"cyMm\":73.345,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":1.234,\"heightMm\":78.9,\"thicknessMm\":0.8,\"widthMm\":123.456},\"safeZoneMm\":1.111}"
+    },
+    {
+      "id": "SP1-056",
+      "sha256": "a8aefc21b8d7b097e6dd85bfaacba4c5cf0bdcd202e35b9d126f125c933d6372",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":4.55,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":5.65,\"diameterMm\":2.9},{\"cxMm\":4.55,\"cyMm\":27.683,\"diameterMm\":2.9},{\"cxMm\":95.449,\"cyMm\":27.683,\"diameterMm\":2.9}],\"plate\":{\"cornerRadiusMm\":0.5,\"heightMm\":33.333,\"thicknessMm\":1.6,\"widthMm\":99.999},\"safeZoneMm\":0.3}"
+    },
+    {
+      "id": "SP1-057",
+      "sha256": "4d5460fb404087dbe38125e6aaf2220722bb8b3e9688692e24cf11a111f72e23",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":0.2,\"thicknessMm\":3,\"widthMm\":0.1},\"safeZoneMm\":0.05}"
+    },
+    {
+      "id": "SP1-058",
+      "sha256": "6af829966db062cde6040760db4deabd1c3c498687805e0782c563bb8293a393",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":2,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":1.889,\"diameterMm\":3.333},{\"cxMm\":2,\"cyMm\":283.825,\"diameterMm\":3.333},{\"cxMm\":331.333,\"cyMm\":283.825,\"diameterMm\":3.333}],\"plate\":{\"cornerRadiusMm\":0.667,\"heightMm\":285.714,\"thicknessMm\":5,\"widthMm\":333.333},\"safeZoneMm\":0.143}"
+    },
+    {
+      "id": "SP1-059",
+      "sha256": "87e8f1c85c343c1ff097fab1ca54a47c5e84007f02dfab962072667a6c9b2135",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":11.001,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":11.001,\"diameterMm\":4},{\"cxMm\":11.001,\"cyMm\":169.001,\"diameterMm\":4},{\"cxMm\":239,\"cyMm\":169.001,\"diameterMm\":4}],\"plate\":{\"cornerRadiusMm\":5,\"heightMm\":180.002,\"thicknessMm\":0.8,\"widthMm\":250.001},\"safeZoneMm\":2.001}"
+    },
+    {
+      "id": "SP1-060",
+      "sha256": "c2de99534a53be20051f35e9c52dfc21211002fff2c3d0a96b2eb877df94a5f0",
+      "json": "{\"engineVersions\":{\"geometry\":\"sp1-geometry-0.1.0\"},\"holes\":[{\"cxMm\":20.001,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":25.001,\"diameterMm\":5.003},{\"cxMm\":20.001,\"cyMm\":375.554,\"diameterMm\":5.003},{\"cxMm\":580.443,\"cyMm\":375.554,\"diameterMm\":5.003}],\"plate\":{\"cornerRadiusMm\":0,\"heightMm\":400.556,\"thicknessMm\":1.6,\"widthMm\":600.445},\"safeZoneMm\":2.223}"
+    }
+  ]
+}

@@ -56,6 +56,10 @@ Les quatre documents préparatoires sont classés **explicitement, fichier par f
 
 Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du backoffice ni de l'historique. Le classement le plus contrôlé est retenu. **À CONFIRMER** avec AC-2.
 
+### Avenant — SP-1 du spike de déterminisme
+
+Les fichiers de SP-1 (`spikes/determinisme-sp1/` : `core.mjs`, `matrix.mjs`, `run-node.mjs`, `run-browsers.mjs`, `compare.mjs`, `index.html`, `results/node.json`, `results/chrome.json`, `results/edge.json`) sont classés **explicitement, fichier par fichier**, dans la zone **existante** stricte produit. Aucune nouvelle zone, aucune exclusion, aucun glob générique de spike. Emplacement et classement **À CONFIRMER** (AN-6, AC-2).
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.
