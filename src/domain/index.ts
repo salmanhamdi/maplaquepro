@@ -14,6 +14,7 @@ export * from "./dimensions";
 export * from "./etat";
 export * from "./fabricabilite";
 export * from "./fabricabilite-machine";
+export * from "./geometrie-canonique";
 export * from "./geometry";
 export * from "./holes";
 export * from "./machine";
