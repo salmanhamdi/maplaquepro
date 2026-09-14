@@ -3,6 +3,7 @@
 // règle vérifiée par `npm run lint:boundaries` (ADR-0004).
 export * from "./apparence";
 export * from "./artwork";
+export * from "./artwork-evaluation";
 export * from "./bat";
 export * from "./catalog";
 export * from "./configuration";
