@@ -56,7 +56,7 @@ export function evaluateFabricability(input: unknown, catalog: Catalog): Fabrica
     const format = catalog.formats.find((f) => f.id === formatId)!;
     plaque = { widthMm: format.widthMm, heightMm: format.heightMm, cornerRadiusMm: format.cornerRadiusMm, thicknessMm: thickness.mm, formatMode: "standard", formatId };
   } else {
-    // MVP = rectangle (§7.4) : rayon non fourni ⇒ coins droits.
+    // CONVENTION TECHNIQUE déterministe (arbitrage Supervisor P2), pas une règle normative : rayon non fourni ⇒ coins droits (0).
     const { widthMm, heightMm, cornerRadiusMm = 0 } = config.format;
     plaque = { widthMm, heightMm, cornerRadiusMm, thicknessMm: thickness.mm, formatMode: "custom" };
   }

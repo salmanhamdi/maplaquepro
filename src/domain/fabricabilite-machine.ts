@@ -34,7 +34,8 @@ export type ResultatPoses = { ok: true; poses: PoseOperation[] } | { ok: false; 
 /**
  * Étapes 4 et 5 sur toutes les opérations du workflow (intersection, §7.4).
  * Opération conditionnelle À VALIDER (VR-34) : son évaluation est impossible ⇒ VALIDATION_REQUIRED, jamais présumée.
- * `if_geometry_requires` : aucun critère géométrique n'est défini ; l'opération est évaluée comme requise (prudence, aucune exclusion présumée).
+ * `if_geometry_requires` : aucun critère géométrique n'est défini. HYPOTHÈSE TECHNIQUE ISOLÉE, NON NORMATIVE
+ * (arbitrage Supervisor P3) : l'opération est évaluée comme requise. Point OPEN, à remplacer par le critère validé.
  */
 export function evaluerPoses(workflow: ProductionWorkflow, machines: readonly MachineCapability[], widthMm: number, heightMm: number): ResultatPoses {
   const violations: DomainViolation[] = [];

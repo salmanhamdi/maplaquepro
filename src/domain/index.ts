@@ -20,6 +20,7 @@ export * from "./production";
 export * from "./production-svg";
 export * from "./reference";
 export * from "./referentiels";
+export * from "./resolved-spec";
 export * from "./thickness";
 export * from "./violation";
 export * from "./workflow";
