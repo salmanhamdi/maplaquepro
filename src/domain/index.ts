@@ -8,6 +8,7 @@ export * from "./configuration";
 export * from "./contrats";
 export * from "./dimensions";
 export * from "./etat";
+export * from "./fabricabilite-machine";
 export * from "./geometry";
 export * from "./holes";
 export * from "./machine";
