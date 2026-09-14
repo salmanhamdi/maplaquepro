@@ -1,6 +1,7 @@
 // Couche métier pure (Master Plan v1.5 §5.1) — Phase 2 : modèle de domaine.
 // Aucun import React, Next.js, base de données, système de fichiers ni module Node :
 // règle vérifiée par `npm run lint:boundaries` (ADR-0004).
+export * from "./alternatives";
 export * from "./apparence";
 export * from "./artwork";
 export * from "./artwork-evaluation";
