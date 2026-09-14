@@ -8,6 +8,7 @@
 import { describe, expect, it } from "vitest";
 import {
   type Catalog,
+  checkInkForReference,
   definie,
   evaluateFabricability,
   type FabricabilityResult,
@@ -155,9 +156,14 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
     }
   });
 
-  it("TroGlass Gold, encre couleur demandée ⇒ ❌ rejet explicite (P13) : champ encre refusé ; politique couleur ⇒ INVALID_INK_POLICY", () => {
+  it("TroGlass Gold, encre couleur demandée ⇒ ❌ INVALID_INK_POLICY (décision Supervisor) ; FORBIDDEN_CLIENT_FIELD réservé au champ interdit (P13)", () => {
+    // Demande d'encre structurellement recevable, incompatible avec la politique de la référence ⇒ INVALID_INK_POLICY
+    expect(checkInkForReference(troglassGold(), "couleur").map((v) => v.code)).toEqual(["INVALID_INK_POLICY"]);
+    expect(checkInkForReference(troglassGold(), "noir_uniquement")).toEqual([]);
+    // Cas P13 distinct : le champ `encre` lui-même est interdit dans la requête client
     const demande = evaluateFabricability(config(troglassGold(), 300, 200, { encre: "couleur" }), catalogue());
     expect(!demande.ok && [demande.stage, codes(demande)]).toEqual(["request", ["FORBIDDEN_CLIENT_FIELD@encre"]]);
+    expect(codes(demande)).not.toContain("INVALID_INK_POLICY@encre");
     const politique = evaluer(troglassGold("couleur"), 300, 200, catalogue(troglassGold("couleur")));
     expect(codes(politique)).toEqual(["INVALID_INK_POLICY@references.m-troglass-gold.politiqueImpression.valeur"]);
   });
