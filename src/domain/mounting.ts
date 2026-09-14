@@ -32,7 +32,12 @@ export const mountingRulesSchema = z.strictObject({
       z.strictObject({
         variantId: z.string().min(1).optional(),
         thicknessId: thicknessIdSchema.optional(),
-        ...Object.fromEntries(Object.entries(mountingParams).map(([k, s]) => [k, s.optional()])),
+        holeDiameterMm: mountingParams.holeDiameterMm.optional(),
+        minEdgeDistanceMm: mountingParams.minEdgeDistanceMm.optional(),
+        holeKeepOutMarginMm: mountingParams.holeKeepOutMarginMm.optional(),
+        edgeDistanceSemantics: mountingParams.edgeDistanceSemantics.optional(),
+        twoHolesDisposition: mountingParams.twoHolesDisposition.optional(),
+        cornerRadiusClearanceMm: mountingParams.cornerRadiusClearanceMm.optional(),
       }),
     )
     .optional(),
