@@ -1,6 +1,6 @@
 # Préparation de la Phase 2 — Domain model
 
-- **Statut** : **PRÉPARATION** autorisée par le Supervisor (14/09/2026). **La Phase 2 n'est pas ouverte** ; aucune implémentation dans `src/domain/` n'est autorisée par ce document.
+- **Statut** : document de **préparation** (historique). Phase 2 ouverte puis implémentée sur décision du Supervisor ; checkpoint de sortie **ARCH-2 (partie Domain Model) CLÔTURÉ / VALIDÉ par le Supervisor le 14/09/2026** (`main` @ `e5d4a77`). Les points ouverts listés ci-dessous restent ouverts ; ce document n'autorise aucune implémentation par lui-même.
 - **Références normatives** : Master Plan v1.5 §GL, §6, §7, §9, §11, §13–§16bis, §31 (Phase 2), Annexe A (**notation indicative**, statut À ARBITRER A-1), Annexe B ; arbitrages P3 à P13, SCOPE-1, ART-1, G-2 ; ADR-0003 ; ADR-0004 ; ADR-0005.
 - **Règle** : aucune valeur atelier n'est introduite. Toute valeur non validée est représentée par l'état `A_VALIDER`. Les noms techniques restent indicatifs (P5 D5, A-1).
 
