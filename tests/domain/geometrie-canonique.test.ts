@@ -122,7 +122,7 @@ describe("géométrie canonique — couches selon le workflow", () => {
     const trolase: ResolvedSpec = { ...s, politiqueImpression: { valeur: "aucune", cote: { etat: "SANS_OBJET" } }, workflow: { ...s.workflow, id: "TROLASE_ENGRAVE" } };
     const r = buildCanonicalGeometry({ spec: trolase, artwork: placement, textePresent: false, engineVersions: VERSIONS });
     expect(r.ok && r.geometry.layers.print).toBeNull();
-    expect(r.ok && r.geometry.layers.engrave.map((e) => e.artworkRef)).toEqual(["art-1"]);
+    expect(r.ok && r.geometry.layers.engrave.map((e) => (e.kind === "artwork" ? e.artworkRef : e.kind))).toEqual(["art-1"]);
   });
 
   it("hybride TroGlass : artwork dans engrave et print", () => {
