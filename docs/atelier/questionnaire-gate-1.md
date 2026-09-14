@@ -139,7 +139,9 @@ Les réponses seront consignées dans un document de réponses daté et signé p
 | C-4 | Nouvelle validation client non nécessaire pour une correction mineure, nécessaire si importante ; frontière non définie | FACT ATELIER. **DÉCISION SUPERVISOR (G-2)** : **aucune catégorie de « petite correction sans nouveau BAT »** ; toute modification affectant un objet ou un rendu validé au BAT impose une nouvelle validation du BAT |
 | C-5 | Preuve de validation : BAT validé | FACT ATELIER (preuve de validation client ; ne vaut pas validation atelier d'un contrat, P12) |
 
-### 11.4 Questions complémentaires transmises à l'atelier (en attente de réponse)
+### 11.4 Questions complémentaires transmises à l'atelier
+
+Réponses : section 11.5.
 
 1. « Recto uniquement » s'applique-t-il aussi à TroGlass (gravure et impression à l'envers), ou seulement à la face visible de la plaque livrée ?
 2. « Gravure : noir » désigne-t-il la couleur du fichier machine ou la couleur visible sur la plaque ? Pour une matière bicouche, quelle couleur apparaît ?
@@ -149,3 +151,18 @@ Les réponses seront consignées dans un document de réponses daté et signé p
 6. Rotation : quelle modification exacte du fichier (angle, sens) ? Réalisée par le logiciel ou par l'opérateur ?
 7. « 1 mm » = hauteur de capitale ou corps du caractère ? Quelle épaisseur de trait minimale ? Quelle marge minimale au bord ?
 8. « PNG haute résolution » : quelle résolution (DPI) ? Le JPG est-il accepté ?
+
+### 11.5 Réponses aux questions complémentaires — FACT ATELIER (14/09/2026)
+
+> **Source** : responsable du projet, réponses données une par une. **Statut : FACT ATELIER**, aucune règle normative. Précisions obtenues par questions de reformulation, sans suggestion de valeur.
+
+| Q | Réponse (FACT ATELIER) | Portée documentaire (à arbitrer) |
+|---|---|---|
+| 1 | « Recto uniquement » désigne **la face visible de la plaque livrée** ; TroGlass peut être gravé et imprimé à l'envers | Cohérent avec le workflow TroGlass (§7.2) |
+| 2 | « Noir » = **couleur visible après gravure** ; pour une matière bicouche, la couleur visible **dépend de la couleur révélée** | Cohérent avec P5 (couleur révélée par référence) |
+| 3 | Deux produits TroGlass. **TroGlass Metallic** : gravure à l'envers + encre UV **noire**. **TroGlass Clear** : plexiglas transparent, **découpe + impression UV en couleur, sans couleurs métalliques** (source citée : page fabricant Trotec « TroGlass Metallic ») | TroGlass Metallic conforme à §7.2 ; **TroGlass Clear absent du Master Plan** : rattachement au catalogue à arbitrer |
+| 4 | Le BAT montre la plaque **à son emplacement final** | Cohérent avec P6 D5 (orientation machine non affichée) |
+| 5 | **Reportée** par le responsable du projet (aucune réponse consignée) | R-1 reste ouvert |
+| 6 | Lorsque la plaque est tournée, le fichier doit être tourné ; **par l'opérateur**, **du même angle** que la plaque | VR-41 : sens de rotation non précisé |
+| 7 | **1 mm minimum pour tout le caractère** (taille totale) ; **pas d'épaisseur de trait minimale** ; **marge minimale au bord : 1 cm** | VR-08 ; écart avec l'hypothèse de travail « safe zone 2 mm » |
+| 8 | Impression : **PNG 300 DPI** ; **JPG accepté en haute résolution** (résolution du JPG non chiffrée) | VR-27, VR-33 ; cohérent avec OD-08 (JPG) |
