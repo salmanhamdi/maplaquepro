@@ -17,6 +17,7 @@ export * from "./holes";
 export * from "./machine";
 export * from "./mounting";
 export * from "./pricing";
+export * from "./prix";
 export * from "./product";
 export * from "./production";
 export * from "./production-svg";
