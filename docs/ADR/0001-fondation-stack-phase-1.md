@@ -49,3 +49,11 @@ GitHub Actions (`.github/workflows/ci.yml`) : Node 24, `npm ci`, typecheck, lint
 - Base reproductible et minimale, sans verrouiller les décisions ouvertes (hébergement OD-12, base de données OD-13, stockage OD-14, notation du modèle A-1).
 - Toute nouvelle dépendance exige un ADR.
 - Proposition technique uniquement : aucune règle métier n'est tirée de ces choix.
+
+## Avenant — Zod (préparation Phase 2, 14/09/2026)
+
+- **Dépendance ajoutée** : `zod` **4.6.5** (version exacte ; `package-lock.json` intégrité `sha512-v5l/aFXZ…sut2Q==`).
+- **Autorisation** : Supervisor, pour les schémas du modèle et du catalogue, conformément au Master Plan v1.5 §5.4 et §7.
+- **Choix de version** : dernière version stable publiée (`latest`) au 14/09/2026 ; aucune dépendance de pair ; compatible avec TypeScript 5.9.3 (strict) du socle.
+- **Usage** : schémas du domaine (`src/domain/`) uniquement **à l'ouverture officielle de la Phase 2**. Aucun code ne l'utilise tant que la phase n'est pas ouverte.
+- **Frontières (ADR-0004)** : Zod n'est pas dans la liste des imports interdits de `src/domain/` ; son usage y reste conforme.

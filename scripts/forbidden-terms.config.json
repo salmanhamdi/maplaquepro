@@ -31,6 +31,7 @@
         "docs/spikes/determinisme-protocole.md",
         "docs/atelier/questionnaire-gate-1.md",
         "docs/da/da-1-preparation.md",
+        "docs/phase-2/preparation-domain-model.md",
         "docs/ADR/0001-*.md",
         "docs/ADR/0002-*.md",
         "docs/ADR/0004-*.md",
