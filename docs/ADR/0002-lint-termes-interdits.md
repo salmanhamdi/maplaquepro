@@ -56,6 +56,13 @@ Les quatre documents préparatoires sont classés **explicitement, fichier par f
 
 Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du backoffice ni de l'historique. Le classement le plus contrôlé est retenu. **À CONFIRMER** avec AC-2.
 
+### Avenant — spike d'hébergement Hostinger Business (sonde)
+
+Les 19 fichiers de `spikes/hosting-business/` (sonde Next.js, script de mesure, README, lockfile de la sonde, image de test) sont classés **explicitement, fichier par fichier**, dans la zone **existante** stricte produit. Aucune nouvelle zone, aucune exclusion, aucun glob générique de spike.
+- `node_modules/`, `.next/` et `probe-data/` de la sonde sont ignorés par `spikes/hosting-business/probe/.gitignore`.
+- Le lockfile de la sonde est contrôlé par le lint (aucun motif interdit constaté) ; il ne relève pas de l'exclusion du `package-lock.json` racine.
+- Mesure technique provisoire, **À CONFIRMER** (AC-2, AN-6).
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.
