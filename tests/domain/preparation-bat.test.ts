@@ -20,7 +20,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -89,11 +89,12 @@ describe("preparerBat — chaîne complète jusqu'au brouillon de BAT", () => {
     if (!r.ok || !r.geometry) return;
     expect(r.bat.geometryJson).toEqual(r.geometry);
     expect(r.bat.geometryHash).toBe(hacher(canonicalJson(r.geometry)));
-    expect(r.bat.artifacts.map((a) => a.kind)).toEqual(["laser", "uv"]);
-    const [laser, uv] = r.bat.artifacts;
+    expect(r.bat.artifacts.map((a) => a.kind)).toEqual(["uv", "laser"]);
+    const [uv, laser] = r.bat.artifacts;
     expect(laser?.kind === "laser" && laser.hash).toBe(laser?.kind === "laser" ? hacher(laser.svg) : "");
     expect(laser?.kind === "laser" && laser.svg).toContain(`data-geometry-hash="${r.bat.geometryHash}"`);
-    expect(uv).toMatchObject({ kind: "uv", status: "contract_pending", cote: "face", encre: "couleur" });
+    expect(uv).toMatchObject({ kind: "uv", status: "contract_pending", cote: "envers", miroir: "x", encre: "couleur" });
+    expect(laser).toMatchObject({ kind: "laser", cote: "envers", miroir: "none" });
   });
 
   it("TroGlass : artefact hybride (laser envers + UV noir envers), enregistrement À VALIDER ⇒ BAT non validable (P7)", () => {

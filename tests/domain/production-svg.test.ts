@@ -4,6 +4,7 @@ import { contourPlaque, type EntreeSvgLaser, productionSvg } from "../../src/dom
 const entree = (o: Partial<EntreeSvgLaser> = {}): EntreeSvgLaser => ({
   plaque: { widthMm: 200, heightMm: 100, cornerRadiusMm: 0 },
   cote: "face",
+  miroir: "none",
   engrave: [[{ op: "M", x: 10, y: 10 }, { op: "L", x: 30, y: 10 }, { op: "L", x: 30, y: 20 }, { op: "Z" }]],
   cut: true,
   holes: [
@@ -54,17 +55,25 @@ describe("PRODUCTION_SVG_CONTRACT_v1 (§14.1) — conformité à la spécificati
     expect(svg).toContain('width="123.457mm" height="67mm" viewBox="0 0 123.457 67"');
   });
 
-  it("côté envers : miroir X pré-appliqué (x' = W − x), traçabilité reverse / x", () => {
-    const svg = productionSvg(entree({ cote: "envers", holes: [{ cxMm: 15, cyMm: 50, diameterMm: 4 }] }));
+  it("côté envers avec miroir X demandé par le plan : pré-appliqué (x' = W − x), traçabilité reverse / x", () => {
+    const svg = productionSvg(entree({ cote: "envers", miroir: "x", holes: [{ cxMm: 15, cyMm: 50, diameterMm: 4 }] }));
     expect(svg).toContain('data-side="reverse" data-mirrored="x"');
     expect(svg).toContain('d="M190 10 L170 10 L170 20 Z"');
     expect(svg).toContain('<circle cx="185" cy="50"');
   });
 
   it("bbox du tracé miroir exacte", () => {
-    const svg = productionSvg(entree({ cote: "envers" }));
+    const svg = productionSvg(entree({ cote: "envers", miroir: "x" }));
     const xs = [...svg.match(/<g id="ENGRAVE">\n<path d="([^"]+)"/)![1]!.matchAll(/[ML](\d+(?:\.\d+)?) /g)].map((m) => Number(m[1]));
     expect([Math.min(...xs), Math.max(...xs)]).toEqual([170, 190]);
+  });
+
+  it("V-2 — côté envers sans miroir : aucune transformation ; tracés et trous tels que la géométrie, traçabilité reverse / none", () => {
+    const svg = productionSvg(entree({ cote: "envers", miroir: "none", holes: [{ cxMm: 15, cyMm: 50, diameterMm: 4 }] }));
+    expect(svg).toContain('data-side="reverse" data-mirrored="none"');
+    expect(svg).toContain('d="M10 10 L30 10 L30 20 Z"');
+    expect(svg).toContain('<circle cx="15" cy="50"');
+    expect(productionSvg(entree({ cote: "face", holes: [{ cxMm: 15, cyMm: 50, diameterMm: 4 }] })).replace('data-side="front"', 'data-side="reverse"')).toBe(svg);
   });
 
   it("contour à coins arrondis fermé et symétrique en X", () => {

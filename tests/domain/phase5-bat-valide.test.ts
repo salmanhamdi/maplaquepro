@@ -28,7 +28,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -163,13 +163,13 @@ describe("Phase 5 — fiche de production dérivée du BAT validé", () => {
     expect(f.batId).toBe("bat-test");
     expect(f.plaque).toEqual({ widthMm: 300, heightMm: 200, cornerRadiusMm: 0, formatMode: "custom" });
     expect(f.operations.map((o) => [o.sequence, o.type, o.machineId, o.cote, o.encre])).toEqual([
-      [1, "laser_cut", "SPEEDY_400", "face", null],
-      [2, "uv_print", "ARTISJET_3000U", "face", "couleur"],
+      [1, "uv_print", "ARTISJET_3000U", "envers", "couleur"],
+      [2, "laser_cut", "SPEEDY_400", "envers", null],
     ]);
     expect(f.poses).toEqual(v.spec.posesParOperation);
     expect(f.artefacts).toEqual([
-      { kind: "laser", contractId: "PRODUCTION_SVG_CONTRACT_v1", cote: "face", miroir: "none", hash: (v.artifacts[0] as { hash: string }).hash },
-      { kind: "uv", contractId: "PRODUCTION_UV_CONTRACT_v1", cote: "face", status: "contract_pending", hash: (v.artifacts[1] as { hash: string }).hash },
+      { kind: "uv", contractId: "PRODUCTION_UV_CONTRACT_v1", cote: "envers", status: "contract_pending", hash: (v.artifacts[0] as { hash: string }).hash },
+      { kind: "laser", contractId: "PRODUCTION_SVG_CONTRACT_v1", cote: "envers", miroir: "none", hash: (v.artifacts[1] as { hash: string }).hash },
     ]);
     expect([f.geometryHash, f.workflowAcknowledgedAt, f.validatedAt]).toEqual([v.geometryHash, "2026-01-01T10:00:00Z", "2026-01-01T10:05:00Z"]);
   });

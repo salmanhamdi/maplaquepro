@@ -79,6 +79,12 @@ export function evaluateFabricability(input: unknown, catalog: Catalog, donnees:
 
   const violations: DomainViolation[] = [];
 
+  // CR-2 (Master Plan v1.6 §7.2) : VR-34 close, mais le sur mesure TroLase / TroLase Metallic reste non activé
+  // (VR-25, VR-02, GATE 1, conditions commerciales). Aucun format n'est activé par la seule découpe systématique.
+  if (plaque.formatMode === "custom" && (reference.family === "trolase" || reference.family === "trolase_metallic")) {
+    violations.push(violation("VALIDATION_REQUIRED", "format.mode", "sur mesure TroLase non activé (CR-2)"));
+  }
+
   // 4-5. Opérations et orientation de pose, sur tout le workflow
   const poses = evaluerPoses(workflow, catalog.machines, plaque.widthMm, plaque.heightMm);
   if (!poses.ok) violations.push(...poses.violations);

@@ -19,7 +19,7 @@ const plexi = (valeur: "noir_uniquement" | "couleur") =>
     id: "test-plexi",
     family: "plexiglass",
     productionWorkflowId: "PLEXIGLASS_UV",
-    politiqueImpression: { valeur: definie(valeur), cote: definie("face") },
+    politiqueImpression: { valeur: definie(valeur), cote: definie("envers") },
     apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
     capaciteGravure: { cote: sansObjet() },
   });
@@ -36,15 +36,15 @@ describe("resolveWorkflow (Annexe B étape 2, P7 D5)", () => {
   it("encre UV dérivée de la politique de la référence ; aucune encre sur le laser", () => {
     const r = resolveWorkflow(workflow("PLEXIGLASS_UV"), plexi("couleur"));
     expect(r.ok && r.operations.map((o) => [o.type, o.encre])).toEqual([
-      ["laser_cut", null],
       ["uv_print", "couleur"],
+      ["laser_cut", null],
     ]);
     const n = resolveWorkflow(workflow("PLEXIGLASS_UV"), plexi("noir_uniquement"));
-    expect(n.ok && n.operations[1]!.encre).toBe("noir_uniquement");
+    expect(n.ok && n.operations[0]!.encre).toBe("noir_uniquement");
   });
 
   it("politique À VALIDER ⇒ VALIDATION_REQUIRED, aucune encre présumée", () => {
-    const ref = { ...plexi("couleur"), politiqueImpression: { valeur: aValider<"couleur">(), cote: definie("face" as const) } };
+    const ref = { ...plexi("couleur"), politiqueImpression: { valeur: aValider<"couleur">(), cote: definie("envers" as const) } };
     const r = resolveWorkflow(workflow("PLEXIGLASS_UV"), ref);
     expect(!r.ok && r.violations.map((v) => v.code)).toEqual(["VALIDATION_REQUIRED"]);
   });
@@ -69,21 +69,40 @@ describe("resolveWorkflow (Annexe B étape 2, P7 D5)", () => {
 });
 
 describe("planArtifacts (§13, §14.3) — sélection par workflow", () => {
-  it("TroLase : découpe non confirmée (VR-34) ⇒ VALIDATION_REQUIRED", () => {
+  it("TroLase (v1.6, C5) : CUT toujours présent, gravure puis découpe côté face", () => {
     const r = resolveWorkflow(workflow("TROLASE_ENGRAVE"), referenceTest());
-    const p = planArtifacts("TROLASE_ENGRAVE", r.ok ? r.operations : [], 2);
+    expect(r.ok && r.operations.map((o) => [o.type, o.condition])).toEqual([
+      ["laser_engrave", "always"],
+      ["laser_cut", "always"],
+    ]);
+    expect(planArtifacts("TROLASE_ENGRAVE", r.ok ? r.operations : [], 2)).toEqual({ ok: true, plan: [{ kind: "laser", cote: "face", miroir: "none", groupes: ["ENGRAVE", "CUT", "HOLES"] }] });
+    const nonSystematique = (r.ok ? r.operations : []).map((o) => (o.type === "laser_cut" ? { ...o, condition: "A_VALIDER" as const } : o));
+    const p = planArtifacts("TROLASE_ENGRAVE", nonSystematique, 2);
     expect(!p.ok && p.violations.map((v) => v.code)).toEqual(["VALIDATION_REQUIRED"]);
   });
 
-  it("Plexiglass : laser face (CUT + HOLES) + UV face contract_pending avec encre dérivée", () => {
+  it("Plexiglass (v1.6, V-2, V-3) : UV envers miroir X contract_pending avec encre dérivée, puis laser envers sans miroir (CUT + HOLES)", () => {
     const r = resolveWorkflow(workflow("PLEXIGLASS_UV"), plexi("couleur"));
     expect(planArtifacts("PLEXIGLASS_UV", r.ok ? r.operations : [], 4)).toEqual({
       ok: true,
       plan: [
-        { kind: "laser", cote: "face", miroir: "none", groupes: ["CUT", "HOLES"] },
-        { kind: "uv", cote: "face", miroir: "none", encre: "couleur", status: "contract_pending" },
+        { kind: "uv", cote: "envers", miroir: "x", encre: "couleur", status: "contract_pending" },
+        { kind: "laser", cote: "envers", miroir: "none", groupes: ["CUT", "HOLES"] },
       ],
     });
+  });
+
+  it("côté ≠ miroir : deux découpes côté envers, miroir fixé par workflow (Plexiglass none, TroGlass x) ; workflows distincts", () => {
+    const p = resolveWorkflow(workflow("PLEXIGLASS_UV"), plexi("couleur"));
+    const g = resolveWorkflow(workflow("TROGLASS_METALLIC_HYBRID"), troglass());
+    const pp = planArtifacts("PLEXIGLASS_UV", p.ok ? p.operations : [], 0);
+    const gp = planArtifacts("TROGLASS_METALLIC_HYBRID", g.ok ? g.operations : [], 0);
+    const laserP = pp.ok ? pp.plan.find((x) => x.kind === "laser") : undefined;
+    const laserG = gp.ok && gp.plan[0]?.kind === "hybrid" ? gp.plan[0].laser : undefined;
+    expect([laserP?.cote, laserP?.miroir]).toEqual(["envers", "none"]);
+    expect([laserG?.cote, laserG?.miroir]).toEqual(["envers", "x"]);
+    expect(workflow("PLEXIGLASS_UV").operations.map((o) => o.type)).toEqual(["uv_print", "laser_cut"]);
+    expect(workflow("TROGLASS_METALLIC_HYBRID").operations.map((o) => o.type)).toEqual(["laser_engrave", "laser_cut", "uv_print"]);
   });
 
   it("TroGlass : 1 artefact hybride, laser et UV côté envers, miroir X, noir uniquement ; sans trous ⇒ pas de HOLES", () => {

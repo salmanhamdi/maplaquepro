@@ -117,7 +117,10 @@ const holes = (count: number): GroupeLaser[] => (count > 0 ? ["HOLES"] : []);
 
 /**
  * Artefacts attendus pour un workflow résolu (§13). HOLES présent si count > 0 (§14.1).
- * TroLase / TroLase Metallic : la présence de CUT dépend de VR-34 (§13) ⇒ VALIDATION_REQUIRED tant que non confirmée.
+ * TroLase / TroLase Metallic : CUT toujours présent (v1.6 §13, C5, VR-34 close) ; découpe absente ou non systématique ⇒ VALIDATION_REQUIRED.
+ * Plexiglass : impression UV à l'envers en miroir → découpe (v1.6 §13, E-1). V-3 : D1 étendue, l'artefact UV porte miroir X.
+ * V-2 : découpe côté envers (face imprimée vers le laser) sans miroir ; contour et trous tels que la géométrie canonique.
+ * Aucun miroir n'est déduit du seul côté : il est fixé explicitement par workflow.
  */
 export function planArtifacts(workflowId: ProductionWorkflowId, operations: readonly ResolvedOperation[], holeCount: number): ResultatPlan {
   const uv = operations.find((o) => o.type === "uv_print");
@@ -125,18 +128,21 @@ export function planArtifacts(workflowId: ProductionWorkflowId, operations: read
   switch (workflowId) {
     case "TROLASE_ENGRAVE":
     case "TROLASE_METALLIC_ENGRAVE": {
-      if (!cut || cut.condition === "A_VALIDER") {
-        return { ok: false, violations: [violation("VALIDATION_REQUIRED", `workflows.${workflowId}.laser_cut`, "découpe TroLase non confirmée (VR-34)")] };
+      if (!cut || cut.condition !== "always") {
+        return { ok: false, violations: [violation("VALIDATION_REQUIRED", `workflows.${workflowId}.laser_cut`, "découpe TroLase non systématique (v1.6 §13)")] };
       }
       return { ok: true, plan: [{ kind: "laser", cote: "face", miroir: "none", groupes: ["ENGRAVE", "CUT", ...holes(holeCount)] }] };
     }
     case "PLEXIGLASS_UV": {
       if (!uv?.encre) return { ok: false, violations: [violation("VALIDATION_REQUIRED", "encre", "encre UV non résolue")] };
+      if (!cut || cut.condition !== "always") {
+        return { ok: false, violations: [violation("VALIDATION_REQUIRED", `workflows.${workflowId}.laser_cut`, "découpe Plexiglass non systématique (v1.6 §13)")] };
+      }
       return {
         ok: true,
         plan: [
-          { kind: "laser", cote: "face", miroir: "none", groupes: ["CUT", ...holes(holeCount)] },
-          { kind: "uv", cote: "face", miroir: "none", encre: uv.encre, status: "contract_pending" },
+          { kind: "uv", cote: uv.cote, miroir: "x", encre: uv.encre, status: "contract_pending" },
+          { kind: "laser", cote: cut.cote, miroir: "none", groupes: ["CUT", ...holes(holeCount)] },
         ],
       };
     }

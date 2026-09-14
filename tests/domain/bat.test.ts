@@ -26,7 +26,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],

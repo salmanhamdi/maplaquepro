@@ -33,9 +33,9 @@ export type ResultatPoses = { ok: true; poses: PoseOperation[] } | { ok: false; 
 
 /**
  * Étapes 4 et 5 sur toutes les opérations du workflow (intersection, §7.4).
- * Opération conditionnelle À VALIDER (VR-34) : son évaluation est impossible ⇒ VALIDATION_REQUIRED, jamais présumée.
- * `if_geometry_requires` : aucun critère géométrique n'est défini. HYPOTHÈSE TECHNIQUE ISOLÉE, NON NORMATIVE
- * (arbitrage Supervisor P3) : l'opération est évaluée comme requise. Point OPEN, à remplacer par le critère validé.
+ * v1.6 : toutes les découpes des workflows sont systématiques (`always` ; VR-34 close, P3, E-1). Les valeurs conditionnelles
+ * restent acceptées par le modèle (V-5) : `A_VALIDER` ⇒ VALIDATION_REQUIRED, jamais présumée ; `if_geometry_requires`
+ * (aucun critère géométrique défini) ⇒ évaluée comme requise. Le côté d'opération n'intervient pas dans les capacités machine.
  */
 export function evaluerPoses(workflow: ProductionWorkflow, machines: readonly MachineCapability[], widthMm: number, heightMm: number): ResultatPoses {
   const violations: DomainViolation[] = [];
@@ -44,7 +44,7 @@ export function evaluerPoses(workflow: ProductionWorkflow, machines: readonly Ma
   for (const op of operations) {
     const path = `workflows.${workflow.id}.operations.${op.sequence}`;
     if (op.condition === "A_VALIDER") {
-      violations.push(violation("VALIDATION_REQUIRED", `${path}.condition`, "opération conditionnelle non validée (VR-34)"));
+      violations.push(violation("VALIDATION_REQUIRED", `${path}.condition`, "opération conditionnelle non validée"));
       continue;
     }
     const pose = evaluerOperation(op, machines, widthMm, heightMm, path);

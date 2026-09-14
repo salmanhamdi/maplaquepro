@@ -86,7 +86,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -153,7 +153,7 @@ describe("evaluateFabricability — texte tracé", () => {
 describe("F — tracés de gravure : aucune transformation après conversion (F10, F11)", () => {
   it("les tracés du texte sont écrits tels quels dans ENGRAVE (côté face) : ni compensation, ni simplification", () => {
     const a = rect("A", 10.25, 20.5, 3, 4.125);
-    const svg = productionSvg({ plaque: { widthMm: 300, heightMm: 200, cornerRadiusMm: 0 }, cote: "face", engrave: a.contours, cut: true, holes: [], tracabilite: { batId: "b", batHash: "h", geometryHash: "g", catalogVersion: "v" } });
+    const svg = productionSvg({ plaque: { widthMm: 300, heightMm: 200, cornerRadiusMm: 0 }, cote: "face", miroir: "none", engrave: a.contours, cut: true, holes: [], tracabilite: { batId: "b", batHash: "h", geometryHash: "g", catalogVersion: "v" } });
     expect(svg).toContain('<path d="M10.25 20.5 L13.25 20.5 L13.25 24.625 L10.25 24.625 Z" fill="#000000" stroke="none"/>');
   });
 });

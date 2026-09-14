@@ -48,7 +48,7 @@ describe("invariants d'une référence (Annexe A)", () => {
       artworkRulesId: "artwork-PLEXIGLASS_UV",
       capaciteGravure: { cote: sansObjet() },
       apparence: { couleurSurface: definie(couleurTest), finition: definie("f"), couleurRevelee: sansObjet() },
-      politiqueImpression: { valeur: definie("noir_uniquement"), cote: definie("face") },
+      politiqueImpression: { valeur: definie("noir_uniquement"), cote: definie("envers") },
     });
     expect(codes(plexi)).toEqual([]);
     expect(codes({ ...plexi, politiqueImpression: { valeur: definie("aucune"), cote: sansObjet() } })).toContain("PLEXIGLASS_WITHOUT_PRINT_FORBIDDEN");

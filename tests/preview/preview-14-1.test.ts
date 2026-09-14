@@ -24,7 +24,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "Support test", hex: "#F0F0F0" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["dim-plexi"],
@@ -70,8 +70,11 @@ const bat = (ref: MaterialVariant, o: Record<string, unknown> = {}): BatBrouillo
   return r.bat;
 };
 const laserSvg = (b: BatBrouillon) => {
-  const a = b.artifacts[0]!;
-  return a.kind === "laser" ? a.svg : a.kind === "hybrid" ? a.laserArtifact.svg : "";
+  for (const a of b.artifacts) {
+    if (a.kind === "laser") return a.svg;
+    if (a.kind === "hybrid") return a.laserArtifact.svg;
+  }
+  return "";
 };
 const preview = (b: BatBrouillon) => {
   const r = renderPreviewSvg({ geometry: b.geometryJson, spec: b.spec });
@@ -112,8 +115,9 @@ describe("T1 — preview serveur dérivée de la géométrie canonique (§12)", 
 });
 
 describe("T1 — comparaison §14.1 « bbox preview / production »", () => {
-  it("cas conforme côté face (Plexiglass : contour de découpe, 4 trous)", () => {
+  it("cas conforme Plexiglass (V-2) : découpe côté envers sans miroir, contour et 4 trous identiques à la vue face", () => {
     const b = bat(plexi);
+    expect(laserSvg(b)).toContain('data-side="reverse" data-mirrored="none"');
     expect(comparerPreviewProduction(preview(b), laserSvg(b))).toEqual([]);
   });
 

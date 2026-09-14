@@ -125,9 +125,9 @@ describe("§14.3 — séquence gravure laser → découpe laser → impression U
     ]);
   });
 
-  it("découpe « si nécessaire » : condition conservée dans le BAT (critère P3 non résolu)", () => {
+  it("découpe systématique (v1.6, P3) : condition « always » conservée dans le BAT", () => {
     const cut = bat().spec.workflow.operations.find((o) => o.type === "laser_cut");
-    expect(cut?.condition).toBe("if_geometry_requires");
+    expect(cut?.condition).toBe("always");
   });
 
   it("séquence déterministe : deux créations identiques", () => {

@@ -31,7 +31,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "Support test", hex: "#FFFFFF" }), finition: definie("test"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["dim-plexi"],
@@ -114,7 +114,7 @@ describe("§15 Versions et statuts des contrats", () => {
     expect(b.versions.catalogVersion).toBe(catalogue().catalogVersion);
     expect([b.versions.pricingVersion.etat, b.versions.designRulesVersion.etat]).toEqual(["DEFINIE", "DEFINIE"]);
     expect(Object.keys(b.versions.engineVersions).sort()).toEqual(["design", "geometry", "mounting", "production", "render"]);
-    expect([b.spec.workflow.id, b.spec.workflow.version]).toEqual(["PLEXIGLASS_UV", "1"]);
+    expect([b.spec.workflow.id, b.spec.workflow.version]).toEqual(["PLEXIGLASS_UV", "2"]);
   });
 
   it("un statut par contrat du workflow (conformité ; validation atelier), contrat versionné par son identifiant", () => {
@@ -146,14 +146,14 @@ describe("§15 Spécification résolue", () => {
     const s = batValide().spec;
     expect(s.apparence).toEqual({ couleurSurface: { name: "Support test", hex: "#FFFFFF" }, finition: { etat: "DEFINIE", valeur: "test" }, couleurRevelee: { etat: "SANS_OBJET" } });
     expect(s.capaciteGravure).toEqual({ cote: { etat: "SANS_OBJET" } });
-    expect(s.politiqueImpression).toEqual({ valeur: "couleur", cote: { etat: "DEFINIE", valeur: "face" } });
+    expect(s.politiqueImpression).toEqual({ valeur: "couleur", cote: { etat: "DEFINIE", valeur: "envers" } });
   });
 
   it("workflow : opérations, machines, côtés, encre dérivée, séquence ; règles de trous résolues ; artworkRules", () => {
     const s = batValide().spec;
     expect(s.workflow.operations.map((o) => [o.sequence, o.type, o.machineId, o.cote, o.encre, o.condition])).toEqual([
-      [1, "laser_cut", "SPEEDY_400", "face", null, "always"],
-      [2, "uv_print", "ARTISJET_3000U", "face", "couleur", "always"],
+      [1, "uv_print", "ARTISJET_3000U", "envers", "couleur", "always"],
+      [2, "laser_cut", "SPEEDY_400", "envers", null, "always"],
     ]);
     expect(s.mountingRules).toEqual({ holeDiameterMm: 4, minEdgeDistanceMm: 2, holeKeepOutMarginMm: 1, edgeDistanceSemantics: "edge_to_center" });
     expect(s.artworkRules?.workflowId).toBe("PLEXIGLASS_UV");
@@ -165,8 +165,8 @@ describe("§15 Poses par opération (P6)", () => {
     const s = batValide().spec;
     expect(s.posesParOperation.map((p) => p.operationSequence)).toEqual(s.workflow.operations.map((o) => o.sequence));
     expect(s.posesParOperation).toEqual([
-      { operationSequence: 1, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
-      { operationSequence: 2, machineId: "ARTISJET_3000U", zoneMachine: { widthMm: 347, heightMm: 490 }, orientationDePose: "tel_quel" },
+      { operationSequence: 1, machineId: "ARTISJET_3000U", zoneMachine: { widthMm: 347, heightMm: 490 }, orientationDePose: "tel_quel" },
+      { operationSequence: 2, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
     ]);
   });
 });
@@ -219,8 +219,12 @@ describe("§15 Rendus et artefacts", () => {
     const b = batValide();
     expect(b.previewSvg).toBe("<svg><!-- preview test --></svg>");
     expect(b.artifacts.map((a) => [a.kind, a.contractId])).toEqual([
-      ["laser", "PRODUCTION_SVG_CONTRACT_v1"],
       ["uv", "PRODUCTION_UV_CONTRACT_v1"],
+      ["laser", "PRODUCTION_SVG_CONTRACT_v1"],
+    ]);
+    expect(b.artifacts.map((a) => (a.kind === "hybrid" ? null : [a.cote, a.miroir]))).toEqual([
+      ["envers", "x"],
+      ["envers", "none"],
     ]);
     const r = regenererArtefacts(b, hacher);
     expect(r.ok && r.artifacts).toEqual(b.artifacts);
@@ -250,7 +254,7 @@ describe("§15 Exploitabilité — workflow reconstructible sans interprétation
     expect(ops.every((o) => b.spec.posesParOperation.some((p) => p.operationSequence === o.sequence && p.machineId === o.machineId))).toBe(true);
     expect(regenererArtefacts(b, hacher).ok).toBe(true);
     const f = ficheProduction(b);
-    expect(f.ok && f.fiche.operations.map((o) => o.machineId)).toEqual(["SPEEDY_400", "ARTISJET_3000U"]);
+    expect(f.ok && f.fiche.operations.map((o) => o.machineId)).toEqual(["ARTISJET_3000U", "SPEEDY_400"]);
   });
 
   it("après évolution du catalogue : le BAT validé reste identique et suffit à reconstruire (G2-D2, G2-D3)", () => {

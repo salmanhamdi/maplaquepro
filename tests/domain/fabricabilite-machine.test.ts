@@ -27,15 +27,15 @@ describe("evaluerPoses — intersection sur toutes les opérations (Annexe B ét
   it("exemple normatif : Plexiglass 500 × 300 ⇒ Speedy OK, ArtisJet NON", () => {
     const r = evaluerPoses(workflow("PLEXIGLASS_UV"), MACHINE_CAPABILITIES, 500, 300);
     expect(r.ok).toBe(false);
-    if (!r.ok) expect(r.violations).toEqual([expect.objectContaining({ code: "EXCEEDS_MACHINE", path: "workflows.PLEXIGLASS_UV.operations.2" })]);
+    if (!r.ok) expect(r.violations).toEqual([expect.objectContaining({ code: "EXCEEDS_MACHINE", path: "workflows.PLEXIGLASS_UV.operations.1" })]);
   });
 
   it("Plexiglass 300 × 200 : poses enregistrées par opération, tel quel", () => {
     expect(evaluerPoses(workflow("PLEXIGLASS_UV"), MACHINE_CAPABILITIES, 300, 200)).toEqual({
       ok: true,
       poses: [
-        { operationSequence: 1, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
-        { operationSequence: 2, machineId: "ARTISJET_3000U", zoneMachine: ARTISJET, orientationDePose: "tel_quel" },
+        { operationSequence: 1, machineId: "ARTISJET_3000U", zoneMachine: ARTISJET, orientationDePose: "tel_quel" },
+        { operationSequence: 2, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
       ],
     });
   });
@@ -45,9 +45,15 @@ describe("evaluerPoses — intersection sur toutes les opérations (Annexe B ét
     expect(r.ok && r.poses.map((p) => p.orientationDePose)).toEqual(["tel_quel", "tel_quel", "tournee"]);
   });
 
-  it("TroLase : découpe conditionnelle À VALIDER (VR-34) ⇒ VALIDATION_REQUIRED", () => {
+  it("TroLase (v1.6, VR-34 close) : gravure et découpe systématique évaluées ; valeur conditionnelle À VALIDER toujours refusée", () => {
     const r = evaluerPoses(workflow("TROLASE_ENGRAVE"), MACHINE_CAPABILITIES, 300, 200);
-    expect(!r.ok && r.violations.map((v) => v.code)).toEqual(["VALIDATION_REQUIRED"]);
+    expect(r.ok && r.poses.map((p) => [p.operationSequence, p.machineId])).toEqual([
+      [1, "SPEEDY_400"],
+      [2, "SPEEDY_400"],
+    ]);
+    const conditionnel = { ...workflow("TROLASE_ENGRAVE"), operations: workflow("TROLASE_ENGRAVE").operations.map((o) => (o.type === "laser_cut" ? { ...o, condition: "A_VALIDER" as const } : o)) };
+    const v = evaluerPoses(conditionnel, MACHINE_CAPABILITIES, 300, 200);
+    expect(!v.ok && v.violations.map((x) => x.code)).toEqual(["VALIDATION_REQUIRED"]);
   });
 
   it("machine absente ou non validée ⇒ MACHINE_UNAVAILABLE", () => {

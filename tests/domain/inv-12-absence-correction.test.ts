@@ -23,7 +23,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -158,7 +158,7 @@ describe("C6 — arrondi contractuel du fichier machine uniquement (§14.1), san
   it("le SVG de production arrondit par roundMm ; les dimensions sources restent intactes", () => {
     const plaque = { widthMm: 123.45678, heightMm: 67.0001, cornerRadiusMm: 0 };
     const avant = figer(plaque);
-    const svg = productionSvg({ plaque, cote: "face", engrave: null, cut: true, holes: [], tracabilite: { batId: "b", batHash: "h", geometryHash: "g", catalogVersion: "v" } });
+    const svg = productionSvg({ plaque, cote: "face", miroir: "none", engrave: null, cut: true, holes: [], tracabilite: { batId: "b", batHash: "h", geometryHash: "g", catalogVersion: "v" } });
     expect(svg).toContain('width="123.457mm"');
     expect(plaque).toEqual(avant);
   });

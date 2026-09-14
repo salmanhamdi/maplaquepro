@@ -9,7 +9,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -60,10 +60,10 @@ describe("evaluateFabricability (Annexe B étapes 0 à 7)", () => {
     expect(r.ok).toBe(true);
     if (!r.ok) return;
     expect(r.plaque).toEqual({ widthMm: 300, heightMm: 200, cornerRadiusMm: 0, thicknessMm: 3, formatMode: "custom" });
-    expect(r.operations.map((o) => o.encre)).toEqual([null, "couleur"]);
+    expect(r.operations.map((o) => o.encre)).toEqual(["couleur", null]);
     expect(r.posesParOperation.map((p) => [p.machineId, p.orientationDePose])).toEqual([
-      ["SPEEDY_400", "tel_quel"],
       ["ARTISJET_3000U", "tel_quel"],
+      ["SPEEDY_400", "tel_quel"],
     ]);
     expect(r.holes).toEqual([
       { cxMm: 10, cyMm: 100, diameterMm: 4 },

@@ -1,7 +1,9 @@
 // Sérialiseur du contrat laser PRODUCTION_SVG_CONTRACT_v1 (§14.1). Pur et déterministe : ordre d'attributs fixe,
 // roundMm, "\n", aucun timestamp. Conformité à la spécification uniquement : la validation atelier reste À VALIDER
-// (VR-20, VR-42). Le miroir côté envers (VR-35) est pré-appliqué, aucun `transform` résiduel.
+// (VR-20, VR-42). Le miroir X, lorsqu'il est demandé par le plan (VR-35), est pré-appliqué, aucun `transform` résiduel.
+// Le côté (`data-side`) et le miroir (`data-mirrored`) sont indépendants : un côté envers n'implique pas de miroir (V-2).
 import { roundMm } from "./geometry";
+import type { Miroir } from "./production";
 import type { Cote } from "./referentiels";
 
 export const PRODUCTION_SVG_CONTRACT_ID = "PRODUCTION_SVG_CONTRACT_v1";
@@ -15,6 +17,8 @@ export type SegmentTrace =
 export type EntreeSvgLaser = {
   plaque: { widthMm: number; heightMm: number; cornerRadiusMm: number };
   cote: Cote;
+  /** Transformation explicite issue du plan d'artefacts ; jamais déduite du côté. */
+  miroir: Miroir;
   /** Tracés de gravure déjà résolus (glyphes, artwork vectoriel monochrome) ; null si le plan n'inclut pas ENGRAVE. */
   engrave: SegmentTrace[][] | null;
   /** Contour de découpe ; null si le plan n'inclut pas CUT. */
@@ -70,7 +74,8 @@ const STYLE_DECOUPE = 'fill="none" stroke="#FF0000" stroke-width="0.001pt"';
 export function productionSvg(entree: EntreeSvgLaser): string {
   const { widthMm: W, heightMm: H, cornerRadiusMm: r } = entree.plaque;
   const envers = entree.cote === "envers";
-  const x = (v: number) => (envers ? W - v : v);
+  const miroirX = entree.miroir === "x";
+  const x = (v: number) => (miroirX ? W - v : v);
   const t = entree.tracabilite;
   const attrs = [
     'xmlns="http://www.w3.org/2000/svg"',
@@ -83,14 +88,14 @@ export function productionSvg(entree: EntreeSvgLaser): string {
     `data-geometry-hash="${escapeAttr(t.geometryHash)}"`,
     `data-catalog-version="${escapeAttr(t.catalogVersion)}"`,
     `data-side="${envers ? "reverse" : "front"}"`,
-    `data-mirrored="${envers ? "x" : "none"}"`,
+    `data-mirrored="${miroirX ? "x" : "none"}"`,
     ...(t.jobRef !== undefined ? [`data-job="${escapeAttr(t.jobRef)}"`] : []),
   ];
   const lignes = [`<svg ${attrs.join(" ")}>`];
   if (entree.engrave !== null) {
     lignes.push("<!-- ENGRAVE -->", '<g id="ENGRAVE">');
     for (const trace of entree.engrave) {
-      const segments = envers ? trace.map((s) => miroirSegment(s, W)) : trace;
+      const segments = miroirX ? trace.map((s) => miroirSegment(s, W)) : trace;
       lignes.push(`<path d="${traceD(segments)}" fill="#000000" stroke="none"/>`);
     }
     lignes.push("</g>");

@@ -1,4 +1,5 @@
-// Arbitrage D1 (§14.3) : l'artefact UV porte explicitement son miroir, identique à celui du laser, repris du plan d'artefacts.
+// Arbitrage D1 (§14.3) : l'artefact UV porte explicitement son miroir, repris du plan d'artefacts. V-3 : D1 étendue à PLEXIGLASS_UV
+// (UV envers en miroir) ; V-2 : la découpe Plexiglass côté envers ne porte aucun miroir (côté ≠ miroir).
 // Aucun contenu ni format UV inventé (VR-33 ouvert) ; calage hybride À VALIDER inchangé. Données de TEST fictives.
 import { describe, expect, it } from "vitest";
 import { type BatBrouillon, type Catalog, createBat, definie, INITIAL_CATALOG, type MaterialVariant, productionArtifactSchema, regenererArtefacts, sansObjet } from "../../src/domain";
@@ -10,7 +11,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["dim-plexi"],
@@ -63,13 +64,21 @@ describe("D1 — miroir porté par l'artefact UV", () => {
     expect(h.metadata.registration).toEqual({ etat: "A_VALIDER" });
   });
 
-  it("Plexiglass : UV côté face sans miroir, identique au laser (valeur issue du plan, non inventée)", () => {
+  it("Plexiglass (V-3, V-2) : UV envers en miroir X ; découpe laser côté envers sans miroir ; ordre UV puis laser", () => {
     const artefacts = bat(plexi).artifacts;
-    const laser = artefacts.find((a) => a.kind === "laser");
-    const uv = artefacts.find((a) => a.kind === "uv");
+    expect(artefacts.map((a) => a.kind)).toEqual(["uv", "laser"]);
+    const [uv, laser] = artefacts;
     if (laser?.kind !== "laser" || uv?.kind !== "uv") throw new Error("artefacts attendus");
-    expect([uv.cote, uv.miroir]).toEqual(["face", "none"]);
-    expect(uv.miroir).toBe(laser.miroir);
+    expect([uv.cote, uv.miroir]).toEqual(["envers", "x"]);
+    expect([laser.cote, laser.miroir]).toEqual(["envers", "none"]);
+    expect(laser.svg).toContain('data-side="reverse" data-mirrored="none"');
+  });
+
+  it("Plexiglass : déterminisme et régénération depuis le BAT identiques, miroir UV compris", () => {
+    const b = bat(plexi);
+    const r = regenererArtefacts(b, hacher);
+    expect(r.ok && r.artifacts).toEqual(b.artifacts);
+    expect(bat(plexi).artifacts).toEqual(b.artifacts);
   });
 
   it("contenu UV inchangé : statut contract_pending, aucun payload, couche d'impression canonique", () => {

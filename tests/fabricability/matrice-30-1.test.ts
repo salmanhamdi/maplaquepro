@@ -1,6 +1,7 @@
 // Matrice normative de fabricabilité §30.1 (Phase 3). Moteur serveur : evaluateFabricability + proposeAlternatives.
 // Catalogue de TEST : références, bornes et apparences fictives ; le catalogue réel n'est pas modifié.
-// Ligne « TroLase 600 × 400 gravé » : DIFFÉRÉE (décision Supervisor, option a) tant que VR-34 est À VALIDER.
+// Ligne « TroLase 600 × 400 gravé » : DIFFÉRÉE (décision Supervisor, option a). v1.6 : VR-34 close, mais le sur mesure TroLase
+// reste non activé (CR-2) ; VR-25, VR-02 et questions commerciales ouverts. La ligne n'est ni modifiée ni validée.
 // Chaque ligne est testée dans les deux orientations ; les valeurs limites (,1) dans les deux orientations de pose.
 // DISTINCTIONS (rectification Supervisor) : CAPACITÉ MACHINE (zones 1010 × 610, 347 × 490) ≠ FORMAT FOURNISSEUR ≠ FABRICABILITÉ ≠ DÉCOUPE VR-34.
 // Le format commercial maximal du TroLase bicouche chez le fournisseur (600 × 300 mm, FACT) n'est PAS modélisé ici :
@@ -48,7 +49,7 @@ const plexi: MaterialVariant = {
   thicknessIds: ["th_3_0"],
   apparence: { couleurSurface: definie(couleur("Support test", "#FFFFFF")), finition: definie("test"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   productionWorkflowId: "PLEXIGLASS_UV",
   dimensionRulesIds: ["dim-plexi"],
   artworkRulesId: "artwork-PLEXIGLASS_UV",
@@ -106,36 +107,36 @@ const codes = (r: FabricabilityResult) => (r.ok ? [] : r.violations.map((v) => `
 const poses = (r: FabricabilityResult) => (r.ok ? r.posesParOperation.map((p) => `${p.machineId}:${p.orientationDePose}`) : null);
 
 describe("§30.1 — matrice normative de fabricabilité", () => {
-  it("DIFFÉRÉE (VR-34) — TroLase 600 × 400 gravé : état actuel VALIDATION_REQUIRED, aucune preuve positive", () => {
+  it("DIFFÉRÉE (CR-2) — TroLase 600 × 400 gravé : état actuel VALIDATION_REQUIRED, aucune preuve positive", () => {
     for (const [w, h] of [[600, 400], [400, 600]] as const) {
-      expect(codes(evaluer(trolase, w, h))).toEqual(["VALIDATION_REQUIRED@workflows.TROLASE_ENGRAVE.operations.2.condition"]);
+      expect(codes(evaluer(trolase, w, h))).toEqual(["VALIDATION_REQUIRED@format.mode"]);
     }
   });
 
   it("Plexiglass 347 × 490 ⇒ ✓ (ArtisJet tel quel)", () => {
-    expect(poses(evaluer(plexi, 347, 490))).toEqual(["SPEEDY_400:tel_quel", "ARTISJET_3000U:tel_quel"]);
+    expect(poses(evaluer(plexi, 347, 490))).toEqual(["ARTISJET_3000U:tel_quel", "SPEEDY_400:tel_quel"]);
   });
 
   it("Plexiglass 490 × 347 ⇒ ✓ (ArtisJet tournée)", () => {
-    expect(poses(evaluer(plexi, 490, 347))).toEqual(["SPEEDY_400:tel_quel", "ARTISJET_3000U:tournee"]);
+    expect(poses(evaluer(plexi, 490, 347))).toEqual(["ARTISJET_3000U:tournee", "SPEEDY_400:tel_quel"]);
   });
 
   it("Plexiglass 347,1 × 490 ⇒ ❌ NOT_FABRICABLE sur l'impression UV, avec alternative ; idem 490 × 347,1", () => {
     for (const [w, h] of [[347.1, 490], [490, 347.1]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.2"]);
+      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
       expect(proposeAlternatives(config(plexi, w, h), catalogue()).length).toBeGreaterThan(0);
     }
   });
 
   it("Plexiglass 347 × 490,1 ⇒ ❌ ; idem 490,1 × 347", () => {
     for (const [w, h] of [[347, 490.1], [490.1, 347]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.2"]);
+      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
     }
   });
 
-  it("Plexiglass 500 × 300 ⇒ ❌ + alternative « ≤ 347 × 490 » ; famille gravure laser non proposée car elle-même non fabricable (VR-34) ; idem 300 × 500", () => {
+  it("Plexiglass 500 × 300 ⇒ ❌ + alternative « ≤ 347 × 490 » ; famille gravure laser non proposée car elle-même non fabricable (CR-2) ; idem 300 × 500", () => {
     for (const [w, h] of [[500, 300], [300, 500]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.2"]);
+      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
       const alternatives = proposeAlternatives(config(plexi, w, h), catalogue());
       expect(alternatives).toEqual([
         { kind: "max_dimensions", widthMm: 347, heightMm: 490 },
@@ -173,7 +174,7 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
     expect(r.ok && r.operations.map((o) => o.encre)).toEqual([null, null, "noir_uniquement"]);
   });
 
-  it("CAPACITÉ MACHINE uniquement — plaque > zone Speedy 1010 × 610 ⇒ ❌ sur la gravure ; idem inversé ; indépendant de la découpe VR-34 ; n'exprime aucun format fournisseur TroLase bicouche", () => {
+  it("CAPACITÉ MACHINE uniquement — plaque > zone Speedy 1010 × 610 ⇒ ❌ sur la gravure ; idem inversé ; indépendant de la découpe (VR-34 close) ; n'exprime aucun format fournisseur TroLase bicouche", () => {
     for (const [w, h] of [[1011, 611], [611, 1011]] as const) {
       expect(codes(evaluer(trolase, w, h))).toContain("EXCEEDS_MACHINE@workflows.TROLASE_ENGRAVE.operations.1");
     }
@@ -188,7 +189,7 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
   });
 
   it("carré admissible dans les deux poses (300 × 300) ⇒ ✓, orientation de pose = tel quel (P6)", () => {
-    expect(poses(evaluer(plexi, 300, 300))).toEqual(["SPEEDY_400:tel_quel", "ARTISJET_3000U:tel_quel"]);
+    expect(poses(evaluer(plexi, 300, 300))).toEqual(["ARTISJET_3000U:tel_quel", "SPEEDY_400:tel_quel"]);
     expect(poses(evaluer(troglassGold(), 300, 300))).toEqual(["SPEEDY_400:tel_quel", "SPEEDY_400:tel_quel", "ARTISJET_3000U:tel_quel"]);
   });
 });

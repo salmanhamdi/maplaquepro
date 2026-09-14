@@ -29,7 +29,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["dim-plexi"],
@@ -176,7 +176,7 @@ describe("§14.1 — traçabilité", () => {
     const b = bat(plexi);
     const racine = svgLaser(b).split("\n")[0]!;
     expect([...racine.matchAll(/ (data-[\w-]+)="/g)].map((m) => m[1])).toEqual(["data-bat", "data-bat-hash", "data-convention", "data-geometry-hash", "data-catalog-version", "data-side", "data-mirrored"]);
-    expect(racine).toContain(`data-bat="bat-conformite" data-bat-hash="h-contenu" data-convention="PRODUCTION_SVG_CONTRACT_v1" data-geometry-hash="${b.geometryHash}" data-catalog-version="${b.versions.catalogVersion}" data-side="front" data-mirrored="none"`);
+    expect(racine).toContain(`data-bat="bat-conformite" data-bat-hash="h-contenu" data-convention="PRODUCTION_SVG_CONTRACT_v1" data-geometry-hash="${b.geometryHash}" data-catalog-version="${b.versions.catalogVersion}" data-side="reverse" data-mirrored="none"`);
     expect(svgLaser(bat(plexi, {}, "job-42")).split("\n")[0]).toMatch(/ data-job="job-42">$/);
   });
 });
@@ -210,9 +210,19 @@ describe("§14.1 / §15 — régénération depuis geometryJson", () => {
     const r = regenererArtefacts(b, hacher);
     expect(r.ok).toBe(true);
     if (!r.ok) return;
-    const laser = r.artifacts[0];
+    const laser = r.artifacts.find((a) => a.kind === "laser");
     expect(laser?.kind === "laser" && laser.svg).toBe(avant);
     expect(avant).toContain('width="300mm"');
+  });
+});
+
+describe("V-2 — Plexiglass : découpe côté envers, aucune transformation miroir du contour ni des trous", () => {
+  it("trous aux coordonnées de la géométrie canonique (non miroir), traçabilité reverse / none", () => {
+    const b = bat(plexi, { mounting: { count: 2, mode: "standard", edgeDistanceMm: 10 } });
+    const svg = svgLaser(b);
+    expect(svg).toContain('data-side="reverse" data-mirrored="none"');
+    const cx = [...svg.matchAll(/<circle cx="([\d.]+)"/g)].map((m) => Number(m[1]));
+    expect(cx).toEqual(b.spec.holes.map((h) => h.cxMm));
   });
 });
 

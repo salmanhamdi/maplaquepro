@@ -1,5 +1,5 @@
-// Catalogue de TEST fictif. La découpe TroLase est rendue « always » UNIQUEMENT dans ce catalogue de test
-// pour exercer switch_family ; VR-34 reste ouvert dans le catalogue réel.
+// Catalogue de TEST fictif. v1.6 : découpe TroLase systématique (VR-34 close) ; le sur mesure TroLase reste non activé
+// (CR-2) : une alternative de famille gravure laser en sur mesure n'est donc jamais fabricable, ni proposée.
 import { describe, expect, it } from "vitest";
 import { type Catalog, definie, INITIAL_CATALOG, type MaterialVariant, operationsHorsZone, proposeAlternatives, sansObjet } from "../../src/domain";
 import { catalogueTest, referenceTest } from "./fixtures";
@@ -10,7 +10,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -60,15 +60,14 @@ describe("operationsHorsZone", () => {
 });
 
 describe("proposeAlternatives (Annexe B étape 9)", () => {
-  it("exemple normatif Plexiglass 500 × 300 : dimensions maximales dans les deux orientations ; famille gravure laser si fabricable", () => {
+  it("exemple normatif Plexiglass 500 × 300 : dimensions maximales dans les deux orientations ; famille gravure laser non proposée (CR-2 : sur mesure TroLase non activé)", () => {
     expect(proposeAlternatives(config(500, 300), catalogue(true))).toEqual([
       { kind: "max_dimensions", widthMm: 347, heightMm: 490 },
       { kind: "max_dimensions", widthMm: 490, heightMm: 347 },
-      { kind: "switch_family", toFamily: "trolase" },
     ]);
   });
 
-  it("aucune alternative non fabricable : TroLase bloqué par VR-34 ⇒ pas de switch_family", () => {
+  it("aucune alternative non fabricable : TroLase sur mesure bloqué par CR-2 ⇒ pas de switch_family", () => {
     expect(proposeAlternatives(config(500, 300), catalogue(false))).toEqual([
       { kind: "max_dimensions", widthMm: 347, heightMm: 490 },
       { kind: "max_dimensions", widthMm: 490, heightMm: 347 },

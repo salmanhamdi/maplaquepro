@@ -98,7 +98,7 @@ describe("§30 Fabricabilité — zone machine et orientation de pose figées da
     thicknessIds: ["th_3_0"],
     apparence: { couleurSurface: definie({ name: "Support test", hex: "#FFFFFF" }), finition: definie("test"), couleurRevelee: sansObjet() },
     capaciteGravure: { cote: sansObjet() },
-    politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+    politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
     productionWorkflowId: "PLEXIGLASS_UV",
     dimensionRulesIds: ["dim-plexi"],
     mountingRulesId: "mounting-default",
@@ -133,8 +133,8 @@ describe("§30 Fabricabilité — zone machine et orientation de pose figées da
     expect(bat.ok).toBe(true);
     if (!bat.ok) return;
     expect(bat.bat.spec.posesParOperation).toEqual([
-      { operationSequence: 1, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
-      { operationSequence: 2, machineId: "ARTISJET_3000U", zoneMachine: { widthMm: 347, heightMm: 490 }, orientationDePose: "tournee" },
+      { operationSequence: 1, machineId: "ARTISJET_3000U", zoneMachine: { widthMm: 347, heightMm: 490 }, orientationDePose: "tournee" },
+      { operationSequence: 2, machineId: "SPEEDY_400", zoneMachine: { widthMm: 1010, heightMm: 610 }, orientationDePose: "tel_quel" },
     ]);
   });
 });

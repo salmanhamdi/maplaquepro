@@ -1,7 +1,7 @@
 // Artefact laser dérivé de la géométrie canonique (§13) : BAT → géométrie → PRODUCTION_SVG_CONTRACT_v1 (§14.1).
 // Le plan (côté, miroir, groupes) vient de planArtifacts (sélection par workflow) ; la géométrie fournit plaque, trous et
 // tracés de gravure. Hors domaine / ouverts : hash (P7, reçu en entrée), version normalisée de l'artwork (ART1-DOC),
-// contrat UV (VR-33). Aucune transformation n'est ajoutée : seul le miroir X contractuel côté envers (§13) s'applique.
+// contrat UV (VR-33). Aucune transformation n'est ajoutée : seul le miroir X fixé par le plan (§13) s'applique.
 import type { CanonicalGeometry } from "./geometrie-canonique";
 import { type PlanLaser } from "./production";
 import { PRODUCTION_SVG_CONTRACT_ID, productionSvg, type SegmentTrace } from "./production-svg";
@@ -56,6 +56,7 @@ export function buildLaserArtifact(input: {
   const svg = productionSvg({
     plaque: { widthMm: geometry.plate.widthMm, heightMm: geometry.plate.heightMm, cornerRadiusMm: geometry.plate.cornerRadiusMm },
     cote: plan.cote,
+    miroir: plan.miroir,
     engrave,
     cut: plan.groupes.includes("CUT"),
     holes: trousAuPlan ? geometry.holes : [],

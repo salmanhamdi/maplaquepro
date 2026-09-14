@@ -47,7 +47,8 @@ describe("catalogue initial (référentiels décidés uniquement)", () => {
       expect(rules.maxBytes).toEqual({ etat: "A_VALIDER" });
     }
     const trolase = INITIAL_CATALOG.workflows.find((w) => w.id === "TROLASE_ENGRAVE");
-    expect(trolase?.operations[1]?.condition).toBe("A_VALIDER");
+    // v1.6 : VR-34 close, découpe TroLase systématique
+    expect(trolase?.operations[1]?.condition).toBe("always");
   });
 
   it("dérive le mode couleur de l'artwork du workflow (INV-15)", () => {

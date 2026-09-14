@@ -20,7 +20,7 @@ const plexi: MaterialVariant = referenceTest({
   thicknessIds: ["th_3_0"],
   productionWorkflowId: "PLEXIGLASS_UV",
   artworkRulesId: "artwork-PLEXIGLASS_UV",
-  politiqueImpression: { valeur: definie("couleur"), cote: definie("face") },
+  politiqueImpression: { valeur: definie("couleur"), cote: definie("envers") },
   apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   capaciteGravure: { cote: sansObjet() },
   dimensionRulesIds: ["test-dim-plexi"],
@@ -84,8 +84,8 @@ describe("resolveSpec (§6, §15, P7)", () => {
     if (!r.ok) return;
     expect(findPendingValues(r.spec)).toEqual([]);
     expect(r.spec.reference).toEqual({ id: "test-plexi", manufacturer: "Fabricant de test", code: "REF-TEST", family: "plexiglass", label: "Référence de test" });
-    expect(r.spec.politiqueImpression).toEqual({ valeur: "couleur", cote: { etat: "DEFINIE", valeur: "face" } });
-    expect(r.spec.workflow.operations.map((o) => o.encre)).toEqual([null, "couleur"]);
+    expect(r.spec.politiqueImpression).toEqual({ valeur: "couleur", cote: { etat: "DEFINIE", valeur: "envers" } });
+    expect(r.spec.workflow.operations.map((o) => o.encre)).toEqual(["couleur", null]);
     expect(r.spec.mountingRules).toEqual({ holeDiameterMm: 4, minEdgeDistanceMm: 2, holeKeepOutMarginMm: 1, edgeDistanceSemantics: "edge_to_center" });
     expect(r.spec.productionContractIds).toEqual(["PRODUCTION_SVG_CONTRACT_v1", "PRODUCTION_UV_CONTRACT_v1"]);
     expect(r.spec.artworkRules).toBeNull();

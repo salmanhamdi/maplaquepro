@@ -31,7 +31,7 @@ const plexi = (valeur: "noir_uniquement" | "couleur"): MaterialVariant =>
     id: "t-plexi",
     family: "plexiglass",
     productionWorkflowId: "PLEXIGLASS_UV",
-    politiqueImpression: { valeur: definie(valeur), cote: definie("face") },
+    politiqueImpression: { valeur: definie(valeur), cote: definie("envers") },
     apparence: { couleurSurface: definie({ name: "t", hex: "#FFFFFF" }), finition: definie("t"), couleurRevelee: sansObjet() },
   });
 
