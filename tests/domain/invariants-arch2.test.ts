@@ -139,7 +139,7 @@ describe("INV-17 — exactement 4 familles", () => {
   });
 
   it("le contrat typé refuse toute famille supplémentaire (schéma et référence)", () => {
-    for (const autre of ["troglass_clear", "pvc", "", "TROLASE"]) {
+    for (const autre of ["troglass_clear", "famille_inconnue", "", "TROLASE"]) {
       expect(materialFamilySchema.safeParse(autre).success).toBe(false);
       expect(materialVariantSchema.safeParse({ ...referenceTest(), family: autre }).success).toBe(false);
     }
