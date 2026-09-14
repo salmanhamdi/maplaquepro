@@ -26,7 +26,7 @@ Checkpoint de sortie : **ARCH-2 (partie modèle)**.
 | ARCH-1-bis | Confirmation formelle nécessaire |
 | ARCH-PREVIEW | Partiel : SP-1 PASS, SP-2 PASS ; SP-3 (VR-08) et SP-4 (R-1) bloqués |
 | PRODUCT-1 (a) | Questionnaire atelier non envoyé |
-| Accès app.glassora | À traiter |
+| Demande d'accès au backoffice existant (Phase 1, audit ARCH-BACKOFFICE) | À traiter |
 | DA-1 / GATE 10 | Satisfaits |
 
 ## 3. Entités du modèle
@@ -173,4 +173,4 @@ A-1 (statut de la notation Annexe A), G2-DOC, VR-08 (polices / `TextSpec`), R-1 
 
 ## 11. Pour ouvrir officiellement la Phase 2
 
-Décision du Supervisor sur les critères d'entrée du §2 : ARCH-1-bis, ARCH-PREVIEW, PRODUCT-1 (a), accès app.glassora.
+Décision du Supervisor sur les critères d'entrée du §2 : ARCH-1-bis, ARCH-PREVIEW, PRODUCT-1 (a), demande d'accès au backoffice existant.
