@@ -11,6 +11,7 @@ export * from "./bat-brouillon";
 export * from "./catalog";
 export * from "./configuration";
 export * from "./contrats";
+export * from "./create-bat";
 export * from "./dimensions";
 export * from "./etat";
 export * from "./fabricabilite";

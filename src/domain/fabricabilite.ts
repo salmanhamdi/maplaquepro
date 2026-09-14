@@ -30,6 +30,8 @@ export type Fabricable = {
   holes: Hole[];
   artwork: EvaluationArtwork | null;
   texte: TexteNormalise | null;
+  /** Tracés du texte reçus et contrôlés (SP-3), transmis tels quels à la géométrie canonique ; null sans tracés. */
+  texteTrace: readonly CaractereTrace[] | null;
 };
 
 export type NonFabricable = {
@@ -147,5 +149,5 @@ export function evaluateFabricability(input: unknown, catalog: Catalog, donnees:
   }
 
   if (violations.length > 0 || !poses.ok) return { ok: false, stage: "fabrication", violations };
-  return { ok: true, configuration: config, plaque, operations: resolu.operations, posesParOperation: poses.poses, holes, artwork, texte };
+  return { ok: true, configuration: config, plaque, operations: resolu.operations, posesParOperation: poses.poses, holes, artwork, texte, texteTrace: config.design.text !== null ? (donnees.texteTrace ?? null) : null };
 }

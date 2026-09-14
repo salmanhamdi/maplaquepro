@@ -41,8 +41,9 @@ export function preparerBat(e: EntreePreparationBat): ResultatPreparationBat {
   const geo = buildCanonicalGeometry({
     spec: spec.spec,
     artwork: config.design.artwork,
-    // Texte : tracés non portés par le résultat fabricable ⇒ la géométrie renvoie VALIDATION_REQUIRED (bloc texte du BAT : P7 / A7)
+    // Texte : tracés transmis par le résultat fabricable ; absents ⇒ VALIDATION_REQUIRED (le bloc texte du BAT reste soumis à P7 / A7)
     textePresent: config.design.text !== null,
+    ...(fab.texteTrace ? { texteTrace: fab.texteTrace } : {}),
     engineVersions: e.engineVersions,
   });
   if (!geo.ok) return echec(geo.violations);
