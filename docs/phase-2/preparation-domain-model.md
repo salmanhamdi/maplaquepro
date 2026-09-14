@@ -23,10 +23,10 @@ Checkpoint de sortie : **ARCH-2 (partie modèle)**.
 
 | Point de la Phase 1 | État |
 |---|---|
-| ARCH-1-bis | Confirmation formelle nécessaire |
+| ARCH-1-bis | **CLÔTURÉ** (14/09/2026). Tous les éléments de son périmètre (§32) sont réalisés : spike hébergement, ADR-0003, CI, lint, accès au backoffice existant |
 | ARCH-PREVIEW | Partiel : SP-1 PASS, SP-2 PASS ; SP-3 (VR-08) et SP-4 (R-1) bloqués |
 | PRODUCT-1 (a) | Questionnaire atelier non envoyé |
-| Demande d'accès au backoffice existant (Phase 1, audit ARCH-BACKOFFICE) | À traiter |
+| Accès au backoffice existant (Phase 1, audit ARCH-BACKOFFICE) | **Réalisé** : accès à l'instance déployée confirmé fonctionnel avec les identifiants du responsable du projet (confirmation Supervisor du 14/09/2026 ; aucun identifiant consigné) |
 | DA-1 / GATE 10 | Satisfaits |
 
 ## 3. Entités du modèle
