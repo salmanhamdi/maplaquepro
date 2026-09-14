@@ -20,6 +20,7 @@ export * from "./geometry";
 export * from "./holes";
 export * from "./machine";
 export * from "./mounting";
+export * from "./preparation-bat";
 export * from "./pricing";
 export * from "./prix";
 export * from "./product";
