@@ -1,6 +1,6 @@
 // Règles d'artwork par workflow (§7.5, §9). Mode couleur dérivé, jamais saisi (P7 D5).
 import { z } from "zod";
-import { aValider, etatSchema } from "./etat";
+import { aValider, definie, etatSchema } from "./etat";
 import { MAX_PIXELS_MVP, statutSchema, workflowIdSchema } from "./referentiels";
 
 export const ARTWORK_FORMATS = ["svg", "png", "jpeg"] as const;
@@ -30,7 +30,26 @@ export const artworkPlacementSchema = z.strictObject({
 });
 export type ArtworkPlacement = z.infer<typeof artworkPlacementSchema>;
 
-const regle = (workflowId: ArtworkRules["workflowId"], modeCouleur: ArtworkRules["modeCouleur"]): ArtworkRules => ({
+const RASTER_FORMATS: ReadonlySet<ArtworkRules["formats"][number]> = new Set(["png", "jpeg"]);
+
+/** Workflows de gravure seule (§7.2) : VR-28 décidé — vectoriel exclusivement, tout raster rejeté. */
+export const ENGRAVE_ONLY_WORKFLOWS: readonly ArtworkRules["workflowId"][] = ["TROLASE_ENGRAVE", "TROLASE_METALLIC_ENGRAVE"];
+
+/**
+ * Un format d'artwork est-il acceptable pour ces règles ? Le vectoriel est accepté ; un raster n'est accepté que si
+ * la politique raster est DEFINIE et différente de « reject » (À VALIDER ⇒ non accepté, aucune valeur présumée).
+ */
+export function acceptsArtworkFormat(rules: ArtworkRules, format: ArtworkRules["formats"][number]): boolean {
+  if (!rules.formats.includes(format)) return false;
+  if (!RASTER_FORMATS.has(format)) return true;
+  return rules.rasterPolicy.etat === "DEFINIE" && rules.rasterPolicy.valeur !== "reject";
+}
+
+const regle = (
+  workflowId: ArtworkRules["workflowId"],
+  modeCouleur: ArtworkRules["modeCouleur"],
+  rasterPolicy: ArtworkRules["rasterPolicy"],
+): ArtworkRules => ({
   id: `artwork-${workflowId}`,
   workflowId,
   formats: ["svg", "png", "jpeg"],
@@ -39,14 +58,18 @@ const regle = (workflowId: ArtworkRules["workflowId"], modeCouleur: ArtworkRules
   minDpiAtPlacedSize: aValider(),
   minLineWidthMm: aValider(),
   modeCouleur,
-  rasterPolicy: aValider(),
+  rasterPolicy,
   statut: "validation_required",
 });
 
-/** Modes couleur dérivés du workflow (§9.2). */
+/**
+ * Modes couleur dérivés du workflow (§9.2).
+ * Politique raster : gravure seule = rejet (VR-28, décision Supervisor) ; impression UV (Plexiglass) non généralisée → À VALIDER ;
+ * TroGlass (gravure envers + UV noir) : application de VR-28 au workflow hybride non tranchée → À VALIDER.
+ */
 export const ARTWORK_RULES: readonly ArtworkRules[] = [
-  regle("TROLASE_ENGRAVE", "monochrome"),
-  regle("TROLASE_METALLIC_ENGRAVE", "monochrome"),
-  regle("PLEXIGLASS_UV", "selon_politique_impression_reference"),
-  regle("TROGLASS_METALLIC_HYBRID", "noir_uniquement"),
+  regle("TROLASE_ENGRAVE", "monochrome", definie("reject")),
+  regle("TROLASE_METALLIC_ENGRAVE", "monochrome", definie("reject")),
+  regle("PLEXIGLASS_UV", "selon_politique_impression_reference", aValider()),
+  regle("TROGLASS_METALLIC_HYBRID", "noir_uniquement", aValider()),
 ];

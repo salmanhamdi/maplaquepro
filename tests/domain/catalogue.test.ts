@@ -45,7 +45,6 @@ describe("catalogue initial (référentiels décidés uniquement)", () => {
     for (const rules of INITIAL_CATALOG.artworkRules) {
       expect(rules.maxPixels).toBe(MAX_PIXELS_MVP);
       expect(rules.maxBytes).toEqual({ etat: "A_VALIDER" });
-      expect(rules.rasterPolicy).toEqual({ etat: "A_VALIDER" });
     }
     const trolase = INITIAL_CATALOG.workflows.find((w) => w.id === "TROLASE_ENGRAVE");
     expect(trolase?.operations[1]?.condition).toBe("A_VALIDER");

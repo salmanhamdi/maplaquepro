@@ -1,7 +1,7 @@
 // Catalogue déclaratif versionné (§7). Aucune référence commerciale n'est inventée : le catalogue initial
 // ne contient que les référentiels décidés ; tout le reste est À VALIDER ou absent.
 import { z } from "zod";
-import { ARTWORK_RULES, artworkRulesSchema } from "./artwork";
+import { ARTWORK_RULES, artworkRulesSchema, ENGRAVE_ONLY_WORKFLOWS } from "./artwork";
 import { statutContratSchema } from "./contrats";
 import { dimensionRulesSchema, formatSchema } from "./dimensions";
 import { aValider } from "./etat";
@@ -62,6 +62,13 @@ export function validateCatalog(catalog: Catalog): DomainViolation[] {
     const rules = catalog.artworkRules.find((a) => a.id === workflow.artworkRulesId);
     if (!rules || rules.workflowId !== workflow.id) {
       out.push(violation("ARTWORK_RULES_MISSING", `workflows.${workflow.id}.artworkRulesId`, "règles d'artwork absentes ou incohérentes"));
+    }
+  }
+
+  // VR-28 (décision Supervisor) : gravure seule = vectoriel exclusivement, tout raster rejeté
+  for (const rules of catalog.artworkRules) {
+    if (ENGRAVE_ONLY_WORKFLOWS.includes(rules.workflowId) && !(rules.rasterPolicy.etat === "DEFINIE" && rules.rasterPolicy.valeur === "reject")) {
+      out.push(violation("ENGRAVE_WORKFLOW_RASTER_NOT_REJECTED", `artworkRules.${rules.id}.rasterPolicy`, "gravure : raster rejeté (VR-28)"));
     }
   }
 
