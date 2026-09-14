@@ -41,6 +41,7 @@
         "spikes/hosting-business/probe/app/layout.js",
         "spikes/hosting-business/probe/app/page.js",
         "spikes/hosting-business/probe/app/ssr/page.js",
+        "spikes/hosting-business/probe/app/parcours/page.js",
         "spikes/hosting-business/probe/app/image/page.js",
         "spikes/hosting-business/probe/app/api/probe/runtime/route.js",
         "spikes/hosting-business/probe/app/api/probe/env/route.js",

@@ -38,18 +38,20 @@ const percentile = (values, p) => {
   return s[Math.max(0, Math.ceil((p / 100) * s.length) - 1)];
 };
 
-async function ssrSeries(count, concurrency) {
+async function ssrSeries(count, concurrency, route = "/ssr") {
   const samples = [];
   let next = 0;
   async function worker() {
     while (next < count) {
       next++;
       const t0 = performance.now();
-      const res = await fetch(`${BASE}/ssr`, { cache: "no-store" });
+      const res = await fetch(`${BASE}${route}`, { cache: "no-store" });
       const ttfbMs = performance.now() - t0;
       const html = await res.text();
       const work = html.match(/id="server-work-ms">([\d.]+)</)?.[1];
-      samples.push({ status: res.status, ttfbMs, totalMs: performance.now() - t0, serverWorkMs: work ? Number(work) : null, at: new Date().toISOString() });
+      const dbOk = html.match(/id="db-ok">(true|false)</)?.[1];
+      const dbMs = html.match(/id="db-ms">([\d.]+)</)?.[1];
+      samples.push({ status: res.status, ttfbMs, totalMs: performance.now() - t0, serverWorkMs: work ? Number(work) : null, dbOk: dbOk ? dbOk === "true" : null, dbMs: dbMs ? Number(dbMs) : null, at: new Date().toISOString() });
     }
   }
   await Promise.all(Array.from({ length: concurrency }, worker));
@@ -107,6 +109,15 @@ switch (command) {
     const sequential = await ssrSeries(200, 1);
     const concurrent = await ssrSeries(200, 5);
     save("c8", { firstRequest: cold, warmup: { count: warmup.count, p95: warmup.p95 }, sequential, concurrent });
+    break;
+  }
+  case "c8-parcours": {
+    const route = "/parcours?w=300&h=200";
+    const first = await ssrSeries(1, 1, route);
+    const warmup = await ssrSeries(20, 1, route);
+    const sequential = await ssrSeries(200, 1, route);
+    const concurrent = await ssrSeries(200, 5, route);
+    save("c8-parcours", { route, firstRequest: first, warmup: { count: warmup.count, p95: warmup.p95 }, sequential, concurrent });
     break;
   }
   case "c9": {
