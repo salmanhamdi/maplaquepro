@@ -26,6 +26,7 @@ export * from "./machine";
 export * from "./mounting";
 export * from "./preparation-bat";
 export * from "./pricing";
+export * from "./preview";
 export * from "./prix";
 export * from "./product";
 export * from "./production";
