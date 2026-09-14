@@ -2,8 +2,9 @@
 // Le repère physique des axes des zones machine reste À ARBITRER (R-1) : la comparaison porte sur (widthMm, heightMm)
 // tels que déclarés. Une orientation de pose tournée n'implique aucune transformation de fichier (P6 D4, VR-41).
 import type { DimensionRules } from "./dimensions";
+import { definie } from "./etat";
 import type { MachineCapability, ZoneMm } from "./machine";
-import type { MachineId } from "./referentiels";
+import { BORNES_DIMENSIONS_VR25, type MachineId, type MaterialFamily } from "./referentiels";
 import { type DomainViolation, violation } from "./violation";
 import type { ProductionOperation, ProductionWorkflow } from "./workflow";
 
@@ -70,9 +71,12 @@ function evaluerOperation(op: ProductionOperation, machines: readonly MachineCap
  * Étape 6 : bornes de dimensions (§7.4). Une borne À VALIDER ⇒ VALIDATION_REQUIRED (VR-25), jamais ignorée.
  * Une borne SANS_OBJET ou absente (optionnelle) ne contraint pas.
  */
-export function evaluerDimensions(rules: DimensionRules, plaque: { widthMm: number; heightMm: number; cornerRadiusMm: number }): DomainViolation[] {
+export function evaluerDimensions(
+  rules: Omit<DimensionRules, "variantId" | "thicknessId" | "statut">,
+  plaque: { widthMm: number; heightMm: number; cornerRadiusMm: number },
+  base = `dimensionRules.${rules.id}`,
+): DomainViolation[] {
   const out: DomainViolation[] = [];
-  const base = `dimensionRules.${rules.id}`;
   const aire = plaque.widthMm * plaque.heightMm;
   const bornes = [
     ["minWidthMm", rules.minWidthMm, plaque.widthMm, "min"],
@@ -95,4 +99,18 @@ export function evaluerDimensions(rules: DimensionRules, plaque: { widthMm: numb
     }
   }
   return out;
+}
+
+/**
+ * VR-25 : bornes de dimensions de la famille (`BORNES_DIMENSIONS_VR25`), évaluées avec `evaluerDimensions`.
+ * Famille à deux orientations : conforme si la plaque l'est tel quel ou tournée ; sinon, violations de la plaque tel quel.
+ * Indépendant des zones machine (étapes 4-5) et des règles de dimensions du catalogue, qui restent évaluées.
+ */
+export function evaluerBornesVr25(family: MaterialFamily, plaque: { widthMm: number; heightMm: number; cornerRadiusMm: number }): DomainViolation[] {
+  const b = BORNES_DIMENSIONS_VR25[family];
+  const bornes = { id: `VR-25.${family}`, minWidthMm: definie(b.minWidthMm), maxWidthMm: definie(b.maxWidthMm), minHeightMm: definie(b.minHeightMm), maxHeightMm: definie(b.maxHeightMm) };
+  const base = `vr25.${family}`;
+  const telQuel = evaluerDimensions(bornes, plaque, base);
+  if (telQuel.length === 0 || !b.deuxOrientations) return telQuel;
+  return evaluerDimensions(bornes, { ...plaque, widthMm: plaque.heightMm, heightMm: plaque.widthMm }, base).length === 0 ? [] : telQuel;
 }

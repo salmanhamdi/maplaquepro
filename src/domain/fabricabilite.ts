@@ -5,7 +5,7 @@
 import { type ArtworkMetadata, COUCHE_PAR_WORKFLOW, type EvaluationArtwork, evaluateArtwork } from "./artwork-evaluation";
 import type { Catalog } from "./catalog";
 import { type Configuration, parseConfiguration, validateConfigurationAgainstCatalog } from "./configuration";
-import { evaluerDimensions, evaluerPoses, type PoseOperation } from "./fabricabilite-machine";
+import { evaluerBornesVr25, evaluerDimensions, evaluerPoses, type PoseOperation } from "./fabricabilite-machine";
 import type { PlaqueMm } from "./geometry";
 import { generateHoles, type Hole, resolveMountingRules } from "./holes";
 import { type ResolvedOperation, resolveWorkflow } from "./production";
@@ -89,7 +89,8 @@ export function evaluateFabricability(input: unknown, catalog: Catalog, donnees:
   const poses = evaluerPoses(workflow, catalog.machines, plaque.widthMm, plaque.heightMm);
   if (!poses.ok) violations.push(...poses.violations);
 
-  // 6. Dimensions (référence × épaisseur)
+  // 6. Dimensions : bornes VR-25 de la famille, puis règles du catalogue (référence × épaisseur)
+  violations.push(...evaluerBornesVr25(reference.family, plaque));
   if (!dimensionRules) {
     violations.push(violation("VALIDATION_REQUIRED", `references.${reference.id}.dimensionRulesIds`, "aucune règle de dimensions pour cette épaisseur (VR-25)"));
   } else {

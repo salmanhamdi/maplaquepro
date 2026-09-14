@@ -42,7 +42,7 @@
 ### T. Transition v1.5 → v1.6 (réconciliation T5, validée le 14/09/2026)
 - **Sources** : décisions Supervisor « T5 / clôture documentaire des arbitrages » et « Master Plan v1.6 / réconciliation T5 » (V-1 à V-7) du 14/09/2026 ; faits atelier Q1–Q9, Q3, E-1 complémentaire (REGISTRE_ARBITRAGES_v1.5.md).
 - **Décisions intégrées** : C5 clos (TroLase : découpe systématique, CUT toujours présent) ; VR-34 close ; CR-2 **non activée** ; P3 (découpe systématique ; workflows TroGlass Metallic et Plexiglass / TroGlass Clear distincts) ; E-1 clos (Plexiglass / TroGlass Clear : impression UV à l'envers → découpe) ; **V-2 fermé** (découpe Plexiglass côté envers, face imprimée vers le laser ; information de fabrication, aucun miroir de l'artefact laser) ; **V-3 fermé** (impression UV Plexiglass à l'envers en miroir ; D1 étendue à `PLEXIGLASS_UV`) ; libellés du procédé Plexiglass explicitant l'ordre (V-6) ; champ `condition` conservé (V-5).
-- **Non modifié** : §30.1 (ligne TroLase 600 × 400 DIFFÉRÉE) ; format fournisseur 600 × 300 hors modèle ; VR-25 ; VR-02 ; GATE 1 ; machine / côté de la découpe TroLase Metallic (V-1, non établis) ; identifiant technique `decoupe_impression_uv` (§33, inchangé, G.2).
+- **Non modifié** : §30.1 (ligne TroLase 600 × 400 DIFFÉRÉE) ; format fournisseur 600 × 300 hors modèle ; VR-02 ; GATE 1 ; machine / côté de la découpe TroLase Metallic (V-1, non établis) ; identifiant technique `decoupe_impression_uv` (§33, inchangé, G.2).
 - Le tableau détaillé v1.5 → v1.6 figure dans TABLEAU-TRANSITION-MP-v1.5-v1.6.
 
 ### G.3 Ancien code
@@ -1327,7 +1327,7 @@ Voir le changelog v1.5 (§35) et les rapports de contrôle **CR-019** (consolida
 | VR-22 | Diamètre de trou | Trous | Étape 7 | Oui | À VALIDER (↔ OD-03) |
 | VR-23 | Distance minimale, marge trou ↔ gravure, safe zone | Trous / design | Étape 7 | Oui | À VALIDER (↔ OD-05) |
 | VR-24 | Sémantique de cote, disposition des 2 trous, dégagement d'arrondi | Trous | Étape 7 | Oui | À VALIDER (↔ OD-04, OD-06) |
-| VR-25 | `DimensionRules` par référence × épaisseur ; limites Speedy par matière | Sur mesure | Étape 4 | Oui | À VALIDER |
+| VR-25 | `DimensionRules` par référence × épaisseur ; limites Speedy par matière | Sur mesure | Étape 4 | Oui | **FERMÉE / NORMATIVE** (Supervisor 15/09/2026 ; faits atelier du 15/09/2026) : TroLase et TroLase Metallic 10 × 10 → 594 × 294 mm ; Plexiglass / TroGlass Clear et TroGlass Metallic 10 × 10 → 347 × 490 mm, deux orientations ; toutes épaisseurs ; distinctes des capacités machine ; règles catalogue = couche distincte |
 | VR-26 | PDF en upload | Hors MVP | — | Non | À VALIDER |
 | VR-27 | DPI minimal raster à la taille posée | Upload | — | Non | À VALIDER |
 | VR-28 | `rasterPolicy` gravure | Upload | Défaut reject | Non | À VALIDER (↔ OD-10) |

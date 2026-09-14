@@ -69,5 +69,19 @@ export const MIN_CHARACTER_BOUNDING_BOX_HEIGHT_MM = 1;
 /** VR-08 (FACT ATELIER F3, arbitrage Supervisor A4) : épaisseur minimale de trait pour la gravure laser = 1 mm. */
 export const MIN_STROKE_WIDTH_MM = 1;
 
+/**
+ * VR-25 (FACT ATELIER 15/09/2026, autorisation Supervisor) : bornes de dimensions de plaque par famille, en mm, toutes
+ * épaisseurs. Règle distincte des capacités machine (§4.1) ; le panneau fournisseur 600 × 300 (approvisionnement) n'est
+ * pas modélisé. `deuxOrientations` : la borne est satisfaite si la plaque l'est tel quel ou tournée.
+ */
+export const BORNES_DIMENSIONS_VR25: Readonly<
+  Record<MaterialFamily, { minWidthMm: number; minHeightMm: number; maxWidthMm: number; maxHeightMm: number; deuxOrientations: boolean }>
+> = {
+  trolase: { minWidthMm: 10, minHeightMm: 10, maxWidthMm: 594, maxHeightMm: 294, deuxOrientations: false },
+  trolase_metallic: { minWidthMm: 10, minHeightMm: 10, maxWidthMm: 594, maxHeightMm: 294, deuxOrientations: false },
+  plexiglass: { minWidthMm: 10, minHeightMm: 10, maxWidthMm: 347, maxHeightMm: 490, deuxOrientations: true },
+  troglass_metallic: { minWidthMm: 10, minHeightMm: 10, maxWidthMm: 347, maxHeightMm: 490, deuxOrientations: true },
+};
+
 /** Version du contrat de configuration client (§6). */
 export const CONFIGURATION_VERSION = 4;

@@ -81,9 +81,15 @@ describe("evaluateFabricability (Annexe B étapes 0 à 7)", () => {
     expect(!r.ok && r.stage).toBe("catalog");
   });
 
-  it("exemple normatif : Plexiglass 500 × 300 ⇒ NOT_FABRICABLE sur l'impression UV", () => {
+  it("exemple normatif : Plexiglass 500 × 300 ⇒ NOT_FABRICABLE sur l'impression UV et hors VR-25", () => {
     const r = evaluateFabricability(config({ format: { mode: "custom", widthMm: 500, heightMm: 300 } }), catalogue());
-    expect(!r.ok && r.violations.map((v) => v.code)).toEqual(["EXCEEDS_MACHINE"]);
+    expect(!r.ok && r.violations.map((v) => `${v.code}@${v.path}`)).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1", "ABOVE_RULES@vr25.plexiglass.maxWidthMm"]);
+  });
+
+  it("VR-25 dans le moteur : Plexiglass 490 × 347 admis (deux orientations) ; 9 × 200 ⇒ BELOW_MIN VR-25 en plus des règles du catalogue", () => {
+    expect(evaluateFabricability(config({ format: { mode: "custom", widthMm: 490, heightMm: 347 }, mounting: { count: 0 } }), catalogue()).ok).toBe(true);
+    const r = evaluateFabricability(config({ format: { mode: "custom", widthMm: 9, heightMm: 200 }, mounting: { count: 0 } }), catalogue());
+    expect(!r.ok && r.violations.map((v) => `${v.code}@${v.path}`)).toEqual(["BELOW_MIN@vr25.plexiglass.minWidthMm", "BELOW_MIN@dimensionRules.test-dim-plexi.minWidthMm"]);
   });
 
   it("étape 6 : bornes de dimensions ; absence de règles pour l'épaisseur ⇒ VALIDATION_REQUIRED", () => {

@@ -107,10 +107,10 @@ const codes = (r: FabricabilityResult) => (r.ok ? [] : r.violations.map((v) => `
 const poses = (r: FabricabilityResult) => (r.ok ? r.posesParOperation.map((p) => `${p.machineId}:${p.orientationDePose}`) : null);
 
 describe("§30.1 — matrice normative de fabricabilité", () => {
-  it("DIFFÉRÉE (CR-2) — TroLase 600 × 400 gravé : état actuel VALIDATION_REQUIRED, aucune preuve positive", () => {
-    for (const [w, h] of [[600, 400], [400, 600]] as const) {
-      expect(codes(evaluer(trolase, w, h))).toEqual(["VALIDATION_REQUIRED@format.mode"]);
-    }
+  it("TroLase 600 × 400 gravé ⇒ ❌ refusé par VR-25 (max 594 × 294) ; idem 400 × 600 ; CR-2 inchangé (sur mesure non activé)", () => {
+    expect(codes(evaluer(trolase, 600, 400))).toEqual(["VALIDATION_REQUIRED@format.mode", "ABOVE_RULES@vr25.trolase.maxWidthMm", "ABOVE_RULES@vr25.trolase.maxHeightMm"]);
+    expect(codes(evaluer(trolase, 400, 600))).toEqual(["VALIDATION_REQUIRED@format.mode", "ABOVE_RULES@vr25.trolase.maxHeightMm"]);
+    expect(evaluer(trolase, 600, 400).ok).toBe(false);
   });
 
   it("Plexiglass 347 × 490 ⇒ ✓ (ArtisJet tel quel)", () => {
@@ -121,22 +121,22 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
     expect(poses(evaluer(plexi, 490, 347))).toEqual(["ARTISJET_3000U:tournee", "SPEEDY_400:tel_quel"]);
   });
 
-  it("Plexiglass 347,1 × 490 ⇒ ❌ NOT_FABRICABLE sur l'impression UV, avec alternative ; idem 490 × 347,1", () => {
+  it("Plexiglass 347,1 × 490 ⇒ ❌ NOT_FABRICABLE sur l'impression UV et hors VR-25, avec alternative ; idem 490 × 347,1", () => {
     for (const [w, h] of [[347.1, 490], [490, 347.1]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
+      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1", "ABOVE_RULES@vr25.plexiglass.maxWidthMm"]);
       expect(proposeAlternatives(config(plexi, w, h), catalogue()).length).toBeGreaterThan(0);
     }
   });
 
   it("Plexiglass 347 × 490,1 ⇒ ❌ ; idem 490,1 × 347", () => {
-    for (const [w, h] of [[347, 490.1], [490.1, 347]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
-    }
+    expect(codes(evaluer(plexi, 347, 490.1))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1", "ABOVE_RULES@vr25.plexiglass.maxHeightMm"]);
+    expect(codes(evaluer(plexi, 490.1, 347))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1", "ABOVE_RULES@vr25.plexiglass.maxWidthMm"]);
   });
 
   it("Plexiglass 500 × 300 ⇒ ❌ + alternative « ≤ 347 × 490 » ; famille gravure laser non proposée car elle-même non fabricable (CR-2) ; idem 300 × 500", () => {
+    const vr25: Record<string, string> = { "500x300": "maxWidthMm", "300x500": "maxHeightMm" };
     for (const [w, h] of [[500, 300], [300, 500]] as const) {
-      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1"]);
+      expect(codes(evaluer(plexi, w, h))).toEqual(["EXCEEDS_MACHINE@workflows.PLEXIGLASS_UV.operations.1", `ABOVE_RULES@vr25.plexiglass.${vr25[`${w}x${h}`]}`]);
       const alternatives = proposeAlternatives(config(plexi, w, h), catalogue());
       expect(alternatives).toEqual([
         { kind: "max_dimensions", widthMm: 347, heightMm: 490 },
@@ -152,8 +152,16 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
   });
 
   it("TroGlass Gold > 347 × 490 ⇒ ❌ ; idem inversé, et limites ,1 dans les deux orientations", () => {
-    for (const [w, h] of [[500, 400], [400, 500], [347.1, 490], [490, 347.1], [347, 490.1], [490.1, 347]] as const) {
-      expect(codes(evaluer(troglassGold(), w, h))).toEqual(["EXCEEDS_MACHINE@workflows.TROGLASS_METALLIC_HYBRID.operations.3"]);
+    const vr25: Array<[number, number, string[]]> = [
+      [500, 400, ["maxWidthMm"]],
+      [400, 500, ["maxWidthMm", "maxHeightMm"]],
+      [347.1, 490, ["maxWidthMm"]],
+      [490, 347.1, ["maxWidthMm"]],
+      [347, 490.1, ["maxHeightMm"]],
+      [490.1, 347, ["maxWidthMm"]],
+    ];
+    for (const [w, h, bornes] of vr25) {
+      expect(codes(evaluer(troglassGold(), w, h))).toEqual(["EXCEEDS_MACHINE@workflows.TROGLASS_METALLIC_HYBRID.operations.3", ...bornes.map((b) => `ABOVE_RULES@vr25.troglass_metallic.${b}`)]);
     }
   });
 
