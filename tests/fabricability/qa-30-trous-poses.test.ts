@@ -3,6 +3,7 @@
 // - Fabricabilité : zone machine et orientation de pose figées dans le BAT.
 // Paramètres et catalogue de TEST fictifs ; VR-22 à VR-24 restent À VALIDER dans le catalogue réel.
 import { describe, expect, it } from "vitest";
+import { geometrieCanoniqueTest } from "../domain/fixtures";
 import {
   buildBatDraft,
   type Catalog,
@@ -126,7 +127,7 @@ describe("§30 Fabricabilité — zone machine et orientation de pose figées da
       spec: spec.spec,
       catalog: catalogue,
       identite: { batId: "bat-test", createdAt: "2026-01-01T00:00:00Z", contentHash: "h-test" },
-      rendu: { geometryJson: {}, geometryHash: "g-test", previewSvg: "<svg/>", artifacts: [] },
+      rendu: { geometryJson: geometrieCanoniqueTest(), geometryHash: "g-test", previewSvg: "<svg/>", artifacts: [] },
       engineVersions: { design: "t", mounting: "t", geometry: "t", render: "t", production: "t" },
     });
     expect(bat.ok).toBe(true);

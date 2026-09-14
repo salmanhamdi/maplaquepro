@@ -6,6 +6,7 @@ import { aValider, definie } from "./etat";
 import { type BatBrouillon, createBatDraft, type ResultatBat } from "./bat";
 import type { Catalog } from "./catalog";
 import type { Fabricable } from "./fabricabilite";
+import type { CanonicalGeometry } from "./geometrie-canonique";
 import type { PriceRules } from "./pricing";
 import { computePrice } from "./prix";
 import type { ProductionArtifact } from "./production";
@@ -17,7 +18,7 @@ export type EntreeBrouillonBat = {
   spec: ResolvedSpec;
   catalog: Catalog;
   identite: { batId: string; createdAt: string; contentHash: string };
-  rendu: { geometryJson: unknown; geometryHash: string; previewSvg: string; artifacts: ProductionArtifact[] };
+  rendu: { geometryJson: CanonicalGeometry; geometryHash: string; previewSvg: string; artifacts: ProductionArtifact[] };
   engineVersions: { design: string; mounting: string; geometry: string; render: string; production: string };
   /** Fichiers d'artwork issus du pipeline (original et version normalisée). */
   artworkFichier?: { artworkHash: string; normalizedHash: string; mime: string };

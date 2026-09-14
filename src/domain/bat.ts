@@ -8,6 +8,7 @@ import { artworkPlacementSchema } from "./artwork";
 import { textSpecSchema } from "./configuration";
 import { statutContratSchema } from "./contrats";
 import { etatSchema } from "./etat";
+import { canonicalGeometrySchema } from "./geometrie-canonique";
 import { mountingPatternSchema } from "./mounting";
 import { productionArtifactSchema } from "./production";
 import { CONFIGURATION_VERSION } from "./referentiels";
@@ -74,7 +75,8 @@ const batContenu = {
       transformations: z.array(transformationArtworkSchema),
     })
     .nullable(),
-  geometryJson: z.unknown(),
+  /** Géométrie canonique (§6, §12), structurellement vérifiée ; porte notamment la safe zone (décision L1). */
+  geometryJson: canonicalGeometrySchema,
   geometryHash: hash,
   previewSvg: z.string().min(1),
   artifacts: z.array(productionArtifactSchema),

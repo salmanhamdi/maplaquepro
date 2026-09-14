@@ -13,7 +13,7 @@ import {
   resolveSpec,
   sansObjet,
 } from "../../src/domain";
-import { catalogueTest, referenceTest } from "./fixtures";
+import { catalogueTest, geometrieCanoniqueTest, referenceTest } from "./fixtures";
 
 const plexi: MaterialVariant = referenceTest({
   id: "test-plexi",
@@ -98,7 +98,7 @@ const entree = (priceRules?: PriceRules) => {
     spec: spec.spec,
     catalog: catalogue,
     identite: { batId: "bat-test", createdAt: "2026-01-01T00:00:00Z", contentHash: "h" },
-    rendu: { geometryJson: {}, geometryHash: "g", previewSvg: "<svg/>", artifacts: [] },
+    rendu: { geometryJson: geometrieCanoniqueTest(), geometryHash: "g", previewSvg: "<svg/>", artifacts: [] },
     engineVersions: { design: "t", mounting: "t", geometry: "t", render: "t", production: "t" },
     ...(priceRules ? { priceRules } : {}),
   };

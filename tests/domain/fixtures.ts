@@ -1,5 +1,15 @@
 // Données de TEST uniquement — fictives, jamais utilisées comme catalogue ni présentées comme références réelles.
-import { aValider, type Catalog, definie, INITIAL_CATALOG, type MaterialVariant, sansObjet } from "../../src/domain";
+import { aValider, type CanonicalGeometry, type Catalog, definie, INITIAL_CATALOG, type MaterialVariant, sansObjet } from "../../src/domain";
+
+/** Géométrie canonique de TEST, structurellement valide (plaque 300 × 200, sans trou ni élément de couche). */
+export const geometrieCanoniqueTest = (): CanonicalGeometry => ({
+  plate: { widthMm: 300, heightMm: 200, cornerRadiusMm: 0, thicknessMm: 3 },
+  safeZoneMm: { etat: "SANS_OBJET" },
+  holes: [],
+  keepOutZones: [],
+  layers: { engrave: [], print: [] },
+  engineVersions: { design: "d", mounting: "m", geometry: "g", render: "r", production: "p" },
+});
 
 export const couleurTest = { name: "Couleur de test", hex: "#123456" };
 

@@ -18,7 +18,7 @@ import {
   sansObjet,
   validateBat,
 } from "../../src/domain";
-import { catalogueTest, referenceTest } from "./fixtures";
+import { catalogueTest, geometrieCanoniqueTest, referenceTest } from "./fixtures";
 
 const plexi: MaterialVariant = referenceTest({
   id: "test-plexi",
@@ -86,7 +86,7 @@ const brouillon = (o: Partial<BatBrouillon> = {}): unknown => ({
   holes: { pattern: { count: 0 } },
   text: null,
   artwork: null,
-  geometryJson: {},
+  geometryJson: geometrieCanoniqueTest(),
   geometryHash: "h-geo",
   previewSvg: "<svg/>",
   artifacts: [],

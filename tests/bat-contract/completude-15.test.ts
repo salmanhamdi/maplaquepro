@@ -203,7 +203,7 @@ describe("§15 Trous", () => {
 });
 
 describe("§15 Géométrie et hash", () => {
-  it("geometryJson = géométrie canonique (plaque, safe zone, zones de trous, trous, couches) ; geometryHash cohérent — voir lacune L2", () => {
+  it("geometryJson = géométrie canonique typée (plaque, safe zone portée ici — décision L1, zones de trous, trous, couches) ; geometryHash cohérent", () => {
     const b = batValide();
     const g = canonicalGeometrySchema.parse(b.geometryJson);
     expect(Object.keys(g).sort()).toEqual(["engineVersions", "holes", "keepOutZones", "layers", "plate", "safeZoneMm"]);
