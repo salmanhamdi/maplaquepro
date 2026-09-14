@@ -94,3 +94,58 @@ Pour chaque question, l'atelier indique la valeur, sa source (fiche fabricant, e
 ## 10. Traçabilité
 
 Les réponses seront consignées dans un document de réponses daté et signé par l'atelier. Leur intégration au catalogue ne rendra une référence active qu'après validation de l'ensemble de ses propriétés obligatoires (GATE 1, §36.1).
+
+## 11. Réponses reçues — FACT ATELIER (14/09/2026)
+
+> **Statut : FACT ATELIER.** Déclarations recueillies auprès du responsable du projet. **Aucune de ces réponses n'est une règle normative du produit**, sauf mention « DÉCISION SUPERVISOR ». Le Master Plan v1.5 n'est pas modifié. VR-08, R-1 et VR-42 restent **ouverts**.
+
+### 11.1 Relance VR-08
+
+| ID | Réponse (FACT ATELIER) | Statut |
+|---|---|---|
+| VR-08.1 | Zones de travail : 347 × 490 mm et 1010 × 610 mm | FACT ATELIER (concorde avec §4.1) |
+| VR-08.2 | Plaque minimale 10 × 10 mm ; aucun maximum supplémentaire déclaré | FACT ATELIER. **DÉCISION SUPERVISOR** : ce n'est **pas** une borne minimale globale du produit ; les contraintes par référence ou contexte restent prioritaires (VR-25 ouvert) |
+| VR-08.3 | Taille minimale de caractère : 1 mm | FACT ATELIER ; définition (hauteur de capitale ou corps) à préciser |
+| VR-08.4 | Aucune longueur maximale de texte ; limite = espace disponible | FACT ATELIER |
+| VR-08.5 | Aucune restriction de police | FACT ATELIER. **DÉCISION SUPERVISOR** : aucune décision sur les polices du produit ; polices, licences et contraintes techniques restent à traiter |
+| VR-08.6 | Accents français gravables | FACT ATELIER |
+| VR-08.7 | Gravure : noir uniquement ; impression : aucune limite de couleur | FACT ATELIER ; **à clarifier** (couleur révélée par référence, TroGlass noir uniquement) |
+| VR-08.8 | Espaces et ponctuation sans restriction ; limite = espace | FACT ATELIER |
+| VR-08.9 | Aucune contrainte de kerning / espacement | FACT ATELIER |
+| VR-08.10 | Aucune variation de contrainte selon la famille | FACT ATELIER |
+| VR-08.11 | Aucune variation de contrainte selon le procédé | FACT ATELIER |
+| VR-08.12 | Aucune tolérance dimensions / position du texte définie | FACT ATELIER (aucune tolérance ne doit être inventée) |
+| VR-08.13 | Vérification obligatoire avant fabrication | FACT ATELIER |
+| VR-08.14 | Source de vérité de fabricabilité : BAT validé + fichier de production + vérification opérateur / atelier | FACT ATELIER |
+
+### 11.2 Relance R-1
+
+| ID | Réponse (FACT ATELIER) | Statut |
+|---|---|---|
+| R-1.1 | Repère : coin supérieur droit | FACT ATELIER ; correspondance des axes physiques à préciser |
+| R-1.2 | Orientation de référence : texte en face, lisible | FACT ATELIER |
+| R-1.3 | Face de fabrication : recto uniquement | FACT ATELIER ; **à clarifier** pour TroGlass (gravure et UV envers, §7.2) |
+| R-1.4 | Une plaque peut être tournée et rester fabricable | FACT ATELIER |
+| R-1.5 | Une rotation entraîne une modification du fichier de production | FACT ATELIER. **DÉCISION SUPERVISOR (VR-41, principe)** : « Une rotation de la plaque entraîne une modification du fichier de production. » VR-41 **reste ouvert** pour l'angle, le sens, l'outil et le responsable de la transformation |
+| R-1.6 | Le BAT montre la plaque telle qu'elle doit être posée, texte lisible, coin supérieur droit comme repère | FACT ATELIER ; **à clarifier** (pose sur machine ou pose finale ; P6 D5) |
+
+### 11.3 Questions complémentaires
+
+| ID | Réponse (FACT ATELIER) | Statut |
+|---|---|---|
+| C-1 | Validation du fichier avant fabrication obligatoire | FACT ATELIER. **DÉCISION SUPERVISOR** : VR-42 **reste ouvert** ; cette vérification ne constitue pas à elle seule un contrat GATE 4 |
+| C-2 | Découpe : vectoriel exclusivement. Gravure : vectoriel exclusivement. Impression : PNG haute résolution. Service infographie disponible | FACT ATELIER. **DÉCISION SUPERVISOR (VR-28)** : « Gravure = fichier vectoriel exclusivement. Tout raster est rejeté. » Règle limitée à la gravure, non élargie aux autres usages |
+| C-3 | Fichier non fabricable : l'atelier corrige le fichier | FACT ATELIER. **DÉCISION SUPERVISOR (G-2)** : une correction atelier ne peut pas modifier silencieusement un rendu validé |
+| C-4 | Nouvelle validation client non nécessaire pour une correction mineure, nécessaire si importante ; frontière non définie | FACT ATELIER. **DÉCISION SUPERVISOR (G-2)** : **aucune catégorie de « petite correction sans nouveau BAT »** ; toute modification affectant un objet ou un rendu validé au BAT impose une nouvelle validation du BAT |
+| C-5 | Preuve de validation : BAT validé | FACT ATELIER (preuve de validation client ; ne vaut pas validation atelier d'un contrat, P12) |
+
+### 11.4 Questions complémentaires transmises à l'atelier (en attente de réponse)
+
+1. « Recto uniquement » s'applique-t-il aussi à TroGlass (gravure et impression à l'envers), ou seulement à la face visible de la plaque livrée ?
+2. « Gravure : noir » désigne-t-il la couleur du fichier machine ou la couleur visible sur la plaque ? Pour une matière bicouche, quelle couleur apparaît ?
+3. « Impression : aucune limite de couleur » s'applique-t-il aussi à TroGlass (prévu en noir uniquement) ?
+4. « Le BAT montre la plaque telle qu'elle doit être posée » : posée sur la machine, ou à son emplacement final ?
+5. Sur chaque machine, quel côté de la zone (347 ou 490 mm ; 1010 ou 610 mm) suit l'axe horizontal du logiciel, à partir du coin supérieur droit ?
+6. Rotation : quelle modification exacte du fichier (angle, sens) ? Réalisée par le logiciel ou par l'opérateur ?
+7. « 1 mm » = hauteur de capitale ou corps du caractère ? Quelle épaisseur de trait minimale ? Quelle marge minimale au bord ?
+8. « PNG haute résolution » : quelle résolution (DPI) ? Le JPG est-il accepté ?
