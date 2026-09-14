@@ -3,6 +3,9 @@
 // règle vérifiée par `npm run lint:boundaries` (ADR-0004).
 export * from "./alternatives";
 export * from "./artefact-laser";
+export * from "./artefacts-bat";
+export * from "./bat-enregistre";
+export * from "./fiche-production";
 export * from "./apparence";
 export * from "./artwork";
 export * from "./artwork-evaluation";
