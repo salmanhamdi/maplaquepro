@@ -5,6 +5,12 @@ import { statutSchema } from "./referentiels";
 
 const centimes = etatSchema(z.number().int().nonnegative());
 
+/** Modèle non défini (VR-07) : jamais DEFINIE, uniquement A_VALIDER ou SANS_OBJET (décision Supervisor I-6). */
+const nonDefini = z.discriminatedUnion("etat", [
+  z.strictObject({ etat: z.literal("A_VALIDER") }),
+  z.strictObject({ etat: z.literal("SANS_OBJET") }),
+]);
+
 export const priceRulesSchema = z.strictObject({
   id: z.string().min(1),
   base: centimes,
@@ -12,12 +18,12 @@ export const priceRulesSchema = z.strictObject({
   byThickness: z.record(z.string().min(1), centimes),
   byFormat: z.record(z.string().min(1), centimes),
   /** Modèle de tarification sur mesure non défini (VR-07). */
-  customDimensionPricing: etatSchema(z.unknown()),
+  customDimensionPricing: nonDefini,
   byWorkflow: z.record(z.string().min(1), centimes),
   byMounting: z.record(z.string().min(1), centimes),
   artworkProcessingFee: centimes,
-  /** Paliers non définis. */
-  quantityTiers: etatSchema(z.unknown()),
+  /** Paliers non définis (VR-07). */
+  quantityTiers: nonDefini,
   vatRate: etatSchema(z.number().min(0).max(1)),
   pricingStatus: statutSchema,
 });
