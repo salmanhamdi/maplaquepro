@@ -65,11 +65,12 @@ const regle = (
 /**
  * Modes couleur dérivés du workflow (§9.2).
  * Politique raster : gravure seule = rejet (VR-28, décision Supervisor) ; impression UV (Plexiglass) non généralisée → À VALIDER ;
- * TroGlass (gravure envers + UV noir) : application de VR-28 au workflow hybride non tranchée → À VALIDER.
+ * TroGlass (gravure envers + UV noir) : VR-28 ne s'applique pas au workflow hybride (décision Supervisor) →
+ * conversion raster en noir et blanc strict (bilevel, §9.2). Catégorie ART-1 de la conversion : ART1-DOC, ouvert.
  */
 export const ARTWORK_RULES: readonly ArtworkRules[] = [
   regle("TROLASE_ENGRAVE", "monochrome", definie("reject")),
   regle("TROLASE_METALLIC_ENGRAVE", "monochrome", definie("reject")),
   regle("PLEXIGLASS_UV", "selon_politique_impression_reference", aValider()),
-  regle("TROGLASS_METALLIC_HYBRID", "noir_uniquement", aValider()),
+  regle("TROGLASS_METALLIC_HYBRID", "noir_uniquement", definie("accept_bilevel")),
 ];

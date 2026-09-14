@@ -23,9 +23,16 @@ describe("VR-28 — gravure = vectoriel exclusivement, tout raster rejeté", () 
     }
   });
 
-  it("la règle n'est pas généralisée à l'impression UV ni au workflow hybride (restent À VALIDER)", () => {
+  it("la règle n'est pas généralisée à l'impression UV (reste À VALIDER)", () => {
     expect(regles("PLEXIGLASS_UV").rasterPolicy).toEqual({ etat: "A_VALIDER" });
-    expect(regles("TROGLASS_METALLIC_HYBRID").rasterPolicy).toEqual({ etat: "A_VALIDER" });
+  });
+
+  it("TroGlass (workflow hybride) : pas de rejet, conversion bilevel (§9.2)", () => {
+    const troglass = regles("TROGLASS_METALLIC_HYBRID");
+    expect(ENGRAVE_ONLY_WORKFLOWS).not.toContain("TROGLASS_METALLIC_HYBRID");
+    expect(troglass.rasterPolicy).toEqual({ etat: "DEFINIE", valeur: "accept_bilevel" });
+    expect(acceptsArtworkFormat(troglass, "svg")).toBe(true);
+    for (const format of troglass.formats) expect(acceptsArtworkFormat(troglass, format)).toBe(true);
   });
 
   it("une politique raster À VALIDER n'accepte aucun raster (aucune valeur présumée)", () => {
