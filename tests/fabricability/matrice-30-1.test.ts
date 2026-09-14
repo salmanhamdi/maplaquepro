@@ -2,6 +2,9 @@
 // Catalogue de TEST : références, bornes et apparences fictives ; le catalogue réel n'est pas modifié.
 // Ligne « TroLase 600 × 400 gravé » : DIFFÉRÉE (décision Supervisor, option a) tant que VR-34 est À VALIDER.
 // Chaque ligne est testée dans les deux orientations ; les valeurs limites (,1) dans les deux orientations de pose.
+// DISTINCTIONS (rectification Supervisor) : CAPACITÉ MACHINE (zones 1010 × 610, 347 × 490) ≠ FORMAT FOURNISSEUR ≠ FABRICABILITÉ ≠ DÉCOUPE VR-34.
+// Le format commercial maximal du TroLase bicouche chez le fournisseur (600 × 300 mm, FACT) n'est PAS modélisé ici :
+// les bornes TroLase de ce catalogue de test (2000 mm) sont fictives et servent uniquement à isoler la capacité machine.
 import { describe, expect, it } from "vitest";
 import {
   type Catalog,
@@ -164,7 +167,7 @@ describe("§30.1 — matrice normative de fabricabilité", () => {
     expect(r.ok && r.operations.map((o) => o.encre)).toEqual([null, null, "noir_uniquement"]);
   });
 
-  it("TroLase > 1010 × 610 ⇒ ❌ (Speedy, gravure) ; idem inversé — rejet indépendant de la découpe VR-34", () => {
+  it("CAPACITÉ MACHINE uniquement — plaque > zone Speedy 1010 × 610 ⇒ ❌ sur la gravure ; idem inversé ; indépendant de la découpe VR-34 ; n'exprime aucun format fournisseur TroLase bicouche", () => {
     for (const [w, h] of [[1011, 611], [611, 1011]] as const) {
       expect(codes(evaluer(trolase, w, h))).toContain("EXCEEDS_MACHINE@workflows.TROLASE_ENGRAVE.operations.1");
     }
