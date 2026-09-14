@@ -166,3 +166,30 @@ Réponses : section 11.5.
 | 6 | Lorsque la plaque est tournée, le fichier doit être tourné ; **par l'opérateur**, **du même angle** que la plaque | VR-41 : sens de rotation non précisé |
 | 7 | **1 mm minimum pour tout le caractère** (taille totale) ; **pas d'épaisseur de trait minimale** ; **marge minimale au bord : 1 cm** | VR-08 ; écart avec l'hypothèse de travail « safe zone 2 mm » |
 | 8 | Impression : **PNG 300 DPI** ; **JPG accepté en haute résolution** (résolution du JPG non chiffrée) | VR-27, VR-33 ; cohérent avec OD-08 (JPG) |
+
+### 11.6 VR-08 / SP-3 — FACT ATELIER de référence et arbitrage Supervisor
+
+> **Source** : réponses atelier transmises par le Supervisor. Ces faits **remplacent** les réponses antérieures contradictoires (notamment Q7 du §11.5 sur le trait et la marge).
+
+| Id | FACT ATELIER |
+|---|---|
+| F1 | Hauteur minimale du caractère : **1 mm** |
+| F2 | Mesurée sur la **hauteur de la boîte englobante** |
+| F3 | Épaisseur minimale de trait pour la gravure laser : **1 mm** |
+| F4 | La marge de 1 cm autour du texte **n'est pas** une règle de fabricabilité (pratique atelier) |
+| F5 | Trous : pas aux extrémités ; marge de 1 cm dans chaque angle (règle des trous, pas du texte) |
+| F6 | Texte trop grand : pas de modification silencieuse ; toute adaptation nécessite une validation client |
+| F7 | Aucune restriction de police imposée par l'atelier |
+| F8 | Caractère ou accent absent : le client change de police ; le BAT validé fait foi |
+| F9 | Vérification finale de fabricabilité du texte : bon sens de l'opérateur |
+| F10 | Pour la gravure, le texte est converti en tracés vectoriels avant production |
+| F11 | Après conversion : aucune compensation, simplification, nettoyage ni transformation additionnelle |
+
+**Arbitrage Supervisor (résumé)** :
+- A1 : hauteur de boîte englobante ≥ 1 mm ; trait ≥ 1 mm, au niveau des règles de design.
+- A2 : marge texte 10 mm abandonnée ; safe zone générale de texte **SANS OBJET** ; pas de 2 mm.
+- A3 : règle distincte de toute « capitale 4 mm ».
+- A4 : trait 1 mm exploitable.
+- A5 : aucune liste de polices, droits ni hash inventés.
+- A6 : aucune catégorie ART-1 attribuée aux traits fins.
+- A7 : composition et interligne non résolus.

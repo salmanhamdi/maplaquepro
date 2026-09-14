@@ -63,5 +63,11 @@ export const PROCEDE_BY_WORKFLOW: Readonly<Record<ProductionWorkflowId, Procede>
 /** Seuil applicatif de protection du runtime pour le MVP (décision Supervisor, ADR-0003) — pas une limite d'hébergeur. */
 export const MAX_PIXELS_MVP = 50_000_000;
 
+/** VR-08 (FACT ATELIER F1-F2, arbitrage Supervisor A1/A3) : hauteur de la boîte englobante d'un caractère ≥ 1 mm. */
+export const MIN_CHARACTER_BOUNDING_BOX_HEIGHT_MM = 1;
+
+/** VR-08 (FACT ATELIER F3, arbitrage Supervisor A4) : épaisseur minimale de trait pour la gravure laser = 1 mm. */
+export const MIN_STROKE_WIDTH_MM = 1;
+
 /** Version du contrat de configuration client (§6). */
 export const CONFIGURATION_VERSION = 4;

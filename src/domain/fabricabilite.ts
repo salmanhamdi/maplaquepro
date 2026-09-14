@@ -2,14 +2,14 @@
 // Étape 8 : artwork et texte. Les données issues du traitement des fichiers (métadonnées d'artwork, jeu de glyphes de la
 // police) sont fournies par le serveur, jamais par la requête client. Les dépendances ouvertes (VR-08, VR-27, ART1-DOC)
 // produisent VALIDATION_REQUIRED ; aucune valeur n'est présumée.
-import { type ArtworkMetadata, type EvaluationArtwork, evaluateArtwork } from "./artwork-evaluation";
+import { type ArtworkMetadata, COUCHE_PAR_WORKFLOW, type EvaluationArtwork, evaluateArtwork } from "./artwork-evaluation";
 import type { Catalog } from "./catalog";
 import { type Configuration, parseConfiguration, validateConfigurationAgainstCatalog } from "./configuration";
 import { evaluerDimensions, evaluerPoses, type PoseOperation } from "./fabricabilite-machine";
 import type { PlaqueMm } from "./geometry";
 import { generateHoles, type Hole, resolveMountingRules } from "./holes";
 import { type ResolvedOperation, resolveWorkflow } from "./production";
-import { evaluerTexte, type TexteNormalise } from "./texte";
+import { type CaractereTrace, evaluerTexte, evaluerTexteTrace, type TexteNormalise } from "./texte";
 import { type DomainViolation, violation } from "./violation";
 
 /** Données serveur issues du traitement des fichiers (hors requête client, P13). */
@@ -17,6 +17,8 @@ export type DonneesServeur = {
   artwork?: ArtworkMetadata;
   /** Glyphes de la police choisie ; la liste des polices reste OPEN (VR-08). */
   glyphesDisponibles?: ReadonlySet<string>;
+  /** Texte composé et converti en tracés par le moteur de polices (SP-3, hors domaine), en mm, repère plaque vue face. */
+  texteTrace?: readonly CaractereTrace[];
 };
 
 export type Fabricable = {
@@ -130,7 +132,18 @@ export function evaluateFabricability(input: unknown, catalog: Catalog, donnees:
       texte = r.texte;
       violations.push(...r.violations);
     }
-    violations.push(violation("VALIDATION_REQUIRED", "design.text.effectiveFontSizeMm", "mesure du texte et seuil de lisibilité non définis (VR-08, SP-3)"));
+    if (!donnees.texteTrace) {
+      violations.push(violation("VALIDATION_REQUIRED", "design.text.effectiveFontSizeMm", "tracés du texte non fournis (SP-3)"));
+    } else {
+      // VR-08 : hauteur de boîte englobante et zone utile (plaque − zones de trous ; safe zone SANS_OBJET, arbitrage A2)
+      const zonesTrous = holeKeepOutMarginMm === null ? [] : holes.map((h) => ({ cxMm: h.cxMm, cyMm: h.cyMm, rMm: h.diameterMm / 2 + holeKeepOutMarginMm! }));
+      violations.push(...evaluerTexteTrace({ caracteres: donnees.texteTrace, plaque, zonesTrous }));
+      // Trait minimal 1 mm (F3) pour la gravure : méthode de mesure et code non arbitrés ⇒ reste à valider
+      const couche = COUCHE_PAR_WORKFLOW[reference.productionWorkflowId];
+      if (couche === "engrave" || couche === "engrave_et_print") {
+        violations.push(violation("VALIDATION_REQUIRED", "design.text.traits", "contrôle du trait minimal 1 mm : mesure et code non arbitrés"));
+      }
+    }
   }
 
   if (violations.length > 0 || !poses.ok) return { ok: false, stage: "fabrication", violations };

@@ -98,9 +98,9 @@ describe("géométrie canonique — structure (§6)", () => {
     expect(g.engineVersions).toEqual(VERSIONS);
   });
 
-  it("points ouverts isolés : safe zone À VALIDER (VR-08), aucune zone de bord", () => {
+  it("safe zone SANS_OBJET (arbitrage A2), aucune zone de bord ni marge texte de 10 mm", () => {
     const r = buildCanonicalGeometry({ spec: spec(), artwork: null, textePresent: false, engineVersions: VERSIONS });
-    expect(r.ok && r.geometry.safeZoneMm).toEqual({ etat: "A_VALIDER" });
+    expect(r.ok && r.geometry.safeZoneMm).toEqual({ etat: "SANS_OBJET" });
     expect(r.ok && r.geometry.keepOutZones.every((z) => z.kind === "hole")).toBe(true);
   });
 

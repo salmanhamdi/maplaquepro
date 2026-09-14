@@ -26,8 +26,8 @@ const elementArtworkSchema = z.strictObject({ kind: z.literal("artwork"), artwor
 
 export const canonicalGeometrySchema = z.strictObject({
   plate: z.strictObject({ widthMm: mm, heightMm: mm, cornerRadiusMm: mm, thicknessMm: mm }),
-  /** VR-08 : non défini ; aucune valeur présumée. */
-  safeZoneMm: z.strictObject({ etat: z.literal("A_VALIDER") }),
+  /** Arbitrage Supervisor A2 (VR-08) : aucune safe zone générale de texte ⇒ SANS_OBJET ; ni 2 mm ni 10 mm. */
+  safeZoneMm: z.strictObject({ etat: z.literal("SANS_OBJET") }),
   holes: z.array(z.strictObject({ cxMm: mm, cyMm: mm, diameterMm: mm })),
   /** Zones autour des trous uniquement ; zones de bord absentes tant que VR-08 est ouvert. */
   keepOutZones: z.array(z.strictObject({ kind: z.literal("hole"), shape: z.strictObject({ type: z.literal("circle"), cxMm: mm, cyMm: mm, rMm: mm }) })),
@@ -88,7 +88,7 @@ export function buildCanonicalGeometry(input: {
       cornerRadiusMm: roundMm(spec.plate.cornerRadiusMm),
       thicknessMm: roundMm(spec.thickness.mm),
     },
-    safeZoneMm: { etat: "A_VALIDER" },
+    safeZoneMm: { etat: "SANS_OBJET" },
     holes: spec.holes.map((h) => ({ cxMm: roundMm(h.cxMm), cyMm: roundMm(h.cyMm), diameterMm: roundMm(h.diameterMm) })),
     // Trous présents ⇒ règles résolues (contrôlé ci-dessus) ; aucune marge de repli.
     keepOutZones:
