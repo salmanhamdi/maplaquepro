@@ -34,6 +34,7 @@
         "docs/ADR/0001-*.md",
         "docs/ADR/0002-*.md",
         "docs/ADR/0004-*.md",
+        "docs/ADR/0005-determinisme-geometrie.md",
         "README.md",
         ".gitignore",
         "package.json",

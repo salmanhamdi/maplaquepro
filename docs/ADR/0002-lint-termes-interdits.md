@@ -56,6 +56,10 @@ Les quatre documents préparatoires sont classés **explicitement, fichier par f
 
 Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du backoffice ni de l'historique. Le classement le plus contrôlé est retenu. **À CONFIRMER** avec AC-2.
 
+### Avenant — ADR-0005
+
+`docs/ADR/0005-determinisme-geometrie.md` est classé explicitement (chemin exact) dans la zone existante stricte produit, comme les ADR 0001, 0002 et 0004. Aucune nouvelle zone, aucune exclusion.
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.
