@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SP-2 géométrie textuelle (essai)</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 1rem; }
+  code, textarea { font-family: ui-monospace, monospace; font-size: 12px; word-break: break-all; }
+  textarea { width: 100%; height: 12rem; }
+</style>
+</head>
+<body>
+<h1>SP-2 — géométrie textuelle (ESSAI — NON NORMATIF)</h1>
+<p id="status">Exécution…</p>
+<p>Moteur : <code id="engine"></code><br>Configurations : <code id="count"></code><br>
+Empreinte matrice : <code id="matrix"></code><br>Empreinte globale : <code id="global"></code><br>
+Police : <code id="font"></code><br>opentype.js : <code id="lib"></code></p>
+<p>Navigateur : <code id="ua"></code><br>Contexte sécurisé : <code id="secure"></code></p>
+<textarea id="out" readonly></textarea>
+<script type="module">
+  import { runMatrix, toHex } from "./core.mjs";
+  import { MATRIX } from "./matrix.mjs";
+  import * as ot from "./vendor/opentype.js-2.0.0/opentype.mjs";
+
+  const $ = (id) => document.getElementById(id);
+  const env = new URLSearchParams(location.search).get("env") ?? "manual";
+  $("ua").textContent = navigator.userAgent;
+  $("secure").textContent = String(window.isSecureContext);
+  const send = (body) => env === "manual" ? null : fetch("/result?env=" + encodeURIComponent(env), { method: "POST", body: JSON.stringify(body) });
+  try {
+    if (!crypto.subtle) throw new Error("crypto.subtle indisponible (contexte non sécurisé)");
+    const get = async (url) => new Uint8Array(await (await fetch(url, { cache: "no-store" })).arrayBuffer());
+    const font = await get("./vendor/dejavu-fonts-ttf-2.37/DejaVuSans.ttf");
+    const lib = await get("./vendor/opentype.js-2.0.0/opentype.mjs");
+    const sha256Hex = async (bytes) => toHex(new Uint8Array(await crypto.subtle.digest("SHA-256", bytes)));
+    const r = await runMatrix(MATRIX, { ot, fontBytes: font.buffer, opentypeBytes: lib, sha256Hex });
+    const output = { environment: { runtime: env, userAgent: navigator.userAgent, hash: "WebCrypto crypto.subtle.digest", secureContext: window.isSecureContext }, ...r };
+    $("engine").textContent = r.engine;
+    $("count").textContent = r.count;
+    $("matrix").textContent = r.matrixSha256;
+    $("global").textContent = r.globalSha256;
+    $("font").textContent = r.artefacts.fontSha256;
+    $("lib").textContent = r.artefacts.opentypeSha256;
+    $("out").value = JSON.stringify({ ...output, results: `[${r.results.length} résultats envoyés]` }, null, 2);
+    $("status").textContent = "Terminé.";
+    await send(output);
+  } catch (e) {
+    $("status").textContent = "ERREUR : " + e.message;
+    await send({ environment: { runtime: env, userAgent: navigator.userAgent }, error: e.message });
+  }
+</script>
+</body>
+</html>

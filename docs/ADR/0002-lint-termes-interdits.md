@@ -56,6 +56,12 @@ Les quatre documents préparatoires sont classés **explicitement, fichier par f
 
 Motif : documents produit / techniques rédigés, ne relevant ni de l'audit du backoffice ni de l'historique. Le classement le plus contrôlé est retenu. **À CONFIRMER** avec AC-2.
 
+### Avenant — préparation SP-2 (spike expérimental de géométrie textuelle)
+
+Les 20 fichiers de `spikes/determinisme-sp2/` sont classés **explicitement, fichier par fichier**, dans la zone **existante** stricte produit. La liste figure dans `spikes/determinisme-sp2/PROTOCOLE-SP2.md` §8. Aucune nouvelle zone, aucune exclusion, aucun glob générique de spike.
+- Les fichiers tiers vendorisés (opentype.js 2.0.0, DejaVu Sans 2.37, licences) ont été contrôlés : aucun motif interdit. La police binaire n'est pas analysée par le lint (contenu binaire ignoré).
+- Mesure technique provisoire, **À CONFIRMER** (AC-2, AN-6). L'emplacement SP-1 ne vaut pas règle générale.
+
 ## Conséquences
 
 - Le lint bloque la CI en cas de terme interdit, de fichier non classé, de double classement, ou d'activation implicite de la Shared Core.

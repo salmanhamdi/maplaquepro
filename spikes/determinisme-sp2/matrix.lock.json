@@ -1,0 +1,2160 @@
+{
+  "statut": "GELÉE — toute modification exige un arbitrage Supervisor",
+  "engine": "sp2-text-geometry-0.1.0",
+  "normalization": "EXPERIMENTAL_NORM_V1",
+  "count": 60,
+  "matrixSha256": "86ad5374925a50bb84bf56a16dc8f18bcb8e3a8bdd94c3d4c0c9d370bd6a07d1",
+  "configurations": [
+    {
+      "id": "SP2-F1-01",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004D",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0069",
+          "U+006E"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004D",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0069",
+          "U+006E"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-02",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0044",
+          "U+0055",
+          "U+0050",
+          "U+004F",
+          "U+004E",
+          "U+0054"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0044",
+          "U+0055",
+          "U+0050",
+          "U+004F",
+          "U+004E",
+          "U+0054"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-03",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": false,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0031",
+          "U+0032"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0031",
+          "U+0032"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-04",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0046",
+          "U+0061",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+0042",
+          "U+0065",
+          "U+0072",
+          "U+006E",
+          "U+0061",
+          "U+0072",
+          "U+0064"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0046",
+          "U+0061",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+0042",
+          "U+0065",
+          "U+0072",
+          "U+006E",
+          "U+0061",
+          "U+0072",
+          "U+0064"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-05",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+0037"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+0037"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-06",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+0044",
+          "U+0045",
+          "U+0046",
+          "U+0047",
+          "U+0048",
+          "U+0049",
+          "U+004A",
+          "U+004B",
+          "U+004C",
+          "U+004D"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+0042",
+          "U+0043",
+          "U+0044",
+          "U+0045",
+          "U+0046",
+          "U+0047",
+          "U+0048",
+          "U+0049",
+          "U+004A",
+          "U+004B",
+          "U+004C",
+          "U+004D"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-07",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+006E",
+          "U+006F",
+          "U+0070",
+          "U+0071",
+          "U+0072",
+          "U+0073",
+          "U+0074",
+          "U+0075",
+          "U+0076",
+          "U+0077",
+          "U+0078",
+          "U+0079",
+          "U+007A"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+006E",
+          "U+006F",
+          "U+0070",
+          "U+0071",
+          "U+0072",
+          "U+0073",
+          "U+0074",
+          "U+0075",
+          "U+0076",
+          "U+0077",
+          "U+0078",
+          "U+0079",
+          "U+007A"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-08",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": false,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0030",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035",
+          "U+0036",
+          "U+0037",
+          "U+0038",
+          "U+0039"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0030",
+          "U+0031",
+          "U+0032",
+          "U+0033",
+          "U+0034",
+          "U+0035",
+          "U+0036",
+          "U+0037",
+          "U+0038",
+          "U+0039"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-09",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004A",
+          "U+0065",
+          "U+0061",
+          "U+006E",
+          "U+0020",
+          "U+0044",
+          "U+0075",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+0064"
+        ],
+        [
+          "U+0034",
+          "U+0032"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004A",
+          "U+0065",
+          "U+0061",
+          "U+006E",
+          "U+0020",
+          "U+0044",
+          "U+0075",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+0064"
+        ],
+        [
+          "U+0034",
+          "U+0032"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F1-10",
+      "family": "F1",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+0070",
+          "U+0070",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0065",
+          "U+006D",
+          "U+0065",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0033",
+          "U+0042"
+        ],
+        [
+          "U+0042",
+          "U+0061",
+          "U+0074",
+          "U+0069",
+          "U+006D",
+          "U+0065",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0043"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+0070",
+          "U+0070",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0065",
+          "U+006D",
+          "U+0065",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0033",
+          "U+0042"
+        ],
+        [
+          "U+0042",
+          "U+0061",
+          "U+0074",
+          "U+0069",
+          "U+006D",
+          "U+0065",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0043"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-01",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+0056",
+          "U+0041"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+0056",
+          "U+0041"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-02",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0054",
+          "U+006F"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0054",
+          "U+006F"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-03",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0057",
+          "U+0061"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0057",
+          "U+0061"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-04",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004C",
+          "U+0054",
+          "U+0041"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004C",
+          "U+0054",
+          "U+0041"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-05",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0059",
+          "U+006F"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0059",
+          "U+006F"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-06",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0054",
+          "U+0065",
+          "U+0061"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0054",
+          "U+0065",
+          "U+0061"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-07",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0056",
+          "U+0041",
+          "U+0056"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0056",
+          "U+0041",
+          "U+0056"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-08",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0050",
+          "U+002E"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0050",
+          "U+002E"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-09",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0072",
+          "U+002E"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0072",
+          "U+002E"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F2-10",
+      "family": "F2",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+0056",
+          "U+0041",
+          "U+0054"
+        ],
+        [
+          "U+0054",
+          "U+006F",
+          "U+0075",
+          "U+0072"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+0056",
+          "U+0041",
+          "U+0054"
+        ],
+        [
+          "U+0054",
+          "U+006F",
+          "U+0075",
+          "U+0072"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-01",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0048",
+          "U+00E9",
+          "U+006C",
+          "U+00E8",
+          "U+006E",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0048",
+          "U+00E9",
+          "U+006C",
+          "U+00E8",
+          "U+006E",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-02",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0046",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+00E7",
+          "U+006F",
+          "U+0069",
+          "U+0073"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0046",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+00E7",
+          "U+006F",
+          "U+0069",
+          "U+0073"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-03",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+00EB",
+          "U+006C"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+00EB",
+          "U+006C"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-04",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0043",
+          "U+0068",
+          "U+006C",
+          "U+006F",
+          "U+00E9",
+          "U+0020",
+          "U+004C",
+          "U+0065",
+          "U+0066",
+          "U+00E8",
+          "U+0076",
+          "U+0072",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0043",
+          "U+0068",
+          "U+006C",
+          "U+006F",
+          "U+00E9",
+          "U+0020",
+          "U+004C",
+          "U+0065",
+          "U+0066",
+          "U+00E8",
+          "U+0076",
+          "U+0072",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-05",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0152",
+          "U+0075",
+          "U+0076",
+          "U+0072",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0152",
+          "U+0075",
+          "U+0076",
+          "U+0072",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-06",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0043",
+          "U+0153",
+          "U+0075",
+          "U+0072"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0043",
+          "U+0153",
+          "U+0075",
+          "U+0072"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-07",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00CE",
+          "U+006C",
+          "U+0065",
+          "U+002D",
+          "U+0064",
+          "U+0065",
+          "U+002D",
+          "U+0046",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+0063",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00CE",
+          "U+006C",
+          "U+0065",
+          "U+002D",
+          "U+0064",
+          "U+0065",
+          "U+002D",
+          "U+0046",
+          "U+0072",
+          "U+0061",
+          "U+006E",
+          "U+0063",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-08",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00C9",
+          "U+0043",
+          "U+004F",
+          "U+004C",
+          "U+0045"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00C9",
+          "U+0043",
+          "U+004F",
+          "U+004C",
+          "U+0045"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-09",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00E0",
+          "U+0020",
+          "U+0063",
+          "U+00F4",
+          "U+0074",
+          "U+00E9"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00E0",
+          "U+0020",
+          "U+0063",
+          "U+00F4",
+          "U+0074",
+          "U+00E9"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F3-10",
+      "family": "F3",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0047",
+          "U+0061",
+          "U+00EB",
+          "U+006C",
+          "U+006C",
+          "U+0065"
+        ],
+        [
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+00C9",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+005A",
+          "U+006F",
+          "U+006C",
+          "U+0061"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0047",
+          "U+0061",
+          "U+00EB",
+          "U+006C",
+          "U+006C",
+          "U+0065"
+        ],
+        [
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+00C9",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+005A",
+          "U+006F",
+          "U+006C",
+          "U+0061"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-01",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0065",
+          "U+0301",
+          "U+0074",
+          "U+0065",
+          "U+0301"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00E9",
+          "U+0074",
+          "U+00E9"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-02",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+030A",
+          "U+006E",
+          "U+0067",
+          "U+0073",
+          "U+0074",
+          "U+0072",
+          "U+00F6",
+          "U+006D"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00C5",
+          "U+006E",
+          "U+0067",
+          "U+0073",
+          "U+0074",
+          "U+0072",
+          "U+00F6",
+          "U+006D"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-03",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0020",
+          "U+0020",
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+0020",
+          "U+0020",
+          "U+0064",
+          "U+0065",
+          "U+0020",
+          "U+0020",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+0020",
+          "U+0020",
+          "U+0050",
+          "U+0061",
+          "U+0069",
+          "U+0078",
+          "U+0020",
+          "U+0020"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+0064",
+          "U+0065",
+          "U+0020",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+0050",
+          "U+0061",
+          "U+0069",
+          "U+0078"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-04",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+006D",
+          "U+0009",
+          "U+0050",
+          "U+0072",
+          "U+00E9",
+          "U+006E",
+          "U+006F",
+          "U+006D"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+006D",
+          "U+0050",
+          "U+0072",
+          "U+00E9",
+          "U+006E",
+          "U+006F",
+          "U+006D"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-05",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0063",
+          "U+0327",
+          "U+0061"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00E7",
+          "U+0061"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-06",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004F",
+          "U+0308",
+          "U+007A",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00D6",
+          "U+007A",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-07",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00A0",
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+00A0",
+          "U+0052",
+          "U+006F",
+          "U+0073",
+          "U+0065",
+          "U+00A0"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00A0",
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+00A0",
+          "U+0052",
+          "U+006F",
+          "U+0073",
+          "U+0065",
+          "U+00A0"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-08",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0048",
+          "U+0065",
+          "U+006C",
+          "U+0065",
+          "U+0300",
+          "U+006E",
+          "U+0065"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0048",
+          "U+0065",
+          "U+006C",
+          "U+00E8",
+          "U+006E",
+          "U+0065"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-09",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004E",
+          "U+0069",
+          "U+006E",
+          "U+0303",
+          "U+006F"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004E",
+          "U+0069",
+          "U+00F1",
+          "U+006F"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F4-10",
+      "family": "F4",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0020",
+          "U+0020",
+          "U+004D",
+          "U+002E",
+          "U+0020",
+          "U+0065",
+          "U+0074",
+          "U+0020",
+          "U+004D",
+          "U+006D",
+          "U+0065",
+          "U+0020",
+          "U+0020"
+        ],
+        [
+          "U+0020",
+          "U+0020",
+          "U+004D",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0069",
+          "U+006E",
+          "U+0020",
+          "U+0020"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004D",
+          "U+002E",
+          "U+0020",
+          "U+0065",
+          "U+0074",
+          "U+0020",
+          "U+004D",
+          "U+006D",
+          "U+0065"
+        ],
+        [
+          "U+004D",
+          "U+0061",
+          "U+0072",
+          "U+0074",
+          "U+0069",
+          "U+006E"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-01",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004C",
+          "U+2019",
+          "U+0041",
+          "U+0074",
+          "U+0065",
+          "U+006C",
+          "U+0069",
+          "U+0065",
+          "U+0072"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004C",
+          "U+2019",
+          "U+0041",
+          "U+0074",
+          "U+0065",
+          "U+006C",
+          "U+0069",
+          "U+0065",
+          "U+0072"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-02",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00AB",
+          "U+0020",
+          "U+0042",
+          "U+0069",
+          "U+0065",
+          "U+006E",
+          "U+0076",
+          "U+0065",
+          "U+006E",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+00BB"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00AB",
+          "U+0020",
+          "U+0042",
+          "U+0069",
+          "U+0065",
+          "U+006E",
+          "U+0076",
+          "U+0065",
+          "U+006E",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+00BB"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-03",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0031",
+          "U+0032",
+          "U+0020",
+          "U+2013",
+          "U+0020",
+          "U+0031",
+          "U+0034"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0031",
+          "U+0032",
+          "U+0020",
+          "U+2013",
+          "U+0020",
+          "U+0031",
+          "U+0034"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-04",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0044",
+          "U+0075",
+          "U+0070",
+          "U+006F",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0026",
+          "U+0020",
+          "U+0046",
+          "U+0069",
+          "U+006C",
+          "U+0073"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0044",
+          "U+0075",
+          "U+0070",
+          "U+006F",
+          "U+006E",
+          "U+0074",
+          "U+0020",
+          "U+0026",
+          "U+0020",
+          "U+0046",
+          "U+0069",
+          "U+006C",
+          "U+0073"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-05",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0063",
+          "U+006F",
+          "U+006E",
+          "U+0074",
+          "U+0061",
+          "U+0063",
+          "U+0074",
+          "U+0040",
+          "U+0065",
+          "U+0078",
+          "U+0065",
+          "U+006D",
+          "U+0070",
+          "U+006C",
+          "U+0065",
+          "U+002E",
+          "U+0066",
+          "U+0072"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0063",
+          "U+006F",
+          "U+006E",
+          "U+0074",
+          "U+0061",
+          "U+0063",
+          "U+0074",
+          "U+0040",
+          "U+0065",
+          "U+0078",
+          "U+0065",
+          "U+006D",
+          "U+0070",
+          "U+006C",
+          "U+0065",
+          "U+002E",
+          "U+0066",
+          "U+0072"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-06",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004E",
+          "U+00B0",
+          "U+0020",
+          "U+0035"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004E",
+          "U+00B0",
+          "U+0020",
+          "U+0035"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-07",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+0068",
+          "U+2026"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+0068",
+          "U+2026"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-08",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+2014",
+          "U+0020",
+          "U+0050",
+          "U+0072",
+          "U+0069",
+          "U+0076",
+          "U+00E9",
+          "U+0020",
+          "U+2014"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+2014",
+          "U+0020",
+          "U+0050",
+          "U+0072",
+          "U+0069",
+          "U+0076",
+          "U+00E9",
+          "U+0020",
+          "U+2014"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-09",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0028",
+          "U+0042",
+          "U+0075",
+          "U+0072",
+          "U+0065",
+          "U+0061",
+          "U+0075",
+          "U+0029",
+          "U+0020",
+          "U+003B",
+          "U+0020",
+          "U+005B",
+          "U+0043",
+          "U+0061",
+          "U+0076",
+          "U+0065",
+          "U+005D",
+          "U+0020",
+          "U+0021"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0028",
+          "U+0042",
+          "U+0075",
+          "U+0072",
+          "U+0065",
+          "U+0061",
+          "U+0075",
+          "U+0029",
+          "U+0020",
+          "U+003B",
+          "U+0020",
+          "U+005B",
+          "U+0043",
+          "U+0061",
+          "U+0076",
+          "U+0065",
+          "U+005D",
+          "U+0020",
+          "U+0021"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F5-10",
+      "family": "F5",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+00AB",
+          "U+0020",
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+00BB"
+        ],
+        [
+          "U+004E",
+          "U+00B0",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0020",
+          "U+0062",
+          "U+0069",
+          "U+0073"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+00AB",
+          "U+0020",
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+00BB"
+        ],
+        [
+          "U+004E",
+          "U+00B0",
+          "U+0020",
+          "U+0031",
+          "U+0032",
+          "U+0020",
+          "U+0062",
+          "U+0069",
+          "U+0073"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-01",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 4,
+        "lineAdvanceMm": 4.8,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+6F22"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0056",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0061",
+          "U+0020",
+          "U+6F22"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-02",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 6,
+        "lineAdvanceMm": 7.2,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+E000"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+E000"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-03",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 8,
+        "lineAdvanceMm": 9.6,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+0F00"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0052",
+          "U+0075",
+          "U+0065",
+          "U+0020",
+          "U+0F00"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-04",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 10,
+        "lineAdvanceMm": 12,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+16A0",
+          "U+0020",
+          "U+004E",
+          "U+006F",
+          "U+0072",
+          "U+0064"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+16A0",
+          "U+0020",
+          "U+004E",
+          "U+006F",
+          "U+0072",
+          "U+0064"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-05",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 12.5,
+        "lineAdvanceMm": 15,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+1D504"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+1D504"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-06",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 15,
+        "lineAdvanceMm": 18,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0041",
+          "U+6F22",
+          "U+0042",
+          "U+E000",
+          "U+0043"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0041",
+          "U+6F22",
+          "U+0042",
+          "U+E000",
+          "U+0043"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-07",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 20,
+        "lineAdvanceMm": 24,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0046",
+          "U+0061",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+16A0",
+          "U+16A0"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0046",
+          "U+0061",
+          "U+006D",
+          "U+0069",
+          "U+006C",
+          "U+006C",
+          "U+0065",
+          "U+0020",
+          "U+16A0",
+          "U+16A0"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-08",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 25,
+        "lineAdvanceMm": 30,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+0F00",
+          "U+0020",
+          "U+0031",
+          "U+0032"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+0F00",
+          "U+0020",
+          "U+0031",
+          "U+0032"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-09",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 7.5,
+        "lineAdvanceMm": 9,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+006D",
+          "U+0020",
+          "U+1D504",
+          "U+0020",
+          "U+0050",
+          "U+0072",
+          "U+00E9",
+          "U+006E",
+          "U+006F",
+          "U+006D"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004E",
+          "U+006F",
+          "U+006D",
+          "U+0020",
+          "U+1D504",
+          "U+0020",
+          "U+0050",
+          "U+0072",
+          "U+00E9",
+          "U+006E",
+          "U+006F",
+          "U+006D"
+        ]
+      ]
+    },
+    {
+      "id": "SP2-F6-10",
+      "family": "F6",
+      "params": {
+        "fontSizeMm": 33.3333,
+        "lineAdvanceMm": 40,
+        "originXMm": 0,
+        "kerning": true,
+        "kerningScript": "latn"
+      },
+      "codePoints": [
+        [
+          "U+004C",
+          "U+0069",
+          "U+0067",
+          "U+006E",
+          "U+0065",
+          "U+0020",
+          "U+0031"
+        ],
+        [
+          "U+6F22",
+          "U+0020",
+          "U+004C",
+          "U+0069",
+          "U+0067",
+          "U+006E",
+          "U+0065",
+          "U+0020",
+          "U+0032"
+        ]
+      ],
+      "normalizedCodePoints": [
+        [
+          "U+004C",
+          "U+0069",
+          "U+0067",
+          "U+006E",
+          "U+0065",
+          "U+0020",
+          "U+0031"
+        ],
+        [
+          "U+6F22",
+          "U+0020",
+          "U+004C",
+          "U+0069",
+          "U+0067",
+          "U+006E",
+          "U+0065",
+          "U+0020",
+          "U+0032"
+        ]
+      ]
+    }
+  ]
+}

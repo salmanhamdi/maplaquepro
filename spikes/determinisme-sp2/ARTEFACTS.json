@@ -1,0 +1,43 @@
+{
+  "statut": "FIXTURES EXPÉRIMENTALES — NON NORMATIVES — fichiers non modifiés",
+  "dateObtention": "2026-09-14",
+  "opentype": {
+    "nom": "opentype.js",
+    "version": "2.0.0",
+    "role": "instrument expérimental SP-2 (A2-02) — pas une décision d'architecture produit",
+    "licence": "MIT (champ license du package.json ; texte : vendor/opentype.js-2.0.0/LICENSE)",
+    "source": "https://registry.npmjs.org/opentype.js/-/opentype.js-2.0.0.tgz",
+    "obtention": "npm pack opentype.js@2.0.0 (registre npm officiel), sans installation dans le projet",
+    "archive": {
+      "fichier": "opentype.js-2.0.0.tgz",
+      "integrityNpm": "sha512-kCyjv6xdDY1W/jLWZ/L3QhhTlKUqDZMQ5+Jdlw12b3dXkKNpYBqqlMMj0YDQPShWFTMwgZI1hG14kN3XUDSg/A==",
+      "sha512RecalculeLocal": "kCyjv6xdDY1W/jLWZ/L3QhhTlKUqDZMQ5+Jdlw12b3dXkKNpYBqqlMMj0YDQPShWFTMwgZI1hG14kN3XUDSg/A==",
+      "shasumNpm": "b87fcec8107075aabb6f50fe5e6bb4d8db6c8c7d",
+      "sha256": "ce143186092cc57dc8238288611cad7b383076b581d8a85f99f8f163b780c7ad",
+      "preuveIntegrite": "SHA-512 recalculé localement identique à dist.integrity publié par le registre npm"
+    },
+    "files": {
+      "opentype.mjs": { "cheminArchive": "package/dist/opentype.mjs", "chemin": "vendor/opentype.js-2.0.0/opentype.mjs", "sha256": "e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb" },
+      "LICENSE": { "cheminArchive": "package/LICENSE", "chemin": "vendor/opentype.js-2.0.0/LICENSE", "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61" }
+    }
+  },
+  "dejavu": {
+    "nom": "DejaVu Sans — Regular",
+    "version": "2.37 (table name : « Version 2.37 », famille « DejaVu Sans »)",
+    "role": "fixture expérimentale SP-2 (SP2-03) — pas une police commerciale ; ne ferme pas VR-08",
+    "licence": "Bitstream Vera Fonts Copyright + modifications DejaVu dans le domaine public + glyphes Arev (texte : vendor/dejavu-fonts-ttf-2.37/LICENSE) ; redistribution avec mentions ; fichier non modifié",
+    "source": "https://github.com/dejavu-fonts/dejavu-fonts/releases/download/version_2_37/dejavu-fonts-ttf-2.37.zip",
+    "release": "https://github.com/dejavu-fonts/dejavu-fonts/releases/tag/version_2_37 (publiée le 2016-07-30)",
+    "archive": {
+      "fichier": "dejavu-fonts-ttf-2.37.zip",
+      "taille": 5522795,
+      "sha256": "7576310b219e04159d35ff61dd4a4ec4cdba4f35c00e002a136f00e96a908b0a",
+      "preuveIntegrite": "Téléchargement HTTPS depuis la release GitHub officielle ; taille identique à celle publiée par l'API GitHub (5522795 octets). Aucune empreinte amont n'est publiée par la release : l'intégrité amont n'est donc attestée que par la source et la taille."
+    },
+    "files": {
+      "DejaVuSans.ttf": { "cheminArchive": "dejavu-fonts-ttf-2.37/ttf/DejaVuSans.ttf", "chemin": "vendor/dejavu-fonts-ttf-2.37/DejaVuSans.ttf", "sha256": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954" },
+      "LICENSE": { "cheminArchive": "dejavu-fonts-ttf-2.37/LICENSE", "chemin": "vendor/dejavu-fonts-ttf-2.37/LICENSE", "sha256": "7a083b136e64d064794c3419751e5c7dd10d2f64c108fe5ba161eae5e5958a93" }
+    }
+  },
+  "git": "spikes/determinisme-sp2/.gitattributes (* -text) : aucune conversion de fin de ligne, octets servis identiques aux octets téléchargés"
+}
