@@ -44,11 +44,15 @@ export type Niveau = "bloquant" | "validation";
 
 export type Message = { id: string; champ: Champ; niveau: Niveau; titre: string; detail: string };
 
+/** Aperçu serveur (T4-a) : rendu de la géométrie canonique, uniquement pour une configuration fabricable. */
+export type ApercuServeur = { etat: "disponible"; svg: string } | { etat: "indisponible" } | { etat: "non_applicable" };
+
 export type Verdict = {
   statut: "fabricable" | "bloque" | "en_validation";
   messages: Message[];
   alternatives: Alternative[];
   texteModifie: boolean;
+  apercu: ApercuServeur;
 };
 
 /** Nombre saisi en mm (virgule ou point) ; null si vide ou non numérique. Aucune valeur n'est arrondie. */

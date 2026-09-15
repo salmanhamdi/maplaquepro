@@ -137,6 +137,11 @@ export function Configurateur() {
   };
   const erreurDimensions = etats.dimensions === "a_corriger";
 
+  // Aperçu serveur (T4-a) : affiché uniquement pour une configuration déclarée fabricable par le moteur.
+  const apercuVerdict = saisie.length === 0 && verdict?.statut === "fabricable" ? verdict.apercu : null;
+  const svgServeur = apercuVerdict?.etat === "disponible" ? apercuVerdict.svg : null;
+  const apercuIndisponible = apercuVerdict?.etat === "indisponible";
+
   const libelleDimensions = largeur && hauteur ? `${fmt(largeur)} × ${fmt(hauteur)} mm` : "—";
   const titreApercu = `Aperçu : plaque ${NOMS_FAMILLES[etat.famille]} de ${fmt(dernieres.current.w)} × ${fmt(dernieres.current.h)} mm${texteSaisi ? `, texte « ${etat.lignes.join(" ")} »` : ""}${etat.trous ? `, ${etat.trous} trous` : ""}`;
 
@@ -149,13 +154,19 @@ export function Configurateur() {
         <section className="cfg-apercu" aria-label="Aperçu de votre plaque">
           <div className="cfg-scene">
             <div className="cfg-scene__plan" aria-hidden="true" />
-            <p className="cfg-scene__repere mono" aria-hidden="true">
-              APERÇU INDICATIF
+            <p className={`cfg-scene__repere mono ${svgServeur ? "is-serveur" : ""}`}>
+              {svgServeur ? "Aperçu indicatif · rendu serveur" : apercuIndisponible ? "Aperçu indicatif indisponible · illustration" : "Illustration"}
             </p>
             <div className={`cfg-scene__statut cfg-scene__statut--${statut}`} aria-hidden="true">
               <span className="cfg-scene__point" />
               {TEXTES_STATUT[statut].titre}
             </div>
+            {svgServeur ? (
+              <div className={`cfg-scene__plaque cfg-scene__plaque--serveur ${verification ? "is-maj" : ""}`}>
+                {/* Rendu calculé par le serveur à partir de la géométrie canonique : affiché comme image, jamais redessiné ici */}
+                <img className="cfg-scene__serveur" src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgServeur)}`} alt={`Aperçu indicatif calculé par le serveur : ${titreApercu.replace(/^Aperçu : /, "")}`} />
+              </div>
+            ) : (
             <div className="cfg-scene__plaque" key={etat.famille}>
               <PlaqueVisuel
                 matiere={etat.famille}
@@ -170,6 +181,7 @@ export function Configurateur() {
                 titre={titreApercu}
               />
             </div>
+            )}
           </div>
           <dl className="cfg-fiche">
             <div>
@@ -185,7 +197,13 @@ export function Configurateur() {
               <dd className="mono">{libelleDimensions}</dd>
             </div>
           </dl>
-          <p className="cfg-apercu__note">Rendu d&apos;illustration. Le BAT présentera le rendu exact avant fabrication.</p>
+          <p className="cfg-apercu__note">
+            {svgServeur
+              ? "Aperçu indicatif calculé par notre moteur à partir de la géométrie de fabrication. Ce n'est pas un BAT : le texte et les visuels n'y figurent pas encore."
+              : apercuIndisponible
+                ? "Aperçu indicatif indisponible pour le moment : l'illustration est affichée à la place."
+                : "Illustration. L'aperçu indicatif calculé par le serveur s'affiche lorsque la configuration est fabricable."}
+          </p>
         </section>
 
         {/* ---------- Configuration ---------- */}

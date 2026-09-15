@@ -916,3 +916,46 @@ body:has(.cfg) .site-nav > .btn {
     grid-template-columns: 84px minmax(0, 1fr);
   }
 }
+
+/* ---------- Aperçu serveur (T4-a) ---------- */
+
+.cfg-scene__repere {
+  text-transform: uppercase;
+}
+.cfg-scene__repere.is-serveur {
+  color: var(--color-blue);
+}
+/* L'image serveur est contenue dans la zone utile de la scène (object-fit: contain), sans débordement. */
+.cfg-scene__plaque--serveur {
+  position: absolute;
+  inset: clamp(56px, 6vw, 88px) clamp(28px, 4vw, 64px) clamp(36px, 4vw, 56px);
+  width: auto;
+  height: auto;
+  animation: none;
+  transition: opacity 180ms var(--ease);
+}
+@media (max-width: 960px) {
+  .cfg-scene__plaque--serveur {
+    inset: 38px 16px 14px;
+  }
+}
+.cfg-scene__plaque--serveur.is-maj {
+  opacity: 0.55;
+}
+.cfg-scene__serveur {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 22px rgb(24 34 45 / 0.2)) drop-shadow(0 2px 3px rgb(24 34 45 / 0.12));
+}
+@media (max-width: 960px) {
+  .cfg-scene__repere {
+    max-width: 55%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
