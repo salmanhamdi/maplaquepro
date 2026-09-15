@@ -393,6 +393,9 @@ export function Configurateur() {
               <p className="cfg-note" aria-live="polite">
                 {suite ? "Configuration conforme. La préparation du BAT est la prochaine étape du parcours ; elle n'est pas encore disponible." : pret ? "Étape suivante : vérification du BAT." : "Disponible dès que la configuration est fabricable."}
               </p>
+              <a href="/bat-provisoire" className="cfg-lien cfg-exemple">
+                Voir un exemple de BAT provisoire
+              </a>
             </div>
           </section>
         </form>
