@@ -41,7 +41,7 @@ export function groupesMessages(messages: readonly Message[]): { aCorriger: Mess
 
 /** Ce qui se passe ensuite, selon le verdict du serveur. La préparation du BAT n'est ouverte dans aucun cas. */
 export const SUITE_VERIFICATION: Record<Verdict["statut"], string> = {
-  fabricable: "Votre plaque peut être fabriquée telle que décrite. La préparation du BAT sera la prochaine étape ; elle n'est pas encore ouverte.",
+  fabricable: "Votre plaque peut être fabriquée telle que décrite. Vous pouvez lancer la préparation du BAT : une étape technique, non contractuelle.",
   en_validation: "Rien à corriger de votre côté. Certains éléments attendent une validation de l'atelier : la préparation du BAT restera fermée jusque-là.",
   bloque: "Certains points empêchent la fabrication. Modifiez la configuration pour les corriger.",
 };

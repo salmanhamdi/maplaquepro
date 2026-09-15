@@ -66,7 +66,7 @@ describe("vérification — états issus du verdict serveur", () => {
   });
 
   it("suite annoncée : la préparation du BAT n'est ouverte dans aucun état", () => {
-    expect(SUITE_VERIFICATION.fabricable).toMatch(/pas encore ouverte/);
+    expect(SUITE_VERIFICATION.fabricable).toMatch(/préparation du BAT : une étape technique, non contractuelle/);
     expect(SUITE_VERIFICATION.en_validation).toMatch(/restera fermée/);
     expect(SUITE_VERIFICATION.bloque).toMatch(/Modifiez/);
   });
@@ -91,8 +91,9 @@ describe("vérification — parcours et frontières", () => {
     expect(client).not.toMatch(/from "@\/domain"/);
   });
 
-  it("aucun prix, commande, paiement ni BAT présenté comme existant ; « Préparer le BAT » toujours désactivé", () => {
+  it("aucun prix, commande, paiement ni BAT présenté comme existant ; « Préparer le BAT » ouvert uniquement si fabricable", () => {
     expect(client).not.toMatch(/€|\bTTC\b|\bHT\b|Stripe|checkout|panier|Commander|BAT validé|bon pour fabrication/i);
+    expect(client).toMatch(/verdict\?\.statut === "fabricable" \? \(\s*<Link href="\/configurateur\/preparation" className="btn btn--accent">\s*Préparer le BAT/);
     expect(client).toMatch(/<button type="button" className="btn btn--accent" disabled>\s*Préparer le BAT/);
     expect(client).toMatch(/Aperçu indicatif/);
     expect(client).toMatch(/Ce n'est pas un BAT/);

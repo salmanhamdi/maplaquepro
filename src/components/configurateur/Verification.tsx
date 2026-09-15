@@ -90,7 +90,7 @@ function Contenu({ etat }: { etat: EtatConfigurateur }) {
       ? "Corrigez la configuration pour poursuivre."
       : verdict.statut === "en_validation"
         ? "Disponible lorsque l'atelier aura terminé ses validations."
-        : "La préparation du BAT n'est pas encore ouverte.";
+        : "Préparation technique, non enregistrée et non contractuelle.";
 
   return (
     <div className="vrf">
@@ -209,9 +209,15 @@ function Contenu({ etat }: { etat: EtatConfigurateur }) {
               Modifier la configuration
             </Link>
             <div className="vrf-suite">
-              <button type="button" className="btn btn--accent" disabled>
-                Préparer le BAT
-              </button>
+              {verdict?.statut === "fabricable" ? (
+                <Link href="/configurateur/preparation" className="btn btn--accent">
+                  Préparer le BAT
+                </Link>
+              ) : (
+                <button type="button" className="btn btn--accent" disabled>
+                  Préparer le BAT
+                </button>
+              )}
               <p className="vrf-remarque" aria-live="polite">
                 {raisonBat}
               </p>

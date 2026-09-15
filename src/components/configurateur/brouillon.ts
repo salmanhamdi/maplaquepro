@@ -29,7 +29,13 @@ const schemaBrouillon = z.strictObject({
   etat: schemaEtat,
 });
 
-export type LectureBrouillon = { statut: "absent" } | { statut: "invalide" } | { statut: "restaure"; etat: EtatConfigurateur; enregistreLe: string };
+/** Garde de frontière : un état de saisie reçu (client, brouillon) n'est accepté que s'il respecte strictement le schéma. */
+export function lireEtatSaisie(valeur: unknown): EtatConfigurateur | null {
+  const r = schemaEtat.safeParse(valeur);
+  return r.success ? r.data : null;
+}
+
+export type LectureBrouillon ={ statut: "absent" } | { statut: "invalide" } | { statut: "restaure"; etat: EtatConfigurateur; enregistreLe: string };
 
 export function serialiserBrouillon(etat: EtatConfigurateur, maintenant: Date = new Date()): string {
   return JSON.stringify({ version: VERSION_BROUILLON, productId: PRODUIT_CONFIGURATEUR, enregistreLe: maintenant.toISOString(), etat });
