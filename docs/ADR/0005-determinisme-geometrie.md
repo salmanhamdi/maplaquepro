@@ -124,3 +124,36 @@ Arbitrage Supervisor consigné dans `docs/product/t1-contrats-bat.md`. Les parti
 | B-O1 | Inchangé : le mode exact de `roundMm` (demi-valeurs, négatifs) reste OPEN. |
 | B-O5, B-O6 | Inchangés (À VALIDER / OPEN) : objets du spike SP-3, sans décision. |
 | SP-3 | **Autorisé comme spike technique** (polices réelles, `TextGlyphPaths` déterministes, exigences VR-08). Il ne décide ni de la bibliothèque, ni de la police produit, ni des licences, ni des points VR-08 OPEN. |
+
+## F. Révision — verdict SP-3 et contrat texte
+
+Arbitrage Supervisor consigné dans `docs/product/contrat-texte.md`. Preuves : branche `spike/sp3-polices-reelles` @ `ca13261`. La séparation A / B est maintenue.
+
+### F.1 Constats expérimentaux SP-3 (partie A — non normatifs)
+
+| Élément | Valeur obtenue |
+|---|---|
+| Matrice | 105 configurations, 11 familles × 3 polices de fixture, `b9788fed50fa56299d09465925fd6116806f25d366c7298843a770ea47dde79b` |
+| Instruments | harfbuzzjs 1.6.1 ; opentype.js 2.0.0 (modes shaping et cmap) |
+| Fixtures | DejaVu Sans 2.37, Gentium Plus Regular, Libre Baskerville (variable, instance par défaut) |
+| Environnements | Node 24.18.0, Chrome 152, Edge 153 : exécutés ; Firefox et Safari iOS réel : **INCOMPLETE** |
+| Déterminisme | 315 / 315 par environnement ; 105 / 105 entre Node et Chrome, Node et Edge, pour chaque mode |
+| Shaping | harfbuzzjs 105 / 105 ; opentype.js shaping 34 / 105 (lookups non supportés) |
+| Géométrie entre moteurs | mêmes points, représentation différente (départ, segments nuls, fermeture) |
+| Domaine existant | sérialisation 244 / 244 identique ; géométrie canonique valide au schéma |
+| Règle 1 mm | tirets et traits d'union sous 1 mm à 8 et 10 mm nominaux |
+
+### F.2 Statut des règles produit (partie B)
+
+| ID | Statut après SP-3 |
+|---|---|
+| SP-3 | **PASS TECHNIQUE PARTIELLEMENT ENVIRONNÉ** |
+| B-O5 | **Arbitré** : HarfBuzz est le moteur de shaping de référence ; opentype.js n'est plus le moteur de shaping principal. Distribution et version de production : OPEN. |
+| B-O6 | **Partiellement arbitré** : fonctionnalités garanties `ccmp`, `liga`, `kern`, `mark`, `mkmk` ; aucune dégradation silencieuse. Traitement d'une fonctionnalité absente d'une police : OPEN. |
+| B-O4 | **Partiellement arbitré** : `TextGlyphPaths` fondé sur des clusters logiques (plusieurs caractères source, un ou plusieurs glyphes), traçabilité préservée ; structure définitive OPEN. |
+| B-O3 | Précisé : principe de `fontHash` (identité normalisée de la fonte utilisée, sans métadonnées volatiles, avec instance variable, sans moteur) ; payload OPEN. |
+| B-O8 | Précisé : texte original → NFC → shaping → clusters → glyphes → contours ; original traçable. |
+| B-O9 | Constat : l'application naïve de 1 mm à chaque glyphe n'est pas acceptable ; S3 reste OPEN. |
+| B-O7, B-O1, B-O11 | Inchangés. |
+| B-D1, B-D8 | Inchangés : aucune preuve Firefox ni Safari iOS réel ; le spike n'est pas une preuve des 5 environnements. |
+| B-D7 | Étendu : DejaVu Sans, Gentium Plus et Libre Baskerville ne sont pas des polices produit. |

@@ -24,7 +24,7 @@ evaluateFabricability → resolveSpec → buildCanonicalGeometry → construireA
 | B2 | Version tarifaire | `src/domain/bat-brouillon.ts` · `buildBatDraft` (`pricingVersion: aValider()`) | Toujours À VALIDER | Tout BAT | VR-07 |
 | B3 | Expiration commerciale | `src/domain/bat.ts` · `validateBat(bat, at, { clientInscrit })` ; `cycle-vie-bat.ts` | Arbitrée ; calculée à la validation avec contexte (brouillon toujours À VALIDER) ; appelants serveur non branchés | Tout BAT | G2-D12 (`docs/product/g2-d12-cycle-vie-bat.md`) |
 | B4 | Version des règles de design | `bat-brouillon.ts` (`designRulesVersion: aValider()`) | Toujours À VALIDER | Tout BAT | VR-08 |
-| B5 | Texte | Voir détail B5 | — | BAT avec texte | VR-08, SP-3 |
+| B5 | Texte | Voir détail B5 | SP-3 PASS technique partiellement environné ; contrat texte préparé, non implémenté | BAT avec texte | VR-08 (S1, S2, S3, A7), `contrat-texte.md`, `plan-moteur-texte.md` |
 | B6 | Contrat laser | `src/domain/referentiels.ts` · `CONTRACT_IDS` ; `bat.ts` · `CONTRACT_STATUS_MISSING` | Aucun statut au catalogue (`productionContracts: []`) | Tout BAT | VR-20, VR-42, GATE 4 |
 | B7 | Contrat UV | `src/domain/production.ts` · `planArtifacts` (`status: "contract_pending"`) | En attente | Plexiglass, TroGlass | VR-33, VR-42, GATE 4 |
 | B8 | Hybride TroGlass | `src/domain/artefacts-bat.ts` · `construireArtefacts` (`registration: A_VALIDER`) | Calage À VALIDER ; convention envers | TroGlass | VR-33, VR-35, VR-42, GATE 4 |
@@ -41,6 +41,7 @@ evaluateFabricability → resolveSpec → buildCanonicalGeometry → construireA
   - `fabricabilite.ts` : police et glyphes non validés (`design.text.fontId`), tracés non fournis (`design.text.effectiveFontSizeMm`, SP-3), trait minimal non mesuré (`design.text.traits`).
   - `bat-brouillon.ts` : bloc texte refusé.
   - `bat.ts` : `text` exige `fontHash` et `effectiveFontSizeMm`.
+  - Contrat (`contrat-texte.md`) : HarfBuzz moteur de shaping de référence, fonctionnalités garanties, clusters, principe `fontHash`, pipeline NFC ; canonicalisation des contours, payload `fontHash` et règle S3 à l'état de proposition.
 - **B10 Références réelles :** références `Démonstration`, `DEMO-*`, une épaisseur par famille. Règles de dimensions SANS OBJET, aucun prix, aucun format.
 
 ## 3. Propagation des paramètres de perçage
