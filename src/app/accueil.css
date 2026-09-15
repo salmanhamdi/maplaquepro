@@ -362,13 +362,24 @@
   margin: 0;
 }
 .mesure {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
   align-items: baseline;
   gap: 8px 24px;
   padding-block: 22px;
   border-top: 1px solid rgb(251 250 247 / 0.18);
+}
+.mesure dd {
+  justify-self: end;
+  white-space: nowrap;
+}
+@media (max-width: 520px) {
+  .mesure {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .mesure dd {
+    justify-self: start;
+  }
 }
 .mesure:last-child {
   border-bottom: 1px solid rgb(251 250 247 / 0.18);

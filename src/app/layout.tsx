@@ -9,7 +9,7 @@ const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space
 const jetbrainsMono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono", display: "swap", weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: { default: "MaPlaquePro — Plaques personnalisées, gravées et imprimées sur mesure", template: "%s — MaPlaquePro" },
+  title: { default: "MaPlaquePro — Plaques personnalisées, gravées et imprimées", template: "%s — MaPlaquePro" },
   description:
     "Composez votre plaque personnalisée, visualisez-la à l'échelle et validez le BAT avant fabrication. Gravure laser et impression UV, dans notre atelier.",
   icons: { icon: "/brand/maplaquepro.svg" },

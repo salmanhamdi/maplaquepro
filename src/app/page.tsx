@@ -65,7 +65,7 @@ export default function HomePage() {
       <section className="hero" aria-labelledby="hero-titre">
         <div className="container hero__grid">
           <div className="hero__texte">
-            <p className="eyebrow">Plaques personnalisées · Sur mesure</p>
+            <p className="eyebrow">Plaques personnalisées · Gravure &amp; impression</p>
             <h1 id="hero-titre" className="hero__titre">
               Votre plaque,
               <br />
@@ -135,7 +135,7 @@ export default function HomePage() {
                   <p className="matiere__procede">{m.procede}</p>
                   <p className="matiere__description">{m.description}</p>
                   <p className="matiere__dimensions">
-                    <span className="mono">DIMENSIONS</span>
+                    <span className="mono">LIMITES ATELIER</span>
                     <span className="mono">{m.dimensions}</span>
                   </p>
                 </div>
@@ -179,24 +179,24 @@ export default function HomePage() {
               a ses limites.
             </h2>
             <p className="precision__message">
-              Voici les dimensions que notre atelier sait fabriquer pour chaque type de plaque. Les matières et formats ouverts à la commande sont indiqués dans le configurateur.
+              Ce sont les limites de fabrication de notre atelier, matière par matière. Elles ne constituent pas une offre de formats : le sur mesure en TroLase et TroLase Metallic n&apos;est pas encore ouvert à la commande. Le configurateur indique ce qui l&apos;est.
             </p>
           </div>
           <dl className="mesures">
             <div className="mesure">
-              <dt className="mono">Plus petite plaque</dt>
+              <dt className="mono">Toutes matières, à partir de</dt>
               <dd>
                 10 <span>×</span> 10 <small>mm</small>
               </dd>
             </div>
             <div className="mesure">
-              <dt className="mono">Plaques gravées, jusqu&apos;à</dt>
+              <dt className="mono">TroLase · TroLase Metallic, jusqu&apos;à</dt>
               <dd>
                 594 <span>×</span> 294 <small>mm</small>
               </dd>
             </div>
             <div className="mesure">
-              <dt className="mono">Plaques imprimées, jusqu&apos;à</dt>
+              <dt className="mono">Plexiglass · TroGlass Metallic, jusqu&apos;à</dt>
               <dd>
                 347 <span>×</span> 490 <small>mm</small>
               </dd>

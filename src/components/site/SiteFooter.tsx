@@ -7,7 +7,7 @@ export function SiteFooter() {
         <div className="site-footer__grid">
           <div className="site-footer__brand">
             <img src="/brand/maplaquepro.svg" alt="MaPlaquePro" width={53} height={48} />
-            <p>Plaques personnalisées, gravées et imprimées sur mesure. Chaque plaque est fabriquée d&apos;après le BAT que vous avez validé.</p>
+            <p>Plaques personnalisées, gravées et imprimées dans notre atelier. Chaque plaque est fabriquée d&apos;après le BAT que vous avez validé.</p>
           </div>
           <div>
             <h2>Produit</h2>
