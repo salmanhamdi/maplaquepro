@@ -70,6 +70,7 @@ catalogue (mountingRules, À VALIDER)
 | Brouillon, checkout, commande payée, orphelin, fabrication | `cycle-vie-bat.ts` · `CycleVieBat`, `actionDue` (moteur pur) | Arbitrés (G2-D12, régularisation R1 → R4) ; aucune persistance ni purge exécutée |
 | Rétention RGPD de l'artwork | Aucun champ ; Master Plan §9.6 / §25 | Non représentée (VR-29) |
 | Avoirs | `avoirs.ts` (domaine pur) | Arbitrés (G2-D12) ; non persistés |
+| Conventions temporelles | `temps.ts` : échéance à l'instant exact, UTC, années calendaires (29 février ⇒ 28 février) | Arbitrées, normatives (G2-D12, verrouillage final) |
 
 Détail des décisions, dépendances absentes et écarts avec le Master Plan : `docs/product/g2-d12-cycle-vie-bat.md`.
 

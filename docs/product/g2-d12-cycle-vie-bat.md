@@ -53,10 +53,14 @@ Le Master Plan v1.6 n'est pas modifié ; les écarts sont listés au §6 pour ar
 
 Le moteur **décide** ; il n'exécute ni suppression, ni persistance, ni paiement. Les états sont immuables (aucune mutation implicite).
 
-## 3. Conventions techniques appliquées (à confirmer)
-- Une échéance est atteinte à l'instant exact qui l'égale (événement à l'échéance ⇒ échu).
-- Horodatages UTC ISO 8601 (`Z`) ; jours = 24 h exactes ; années calendaires calculées en UTC.
-- 29 février sans équivalent l'année cible ⇒ 28 février (dernier jour du mois).
+## 3. Conventions temporelles — décisions normatives (verrouillage final du Supervisor)
+| # | Décision | Implémentation |
+|---|---|---|
+| C1 | **Échéance** : une échéance est atteinte à l'instant exact qui l'égale (1 ms avant : non atteinte). Un événement à l'échéance est échu. | `temps.ts` · `echeanceAtteinte` (`>=`) |
+| C2 | **Temps** : tous les calculs et comparaisons du domaine utilisent UTC. Horodatages UTC ISO 8601 (suffixe `Z`) uniquement ; les jours sont des durées exactes de 24 h, sans effet des changements d'heure été / hiver. | `temps.ts` · `estHorodatageUtc`, `ajouterJours` ; calculs `Date.UTC` / `getUTC*` |
+| C3 | **Années calendaires** : même jour et même mois dans l'année cible ; si cette date n'existe pas, elle tombe au 28 février (ex. 2028-02-29 + 1 an = 2029-02-28). | `temps.ts` · `ajouterAnsCalendaires` |
+
+Le code respectait déjà ces conventions : elles sont désormais normatives et couvertes par `tests/domain/g2-d12-conventions-temps.test.ts`.
 
 ## 4. Dépendances absentes (non implémentées, non simulées)
 - **Persistance des BAT** (`bat_snapshots`) : aucun stockage de `CycleVieBat`.

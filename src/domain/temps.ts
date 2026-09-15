@@ -1,6 +1,6 @@
 // Durées G2-D12 sur horodatages UTC ISO 8601 (arbitrage Supervisor du 15/09/2026). Fonctions pures : aucune lecture d'horloge.
-// Jours : durées exactes de 24 h. Années : durée calendaire (même date et même heure UTC, N ans plus tard) ;
-// un 29 février sans équivalent l'année cible est ramené au dernier jour de février (convention signalée au Supervisor).
+// Conventions normatives : échéance atteinte à l'instant exact ; calculs et comparaisons en UTC (jours = 24 h exactes) ;
+// années calendaires = même jour et même mois l'année cible, une date inexistante (29 février) tombe au 28 février.
 import { z } from "zod";
 
 export const horodatageUtcSchema = z.iso.datetime();
