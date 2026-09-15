@@ -72,7 +72,7 @@ describe("INV-02 — statut actif et propriétés À VALIDER", () => {
 
     it("PriceRules", () => {
       const r = computePrice({
-        rules: { id: "p", version: "t", base: aValider(), byVariant: {}, byThickness: {}, byFormat: {}, customDimensionPricing: { etat: "A_VALIDER" }, byWorkflow: {}, byMounting: {}, artworkProcessingFee: aValider(), quantityTiers: { etat: "SANS_OBJET" }, vatRate: aValider(), pricingStatus: "active" },
+        rules: { id: "p", version: "t", base: aValider(), byVariant: {}, byThickness: {}, byFormat: {}, customDimensionPricing: { etat: "A_VALIDER" }, byWorkflow: {}, byMounting: {}, artworkProcessingFee: aValider(), quantityTiers: { etat: "SANS_OBJET" }, vatRate: aValider(), pricingStatus: "active", commercialValidation: "pending" },
         variantId: "v",
         thicknessId: "th_3_0",
         workflowId: "PLEXIGLASS_UV",

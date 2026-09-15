@@ -40,6 +40,7 @@ const grille = (o: Partial<PriceRules> = {}): PriceRules => ({
   quantityTiers: { etat: "SANS_OBJET" },
   vatRate: definie(0.2),
   pricingStatus: "active",
+  commercialValidation: "validated",
   ...o,
 });
 

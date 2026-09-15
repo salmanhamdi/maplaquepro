@@ -51,6 +51,7 @@ const prixResolu: PriceRules = {
   quantityTiers: { etat: "SANS_OBJET" },
   vatRate: definie(0.2),
   pricingStatus: "active",
+  commercialValidation: "validated",
 };
 
 const avec = (o: Partial<Catalog>): Catalog => ({ ...INITIAL_CATALOG, ...o });

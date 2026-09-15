@@ -33,9 +33,12 @@ export const referenceGrille = (grille: Pick<PriceRules, "id" | "version">) => `
 
 export type ResultatSelectionGrille = { ok: true; grille: PriceRules } | { ok: false; violations: DomainViolation[] };
 
-/** Sélection serveur de la grille applicable : exactement une grille active ; zéro ou plusieurs ⇒ VALIDATION_REQUIRED. */
+/** Grille commercialement applicable : techniquement active ET commercialement validée. */
+export const estGrilleApplicable = (g: PriceRules) => g.pricingStatus === "active" && g.commercialValidation === "validated";
+
+/** Sélection serveur de la grille applicable : exactement une grille applicable ; zéro ou plusieurs ⇒ VALIDATION_REQUIRED. */
 export function selectionnerGrillePrix(grilles: readonly PriceRules[]): ResultatSelectionGrille {
-  const actives = grilles.filter((g) => g.pricingStatus === "active");
+  const actives = grilles.filter(estGrilleApplicable);
   if (actives.length === 1) return { ok: true, grille: actives[0]! };
   const message = actives.length === 0 ? "aucune grille tarifaire applicable (VR-07)" : "plusieurs grilles tarifaires applicables (VR-07)";
   return { ok: false, violations: [violation("VALIDATION_REQUIRED", "priceRules", message)] };

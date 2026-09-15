@@ -135,6 +135,7 @@ describe("buildBatDraft (§15)", () => {
       quantityTiers: { etat: "SANS_OBJET" },
       vatRate: { etat: "A_VALIDER" },
       pricingStatus: "active",
+      commercialValidation: "validated",
     };
     const r = buildBatDraft(entree([partielles]));
     expect(r.ok && r.bat.price).toEqual({ etat: "A_VALIDER" });
@@ -156,6 +157,7 @@ describe("buildBatDraft (§15)", () => {
     quantityTiers: { etat: "SANS_OBJET" },
     vatRate: definie(0.2),
     pricingStatus: "active",
+    commercialValidation: "validated",
     ...o,
   });
 
@@ -185,6 +187,17 @@ describe("buildBatDraft (§15)", () => {
       const r = buildBatDraft(entree(grilles));
       expect(r.ok && [r.bat.price, r.bat.versions.pricingVersion]).toEqual([{ etat: "A_VALIDER" }, { etat: "A_VALIDER" }]);
     }
+  });
+
+  it("VR-07 : grille active mais commercialement pending ⇒ prix et version de grille À VALIDER", () => {
+    const r = buildBatDraft(entree([grilleComplete({ commercialValidation: "pending" })]));
+    expect(r.ok && [r.bat.price, r.bat.versions.pricingVersion]).toEqual([{ etat: "A_VALIDER" }, { etat: "A_VALIDER" }]);
+  });
+
+  it("VR-07 : une grille fournie par l'appelant (client) n'est jamais applicable ; seule la grille du catalogue compte", () => {
+    const injectee = { ...entree([]), priceRules: grilleComplete(), grille: grilleComplete() } as unknown as Parameters<typeof buildBatDraft>[0];
+    const r = buildBatDraft(injectee);
+    expect(r.ok && [r.bat.price, r.bat.versions.pricingVersion]).toEqual([{ etat: "A_VALIDER" }, { etat: "A_VALIDER" }]);
   });
 
   it("VR-07 : dimension hors de tout palier ⇒ prix À VALIDER, jamais de prix par défaut", () => {

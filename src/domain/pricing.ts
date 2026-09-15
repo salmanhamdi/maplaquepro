@@ -41,6 +41,9 @@ const tarificationDimensions = z.discriminatedUnion("etat", [
   }),
 ]);
 
+/** Statut de validation commerciale d'une grille (arbitrage Supervisor VR-07) : exactement deux valeurs. */
+export const COMMERCIAL_VALIDATIONS = ["pending", "validated"] as const;
+
 export const priceRulesSchema = z.strictObject({
   id: z.string().min(1),
   /** Version de la grille : toute modification tarifaire crée une nouvelle version ; une grille utilisée n'est jamais réécrite. */
@@ -56,6 +59,9 @@ export const priceRulesSchema = z.strictObject({
   /** Paliers de quantité : SANS OBJET en MVP (VR-07). */
   quantityTiers: nonDefini,
   vatRate: etatSchema(z.number().min(0).max(1)),
+  /** État technique : `active` rend la grille sélectionnable par le moteur. */
   pricingStatus: statutSchema,
+  /** Validation commerciale, distincte de `pricingStatus` (GATE 6) : applicable seulement si `active` ET `validated`. */
+  commercialValidation: z.enum(COMMERCIAL_VALIDATIONS),
 });
 export type PriceRules = z.infer<typeof priceRulesSchema>;

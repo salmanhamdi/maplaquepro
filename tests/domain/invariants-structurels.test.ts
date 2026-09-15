@@ -86,6 +86,7 @@ describe("I-6 — tarification non définie jusqu'à VR-07", () => {
     quantityTiers: { etat: "SANS_OBJET" },
     vatRate: aValider(),
     pricingStatus: "validation_required",
+    commercialValidation: "pending",
   };
 
   it("accepte À VALIDER et SANS OBJET", () => {

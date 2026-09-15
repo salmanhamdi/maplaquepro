@@ -5,6 +5,8 @@ import { ARTWORK_RULES, artworkRulesSchema, ENGRAVE_ONLY_WORKFLOWS } from "./art
 import { statutContratSchema } from "./contrats";
 import { dimensionRulesSchema, formatSchema } from "./dimensions";
 import { aValider } from "./etat";
+import { canonicalJson } from "./geometrie-canonique";
+import { estGrilleApplicable, referenceGrille } from "./prix";
 import { MACHINE_CAPABILITIES, machineCapabilitySchema } from "./machine";
 import { mountingRulesSchema, DEFAULT_EDGE_DISTANCE_TARGET_MM } from "./mounting";
 import { priceRulesSchema } from "./pricing";
@@ -88,6 +90,8 @@ export function validateCatalog(catalog: Catalog): DomainViolation[] {
     }
   }
 
+  out.push(...validerImmutabiliteGrilles(catalog));
+
   // INV-19
   for (const rules of catalog.artworkRules) {
     if (rules.maxPixels !== MAX_PIXELS_MVP) {
@@ -128,6 +132,42 @@ export function validateCatalog(catalog: Catalog): DomainViolation[] {
 }
 
 /** Seules les références actives sont exposées (§7). */
+/**
+ * VR-07 — immutabilité intra-catalogue : un même `id@version` désigne toujours le même contenu (comparaison canonique, sans hash).
+ * Contenu identique répété : aucune violation ici (la sélection le compte comme plusieurs grilles). Versions différentes d'un même id : autorisées.
+ * L'immutabilité historique entre deux versions du code relève de la future persistance des BAT.
+ */
+export function validerImmutabiliteGrilles(catalog: Pick<Catalog, "priceRules">): DomainViolation[] {
+  const contenus = new Map<string, string>();
+  const conflits = new Set<string>();
+  for (const grille of catalog.priceRules) {
+    const ref = referenceGrille(grille);
+    const contenu = canonicalJson(grille);
+    const connu = contenus.get(ref);
+    if (connu === undefined) contenus.set(ref, contenu);
+    else if (connu !== contenu) conflits.add(ref);
+  }
+  return [...conflits]
+    .sort()
+    .map((ref) => violation("VALIDATION_REQUIRED", `priceRules.${ref}`, "même id@version avec un contenu différent : toute modification exige une nouvelle version (VR-07)"));
+}
+
+/**
+ * GATE 6 — garde-fou pur du catalogue, indépendant du framework. Pour un environnement commercial avec paiement réel :
+ * exactement une grille applicable (active + validated). Hors paiement réel : jamais bloquant.
+ * La correspondance environnement → `paiementReel` (SITE_ENV, §28) n'est pas encore intégrée.
+ */
+export function validateProductionCatalog(catalog: Pick<Catalog, "priceRules">, contexte: { paiementReel: boolean }): DomainViolation[] {
+  if (!contexte.paiementReel) return [];
+  const applicables = catalog.priceRules.filter(estGrilleApplicable).map(referenceGrille).sort();
+  if (applicables.length === 1) return [];
+  const message =
+    applicables.length === 0
+      ? "aucune grille tarifaire applicable (active et validée commercialement) (GATE 6)"
+      : `plusieurs grilles tarifaires applicables : ${applicables.join(", ")} (GATE 6)`;
+  return [violation("VALIDATION_REQUIRED", "priceRules", message)];
+}
+
 export const activeReferences = (catalog: Catalog): MaterialVariant[] => catalog.references.filter((r) => r.statut === "active");
 
 /** Catalogue initial : référentiels décidés uniquement ; aucune référence, aucun produit, aucun tarif. */
