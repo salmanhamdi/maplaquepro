@@ -12,6 +12,7 @@ export const POLITIQUE_CYCLE_VIE_BAT = {
   retentionBrouillonJours: 7,
   retentionOrphelinJours: 30,
   suspensionCheckoutMaxJours: 7,
+  protectionCommandePayeeMaxJours: 30,
   conservationFabricationAns: 2,
 } as const;
 
@@ -28,7 +29,7 @@ export function calculerExpirationCommerciale(validatedAt: string, profil: Profi
   return ajouterJours(validatedAt, jours);
 }
 
-export type MotifSuppression = "brouillon_expire" | "expiration_commerciale" | "retention_orphelin_expiree" | "remplacement";
+export type MotifSuppression = "brouillon_expire" | "expiration_commerciale" | "retention_orphelin_expiree" | "fin_conservation_fabrication" | "remplacement";
 
 type Identite = { batId: string; politiqueVersion: string };
 type Validation = { validatedAt: string; profil: ProfilValidite; expiresAt: string };
@@ -38,8 +39,9 @@ export type CycleVieBat =
   | Readonly<Identite & Validation & { etat: "valide" }>
   /** Commande créée par startCheckout (PENDING_PAYMENT) : expiration commerciale suspendue, 7 jours au plus. */
   | Readonly<Identite & Validation & { etat: "commande_en_attente_paiement"; orderId: string; checkoutStartedAt: string; suspensionFinAt: string }>
-  | Readonly<Identite & Validation & { etat: "commande_payee"; orderId: string; checkoutStartedAt: string; paidAt: string }>
-  /** BAT de fabrication figé : conservation 2 ans depuis l'entrée en fabrication, même si la commande est annulée ensuite. */
+  /** Commande payée non entrée en fabrication : protection de 30 jours au plus depuis `paidAt`, puis orphelin. */
+  | Readonly<Identite & Validation & { etat: "commande_payee"; orderId: string; checkoutStartedAt: string; paidAt: string; protectionFinAt: string }>
+  /** BAT de fabrication figé : conservé 2 ans depuis l'entrée en fabrication (même après annulation), puis suppression définitive. */
   | Readonly<Identite & Validation & { etat: "fabrication"; orderId: string; paidAt: string; enteredProductionAt: string; conservationFinAt: string; commandeAnnuleeAt?: string }>
   /** P3 : cycle commercial abandonné ; rétention de 30 jours depuis `orphanedAt`, l'ancien `expiresAt` n'a plus d'effet. */
   | Readonly<Identite & Validation & { etat: "orphelin"; orphanedAt: string; retentionFinAt: string }>
@@ -57,9 +59,7 @@ export type EvenementCycleVie =
 export type ActionDue =
   | { action: "AUCUNE" }
   | { action: "SUPPRIMER"; motif: Exclude<MotifSuppression, "remplacement">; echeance: string }
-  | { action: "RENDRE_ORPHELIN"; echeance: string }
-  /** Fin de la conservation du dossier de fabrication : l'exécution relève du futur worker et des règles de rétention. */
-  | { action: "FIN_CONSERVATION"; echeance: string };
+  | { action: "RENDRE_ORPHELIN"; echeance: string };
 
 export type ResultatCycle = { ok: true; cycle: CycleVieBat } | { ok: false; violations: DomainViolation[] };
 
@@ -126,9 +126,10 @@ export function actionDue(c: CycleVieBat, at: string): ActionDue {
     case "commande_en_attente_paiement":
       return echeanceAtteinte(at, c.suspensionFinAt) ? { action: "RENDRE_ORPHELIN", echeance: c.suspensionFinAt } : { action: "AUCUNE" };
     case "commande_payee":
-      return { action: "AUCUNE" };
+      return echeanceAtteinte(at, c.protectionFinAt) ? { action: "RENDRE_ORPHELIN", echeance: c.protectionFinAt } : { action: "AUCUNE" };
     case "fabrication":
-      return echeanceAtteinte(at, c.conservationFinAt) ? { action: "FIN_CONSERVATION", echeance: c.conservationFinAt } : { action: "AUCUNE" };
+      // Fin de conservation = suppression définitive ; l'exécution physique relève du futur worker / de la persistance.
+      return echeanceAtteinte(at, c.conservationFinAt) ? { action: "SUPPRIMER", motif: "fin_conservation_fabrication", echeance: c.conservationFinAt } : { action: "AUCUNE" };
     case "orphelin":
       return echeanceAtteinte(at, c.retentionFinAt) ? { action: "SUPPRIMER", motif: "retention_orphelin_expiree", echeance: c.retentionFinAt } : { action: "AUCUNE" };
     case "supprime":
@@ -147,7 +148,7 @@ export function appliquerEvenement(c: CycleVieBat, e: EvenementCycleVie): Result
     case "CONSTAT_ECHEANCE": {
       const a = actionDue(c, e.at);
       if (a.action === "SUPPRIMER") return { ok: true, cycle: supprimer(c, e.at, a.motif) };
-      if (a.action === "RENDRE_ORPHELIN" && c.etat === "commande_en_attente_paiement") return { ok: true, cycle: orpheliner(c, e.at) };
+      if (a.action === "RENDRE_ORPHELIN" && (c.etat === "commande_en_attente_paiement" || c.etat === "commande_payee")) return { ok: true, cycle: orpheliner(c, e.at) };
       return { ok: true, cycle: c };
     }
     case "VALIDATION": {
@@ -178,10 +179,21 @@ export function appliquerEvenement(c: CycleVieBat, e: EvenementCycleVie): Result
     case "PAIEMENT": {
       if (c.etat !== "commande_en_attente_paiement") return interdit();
       if (echeanceAtteinte(e.at, c.suspensionFinAt)) return refus("SUSPENSION_CHECKOUT_TERMINEE", "suspension de 7 jours écoulée : le BAT redevient orphelin");
-      return { ok: true, cycle: { ...validation(c), etat: "commande_payee", orderId: c.orderId, checkoutStartedAt: c.checkoutStartedAt, paidAt: e.at } };
+      return {
+        ok: true,
+        cycle: {
+          ...validation(c),
+          etat: "commande_payee",
+          orderId: c.orderId,
+          checkoutStartedAt: c.checkoutStartedAt,
+          paidAt: e.at,
+          protectionFinAt: ajouterJours(e.at, P.protectionCommandePayeeMaxJours),
+        },
+      };
     }
     case "ENTREE_FABRICATION": {
       if (c.etat !== "commande_payee") return interdit();
+      if (echeanceAtteinte(e.at, c.protectionFinAt)) return refus("PROTECTION_COMMANDE_PAYEE_TERMINEE", "30 jours sans entrée en fabrication depuis le paiement : le BAT redevient orphelin");
       return {
         ok: true,
         cycle: {
@@ -213,7 +225,8 @@ const refusRemplacement = (code: string, message: string, nouvelleCommandeRequis
 
 /**
  * Modification de configuration ⇒ nouveau BAT. Ancien BAT non protégé (brouillon, validé, orphelin) : supprimé immédiatement.
- * Avant fabrication : le nouveau BAT (validé) remplace l'ancien dans la commande, qui conserve son paiement et sa fenêtre de checkout.
+ * Avant fabrication : le nouveau BAT (validé) remplace l'ancien dans la commande, qui conserve son paiement ; la fenêtre de checkout
+ * initiale (7 jours) et la protection de la commande payée (30 jours) ne sont jamais réinitialisées par une modification.
  * Après fabrication : refus ; nouvelle commande avec le nouveau BAT, BAT de fabrication inchangé.
  */
 export function remplacerBat(ancien: CycleVieBat, nouveau: CycleVieBat, at: string): ResultatRemplacement {
@@ -243,10 +256,12 @@ export function remplacerBat(ancien: CycleVieBat, nouveau: CycleVieBat, at: stri
       nouveau: { ...validation(nouveau), etat: "commande_en_attente_paiement", orderId: ancien.orderId, checkoutStartedAt: ancien.checkoutStartedAt, suspensionFinAt: ancien.suspensionFinAt },
     };
   }
+  if (echeanceAtteinte(at, ancien.protectionFinAt)) return refusRemplacement("PROTECTION_COMMANDE_PAYEE_TERMINEE", "protection de 30 jours de la commande payée écoulée");
   return {
     ok: true,
     ancien: supprimer(ancien, at, "remplacement"),
-    nouveau: { ...validation(nouveau), etat: "commande_payee", orderId: ancien.orderId, checkoutStartedAt: ancien.checkoutStartedAt, paidAt: ancien.paidAt },
+    // Paiement inchangé : `paidAt` et la protection de 30 jours restent ceux de la commande.
+    nouveau: { ...validation(nouveau), etat: "commande_payee", orderId: ancien.orderId, checkoutStartedAt: ancien.checkoutStartedAt, paidAt: ancien.paidAt, protectionFinAt: ancien.protectionFinAt },
   };
 }
 

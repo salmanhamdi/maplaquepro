@@ -31,7 +31,8 @@ const D = {
 };
 
 const brouillon = (batId = "bat-1", at = D.cree) => cycle(creerCycleBrouillon(batId, at));
-const valide = (batId = "bat-1", clientInscrit = false, validatedAt = D.valide) => suite(brouillon(batId), { type: "VALIDATION", at: validatedAt, clientInscrit });
+// Brouillon créé à l'instant de sa validation : un BAT de remplacement tardif n'hérite pas d'un brouillon expiré.
+const valide = (batId = "bat-1", clientInscrit = false, validatedAt = D.valide) => suite(brouillon(batId, validatedAt), { type: "VALIDATION", at: validatedAt, clientInscrit });
 const enAttente = (orderId = "cmd-1") => suite(valide(), { type: "DEBUT_CHECKOUT", at: D.checkout, orderId });
 const payee = () => suite(enAttente(), { type: "PAIEMENT", at: D.paye });
 const fabrication = () => suite(payee(), { type: "ENTREE_FABRICATION", at: D.fabrication });
@@ -45,6 +46,7 @@ describe("G2-D12 — politique versionnée", () => {
       retentionBrouillonJours: 7,
       retentionOrphelinJours: 30,
       suspensionCheckoutMaxJours: 7,
+      protectionCommandePayeeMaxJours: 30,
       conservationFabricationAns: 2,
     });
   });
@@ -151,16 +153,14 @@ describe("G2-D12 — commande et fabrication", () => {
     }
   });
 
-  it("commande payée : BAT protégé, aucune suppression même après l'expiration commerciale", () => {
-    expect(actionDue(payee(), "2026-06-01T10:00:00.000Z")).toEqual({ action: "AUCUNE" });
+  it("commande payée : BAT protégé après l'expiration commerciale (indépendant de expiresAt)", () => {
+    // expiresAt commercial = 2026-03-17 ; protection jusqu'à paidAt + 30 j = 2026-04-03
+    expect(actionDue(payee(), "2026-03-20T10:00:00.000Z")).toEqual({ action: "AUCUNE" });
   });
 
-  it("entrée en fabrication ⇒ conservation 2 ans calendaires depuis enteredProductionAt ; frontière exacte", () => {
+  it("entrée en fabrication ⇒ conservation 2 ans calendaires depuis enteredProductionAt", () => {
     const c = fabrication();
     expect(c.etat === "fabrication" && [c.enteredProductionAt, c.conservationFinAt]).toEqual([D.fabrication, "2028-03-05T10:00:00.000Z"]);
-    expect(actionDue(c, "2028-03-05T09:59:59.999Z")).toEqual({ action: "AUCUNE" });
-    expect(actionDue(c, "2028-03-05T10:00:00.000Z")).toEqual({ action: "FIN_CONSERVATION", echeance: "2028-03-05T10:00:00.000Z" });
-    expect(suite(c, { type: "CONSTAT_ECHEANCE", at: "2028-03-05T10:00:00.000Z" })).toEqual(c);
   });
 
   it("annulation après fabrication ⇒ pas d'orphelin ; conservation 2 ans inchangée ; une seule annulation", () => {
@@ -181,6 +181,99 @@ describe("G2-D12 — commande et fabrication", () => {
     expect(ajouterAnsCalendaires("2026-02-28T00:00:00.000Z", 2)).toBe("2028-02-28T00:00:00.000Z");
     // jours exacts à travers le 29 février
     expect(calculerExpirationCommerciale("2028-02-20T00:00:00.000Z", "standard")).toBe("2028-03-06T00:00:00.000Z");
+  });
+});
+
+describe("G2-D12 régularisation — fin de conservation = suppression définitive", () => {
+  it("1 ms avant : aucune action ; à enteredProductionAt + 2 ans exact : SUPPRIMER", () => {
+    const c = fabrication();
+    expect(actionDue(c, "2028-03-05T09:59:59.999Z")).toEqual({ action: "AUCUNE" });
+    expect(actionDue(c, "2028-03-05T10:00:00.000Z")).toEqual({ action: "SUPPRIMER", motif: "fin_conservation_fabrication", echeance: "2028-03-05T10:00:00.000Z" });
+  });
+
+  it("constat à l'échéance ⇒ état supprimé (aucun état archivé ou anonymisé), y compris après annulation de la commande", () => {
+    const attendu = { etat: "supprime", batId: "bat-1", politiqueVersion: "G2-D12-2026-09-15", deletedAt: "2028-03-05T10:00:00.000Z", motif: "fin_conservation_fabrication" };
+    expect(suite(fabrication(), { type: "CONSTAT_ECHEANCE", at: "2028-03-05T10:00:00.000Z" })).toEqual(attendu);
+    const annulee = suite(fabrication(), { type: "ANNULATION_COMMANDE", at: "2026-04-01T10:00:00.000Z" });
+    expect(suite(annulee, { type: "CONSTAT_ECHEANCE", at: "2028-03-05T10:00:00.000Z" })).toEqual(attendu);
+    expect(suite(fabrication(), { type: "CONSTAT_ECHEANCE", at: "2028-03-05T09:59:59.999Z" }).etat).toBe("fabrication");
+  });
+});
+
+describe("G2-D12 régularisation — commande payée non entrée en fabrication", () => {
+  it("protection de 30 jours depuis paidAt ; 1 ms avant : aucune action ; à l'échéance : RENDRE_ORPHELIN", () => {
+    const c = payee();
+    expect(c.etat === "commande_payee" && [c.paidAt, c.protectionFinAt]).toEqual([D.paye, "2026-04-03T10:00:00.000Z"]);
+    expect(actionDue(c, "2026-04-03T09:59:59.999Z")).toEqual({ action: "AUCUNE" });
+    expect(actionDue(c, "2026-04-03T10:00:00.000Z")).toEqual({ action: "RENDRE_ORPHELIN", echeance: "2026-04-03T10:00:00.000Z" });
+  });
+
+  it("entrée en fabrication 1 ms avant acceptée ; à l'échéance refusée", () => {
+    expect(suite(payee(), { type: "ENTREE_FABRICATION", at: "2026-04-03T09:59:59.999Z" }).etat).toBe("fabrication");
+    expect(codes(appliquerEvenement(payee(), { type: "ENTREE_FABRICATION", at: "2026-04-03T10:00:00.000Z" }))).toEqual(["PROTECTION_COMMANDE_PAYEE_TERMINEE"]);
+  });
+
+  it("30 jours sans fabrication ⇒ orphelin au moment du constat, puis 30 jours de rétention depuis orphanedAt", () => {
+    const orphelin = suite(payee(), { type: "CONSTAT_ECHEANCE", at: "2026-04-05T10:00:00.000Z" });
+    expect(orphelin.etat === "orphelin" && [orphelin.orphanedAt, orphelin.retentionFinAt]).toEqual(["2026-04-05T10:00:00.000Z", "2026-05-05T10:00:00.000Z"]);
+    expect(actionDue(orphelin, "2026-05-05T09:59:59.999Z")).toEqual({ action: "AUCUNE" });
+    expect(suite(orphelin, { type: "CONSTAT_ECHEANCE", at: "2026-05-05T10:00:00.000Z" })).toEqual({
+      etat: "supprime",
+      batId: "bat-1",
+      politiqueVersion: "G2-D12-2026-09-15",
+      deletedAt: "2026-05-05T10:00:00.000Z",
+      motif: "retention_orphelin_expiree",
+    });
+  });
+
+  it("modification d'une commande payée : protection non réinitialisée ; refus une fois écoulée", () => {
+    const r = remplacerBat(payee(), valide("bat-2", false, "2026-03-20T10:00:00.000Z"), "2026-03-20T10:00:00.000Z");
+    expect(r.ok && r.nouveau.etat === "commande_payee" && [r.nouveau.paidAt, r.nouveau.protectionFinAt]).toEqual([D.paye, "2026-04-03T10:00:00.000Z"]);
+    expect(codes(remplacerBat(payee(), valide("bat-2", false, "2026-04-03T10:00:00.000Z"), "2026-04-03T10:00:00.000Z"))).toEqual(["PROTECTION_COMMANDE_PAYEE_TERMINEE"]);
+  });
+
+  it("événement hors ordre refusé ; aucune mutation", () => {
+    const c = payee();
+    const copie = structuredClone(c);
+    expect(codes(appliquerEvenement(c, { type: "ENTREE_FABRICATION", at: "2026-03-03T10:00:00.000Z" }))).toEqual(["EVENEMENT_ANTERIEUR"]);
+    appliquerEvenement(c, { type: "CONSTAT_ECHEANCE", at: "2026-04-05T10:00:00.000Z" });
+    expect(c).toEqual(copie);
+  });
+});
+
+describe("G2-D12 régularisation — modification pendant PENDING_PAYMENT", () => {
+  it("modification à T0 + 3 jours : la commande porte le nouveau BAT ; le checkout expire toujours à T0 + 7 jours", () => {
+    const depart = enAttente(); // T0 = 2026-03-03T10:00
+    const r = remplacerBat(depart, valide("bat-2", false, "2026-03-06T10:00:00.000Z"), "2026-03-06T10:00:00.000Z");
+    if (!r.ok) throw new Error(JSON.stringify(r.violations));
+    expect(r.nouveau.etat === "commande_en_attente_paiement" && [r.nouveau.batId, r.nouveau.orderId, r.nouveau.checkoutStartedAt, r.nouveau.suspensionFinAt]).toEqual([
+      "bat-2",
+      "cmd-1",
+      "2026-03-03T10:00:00.000Z",
+      "2026-03-10T10:00:00.000Z",
+    ]);
+    expect(actionDue(r.nouveau, "2026-03-10T09:59:59.999Z")).toEqual({ action: "AUCUNE" });
+    expect(actionDue(r.nouveau, "2026-03-10T10:00:00.000Z")).toEqual({ action: "RENDRE_ORPHELIN", echeance: "2026-03-10T10:00:00.000Z" });
+    expect(codes(appliquerEvenement(r.nouveau, { type: "PAIEMENT", at: "2026-03-10T10:00:00.000Z" }))).toEqual(["SUSPENSION_CHECKOUT_TERMINEE"]);
+  });
+
+  it("modifications successives : aucune ne crée de nouvelle fenêtre ; chaque ancien BAT est supprimé", () => {
+    const depart = enAttente();
+    const r1 = remplacerBat(depart, valide("bat-2", false, "2026-03-05T10:00:00.000Z"), "2026-03-05T10:00:00.000Z");
+    if (!r1.ok) throw new Error(JSON.stringify(r1.violations));
+    const r2 = remplacerBat(r1.nouveau, valide("bat-3", false, "2026-03-08T10:00:00.000Z"), "2026-03-08T10:00:00.000Z");
+    if (!r2.ok) throw new Error(JSON.stringify(r2.violations));
+    expect([r1.ancien.etat, r2.ancien.etat, r2.ancien.batId]).toEqual(["supprime", "supprime", "bat-2"]);
+    expect(r2.nouveau.etat === "commande_en_attente_paiement" && [r2.nouveau.batId, r2.nouveau.suspensionFinAt]).toEqual(["bat-3", "2026-03-10T10:00:00.000Z"]);
+    expect(codes(remplacerBat(r2.nouveau, valide("bat-4", false, "2026-03-10T10:00:00.000Z"), "2026-03-10T10:00:00.000Z"))).toEqual(["SUSPENSION_CHECKOUT_TERMINEE"]);
+  });
+
+  it("modification hors ordre refusée ; aucune mutation de la commande d'origine", () => {
+    const depart = enAttente();
+    const copie = structuredClone(depart);
+    expect(codes(remplacerBat(depart, valide("bat-2", false, "2026-03-02T11:00:00.000Z"), "2026-03-02T11:00:00.000Z"))).toEqual(["EVENEMENT_ANTERIEUR"]);
+    remplacerBat(depart, valide("bat-2", false, "2026-03-06T10:00:00.000Z"), "2026-03-06T10:00:00.000Z");
+    expect(depart).toEqual(copie);
   });
 });
 

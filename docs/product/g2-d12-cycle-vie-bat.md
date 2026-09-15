@@ -14,8 +14,9 @@ Le Master Plan v1.6 n'est pas modifié ; les écarts sont listés au §6 pour ar
 | Checkout (`startCheckout`) | Crée la commande `PENDING_PAYMENT` (P2) ; expiration commerciale suspendue 7 jours au plus ; sans paiement dans la fenêtre : BAT orphelin | début du checkout |
 | BAT orphelin | Cycle commercial abandonné (P3) ; rétention 30 jours ; l'ancien `expiresAt` ne provoque aucune suppression anticipée ; non modifiable, toute reprise impose un nouveau BAT | `orphanedAt` (moment du constat) |
 | Commande annulée avant fabrication | BAT orphelin, 30 jours | annulation |
-| Entrée en fabrication | BAT figé, conservé avec le dossier 2 ans calendaires, même si la commande est annulée ensuite (P1) | `enteredProductionAt` |
-| Modification avant fabrication | Nouveau BAT ; il remplace l'ancien dans la commande, qui garde son paiement | — |
+| Commande payée non entrée en fabrication (R2) | Protection 30 jours au plus, indépendante de `expiresAt` ; sans entrée en fabrication : BAT orphelin (`orphanedAt` = constat), puis 30 jours | `paidAt` |
+| Entrée en fabrication | BAT figé, conservé avec le dossier 2 ans calendaires, même si la commande est annulée ensuite (P1) ; à l'échéance : **suppression définitive** (R1) | `enteredProductionAt` |
+| Modification avant fabrication | Nouveau BAT ; il remplace l'ancien dans la commande, qui garde son paiement ; ni la fenêtre de checkout de 7 jours (R3) ni la protection de 30 jours de la commande payée ne sont réinitialisées | — |
 | Modification après fabrication | Interdite sur la commande ; nouvelle commande avec un nouveau BAT ; l'ancienne commande continue | — |
 | Correction (client, atelier, système) | Nouveau BAT soumis à la validation du client ; refus : BAT initial utilisable. Aucune distinction mineure / majeure | — |
 
@@ -25,6 +26,15 @@ Le Master Plan v1.6 n'est pas modifié ; les écarts sont listés au §6 pour ar
 - Baisse de prix d'une commande payée avant fabrication : recrédit de la part d'avoir consommée d'abord (échéance originale), puis nouvel avoir pour la différence TTC restante (1 an depuis sa création).
 - Hausse de prix : complément dû avant fabrication (calculé par le futur domaine commande à partir des montants figés ; VR-07 inchangé).
 - Annulation avant fabrication : avoir utilisé recrédité. Après fabrication : aucun recrédit automatique.
+- Recrédit d'un avoir déjà expiré (R4) : solde restauré pour la cohérence comptable, mais l'avoir reste expiré et inutilisable ; ni réactivation, ni prolongation, ni nouvel avoir automatique.
+
+### Régularisation du Supervisor (R1 → R4, 15/09/2026)
+| # | Décision | Implémentation |
+|---|---|---|
+| R1 | Fin de conservation (enteredProductionAt + 2 ans calendaires) ⇒ suppression définitive ; aucun état archivé ou anonymisé | `actionDue` ⇒ `SUPPRIMER` (`fin_conservation_fabrication`) ; `CONSTAT_ECHEANCE` ⇒ `supprime` |
+| R2 | Commande payée non entrée en fabrication : 30 jours au plus depuis `paidAt`, puis orphelin | `commande_payee.protectionFinAt` ; `RENDRE_ORPHELIN` ; `ENTREE_FABRICATION` refusée à l'échéance (`PROTECTION_COMMANDE_PAYEE_TERMINEE`) |
+| R3 | Modification pendant `PENDING_PAYMENT` : nouveau BAT dans la commande, fenêtre initiale de 7 jours non réinitialisée | `remplacerBat` conserve `checkoutStartedAt` et `suspensionFinAt` |
+| R4 | Recrédit d'un avoir expiré : aucune réactivation | `recrediterAvoir` conserve `expiresAt` ; `estAvoirUtilisable` reste faux |
 - Échec technique interne, avant comme après fabrication (Q65) : avoir recrédité et paiement complémentaire remboursé.
 - Défaut atelier, erreur du client, contestation d'un résultat conforme au BAT validé : SAV manuel, rien d'automatique.
 
@@ -36,7 +46,7 @@ Le Master Plan v1.6 n'est pas modifié ; les écarts sont listés au §6 pour ar
 | Politique versionnée | `src/domain/cycle-vie-bat.ts` · `POLITIQUE_CYCLE_VIE_BAT` (`G2-D12-2026-09-15`) |
 | États et événements typés | `CycleVieBat`, `EvenementCycleVie` |
 | Transitions | `creerCycleBrouillon`, `appliquerEvenement` |
-| Action due à un instant | `actionDue` : `AUCUNE`, `SUPPRIMER`, `RENDRE_ORPHELIN`, `FIN_CONSERVATION` |
+| Action due à un instant | `actionDue` : `AUCUNE`, `SUPPRIMER`, `RENDRE_ORPHELIN` |
 | Remplacement, après-fabrication, corrections | `remplacerBat`, `resoudreCorrection` |
 | Expiration à la validation | `src/domain/bat.ts` · `validateBat(bat, at, { clientInscrit })` |
 | Avoirs | `src/domain/avoirs.ts` · `creerAvoir`, `utiliserAvoir`, `recrediterAvoir`, `ecartPrixCommandePayee`, `annulerCommande`, `traiterIncident` |
@@ -57,12 +67,11 @@ Le moteur **décide** ; il n'exécute ni suppression, ni persistance, ni paiemen
 - `BatBrouillon` produit par `buildBatDraft` garde `expiresAt` À VALIDER : l'échéance est calculée par `validateBat` avec contexte ; les appelants serveur ne passent pas encore ce contexte.
 
 ## 5. Points ouverts
-1. Remplacement du BAT d'une commande `PENDING_PAYMENT` : la fenêtre de checkout d'origine est conservée (aucune prolongation) — à confirmer.
-2. `FIN_CONSERVATION` (2 ans) : action d'exécution (suppression, archivage, anonymisation) non arbitrée ici.
-3. Recrédit sur un avoir déjà expiré : le solde revient mais reste perdu (échéance originale) — à confirmer.
-4. Commande payée non entrée en fabrication : aucune échéance ; BAT protégé tant que la commande existe.
-5. La version de politique est portée par `CycleVieBat`, pas par le BAT validé (schéma BAT inchangé).
-6. Formulation « peut être utilisé sur une seule commande » : implémentée comme « un seul avoir par commande », le reliquat restant utilisable ensuite.
+Anciens points 1 à 4 (fenêtre de checkout, fin de conservation, avoir expiré recrédité, commande payée sans fabrication) : **arbitrés** (R1 → R4).
+
+1. La version de politique est portée par `CycleVieBat`, pas par le BAT validé (schéma BAT inchangé).
+2. Formulation « peut être utilisé sur une seule commande » : implémentée comme « un seul avoir par commande », le reliquat restant utilisable ensuite.
+3. Suppression définitive à 2 ans (R1) face à la conservation comptable de 10 ans d'une commande (§25) : périmètre des données comptables à distinguer lors du domaine commande.
 
 ## 6. Écarts avec le Master Plan v1.6 (non réécrits)
 - §9.6 : « 30 j BAT / 2 ans commande » sans point de départ ; G2-D12 : 30 j depuis `orphanedAt`, 2 ans depuis l'entrée en fabrication.

@@ -72,7 +72,10 @@ export function utiliserAvoir(e: {
   };
 }
 
-/** Recrédit : l'avoir conserve sa date d'expiration originale (un avoir déjà expiré reste inutilisable). */
+/**
+ * Recrédit : l'avoir conserve sa date d'expiration originale. Un avoir déjà expiré voit son solde restauré (cohérence comptable)
+ * mais reste expiré : ni réactivation, ni prolongation, ni nouvel avoir créé automatiquement.
+ */
 export function recrediterAvoir(avoir: Avoir, recredit: Recredit): { ok: true; avoir: Avoir } | Refus {
   if (recredit.avoirId !== avoir.id) return refus("AVOIR_INCONNU", "recrédit destiné à un autre avoir");
   if (!centimes(recredit.montantTtcCentimes)) return refus("MONTANT_INVALIDE", "montant TTC en centimes entiers attendu");

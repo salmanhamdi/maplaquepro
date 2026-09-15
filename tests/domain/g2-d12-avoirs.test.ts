@@ -91,9 +91,25 @@ describe("G2-D12 — recrédit", () => {
     expect(codes(recrediterAvoir(entame, { avoirId: "av-1", montantTtcCentimes: 3001 }))).toEqual(["RECREDIT_EXCESSIF"]);
   });
 
-  it("recrédit d'un avoir déjà expiré : aucun renouvellement, reste inutilisable", () => {
-    const r = recrediterAvoir({ ...avoir(), soldeTtcCentimes: 0 }, { avoirId: "av-1", montantTtcCentimes: 1000 });
-    expect(r.ok && estAvoirUtilisable(r.avoir, "2027-06-01T00:00:00.000Z")).toBe(false);
+  it("recrédit d'un avoir déjà expiré : solde restauré, avoir toujours expiré, échéance non prolongée, aucun nouvel avoir", () => {
+    const expire = { ...avoir(), soldeTtcCentimes: 0 };
+    const copie = structuredClone(expire);
+    const r = recrediterAvoir(expire, { avoirId: "av-1", montantTtcCentimes: 1000 });
+    if (!r.ok) throw new Error(JSON.stringify(r.violations));
+    expect(Object.keys(r)).toEqual(["ok", "avoir"]);
+    expect([r.avoir.id, r.avoir.soldeTtcCentimes, r.avoir.createdAt, r.avoir.expiresAt]).toEqual(["av-1", 1000, "2026-05-10T09:00:00.000Z", "2027-05-10T09:00:00.000Z"]);
+    for (const at of ["2027-05-10T09:00:00.000Z", "2027-06-01T00:00:00.000Z"]) {
+      expect(estAvoirUtilisable(r.avoir, at)).toBe(false);
+      expect(avoirsUtilisables([r.avoir], at)).toEqual([]);
+      expect(codes(utiliserAvoir({ avoirs: [r.avoir], avoirChoisiId: "av-1", montantCommandeTtcCentimes: 500, at, utilisationExistante: null }))).toEqual(["AVOIR_EXPIRE"]);
+    }
+    expect(expire).toEqual(copie);
+  });
+
+  it("annulation avant fabrication d'une commande ayant utilisé un avoir désormais expiré : recrédit sans réactivation", () => {
+    const { recredit } = annulerCommande({ moment: "avant_fabrication", utilisation: { avoirId: "av-1", consommeTtcCentimes: 1500 } });
+    const r = recrediterAvoir({ ...avoir(), soldeTtcCentimes: 3500 }, recredit!);
+    expect(r.ok && [r.avoir.soldeTtcCentimes, r.avoir.expiresAt, estAvoirUtilisable(r.avoir, "2027-05-11T00:00:00.000Z")]).toEqual([5000, "2027-05-10T09:00:00.000Z", false]);
   });
 });
 
