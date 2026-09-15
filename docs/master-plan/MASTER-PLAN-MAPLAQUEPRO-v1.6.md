@@ -41,7 +41,7 @@
 
 ### T. Transition v1.5 → v1.6 (réconciliation T5, validée le 14/09/2026)
 - **Sources** : décisions Supervisor « T5 / clôture documentaire des arbitrages » et « Master Plan v1.6 / réconciliation T5 » (V-1 à V-7) du 14/09/2026 ; faits atelier Q1–Q9, Q3, E-1 complémentaire (REGISTRE_ARBITRAGES_v1.5.md).
-- **Décisions intégrées** : C5 clos (TroLase : découpe systématique, CUT toujours présent) ; VR-34 close ; CR-2 **non activée** ; P3 (découpe systématique ; workflows TroGlass Metallic et Plexiglass / TroGlass Clear distincts) ; E-1 clos (Plexiglass / TroGlass Clear : impression UV à l'envers → découpe) ; **V-2 fermé** (découpe Plexiglass côté envers, face imprimée vers le laser ; information de fabrication, aucun miroir de l'artefact laser) ; **V-3 fermé** (impression UV Plexiglass à l'envers en miroir ; D1 étendue à `PLEXIGLASS_UV`) ; libellés du procédé Plexiglass explicitant l'ordre (V-6) ; champ `condition` conservé (V-5).
+- **Décisions intégrées** : C5 clos (TroLase : découpe systématique, CUT toujours présent) ; VR-34 close ; CR-2 **non activée** ; P3 (découpe systématique ; workflows TroGlass Metallic et Plexiglass / TroGlass Clear distincts) ; E-1 clos (Plexiglass / TroGlass Clear : impression UV à l'envers → découpe) ; **V-2 fermé** (découpe Plexiglass côté envers, face imprimée vers le laser ; information de fabrication, aucun miroir de l'artefact laser) ; **V-3 fermé** (impression UV Plexiglass à l'envers en miroir ; D1 étendue à `PLEXIGLASS_UV`) ; libellés du procédé Plexiglass explicitant l'ordre (V-6) ; champ `condition` conservé (V-5) ; **versions des 5 moteurs définies (option A, 15/09/2026)** : `ENGINE_VERSIONS` = « 1 » pour design, mounting, geometry, render, production (encadré §6).
 - **Non modifié** : §30.1 (ligne TroLase 600 × 400 DIFFÉRÉE) ; format fournisseur 600 × 300 hors modèle ; VR-02 ; GATE 1 ; machine / côté de la découpe TroLase Metallic (V-1, non établis) ; identifiant technique `decoupe_impression_uv` (§33, inchangé, G.2).
 - Le tableau détaillé v1.5 → v1.6 figure dans TABLEAU-TRANSITION-MP-v1.5-v1.6.
 
@@ -401,6 +401,20 @@ type CanonicalGeometry = { // mm, arrondi roundMm (3 décimales)
   engineVersions: { design; mounting; geometry; render; production }
 }
 ```
+**Versions des moteurs (v1.6 — décision Supervisor du 15/09/2026, option A)** :
+- **Source unique** : `ENGINE_VERSIONS` (`src/domain/versions-moteurs.ts`) ; aucune autre déclaration ; transportée par le serveur vers la chaîne qui construit la géométrie canonique ; jamais fournie par le client, jamais dérivée du SHA Git, aucune version « latest ».
+- **Valeurs initiales** : `design` = « 1 », `mounting` = « 1 », `geometry` = « 1 », `render` = « 1 », `production` = « 1 », identifiant l'implémentation contractuelle présente dans `main` = `9290cf1`. Format MVP : chaîne simple « 1 », « 2 », « 3 » (pas de semver).
+- **Périmètres** :
+  - **design** : texte et artwork, répartition dans les couches ; déterminant si un texte ou un artwork est présent ;
+  - **mounting** : trous et zones de garde ; déterminant si la plaque comporte des trous ;
+  - **geometry** : géométrie canonique, arrondi `roundMm`, JSON canonique ; toujours déterminant ;
+  - **render** : preview serveur ; non déterminant pour la géométrie actuelle ;
+  - **production** : plan et artefacts de production ; non déterminant pour la géométrie actuelle.
+  Dans le modèle MVP, les 5 versions restent renseignées : elles appartiennent à la chaîne de reproductibilité portée par la géométrie canonique et le BAT.
+- **Règle de montée** : une version est incrémentée lorsqu'une modification peut changer une sortie déterminante pour la reproductibilité du moteur ; un refactor démontré sémantiquement et déterministiquement équivalent ne la fait pas monter.
+- **Distinctions** : un changement de catalogue (`catalogVersion`), de workflow (`workflowVersion`), de contrat (version portée par l'identifiant) ou de règle métier (`designRulesVersion`, `pricingVersion`) ne fait pas automatiquement monter une version de moteur ; ces éléments ont leurs propres versions.
+- **Hors périmètre** : restructuration du schéma (render / production hors géométrie, « non applicable »), registre de versions, semver, migration ; aperçu serveur T4-a (décision distincte).
+
 Entités catalogue : `Product`, référence (`MaterialVariant`), `Thickness`, `Format`, `DimensionRules`, apparence, politique d'impression, `ProductionWorkflow`, `ProductionOperation`, `MachineCapability`, `MountingRules`, `DesignOptions`, `ArtworkRules`, `PriceRules`, `CompatibilityRules`, `ProductionContracts`. Persistées : `artworks`, `bat_snapshots`, `orders`, `order_lines`, `order_events`, `production_jobs`, `stripe_events`, `events`, `email_log`, `admin_*`. **Aucun `brand_id/store_id/channel_id/tenant_id`** (§21). Modèle complet : **Annexe A**.
 
 ## 7. Catalogue

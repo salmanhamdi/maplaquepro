@@ -36,5 +36,6 @@ export * from "./referentiels";
 export * from "./resolved-spec";
 export * from "./texte";
 export * from "./thickness";
+export * from "./versions-moteurs";
 export * from "./violation";
 export * from "./workflow";
