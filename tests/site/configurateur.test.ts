@@ -1,6 +1,6 @@
 // Configurateur v1 : catalogue de démonstration et traduction du verdict du moteur. Le moteur reste la source de vérité.
 import { describe, expect, it } from "vitest";
-import { ETAT_INITIAL, erreursDeSaisie, interpreter, lireMm, statutDepuis, versConfiguration } from "../../src/components/configurateur/interpretation";
+import { ETAT_INITIAL, erreursDeSaisie, etatEtape, interpreter, lireMm, type Message, statutDepuis, TEXTES_STATUT, versConfiguration } from "../../src/components/configurateur/interpretation";
 import { evaluateFabricability, proposeAlternatives, validateCatalog } from "../../src/domain";
 import { CATALOGUE_DEMO, COMPOSITION_DEMO, POLICE_DEMO, PRODUIT_DEMO, referenceDemo } from "../../src/server/catalogue-demo";
 
@@ -89,5 +89,33 @@ describe("configurateur — verdict du moteur", () => {
   it("texte transmis tel que saisi (normalisation par le moteur) ; aucune ligne ⇒ pas de texte", () => {
     expect(versConfiguration({ ...ETAT_INITIAL, lignes: ["  A  "] }, ids("plexiglass")).design.text?.lines).toEqual(["  A  "]);
     expect(versConfiguration({ ...ETAT_INITIAL, lignes: ["", " "] }, ids("plexiglass")).design.text).toBeNull();
+  });
+});
+
+describe("configurateur — présentation (aucun état métier créé)", () => {
+  const msg = (champ: Message["champ"], niveau: Message["niveau"]): Message => ({ id: `${champ}-${niveau}`, champ, niveau, titre: "t", detail: "d" });
+
+  it("état d'étape : à corriger si un message bloquant, en attente si validation atelier, sinon selon la saisie", () => {
+    expect(etatEtape("dimensions", [msg("dimensions", "bloquant"), msg("dimensions", "validation")], true)).toBe("a_corriger");
+    expect(etatEtape("texte", [msg("texte", "validation")], true, true)).toBe("attente");
+    expect(etatEtape("texte", [msg("dimensions", "bloquant")], false, true)).toBe("facultatif");
+    expect(etatEtape("dimensions", [], false)).toBe("a_renseigner");
+    expect(etatEtape("fixations", [], true)).toBe("renseigne");
+  });
+
+  it("CR-2 (TroLase) : l'étape Matière est « en attente », jamais « renseignée » comme disponible ; verdict « en attente de validation atelier »", () => {
+    const etat = { ...ETAT_INITIAL, famille: "trolase" as const };
+    const r = evaluer(etat);
+    if (r.ok) throw new Error("refus attendu");
+    const messages = interpreter(r.violations, "trolase");
+    expect(etatEtape("matiere", messages, true)).toBe("attente");
+    expect(TEXTES_STATUT[statutDepuis(false, messages)].titre).toBe("En attente de validation atelier");
+  });
+
+  it("textes de verdict : un titre par état affiché, « Fabricable » réservé à l'état renvoyé par le moteur", () => {
+    expect(Object.keys(TEXTES_STATUT).sort()).toEqual(["bloque", "en_validation", "fabricable", "saisie", "verification"]);
+    expect(TEXTES_STATUT.fabricable.titre).toBe("Fabricable");
+    expect(statutDepuis(true, [])).toBe("fabricable");
+    expect(statutDepuis(false, [])).toBe("en_validation");
   });
 });

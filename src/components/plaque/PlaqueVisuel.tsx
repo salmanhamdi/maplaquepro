@@ -53,7 +53,9 @@ export function PlaqueVisuel({ matiere, widthMm: W, heightMm: H, lignes, trous =
   const zoneTexteX = trous === 2 ? retrait + rTrou * 2.5 : W * 0.08;
   const largeurUtile = W - 2 * zoneTexteX;
   const plusLongue = Math.max(...lignesAffichees.map((l, i) => l.length * (i === 0 ? 0.6 : 0.36)), 1);
-  const taille = Math.max(Math.min((H * 0.78) / (lignesAffichees.length * 1.18), largeurUtile / plusLongue), 0.5);
+  const tailleAjustee = Math.max(Math.min((H * 0.78) / (lignesAffichees.length * 1.18), largeurUtile / plusLongue), 0.5);
+  // Texte d'exemple volontairement plus discret que le texte du client.
+  const taille = exemple ? tailleAjustee * 0.62 : tailleAjustee;
   const brillance = matiere !== "trolase";
   const xTexte = alignement === "center" ? W / 2 : zoneTexteX;
 

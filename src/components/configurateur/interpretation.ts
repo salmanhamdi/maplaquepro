@@ -193,3 +193,41 @@ export const statutDepuis = (ok: boolean, messages: readonly Message[]): Verdict
   ok ? "fabricable" : messages.some((m) => m.niveau === "bloquant") ? "bloque" : "en_validation";
 
 export const procedeDe = (famille: MaterialFamily) => WORKFLOW_BY_FAMILY[famille];
+
+// ---------- Présentation (aucune règle métier) ----------
+
+export type StatutAffiche = Verdict["statut"] | "saisie" | "verification";
+
+/** Textes du verdict affiché. Ils reformulent l'état renvoyé par le moteur ; ils n'en créent aucun. */
+export const TEXTES_STATUT: Record<StatutAffiche, { titre: string; detail: string }> = {
+  fabricable: { titre: "Fabricable", detail: "Notre moteur de fabrication accepte cette configuration. Vous vérifierez le BAT avant toute fabrication." },
+  bloque: { titre: "Non fabricable en l'état", detail: "Corrigez les points signalés pour poursuivre." },
+  en_validation: {
+    titre: "En attente de validation atelier",
+    detail: "Certains éléments ne peuvent pas encore être commandés. Aucune correction n'est attendue de votre part.",
+  },
+  saisie: { titre: "Configuration incomplète", detail: "Renseignez les dimensions pour lancer la vérification." },
+  verification: { titre: "Vérification en cours", detail: "Nous contrôlons votre configuration auprès du moteur de fabrication." },
+};
+
+export type EtatEtape = "renseigne" | "facultatif" | "a_renseigner" | "a_corriger" | "attente";
+
+/**
+ * État d'affichage d'une étape du configurateur : dérivé de la saisie et des messages du moteur uniquement.
+ * « renseigné » signifie qu'une valeur est choisie, jamais qu'elle est validée par le métier.
+ */
+export function etatEtape(champ: Champ, messages: readonly Message[], rempli: boolean, facultatif = false): EtatEtape {
+  const duChamp = messages.filter((m) => m.champ === champ);
+  if (duChamp.some((m) => m.niveau === "bloquant")) return "a_corriger";
+  if (duChamp.some((m) => m.niveau === "validation")) return "attente";
+  if (rempli) return "renseigne";
+  return facultatif ? "facultatif" : "a_renseigner";
+}
+
+export const LIBELLES_ETAPE: Record<EtatEtape, string> = {
+  renseigne: "Renseigné",
+  facultatif: "Facultatif",
+  a_renseigner: "À renseigner",
+  a_corriger: "À corriger",
+  attente: "En attente atelier",
+};
