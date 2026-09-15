@@ -1,8 +1,6 @@
-// Paramètres d'authentification S2.
-// DÉCIDÉ (Supervisor, S2-0) : Argon2id, argon2@0.45.1, m=19456 Kio, t=2, p=1.
-// PROPOSÉ — NON NORMATIF, à arbitrer : toutes les autres valeurs ci-dessous (politique de mot de passe,
-// durées, limites de débit, connexion avant vérification, révocation). Elles sont regroupées ici pour
-// qu'un arbitrage ne modifie qu'un seul fichier.
+// Paramètres d'authentification S2 — NORMATIFS.
+// Argon2id argon2@0.45.1 m=19456 Kio, t=2, p=1 : décision Supervisor S2-0.
+// Toutes les autres valeurs ci-dessous : arbitrage final Supervisor S2 (MVP).
 
 export const ARGON2_PARAMETRES = { memoryCost: 19456, timeCost: 2, parallelism: 1 } as const;
 
@@ -10,7 +8,7 @@ const MINUTE = 60_000;
 const HEURE = 60 * MINUTE;
 const JOUR = 24 * HEURE;
 
-export const PROPOSITIONS = {
+export const PARAMETRES_AUTH = {
   motDePasse: {
     longueurMin: 10,
     // Borne haute en octets UTF-8 : protège Argon2 contre des entrées démesurées.

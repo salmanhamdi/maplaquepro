@@ -9,7 +9,7 @@ import { emailCompteExistant, emailMotDePasseChange, emailReinitialisation, emai
 import { type JournalAudit, tracer } from "./audit";
 import { consommerTentative } from "./limites";
 import { doitEtreRehache, type ErreurPolitique, hacherMotDePasse, verificationFactice, verifierMotDePasse, verifierPolitique } from "./mot-de-passe";
-import { type Limite, PROPOSITIONS } from "./parametres";
+import { type Limite, PARAMETRES_AUTH } from "./parametres";
 import { empreinte, formatSecretValide, nouveauSecret } from "./secrets";
 import { normaliserEmail } from "./validation";
 
@@ -75,7 +75,7 @@ async function consommerJeton(tx: Tx, jeton: unknown, purpose: TokenPurpose, mai
 
 async function ouvrirSession(tx: Tx | Db, customerId: string, maintenant: Date): Promise<SessionOuverte> {
   const jetonSession = nouveauSecret();
-  const expiresAt = new Date(maintenant.getTime() + PROPOSITIONS.dureeSessionMs);
+  const expiresAt = new Date(maintenant.getTime() + PARAMETRES_AUTH.dureeSessionMs);
   await tx.insert(customerSessions).values({
     id: nouvelId(),
     customerId,
@@ -106,7 +106,7 @@ export async function inscrire(
   if (typeof entree.motDePasse !== "string") return { ok: false, erreur: "trop_court" };
   const politique = verifierPolitique(entree.motDePasse);
   if (politique) return { ok: false, erreur: politique };
-  if (!(await limiter(deps, "inscription_ip", entree.ip, PROPOSITIONS.limites.inscriptionParIp))) return { ok: false, erreur: "limite" };
+  if (!(await limiter(deps, "inscription_ip", entree.ip, PARAMETRES_AUTH.limites.inscriptionParIp))) return { ok: false, erreur: "limite" };
 
   // Le hachage est calculé dans tous les cas : la durée ne distingue pas un email déjà inscrit.
   const passwordHash = await hacherMotDePasse(entree.motDePasse);
@@ -116,7 +116,7 @@ export async function inscrire(
   try {
     jeton = await deps.db.transaction(async (tx) => {
       await tx.insert(customers).values({ id: customerId, email, passwordHash, createdAt: maintenant, updatedAt: maintenant });
-      return creerJeton(tx, customerId, "email_verification", PROPOSITIONS.dureeJetonVerificationEmailMs, maintenant);
+      return creerJeton(tx, customerId, "email_verification", PARAMETRES_AUTH.dureeJetonVerificationEmailMs, maintenant);
     });
   } catch (e) {
     if (!estDoublon(e)) throw e;
@@ -145,8 +145,8 @@ export async function verifierEmail(deps: DependancesAuth, jeton: unknown): Prom
 export async function renvoyerVerification(deps: DependancesAuth, customerId: string): Promise<Succes | Echec<"limite">> {
   const [client] = await deps.db.select({ email: customers.email, emailVerifiedAt: customers.emailVerifiedAt }).from(customers).where(eq(customers.id, customerId));
   if (!client || client.emailVerifiedAt) return { ok: true };
-  if (!(await limiter(deps, "renvoi_verification", customerId, PROPOSITIONS.limites.renvoiVerificationParCompte, customerId))) return { ok: false, erreur: "limite" };
-  const jeton = await creerJeton(deps.db, customerId, "email_verification", PROPOSITIONS.dureeJetonVerificationEmailMs, deps.maintenant());
+  if (!(await limiter(deps, "renvoi_verification", customerId, PARAMETRES_AUTH.limites.renvoiVerificationParCompte, customerId))) return { ok: false, erreur: "limite" };
+  const jeton = await creerJeton(deps.db, customerId, "email_verification", PARAMETRES_AUTH.dureeJetonVerificationEmailMs, deps.maintenant());
   await deps.envoyeur.envoyer(emailVerification(client.email, lien(deps, "/compte/verifier-email", jeton)));
   return { ok: true };
 }
@@ -159,8 +159,8 @@ export async function connecter(
 ): Promise<Succes<SessionOuverte> | Echec<"identifiants_invalides" | "email_non_verifie" | "limite">> {
   const email = normaliserEmail(entree.email);
   const motDePasse = typeof entree.motDePasse === "string" ? entree.motDePasse : "";
-  const autoriseIp = await limiter(deps, "connexion_ip", entree.ip, PROPOSITIONS.limites.connexionParIp);
-  const autoriseEmail = await limiter(deps, "connexion_email", email ?? "invalide", PROPOSITIONS.limites.connexionParEmail);
+  const autoriseIp = await limiter(deps, "connexion_ip", entree.ip, PARAMETRES_AUTH.limites.connexionParIp);
+  const autoriseEmail = await limiter(deps, "connexion_email", email ?? "invalide", PARAMETRES_AUTH.limites.connexionParEmail);
   if (!autoriseIp || !autoriseEmail) return { ok: false, erreur: "limite" };
 
   const [client] = email ? await deps.db.select().from(customers).where(eq(customers.email, email)) : [];
@@ -170,7 +170,7 @@ export async function connecter(
     tracer(deps.journal, maintenant, "connexion_echouee", { customerId: client?.id });
     return { ok: false, erreur: "identifiants_invalides" };
   }
-  if (!PROPOSITIONS.connexionAvantVerificationEmail && !client.emailVerifiedAt) return { ok: false, erreur: "email_non_verifie" };
+  if (!PARAMETRES_AUTH.connexionAvantVerificationEmail && !client.emailVerifiedAt) return { ok: false, erreur: "email_non_verifie" };
 
   if (doitEtreRehache(client.passwordHash)) {
     await deps.db.update(customers).set({ passwordHash: await hacherMotDePasse(motDePasse), updatedAt: maintenant }).where(eq(customers.id, client.id));
@@ -189,7 +189,7 @@ export async function lireSession(deps: DependancesAuth, jetonSession: unknown):
     .innerJoin(customers, eq(customers.id, customerSessions.customerId))
     .where(and(eq(customerSessions.tokenHash, empreinte(jetonSession)), isNull(customerSessions.revokedAt), gt(customerSessions.expiresAt, maintenant)));
   if (!ligne) return null;
-  if (maintenant.getTime() - ligne.lastSeenAt.getTime() > PROPOSITIONS.intervalleDerniereActiviteMs) {
+  if (maintenant.getTime() - ligne.lastSeenAt.getTime() > PARAMETRES_AUTH.intervalleDerniereActiviteMs) {
     await deps.db.update(customerSessions).set({ lastSeenAt: maintenant }).where(eq(customerSessions.id, ligne.sessionId));
   }
   return { sessionId: ligne.sessionId, customerId: ligne.customerId, email: ligne.email, emailVerifiedAt: ligne.emailVerifiedAt };
@@ -209,15 +209,15 @@ export async function deconnecter(deps: DependancesAuth, jetonSession: unknown):
 export async function demanderReinitialisation(deps: DependancesAuth, entree: { email: unknown; ip: string }): Promise<Succes | Echec<"email_invalide" | "limite">> {
   const email = normaliserEmail(entree.email);
   if (!email) return { ok: false, erreur: "email_invalide" };
-  const autoriseIp = await limiter(deps, "reinitialisation_ip", entree.ip, PROPOSITIONS.limites.reinitialisationParIp);
-  const autoriseEmail = await limiter(deps, "reinitialisation_email", email, PROPOSITIONS.limites.reinitialisationParEmail);
+  const autoriseIp = await limiter(deps, "reinitialisation_ip", entree.ip, PARAMETRES_AUTH.limites.reinitialisationParIp);
+  const autoriseEmail = await limiter(deps, "reinitialisation_email", email, PARAMETRES_AUTH.limites.reinitialisationParEmail);
   if (!autoriseIp || !autoriseEmail) return { ok: false, erreur: "limite" };
 
   const [client] = await deps.db.select({ id: customers.id }).from(customers).where(eq(customers.email, email));
   const maintenant = deps.maintenant();
   tracer(deps.journal, maintenant, "reinitialisation_demandee", { customerId: client?.id });
   if (client) {
-    const jeton = await creerJeton(deps.db, client.id, "password_reset", PROPOSITIONS.dureeJetonReinitialisationMs, maintenant);
+    const jeton = await creerJeton(deps.db, client.id, "password_reset", PARAMETRES_AUTH.dureeJetonReinitialisationMs, maintenant);
     await deps.envoyeur.envoyer(emailReinitialisation(email, lien(deps, "/compte/reinitialiser", jeton)));
   }
   return { ok: true };
@@ -252,7 +252,7 @@ export async function changerMotDePasse(
   entree: { client: ClientConnecte; actuel: unknown; nouveau: unknown },
 ): Promise<Succes<SessionOuverte> | Echec<"mot_de_passe_actuel_invalide" | ErreurPolitique | "limite">> {
   const { client } = entree;
-  if (!(await limiter(deps, "changement_mot_de_passe", client.customerId, PROPOSITIONS.limites.changementMotDePasseParCompte, client.customerId))) return { ok: false, erreur: "limite" };
+  if (!(await limiter(deps, "changement_mot_de_passe", client.customerId, PARAMETRES_AUTH.limites.changementMotDePasseParCompte, client.customerId))) return { ok: false, erreur: "limite" };
   const [ligne] = await deps.db.select({ passwordHash: customers.passwordHash }).from(customers).where(eq(customers.id, client.customerId));
   if (!ligne || typeof entree.actuel !== "string" || !(await verifierMotDePasse(ligne.passwordHash, entree.actuel))) {
     return { ok: false, erreur: "mot_de_passe_actuel_invalide" };
@@ -265,7 +265,7 @@ export async function changerMotDePasse(
   const maintenant = deps.maintenant();
   const session = await deps.db.transaction(async (tx) => {
     await tx.update(customers).set({ passwordHash, updatedAt: maintenant }).where(eq(customers.id, client.customerId));
-    if (PROPOSITIONS.revoquerAutresSessionsApresChangement) await revoquerSessions(tx, client.customerId, maintenant);
+    if (PARAMETRES_AUTH.revoquerAutresSessionsApresChangement) await revoquerSessions(tx, client.customerId, maintenant);
     else await tx.update(customerSessions).set({ revokedAt: maintenant }).where(eq(customerSessions.id, client.sessionId));
     return ouvrirSession(tx, client.customerId, maintenant);
   });

@@ -21,9 +21,9 @@
 | Identifiants | ULID `CHAR(26)` générés par l'application, aucun `AUTO_INCREMENT` |
 | Restauration Hostinger | Redéploiement d'un artefact connu ; le rollback de l'historique hPanel n'est pas une restauration fiable |
 
-## Valeurs PROPOSÉES, non normatives (à arbitrer)
+## Paramètres arbitrés (Supervisor, arbitrage final S2 — MVP)
 
-Toutes regroupées dans `src/server/auth/parametres.ts` (`PROPOSITIONS`).
+Tous regroupés dans `src/server/auth/parametres.ts` (`PARAMETRES_AUTH`). Clés de limitation : SHA-256, pas de HMAC pour le MVP. Audit : stdout uniquement, sans conservation en base.
 
 | Paramètre | Valeur proposée |
 |---|---|
@@ -97,10 +97,13 @@ Toutes regroupées dans `src/server/auth/parametres.ts` (`PROPOSITIONS`).
 
 ## Points ouverts
 
-- **Toutes les valeurs PROPOSÉES** ci-dessus.
-- **Fournisseur d'email de production** (Resend, SMTP…) et domaine d'envoi.
-- **Confiance dans `X-Forwarded-For`** sur Hostinger, pour la clé IP de la limitation de débit : À CONFIRMER.
-- **Clés de limitation** : SHA-256 sans secret. Une variante HMAC nécessiterait un secret applicatif non arbitré.
-- **Purge** des lignes `auth_attempts` expirées, des sessions et des jetons consommés : non implémentée (règles de rétention à réconcilier).
-- **Suppression de compte** (D4) : hors périmètre S2 listé.
-- **Mode de migration en production** (D-S1-1) : toujours ouvert.
+**Bloquants production (S2 n'est pas production-ready) :**
+- **Fournisseur d'email de production** : non choisi. Le refus explicite (`EmailNonConfigure`) reste en place ; aucun fournisseur fictif.
+- **D-S1-1** : mode de migration en production, toujours ouvert.
+
+**Ouverts, sans tranche dédiée :**
+- **`X-Forwarded-For`** : utilisé comme clé IP, mais pas une source de vérité absolue. Sa fiabilité dépend du proxy de production.
+- **Purge et rétention** des tentatives, sessions et jetons expirés : non implémentées.
+- **Suppression de compte** (D4).
+- **Évolution HMAC** des clés de limitation.
+- **Conservation de l'audit en base.**

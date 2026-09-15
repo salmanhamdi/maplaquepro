@@ -1,15 +1,15 @@
 // Hachage des mots de passe : Argon2id (argon2@0.45.1), format PHC conservant les paramètres.
 // Le mot de passe en clair n'est jamais persisté, journalisé, placé dans une URL ni renvoyé.
 import argon2 from "argon2";
-import { ARGON2_PARAMETRES, PROPOSITIONS } from "./parametres";
+import { ARGON2_PARAMETRES, PARAMETRES_AUTH } from "./parametres";
 
 const OPTIONS = { type: argon2.argon2id, ...ARGON2_PARAMETRES } as const;
 
 export type ErreurPolitique = "trop_court" | "trop_long";
 
 export function verifierPolitique(motDePasse: string): ErreurPolitique | null {
-  if (Buffer.byteLength(motDePasse, "utf8") > PROPOSITIONS.motDePasse.octetsMax) return "trop_long";
-  if ([...motDePasse].length < PROPOSITIONS.motDePasse.longueurMin) return "trop_court";
+  if (Buffer.byteLength(motDePasse, "utf8") > PARAMETRES_AUTH.motDePasse.octetsMax) return "trop_long";
+  if ([...motDePasse].length < PARAMETRES_AUTH.motDePasse.longueurMin) return "trop_court";
   return null;
 }
 
@@ -22,7 +22,7 @@ export function hacherMotDePasse(motDePasse: string): Promise<string> {
 }
 
 export async function verifierMotDePasse(hash: string, motDePasse: string): Promise<boolean> {
-  if (Buffer.byteLength(motDePasse, "utf8") > PROPOSITIONS.motDePasse.octetsMax) return false;
+  if (Buffer.byteLength(motDePasse, "utf8") > PARAMETRES_AUTH.motDePasse.octetsMax) return false;
   try {
     return await argon2.verify(hash, normaliser(motDePasse));
   } catch {

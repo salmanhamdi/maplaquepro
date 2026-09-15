@@ -5,7 +5,7 @@ import { eq, sql } from "drizzle-orm";
 import type mysql from "mysql2/promise";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
 import type { EntreeAudit } from "../../src/server/auth/audit";
-import { PROPOSITIONS } from "../../src/server/auth/parametres";
+import { PARAMETRES_AUTH } from "../../src/server/auth/parametres";
 import { empreinte } from "../../src/server/auth/secrets";
 import {
   changerMotDePasse,
@@ -120,7 +120,7 @@ describe("S2 — inscription et vérification email", () => {
     const [t] = await db.select().from(customerTokens);
     expect(t?.purpose).toBe("email_verification");
     expect(t?.tokenHash).toBe(empreinte(jeton));
-    expect(t!.expiresAt.getTime() - horloge.getTime()).toBe(PROPOSITIONS.dureeJetonVerificationEmailMs);
+    expect(t!.expiresAt.getTime() - horloge.getTime()).toBe(PARAMETRES_AUTH.dureeJetonVerificationEmailMs);
     const [dump] = await pool.query<mysql.RowDataPacket[]>("SELECT CONCAT_WS('|', c.email, c.password_hash, t.token_hash) AS tout FROM customers c JOIN customer_tokens t ON t.customer_id = c.id");
     expect(String(dump[0]?.tout)).not.toContain(MDP);
     expect(String(dump[0]?.tout)).not.toContain(jeton);
@@ -148,7 +148,7 @@ describe("S2 — inscription et vérification email", () => {
     const jeton = jetonDans(dernierEmail().texte);
     for (const hostile of [undefined, "", "' OR 1=1 --", jeton.slice(1)]) expect(await verifierEmail(deps(), hostile)).toEqual({ ok: false, erreur: "jeton_invalide" });
 
-    avancer(PROPOSITIONS.dureeJetonVerificationEmailMs + 1);
+    avancer(PARAMETRES_AUTH.dureeJetonVerificationEmailMs + 1);
     expect(await verifierEmail(deps(), jeton)).toEqual({ ok: false, erreur: "jeton_invalide" });
 
     horloge = new Date("2026-09-15T10:00:00.000Z");
@@ -184,7 +184,7 @@ describe("S2 — connexion, session, déconnexion", () => {
     const [ligne] = await db.select().from(customerSessions);
     expect(ligne?.tokenHash).toBe(empreinte(s.jetonSession));
     expect(ligne?.tokenHash).not.toContain(s.jetonSession);
-    expect(ligne!.expiresAt.getTime() - horloge.getTime()).toBe(PROPOSITIONS.dureeSessionMs);
+    expect(ligne!.expiresAt.getTime() - horloge.getTime()).toBe(PARAMETRES_AUTH.dureeSessionMs);
     expect(await lireSession(deps(), s.jetonSession)).toMatchObject({ customerId: c.id, email: "client@exemple.fr" });
     expect(journal.at(-1)).toEqual({ evenement: "connexion_reussie", horodatage: horloge.toISOString(), customerId: c.id });
   });
@@ -202,7 +202,7 @@ describe("S2 — connexion, session, déconnexion", () => {
     await inscrireEtVerifier();
     const s = await connexion();
     expect(await lireSession(deps(), "x".repeat(43))).toBeNull();
-    avancer(PROPOSITIONS.dureeSessionMs + 1);
+    avancer(PARAMETRES_AUTH.dureeSessionMs + 1);
     expect(await lireSession(deps(), s.jetonSession)).toBeNull();
     horloge = new Date("2026-09-15T10:00:00.000Z");
     await deconnecter(deps(), s.jetonSession);
@@ -221,7 +221,7 @@ describe("S2 — connexion, session, déconnexion", () => {
 
   it("limitation par email persistée en base : refus au-delà du seuil, visible depuis une autre instance", async () => {
     await inscrireEtVerifier();
-    const { max } = PROPOSITIONS.limites.connexionParEmail;
+    const { max } = PARAMETRES_AUTH.limites.connexionParEmail;
     for (let i = 0; i < max; i++) await connecter(deps(), { email: "client@exemple.fr", motDePasse: "mauvaise-valeur-test", ip: `198.51.100.${i}` });
     const autrePool = creerPool();
     try {
@@ -233,7 +233,7 @@ describe("S2 — connexion, session, déconnexion", () => {
     expect(journal.some((e) => e.evenement === "limite_atteinte" && e.detail === "connexion_email")).toBe(true);
     const [cle] = await pool.query<mysql.RowDataPacket[]>("SELECT key_hash AS k FROM auth_attempts");
     expect(cle.every((l) => /^[0-9a-f]{64}$/.test(String(l.k)))).toBe(true);
-    avancer(PROPOSITIONS.limites.connexionParEmail.fenetreMs);
+    avancer(PARAMETRES_AUTH.limites.connexionParEmail.fenetreMs);
     expect((await connecter(deps(), { email: "client@exemple.fr", motDePasse: MDP, ip: IP })).ok).toBe(true);
   });
 });
@@ -283,7 +283,7 @@ describe("S2 — mot de passe oublié et réinitialisation", () => {
     await demanderReinitialisation(deps(), { email: "client@exemple.fr", ip: IP });
     const second = jetonDans(dernierEmail().texte);
     expect(await reinitialiserMotDePasse(deps(), { jeton: premier, motDePasse: MDP_NOUVEAU })).toEqual({ ok: false, erreur: "jeton_invalide" });
-    avancer(PROPOSITIONS.dureeJetonReinitialisationMs + 1);
+    avancer(PARAMETRES_AUTH.dureeJetonReinitialisationMs + 1);
     expect(await reinitialiserMotDePasse(deps(), { jeton: second, motDePasse: MDP_NOUVEAU })).toEqual({ ok: false, erreur: "jeton_invalide" });
   });
 });
