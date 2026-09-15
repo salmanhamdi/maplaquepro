@@ -15,18 +15,26 @@
     "lint:boundaries": "node scripts/check-boundaries.mjs",
     "lint": "npm run lint:terms && npm run lint:boundaries",
     "test": "vitest run",
-    "ci": "npm run typecheck && npm run lint && npm run test && npm run build"
+    "ci": "npm run typecheck && npm run lint && npm run test && npm run build",
+    "test:db": "vitest run --config vitest.db.config.mts",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:check": "drizzle-kit check"
   },
   "dependencies": {
+    "drizzle-orm": "0.45.2",
+    "mysql2": "3.24.4",
     "next": "16.3.5",
     "react": "19.3.0",
     "react-dom": "19.3.0",
+    "ulid": "3.0.2",
     "zod": "4.6.5"
   },
   "devDependencies": {
     "@types/node": "24.13.4",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
+    "drizzle-kit": "0.31.10",
     "typescript": "5.9.3",
     "vitest": "5.0.0"
   }

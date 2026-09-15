@@ -10,9 +10,8 @@ import ts from "typescript";
 
 const SOURCE_EXTENSIONS = new Set([".ts", ".tsx", ".mts", ".cts", ".js", ".mjs", ".cjs", ".jsx"]);
 
-// React / Next.js (§5.1) ; Drizzle (ORM retenu §5.4). Les pilotes de base de données seront
-// ajoutés lorsque le dialecte sera décidé (OD-13, ouvert).
-const FORBIDDEN_PACKAGES = ["react", "react-dom", "next", "drizzle-orm", "drizzle-kit"];
+// React / Next.js (§5.1) ; Drizzle (ORM retenu §5.4) ; pilote MariaDB mysql2 (OD-13, S1) ; générateur ULID (S1).
+const FORBIDDEN_PACKAGES = ["react", "react-dom", "next", "drizzle-orm", "drizzle-kit", "mysql2", "ulid"];
 
 function listSourceFiles(dir) {
   const files = [];

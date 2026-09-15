@@ -1,0 +1,25 @@
+# MariaDB 11.8 locale et isolée (développement / tests DB). Aucune valeur réelle :
+# les identifiants viennent de `.env.local` (ignoré par Git), voir `.env.example`.
+#   docker compose --env-file .env.local up -d
+services:
+  mariadb:
+    image: mariadb:11.8
+    container_name: maplaquepro-mariadb
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:?definir dans .env.local}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:?definir dans .env.local}
+      MARIADB_USER: ${MARIADB_USER:?definir dans .env.local}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:?definir dans .env.local}
+    command: ["--default-time-zone=+00:00", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    ports:
+      - "127.0.0.1:3307:3306"
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    volumes:
+      - maplaquepro-mariadb:/var/lib/mysql
+
+volumes:
+  maplaquepro-mariadb:

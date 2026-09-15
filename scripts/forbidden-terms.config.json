@@ -43,6 +43,12 @@
         "tsconfig.json",
         "next.config.ts",
         "vitest.config.mts",
+        "vitest.db.config.mts",
+        "drizzle.config.ts",
+        "drizzle/**",
+        "docker-compose.yml",
+        ".env.example",
+        "docs/infra/**",
         ".github/**",
         "scripts/check-boundaries.mjs"
       ]

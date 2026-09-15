@@ -26,3 +26,40 @@ jobs:
         run: npm test
       - name: Build
         run: npm run build
+
+  # S1 — infrastructure DB : MariaDB 11.8 éphémère, séparée des tests du domaine.
+  # Identifiants de test jetables propres au runner (aucune valeur Hostinger).
+  database:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:11.8
+        env:
+          MARIADB_ROOT_PASSWORD: ci-root-ephemere
+          MARIADB_DATABASE: maplaquepro_ci
+          MARIADB_USER: maplaquepro_ci
+          MARIADB_PASSWORD: ci-ephemere
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
+          --health-interval=5s --health-timeout=5s --health-retries=30
+    env:
+      DATABASE_URL: mysql://maplaquepro_ci:ci-ephemere@127.0.0.1:3306/maplaquepro_ci
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Cohérence des migrations (drizzle-kit check)
+        run: npm run db:check
+      - name: Schéma et migrations versionnées alignés (aucune migration non commitée)
+        run: |
+          npx drizzle-kit generate
+          test -z "$(git status --porcelain -- drizzle)"
+      - name: Application des migrations versionnées (drizzle-kit migrate)
+        run: npm run db:migrate
+      - name: Tests d'intégration MariaDB 11.8
+        run: npm run test:db
