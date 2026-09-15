@@ -1,0 +1,102 @@
+/* Espace compte client (S2) — minimal, sur les tokens du site. */
+
+.compte-page {
+  padding-block: clamp(40px, 8vw, 88px);
+}
+.compte-carte {
+  max-width: 480px;
+  margin-inline: auto;
+  padding: clamp(24px, 5vw, 40px);
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-m);
+}
+.compte-carte--large {
+  max-width: 640px;
+}
+.compte-carte h1 {
+  margin-block: 12px 8px;
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.15;
+}
+.compte-carte h2 {
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+.compte-intro {
+  margin-bottom: 24px;
+  color: var(--color-ink-soft);
+}
+.compte-section {
+  padding-top: 24px;
+  margin-top: 24px;
+  border-top: 1px solid var(--color-line);
+}
+.compte-form {
+  display: grid;
+  gap: 16px;
+}
+.compte-form--ligne {
+  justify-items: start;
+}
+.compte-champ {
+  display: grid;
+  gap: 6px;
+  font-size: 15px;
+}
+.compte-champ input {
+  min-height: 46px;
+  padding: 0 12px;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-s);
+  background: #ffffff;
+  color: var(--color-ink);
+  font: 400 16px/1.2 var(--font-sans);
+}
+.compte-champ input:focus-visible {
+  border-color: var(--color-blue);
+}
+.compte-champ small {
+  color: var(--color-ink-soft);
+  font-size: 13px;
+}
+.compte-form .btn[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+.compte-retour {
+  padding: 10px 12px;
+  border-radius: var(--radius-s);
+  font-size: 15px;
+}
+.compte-retour--erreur {
+  background: rgb(168 66 27 / 0.08);
+  color: var(--color-accent-strong);
+}
+.compte-retour--succes {
+  background: rgb(31 75 126 / 0.08);
+  color: var(--color-blue);
+}
+.compte-liens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 20px;
+  font-size: 15px;
+}
+.compte-liens a {
+  color: var(--color-blue);
+}
+.compte-fiche {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  margin: 0;
+}
+.compte-fiche dt {
+  color: var(--color-ink-soft);
+}
+.compte-fiche dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}

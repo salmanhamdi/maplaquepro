@@ -8,6 +8,13 @@
       "when": 1789459809196,
       "tag": "0000_init",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1789465956557,
+      "tag": "0001_s2_comptes",
+      "breakpoints": true
     }
   ]
 }

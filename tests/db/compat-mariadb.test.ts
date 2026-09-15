@@ -174,13 +174,16 @@ describe("S1 — MariaDB 11.8 réelle", () => {
     expect(ligne?.id).toBe(id);
   });
 
-  it("chaîne de migrations de l'application (drizzle/) appliquée et rejouable, sans table métier", async () => {
+  it("chaîne de migrations de l'application (drizzle/) appliquée et rejouable ; tables S2 présentes, aucune table ultérieure", async () => {
     await appliquerMigrations();
     await appliquerMigrations();
     const [tables] = await pool.query<mysql.RowDataPacket[]>("SELECT TABLE_NAME AS t FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE()");
     const noms = tables.map((t) => String(t.t));
-    for (const metier of ["customers", "customer_sessions", "customer_login_tokens", "configurations", "bat_snapshots"]) {
-      expect(noms).not.toContain(metier);
+    for (const s2 of ["customers", "customer_sessions", "customer_tokens", "auth_attempts"]) {
+      expect(noms).toContain(s2);
+    }
+    for (const ulterieure of ["customer_login_tokens", "configurations", "bat_snapshots", "orders"]) {
+      expect(noms).not.toContain(ulterieure);
     }
     expect(noms).toContain("__drizzle_migrations");
   });
