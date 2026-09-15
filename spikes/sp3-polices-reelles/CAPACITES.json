@@ -1,0 +1,2249 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF. Polices de fixture uniquement, jamais polices produit.",
+  "moteurs": {
+    "harfbuzzjs": "14.4.0",
+    "opentypejs": "2.0.0"
+  },
+  "polices": [
+    {
+      "id": "dejavu-sans-2.37",
+      "fichier": "vendor/dejavu-fonts-ttf-2.37/DejaVuSans.ttf",
+      "octets": 757076,
+      "sha256": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+      "harfbuzz": {
+        "upem": 2048,
+        "glyphes": 6253,
+        "unicodes": 5918,
+        "tables": {
+          "GSUB": true,
+          "GPOS": true,
+          "GDEF": true,
+          "kern": true,
+          "glyf": true,
+          "CFF": false,
+          "fvar": false,
+          "gvar": false,
+          "avar": false,
+          "STAT": false,
+          "name": true,
+          "OS/2": true
+        },
+        "axes": {},
+        "scriptsGSUB": [
+          "DFLT",
+          "arab",
+          "armn",
+          "brai",
+          "cans",
+          "cher",
+          "cyrl",
+          "geor",
+          "grek",
+          "hani",
+          "hebr",
+          "kana",
+          "lao ",
+          "latn",
+          "math",
+          "nko ",
+          "ogam",
+          "runr",
+          "tfng",
+          "thai"
+        ],
+        "scriptsGPOS": [
+          "DFLT",
+          "arab",
+          "armn",
+          "brai",
+          "cans",
+          "cher",
+          "cyrl",
+          "geor",
+          "grek",
+          "hani",
+          "hebr",
+          "kana",
+          "lao ",
+          "latn",
+          "math",
+          "nko ",
+          "ogam",
+          "runr",
+          "tfng",
+          "thai"
+        ],
+        "fonctionnalitesGSUB": [
+          " RQD",
+          "aalt",
+          "case",
+          "ccmp",
+          "dlig",
+          "fina",
+          "hlig",
+          "init",
+          "liga",
+          "locl",
+          "medi",
+          "rlig",
+          "salt"
+        ],
+        "fonctionnalitesGPOS": [
+          "kern",
+          "mark",
+          "mkmk"
+        ],
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 6,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "glyphesAvec": 6,
+              "glyphesSans": 8,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 4,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ]
+        }
+      },
+      "couverture": {
+        "absents": [
+          "U+6F22",
+          "U+E000",
+          "U+0F00",
+          "U+16A0",
+          "U+1D504"
+        ]
+      },
+      "opentypejs": {
+        "upem": 2048,
+        "glyphes": 6253,
+        "noyauxKerningGPOS": true,
+        "pairesKernLegacy": 2727,
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "gentium-plus-regular",
+      "fichier": "vendor/gentiumplus/GentiumPlus-Regular.ttf",
+      "octets": 822956,
+      "sha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+      "harfbuzz": {
+        "upem": 2048,
+        "glyphes": 4307,
+        "unicodes": 2783,
+        "tables": {
+          "GSUB": true,
+          "GPOS": true,
+          "GDEF": true,
+          "kern": false,
+          "glyf": true,
+          "CFF": false,
+          "fvar": false,
+          "gvar": false,
+          "avar": false,
+          "STAT": false,
+          "name": true,
+          "OS/2": true
+        },
+        "axes": {},
+        "scriptsGSUB": [
+          "DFLT",
+          "cyrl",
+          "grek",
+          "latn"
+        ],
+        "scriptsGPOS": [
+          "DFLT",
+          "cyrl",
+          "grek",
+          "latn"
+        ],
+        "fonctionnalitesGSUB": [
+          "aalt",
+          "c2sc",
+          "ccmp",
+          "cv13",
+          "cv14",
+          "cv17",
+          "cv19",
+          "cv20",
+          "cv25",
+          "cv28",
+          "cv37",
+          "cv43",
+          "cv44",
+          "cv46",
+          "cv47",
+          "cv49",
+          "cv55",
+          "cv57",
+          "cv62",
+          "cv68",
+          "cv70",
+          "cv71",
+          "cv75",
+          "cv76",
+          "cv77",
+          "cv78",
+          "cv79",
+          "cv80",
+          "cv81",
+          "cv82",
+          "cv83",
+          "cv84",
+          "cv90",
+          "cv91",
+          "cv92",
+          "cv98",
+          "liga",
+          "locl",
+          "smcp",
+          "ss01",
+          "ss04",
+          "ss05",
+          "ss07",
+          "ss11",
+          "ss12"
+        ],
+        "fonctionnalitesGPOS": [
+          "kern",
+          "mark",
+          "mkmk"
+        ],
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 6,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "glyphesAvec": 6,
+              "glyphesSans": 8,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 4,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ]
+        }
+      },
+      "couverture": {
+        "absents": [
+          "U+6F22",
+          "U+E000",
+          "U+0F00",
+          "U+16A0",
+          "U+2603",
+          "U+1F600"
+        ]
+      },
+      "opentypejs": {
+        "upem": 2048,
+        "glyphes": 4307,
+        "noyauxKerningGPOS": true,
+        "pairesKernLegacy": 0,
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "erreurStringToGlyphs": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported",
+              "erreurAvance": "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "libre-baskerville-wght",
+      "fichier": "vendor/librebaskerville/LibreBaskerville-wght.ttf",
+      "octets": 171900,
+      "sha256": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d",
+      "harfbuzz": {
+        "upem": 1000,
+        "glyphes": 861,
+        "unicodes": 789,
+        "tables": {
+          "GSUB": true,
+          "GPOS": true,
+          "GDEF": true,
+          "kern": false,
+          "glyf": true,
+          "CFF": false,
+          "fvar": true,
+          "gvar": true,
+          "avar": true,
+          "STAT": true,
+          "name": true,
+          "OS/2": true
+        },
+        "axes": {
+          "wght": {
+            "axisIndex": 0,
+            "tag": "wght",
+            "nameId": 256,
+            "flags": 0,
+            "min": 400,
+            "default": 400,
+            "max": 700
+          }
+        },
+        "scriptsGSUB": [
+          "DFLT",
+          "latn"
+        ],
+        "scriptsGPOS": [
+          "DFLT",
+          "grek",
+          "latn"
+        ],
+        "fonctionnalitesGSUB": [
+          "aalt",
+          "case",
+          "ccmp",
+          "dlig",
+          "frac",
+          "liga",
+          "locl",
+          "ordn",
+          "sinf",
+          "subs",
+          "sups"
+        ],
+        "fonctionnalitesGPOS": [
+          "kern",
+          "mark",
+          "mkmk"
+        ],
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 2,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 3,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 6,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "glyphesAvec": 6,
+              "glyphesSans": 8,
+              "gidsModifies": true,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "glyphesAvec": 4,
+              "glyphesSans": 4,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "glyphesAvec": 1,
+              "glyphesSans": 1,
+              "gidsModifies": false,
+              "positionsModifiees": false,
+              "notdef": false
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "glyphesAvec": 2,
+              "glyphesSans": 2,
+              "gidsModifies": false,
+              "positionsModifiees": true,
+              "notdef": false
+            }
+          ]
+        }
+      },
+      "couverture": {
+        "absents": [
+          "U+202F",
+          "U+6F22",
+          "U+E000",
+          "U+0F00",
+          "U+16A0",
+          "U+1D504",
+          "U+2603",
+          "U+1F600"
+        ]
+      },
+      "opentypejs": {
+        "upem": 1000,
+        "glyphes": 861,
+        "noyauxKerningGPOS": true,
+        "pairesKernLegacy": 0,
+        "sondes": {
+          "liga": [
+            {
+              "texte": "fi",
+              "points": [
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphes": [
+                632
+              ],
+              "avanceAvecKerning": 765,
+              "avanceSansKerning": 753
+            },
+            {
+              "texte": "fl",
+              "points": [
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphes": [
+                633
+              ],
+              "avanceAvecKerning": 737,
+              "avanceSansKerning": 737
+            },
+            {
+              "texte": "ff",
+              "points": [
+                "U+0066",
+                "U+0066"
+              ],
+              "glyphes": [
+                620
+              ],
+              "avanceAvecKerning": 824,
+              "avanceSansKerning": 824
+            },
+            {
+              "texte": "ffi",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+0069"
+              ],
+              "glyphes": [
+                623
+              ],
+              "avanceAvecKerning": 1177,
+              "avanceSansKerning": 1165
+            },
+            {
+              "texte": "ffl",
+              "points": [
+                "U+0066",
+                "U+0066",
+                "U+006C"
+              ],
+              "glyphes": [
+                626
+              ],
+              "avanceAvecKerning": 1149,
+              "avanceSansKerning": 1149
+            },
+            {
+              "texte": "fj",
+              "points": [
+                "U+0066",
+                "U+006A"
+              ],
+              "glyphes": [
+                388,
+                435
+              ],
+              "avanceAvecKerning": 741,
+              "avanceSansKerning": 716
+            },
+            {
+              "texte": "office",
+              "points": [
+                "U+006F",
+                "U+0066",
+                "U+0066",
+                "U+0069",
+                "U+0063",
+                "U+0065"
+              ],
+              "glyphes": [
+                481,
+                623,
+                339,
+                362
+              ],
+              "avanceAvecKerning": 2940,
+              "avanceSansKerning": 2928
+            },
+            {
+              "texte": "affluent",
+              "points": [
+                "U+0061",
+                "U+0066",
+                "U+0066",
+                "U+006C",
+                "U+0075",
+                "U+0065",
+                "U+006E",
+                "U+0074"
+              ],
+              "glyphes": [
+                306,
+                626,
+                555,
+                362,
+                468,
+                542
+              ],
+              "avanceAvecKerning": 4013,
+              "avanceSansKerning": 4013
+            }
+          ],
+          "kern": [
+            {
+              "texte": "AV",
+              "points": [
+                "U+0041",
+                "U+0056"
+              ],
+              "glyphes": [
+                1,
+                270
+              ],
+              "avanceAvecKerning": 1480,
+              "avanceSansKerning": 1556
+            },
+            {
+              "texte": "To",
+              "points": [
+                "U+0054",
+                "U+006F"
+              ],
+              "glyphes": [
+                233,
+                481
+              ],
+              "avanceAvecKerning": 1346,
+              "avanceSansKerning": 1457
+            },
+            {
+              "texte": "Wa",
+              "points": [
+                "U+0057",
+                "U+0061"
+              ],
+              "glyphes": [
+                275,
+                306
+              ],
+              "avanceAvecKerning": 1642,
+              "avanceSansKerning": 1730
+            },
+            {
+              "texte": "LT",
+              "points": [
+                "U+004C",
+                "U+0054"
+              ],
+              "glyphes": [
+                140,
+                233
+              ],
+              "avanceAvecKerning": 1421,
+              "avanceSansKerning": 1530
+            },
+            {
+              "texte": "Ty",
+              "points": [
+                "U+0054",
+                "U+0079"
+              ],
+              "glyphes": [
+                233,
+                597
+              ],
+              "avanceAvecKerning": 1373,
+              "avanceSansKerning": 1442
+            },
+            {
+              "texte": "AVAY",
+              "points": [
+                "U+0041",
+                "U+0056",
+                "U+0041",
+                "U+0059"
+              ],
+              "glyphes": [
+                1,
+                270,
+                1,
+                286
+              ],
+              "avanceAvecKerning": 2838,
+              "avanceSansKerning": 3061
+            },
+            {
+              "texte": "P.",
+              "points": [
+                "U+0050",
+                "U+002E"
+              ],
+              "glyphes": [
+                201,
+                683
+              ],
+              "avanceAvecKerning": 876,
+              "avanceSansKerning": 952
+            },
+            {
+              "texte": "r,",
+              "points": [
+                "U+0072",
+                "U+002C"
+              ],
+              "glyphes": [
+                517,
+                684
+              ],
+              "avanceAvecKerning": 712,
+              "avanceSansKerning": 750
+            }
+          ],
+          "ccmp": [
+            {
+              "texte": "é",
+              "points": [
+                "U+0065",
+                "U+0301"
+              ],
+              "glyphes": [
+                362,
+                771
+              ],
+              "avanceAvecKerning": 573,
+              "avanceSansKerning": 573
+            },
+            {
+              "texte": "í",
+              "points": [
+                "U+0069",
+                "U+0301"
+              ],
+              "erreurStringToGlyphs": "Substitution type 11 is not supported in chaining substitution",
+              "erreurAvance": "Substitution type 11 is not supported in chaining substitution"
+            },
+            {
+              "texte": "ï",
+              "points": [
+                "U+0069",
+                "U+0308"
+              ],
+              "erreurStringToGlyphs": "Substitution type 11 is not supported in chaining substitution",
+              "erreurAvance": "Substitution type 11 is not supported in chaining substitution"
+            },
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphes": [
+                515,
+                781
+              ],
+              "avanceAvecKerning": 653,
+              "avanceSansKerning": 653
+            },
+            {
+              "texte": "ı́",
+              "points": [
+                "U+0131",
+                "U+0301"
+              ],
+              "glyphes": [
+                416,
+                771
+              ],
+              "avanceAvecKerning": 341,
+              "avanceSansKerning": 341
+            },
+            {
+              "texte": "É",
+              "points": [
+                "U+0045",
+                "U+0301"
+              ],
+              "glyphes": [
+                58,
+                809
+              ],
+              "avanceAvecKerning": 726,
+              "avanceSansKerning": 726
+            },
+            {
+              "texte": "ą",
+              "points": [
+                "U+0061",
+                "U+0328"
+              ],
+              "glyphes": [
+                306,
+                797
+              ],
+              "avanceAvecKerning": 554,
+              "avanceSansKerning": 554
+            }
+          ],
+          "mark": [
+            {
+              "texte": "q̃",
+              "points": [
+                "U+0071",
+                "U+0303"
+              ],
+              "glyphes": [
+                515,
+                781
+              ],
+              "avanceAvecKerning": 653,
+              "avanceSansKerning": 653
+            },
+            {
+              "texte": "x́",
+              "points": [
+                "U+0078",
+                "U+0301"
+              ],
+              "glyphes": [
+                594,
+                771
+              ],
+              "avanceAvecKerning": 609,
+              "avanceSansKerning": 609
+            },
+            {
+              "texte": "ņ",
+              "points": [
+                "U+006E",
+                "U+0327"
+              ],
+              "glyphes": [
+                468,
+                796
+              ],
+              "avanceAvecKerning": 689,
+              "avanceSansKerning": 689
+            },
+            {
+              "texte": "b̈",
+              "points": [
+                "U+0062",
+                "U+0308"
+              ],
+              "glyphes": [
+                333,
+                762
+              ],
+              "avanceAvecKerning": 654,
+              "avanceSansKerning": 654
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

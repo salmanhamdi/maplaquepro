@@ -1,0 +1,1857 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF ; A7 OPEN ; aucun candidat retenu",
+  "parametres": {
+    "tailleMinMm": 1,
+    "tailleMaxMm": 60,
+    "pasMm": 0.1,
+    "interlignes": [
+      1,
+      1.2,
+      1.5
+    ],
+    "positionVerticale": "bloc centré verticalement (hypothèse)"
+  },
+  "candidats": {
+    "C1": "taille fixe (valeur de configuration), aucun ajustement ; dépassement signalé (F6)",
+    "C2": "plus grande taille uniforme de l'intervalle d'expérience telle que tout le bloc tienne dans la plaque hors zones de trous",
+    "C3": "plus grande taille par ligne indépendamment (lignes de tailles différentes)"
+  },
+  "cas": [
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 38.6,
+            "hauteurCaractereMinMm": 21.618
+          },
+          "C3_parLigne": [
+            38.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.5,
+            "hauteurCaractereMinMm": 19.414
+          },
+          "C3_parLigne": [
+            38.6,
+            35.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.3,
+            "hauteurCaractereMinMm": 19.305
+          },
+          "C3_parLigne": [
+            38.6,
+            35.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.5,
+            "hauteurCaractereMinMm": 19.414
+          },
+          "C3_parLigne": [
+            38.6,
+            35.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.3,
+            "hauteurCaractereMinMm": 19.305
+          },
+          "C3_parLigne": [
+            38.6,
+            35.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.5,
+            "hauteurCaractereMinMm": 19.414
+          },
+          "C3_parLigne": [
+            38.6,
+            35.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 35.3,
+            "hauteurCaractereMinMm": 19.305
+          },
+          "C3_parLigne": [
+            38.6,
+            35.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.2,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.2,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.9,
+            "hauteurCaractereMinMm": 2.394
+          },
+          "C3_parLigne": [
+            60,
+            29.9,
+            37.2,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 25.7,
+            "hauteurCaractereMinMm": 14.393
+          },
+          "C3_parLigne": [
+            25.7
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.7,
+            "hauteurCaractereMinMm": 12.961
+          },
+          "C3_parLigne": [
+            25.7,
+            23.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.5,
+            "hauteurCaractereMinMm": 12.851
+          },
+          "C3_parLigne": [
+            25.7,
+            23.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.7,
+            "hauteurCaractereMinMm": 12.961
+          },
+          "C3_parLigne": [
+            25.7,
+            23.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.5,
+            "hauteurCaractereMinMm": 12.851
+          },
+          "C3_parLigne": [
+            25.7,
+            23.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.7,
+            "hauteurCaractereMinMm": 12.961
+          },
+          "C3_parLigne": [
+            25.7,
+            23.7
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.5,
+            "hauteurCaractereMinMm": 12.851
+          },
+          "C3_parLigne": [
+            25.7,
+            23.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.9,
+            "hauteurCaractereMinMm": 1.594
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.9,
+            46.1
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.9,
+            "hauteurCaractereMinMm": 1.594
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.8,
+            46.1
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.9,
+            "hauteurCaractereMinMm": 1.594
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.9,
+            46.1
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.9,
+            "hauteurCaractereMinMm": 1.594
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.8,
+            46.1
+          ]
+        }
+      }
+    },
+    {
+      "police": "dejavu-sans-2.37",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.8,
+            "hauteurCaractereMinMm": 1.425
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.9,
+            46.1
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.8,
+            "hauteurCaractereMinMm": 1.425
+          },
+          "C3_parLigne": [
+            44.2,
+            19.9,
+            24.8,
+            46.1
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 47,
+            "hauteurCaractereMinMm": 22.031
+          },
+          "C3_parLigne": [
+            47
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 45,
+            "hauteurCaractereMinMm": 21.093
+          },
+          "C3_parLigne": [
+            47,
+            45
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 2.05
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 2.05
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 2.05
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 2.05
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 34.9,
+            "hauteurCaractereMinMm": 1.96
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 34.9,
+            "hauteurCaractereMinMm": 1.96
+          },
+          "C3_parLigne": [
+            60,
+            36.5,
+            45.7,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 31.3,
+            "hauteurCaractereMinMm": 14.671
+          },
+          "C3_parLigne": [
+            31.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 30,
+            "hauteurCaractereMinMm": 14.062
+          },
+          "C3_parLigne": [
+            31.3,
+            30
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.6,
+            "hauteurCaractereMinMm": 1.325
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 23.6,
+            "hauteurCaractereMinMm": 1.325
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 20.7,
+            "hauteurCaractereMinMm": 1.163
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 20.7,
+            "hauteurCaractereMinMm": 1.163
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "gentium-plus-regular",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.4,
+            "hauteurCaractereMinMm": 0.977
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.4,
+            "hauteurCaractereMinMm": 0.977
+          },
+          "C3_parLigne": [
+            49.9,
+            24.3,
+            30.4,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.6,
+            "hauteurCaractereMinMm": 19.764
+          },
+          "C3_parLigne": [
+            36.6
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 36.5,
+            "hauteurCaractereMinMm": 19.71
+          },
+          "C3_parLigne": [
+            36.6,
+            36.5
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36.1,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36.1,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "300x200-sans-trou",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36.1,
+            60
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 29.4,
+            "hauteurCaractereMinMm": 2.44
+          },
+          "C3_parLigne": [
+            58.7,
+            29.4,
+            36,
+            60
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.4,
+            "hauteurCaractereMinMm": 13.176
+          },
+          "C3_parLigne": [
+            24.4
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 24.3,
+            "hauteurCaractereMinMm": 13.122
+          },
+          "C3_parLigne": [
+            24.4,
+            24.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.6,
+            "hauteurCaractereMinMm": 1.627
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.6,
+            "hauteurCaractereMinMm": 1.627
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.2,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.6,
+            "hauteurCaractereMinMm": 1.627
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 19.6,
+            "hauteurCaractereMinMm": 1.627
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        }
+      }
+    },
+    {
+      "police": "libre-baskerville-wght",
+      "plaque": "200x100-4-trous-essai",
+      "lignes": [
+        "Dr Martin",
+        "Médecin généraliste",
+        "Sur rendez-vous",
+        "2e étage"
+      ],
+      "interligne": 1.5,
+      "moteurs": {
+        "harfbuzz": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.4,
+            "hauteurCaractereMinMm": 1.444
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        },
+        "opentype-cmap": {
+          "C1_10mm_tient": true,
+          "C2": {
+            "tailleMm": 17.4,
+            "hauteurCaractereMinMm": 1.444
+          },
+          "C3_parLigne": [
+            39.1,
+            19.6,
+            24,
+            49.3
+          ]
+        }
+      }
+    }
+  ]
+}

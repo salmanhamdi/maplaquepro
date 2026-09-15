@@ -1,0 +1,194 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF ; aucune définition de fontHash n'est retenue",
+  "texteEchantillon": "Cabinet Durand office AVATAR Été",
+  "candidats": {
+    "FH1": "SHA-256 des octets du fichier",
+    "FH2": "SHA-256 du JSON canonique {tag: SHA-256(table)} hors DSIG et name, head neutralisé (checkSumAdjustment, dates)",
+    "FH3": "SHA-256 du contenu utilisé : unitsPerEm, variations, avance et contour des glyphes façonnés pour un texte"
+  },
+  "polices": [
+    {
+      "id": "dejavu-sans-2.37",
+      "tables": [
+        "FFTM",
+        "GDEF",
+        "GPOS",
+        "GSUB",
+        "MATH",
+        "OS/2",
+        "cmap",
+        "cvt ",
+        "fpgm",
+        "gasp",
+        "glyf",
+        "head",
+        "hhea",
+        "hmtx",
+        "kern",
+        "loca",
+        "maxp",
+        "name",
+        "post",
+        "prep"
+      ],
+      "axes": {},
+      "empreintes": {
+        "original": {
+          "FH1": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+          "FH2": "0286087c66f9bdf936c1519239f9aa4c466066b12b51c49985e15165b64f7f68",
+          "FH3": "75e35cfce21f09926a5a1fbad918ea18d19c7c1659030b0e7b6d5072c2a7f39c"
+        },
+        "head.modified altéré": {
+          "FH1": "26ac207b89d19f57ece55301c8475e4728b131faa39fdbd707f1913d73f71d90",
+          "FH2": "0286087c66f9bdf936c1519239f9aa4c466066b12b51c49985e15165b64f7f68",
+          "FH3": "75e35cfce21f09926a5a1fbad918ea18d19c7c1659030b0e7b6d5072c2a7f39c"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "d199eefffb3e84861921a5ac94b7b9c3906235541b7d0dde705d70bb086a00a4",
+          "FH2": "0286087c66f9bdf936c1519239f9aa4c466066b12b51c49985e15165b64f7f68",
+          "FH3": "75e35cfce21f09926a5a1fbad918ea18d19c7c1659030b0e7b6d5072c2a7f39c"
+        }
+      },
+      "stabiliteParRapportOriginal": {
+        "head.modified altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        }
+      }
+    },
+    {
+      "id": "gentium-plus-regular",
+      "tables": [
+        "GDEF",
+        "GPOS",
+        "GSUB",
+        "OS/2",
+        "Silt",
+        "cmap",
+        "cvt ",
+        "fpgm",
+        "gasp",
+        "glyf",
+        "head",
+        "hhea",
+        "hmtx",
+        "loca",
+        "maxp",
+        "name",
+        "post",
+        "prep"
+      ],
+      "axes": {},
+      "empreintes": {
+        "original": {
+          "FH1": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+          "FH2": "88cb9270ff7cb0942a337c4ac4135ffc539cf33fef95592abd62285f98f9e9e5",
+          "FH3": "3c04052b5a6d48ca222ad1a238604ee56958c7d121465b8ce44307f1411be595"
+        },
+        "head.modified altéré": {
+          "FH1": "6100cf3a4ddd8132a30e1410652f0ff9717a508ec88690b15d450e1aa3151755",
+          "FH2": "88cb9270ff7cb0942a337c4ac4135ffc539cf33fef95592abd62285f98f9e9e5",
+          "FH3": "3c04052b5a6d48ca222ad1a238604ee56958c7d121465b8ce44307f1411be595"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "a34d1c61f22f3b29693863c1105882ad96b6b8e3cae1930bc148b0fd9837582a",
+          "FH2": "88cb9270ff7cb0942a337c4ac4135ffc539cf33fef95592abd62285f98f9e9e5",
+          "FH3": "3c04052b5a6d48ca222ad1a238604ee56958c7d121465b8ce44307f1411be595"
+        }
+      },
+      "stabiliteParRapportOriginal": {
+        "head.modified altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        }
+      }
+    },
+    {
+      "id": "libre-baskerville-wght",
+      "tables": [
+        "GDEF",
+        "GPOS",
+        "GSUB",
+        "HVAR",
+        "OS/2",
+        "STAT",
+        "avar",
+        "cmap",
+        "fvar",
+        "gasp",
+        "glyf",
+        "gvar",
+        "head",
+        "hhea",
+        "hmtx",
+        "loca",
+        "maxp",
+        "name",
+        "post",
+        "prep"
+      ],
+      "axes": {
+        "wght": {
+          "axisIndex": 0,
+          "tag": "wght",
+          "nameId": 256,
+          "flags": 0,
+          "min": 400,
+          "default": 400,
+          "max": 700
+        }
+      },
+      "empreintes": {
+        "original": {
+          "FH1": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d",
+          "FH2": "17d3635872b719444237c1654cdd29ed81782c8ea8850675acf30af7854b022b",
+          "FH3": "0975cb45f98bb96ba88755aaaa0e743533907e28f36c4ffd9131121607cf0827"
+        },
+        "head.modified altéré": {
+          "FH1": "0fdf3ba921bf34d1cef9a861b2f16f660f1df324715d34100df8a4c8a8ee3ea5",
+          "FH2": "17d3635872b719444237c1654cdd29ed81782c8ea8850675acf30af7854b022b",
+          "FH3": "0975cb45f98bb96ba88755aaaa0e743533907e28f36c4ffd9131121607cf0827"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "4ed7f03ea1944db76ea96eee45d3f5eaf005d488ef066390f20e433b903d8e42",
+          "FH2": "17d3635872b719444237c1654cdd29ed81782c8ea8850675acf30af7854b022b",
+          "FH3": "0975cb45f98bb96ba88755aaaa0e743533907e28f36c4ffd9131121607cf0827"
+        },
+        "instance wght=700": {
+          "FH1": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d",
+          "FH2": "17d3635872b719444237c1654cdd29ed81782c8ea8850675acf30af7854b022b",
+          "FH3": "46e97c56e3574c89c21f57f7a9662423eaa6d41c37b027b79fb85e660bc7a927"
+        }
+      },
+      "stabiliteParRapportOriginal": {
+        "head.modified altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        },
+        "name : 1 octet de chaîne altéré": {
+          "FH1": "modifié",
+          "FH2": "stable",
+          "FH3": "stable"
+        },
+        "instance wght=700": {
+          "FH1": "stable",
+          "FH2": "stable",
+          "FH3": "modifié"
+        }
+      }
+    }
+  ]
+}

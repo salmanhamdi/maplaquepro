@@ -1,0 +1,2995 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF",
+  "empreinte": "b9788fed50fa56299d09465925fd6116806f25d366c7298843a770ea47dde79b",
+  "configurations": 105,
+  "familles": {
+    "ACC": 9,
+    "NFD": 9,
+    "ABS": 9,
+    "LIG": 9,
+    "CCMP": 9,
+    "KERN": 9,
+    "PONCT": 9,
+    "LIGNES": 12,
+    "TROUS": 9,
+    "TAILLE": 9,
+    "LIMITES": 12
+  },
+  "hypotheses": {
+    "H-TAILLE": "tailleMm = taille nominale du em en mm (échelle = tailleMm / unitsPerEm)",
+    "H-INTERLIGNE": "avance verticale entre lignes = interligne × tailleMm",
+    "H-POSITION": "ligne i : ligne de base = origine.yMm + ascendant × échelle + i × avance ; gauche : x = origine.xMm ; centre : centré sur la largeur de plaque",
+    "H-NORM": "normalisation identique à normaliserLigne du domaine (NFC, suppression Cc, espaces réduits, trim) ; lignes vides conservées",
+    "H-CLUSTER": "un élément TextGlyphPaths par cluster de shaping ; caractere = sous-chaîne des points de code du cluster",
+    "H-NOTDEF": "glyphe 0 (absent) : aucun tracé, aucun repli",
+    "H-VAR": "fonte variable : instance par défaut uniquement",
+    "H-TROUS": "zones de trous d'essai (cercles) pour le contrôle domaine uniquement ; aucun paramètre de perçage réel",
+    "H-ARRONDI": "arrondi 0,001 mm (Math.round(x·1000)/1000, -0 → 0) ; mode exact B-O1 OPEN"
+  },
+  "avertissements": [
+    "SP3-ABS-03-D : aucun glyphe absent observé (cas ABS sans absence pour cette police)"
+  ],
+  "observations": [
+    {
+      "id": "SP3-ACC-01-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-01-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-01-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-02-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-02-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-02-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-03-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-03-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ACC-03-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-01-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-01-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-01-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-02-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-02-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-02-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-03-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-03-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-NFD-03-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ABS-01-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": [
+        "U+6F22"
+      ]
+    },
+    {
+      "id": "SP3-ABS-01-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": [
+        "U+6F22"
+      ]
+    },
+    {
+      "id": "SP3-ABS-01-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": [
+        "U+6F22"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": [
+        "U+16A0"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": [
+        "U+16A0"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": [
+        "U+16A0"
+      ]
+    },
+    {
+      "id": "SP3-ABS-03-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-ABS-03-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": [
+        "U+2603"
+      ]
+    },
+    {
+      "id": "SP3-ABS-03-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": [
+        "U+2603"
+      ]
+    },
+    {
+      "id": "SP3-LIG-01-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-01-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-01-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-02-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-02-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-02-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-03-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-03-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIG-03-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-01-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-01-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-01-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-02-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-02-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-02-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-03-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-03-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-CCMP-03-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-01-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-01-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-01-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-02-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-02-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-02-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-03-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-03-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-KERN-03-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-01-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-01-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-01-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-02-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-02-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-02-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-03-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-03-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-PONCT-03-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-01-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-01-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-01-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-02-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-02-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-02-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-03-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-03-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-03-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-04-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-04-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIGNES-04-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-01-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-01-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-01-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-02-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-02-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-02-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-03-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-03-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TROUS-03-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-01-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-01-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-01-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-02-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-02-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-02-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-03-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-03-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-TAILLE-03-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-01-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-01-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-01-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-02-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-02-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-02-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-03-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-03-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-03-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-04-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-04-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "absentsObserves": []
+    },
+    {
+      "id": "SP3-LIMITES-04-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "absentsObserves": []
+    }
+  ],
+  "matrice": [
+    {
+      "id": "SP3-ACC-01-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Été à l'île"
+      ]
+    },
+    {
+      "id": "SP3-ACC-01-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Été à l'île"
+      ]
+    },
+    {
+      "id": "SP3-ACC-01-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Été à l'île"
+      ]
+    },
+    {
+      "id": "SP3-ACC-02-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Noël, cœur et œuvre"
+      ]
+    },
+    {
+      "id": "SP3-ACC-02-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Noël, cœur et œuvre"
+      ]
+    },
+    {
+      "id": "SP3-ACC-02-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Noël, cœur et œuvre"
+      ]
+    },
+    {
+      "id": "SP3-ACC-03-D",
+      "famille": "ACC",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ÀÂÉÈÊËÎÏÔÖÙÛÜŸÇ"
+      ]
+    },
+    {
+      "id": "SP3-ACC-03-G",
+      "famille": "ACC",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ÀÂÉÈÊËÎÏÔÖÙÛÜŸÇ"
+      ]
+    },
+    {
+      "id": "SP3-ACC-03-L",
+      "famille": "ACC",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ÀÂÉÈÊËÎÏÔÖÙÛÜŸÇ"
+      ]
+    },
+    {
+      "id": "SP3-NFD-01-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "été Ça"
+      ]
+    },
+    {
+      "id": "SP3-NFD-01-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "été Ça"
+      ]
+    },
+    {
+      "id": "SP3-NFD-01-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "été Ça"
+      ]
+    },
+    {
+      "id": "SP3-NFD-02-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ïle è"
+      ]
+    },
+    {
+      "id": "SP3-NFD-02-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ïle è"
+      ]
+    },
+    {
+      "id": "SP3-NFD-02-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ïle è"
+      ]
+    },
+    {
+      "id": "SP3-NFD-03-D",
+      "famille": "NFD",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "q̃ x́ ņ"
+      ]
+    },
+    {
+      "id": "SP3-NFD-03-G",
+      "famille": "NFD",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "q̃ x́ ņ"
+      ]
+    },
+    {
+      "id": "SP3-NFD-03-L",
+      "famille": "NFD",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "q̃ x́ ņ"
+      ]
+    },
+    {
+      "id": "SP3-ABS-01-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Plaque 漢"
+      ]
+    },
+    {
+      "id": "SP3-ABS-01-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Plaque 漢"
+      ]
+    },
+    {
+      "id": "SP3-ABS-01-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Plaque 漢"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Nom ᚠ ok"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Nom ᚠ ok"
+      ]
+    },
+    {
+      "id": "SP3-ABS-02-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Nom ᚠ ok"
+      ]
+    },
+    {
+      "id": "SP3-ABS-03-D",
+      "famille": "ABS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Maison ☃"
+      ]
+    },
+    {
+      "id": "SP3-ABS-03-G",
+      "famille": "ABS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Maison ☃"
+      ]
+    },
+    {
+      "id": "SP3-ABS-03-L",
+      "famille": "ABS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Maison ☃"
+      ]
+    },
+    {
+      "id": "SP3-LIG-01-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "office affluent"
+      ]
+    },
+    {
+      "id": "SP3-LIG-01-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "office affluent"
+      ]
+    },
+    {
+      "id": "SP3-LIG-01-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "office affluent"
+      ]
+    },
+    {
+      "id": "SP3-LIG-02-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fi fl ffi ffl"
+      ]
+    },
+    {
+      "id": "SP3-LIG-02-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fi fl ffi ffl"
+      ]
+    },
+    {
+      "id": "SP3-LIG-02-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fi fl ffi ffl"
+      ]
+    },
+    {
+      "id": "SP3-LIG-03-D",
+      "famille": "LIG",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fjord Suffixe"
+      ]
+    },
+    {
+      "id": "SP3-LIG-03-G",
+      "famille": "LIG",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fjord Suffixe"
+      ]
+    },
+    {
+      "id": "SP3-LIG-03-L",
+      "famille": "LIG",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "fjord Suffixe"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-01-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "į́ j́"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-01-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "į́ j́"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-01-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "į́ j́"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-02-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ı́ ı̈"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-02-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ı́ ı̈"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-02-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "ı́ ı̈"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-03-D",
+      "famille": "CCMP",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ȩ́ ą̀"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-03-G",
+      "famille": "CCMP",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ȩ́ ą̀"
+      ]
+    },
+    {
+      "id": "SP3-CCMP-03-L",
+      "famille": "CCMP",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ȩ́ ą̀"
+      ]
+    },
+    {
+      "id": "SP3-KERN-01-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "AVATAR"
+      ]
+    },
+    {
+      "id": "SP3-KERN-01-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "AVATAR"
+      ]
+    },
+    {
+      "id": "SP3-KERN-01-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "AVATAR"
+      ]
+    },
+    {
+      "id": "SP3-KERN-02-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "To Wa Ty"
+      ]
+    },
+    {
+      "id": "SP3-KERN-02-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "To Wa Ty"
+      ]
+    },
+    {
+      "id": "SP3-KERN-02-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "To Wa Ty"
+      ]
+    },
+    {
+      "id": "SP3-KERN-03-D",
+      "famille": "KERN",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "LTAVAY P. r,"
+      ]
+    },
+    {
+      "id": "SP3-KERN-03-G",
+      "famille": "KERN",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "LTAVAY P. r,"
+      ]
+    },
+    {
+      "id": "SP3-KERN-03-L",
+      "famille": "KERN",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "LTAVAY P. r,"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-01-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "« Bonjour » ; d’accord !"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-01-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "« Bonjour » ; d’accord !"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-01-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "« Bonjour » ; d’accord !"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-02-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Prix : 20 % — voir…"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-02-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Prix : 20 % — voir…"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-02-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Prix : 20 % — voir…"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-03-D",
+      "famille": "PONCT",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "(n° 12) [A-B] / C & D"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-03-G",
+      "famille": "PONCT",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "(n° 12) [A-B] / C & D"
+      ]
+    },
+    {
+      "id": "SP3-PONCT-03-L",
+      "famille": "PONCT",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "(n° 12) [A-B] / C & D"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-01-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-01-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-01-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-02-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-02-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-02-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-03-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-03-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-03-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-04-D",
+      "famille": "LIGNES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage",
+        "Sur rendez-vous"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-04-G",
+      "famille": "LIGNES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage",
+        "Sur rendez-vous"
+      ]
+    },
+    {
+      "id": "SP3-LIGNES-04-L",
+      "famille": "LIGNES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [],
+      "lignes": [
+        "Cabinet Durand",
+        "Avocats associés",
+        "2e étage",
+        "Sur rendez-vous"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-01-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 0,
+        "yMm": 40
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Au centre"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-01-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 0,
+        "yMm": 40
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Au centre"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-01-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 0,
+        "yMm": 40
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "center",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Au centre"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-02-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 4,
+        "yMm": 4
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Coin gauche"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-02-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 4,
+        "yMm": 4
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Coin gauche"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-02-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 4,
+        "yMm": 4
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Coin gauche"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-03-D",
+      "famille": "TROUS",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 60,
+        "yMm": 80
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Bord droit très long texte"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-03-G",
+      "famille": "TROUS",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 60,
+        "yMm": 80
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Bord droit très long texte"
+      ]
+    },
+    {
+      "id": "SP3-TROUS-03-L",
+      "famille": "TROUS",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 200,
+        "heightMm": 100
+      },
+      "origine": {
+        "xMm": 60,
+        "yMm": 80
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [
+        {
+          "cxMm": 10,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 10,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 10,
+          "cyMm": 90,
+          "rMm": 3.5
+        },
+        {
+          "cxMm": 190,
+          "cyMm": 90,
+          "rMm": 3.5
+        }
+      ],
+      "lignes": [
+        "Bord droit très long texte"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-01-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 1.2,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Petit texte"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-01-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 1.2,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Petit texte"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-01-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 1.2,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Petit texte"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-02-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 3,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Moyen"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-02-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 3,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Moyen"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-02-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 3,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Moyen"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-03-D",
+      "famille": "TAILLE",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 90,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Grand"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-03-G",
+      "famille": "TAILLE",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 90,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Grand"
+      ]
+    },
+    {
+      "id": "SP3-TAILLE-03-L",
+      "famille": "TAILLE",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 90,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Grand"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-01-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A    B\tC"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-01-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A    B\tC"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-01-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A    B\tC"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-02-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ligne",
+        "",
+        "Après vide"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-02-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ligne",
+        "",
+        "Après vide"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-02-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Ligne",
+        "",
+        "Après vide"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-03-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A\u0007B : fin"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-03-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A\u0007B : fin"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-03-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 10,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "A\u0007B : fin"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-04-D",
+      "famille": "LIMITES",
+      "police": "dejavu-sans-2.37",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Texte long texte long texte long texte long texte long"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-04-G",
+      "famille": "LIMITES",
+      "police": "gentium-plus-regular",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Texte long texte long texte long texte long texte long"
+      ]
+    },
+    {
+      "id": "SP3-LIMITES-04-L",
+      "famille": "LIMITES",
+      "police": "libre-baskerville-wght",
+      "plaque": {
+        "widthMm": 300,
+        "heightMm": 200
+      },
+      "origine": {
+        "xMm": 10,
+        "yMm": 10
+      },
+      "tailleMm": 8,
+      "interligne": 1.2,
+      "alignement": "left",
+      "trous": [],
+      "lignes": [
+        "Texte long texte long texte long texte long texte long"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "id": "harfbuzzjs@1.6.1",
+    "name": "harfbuzzjs",
+    "version": "1.6.1",
+    "size": 469800,
+    "unpackedSize": 1238713,
+    "shasum": "c93b59ba288f58417f6efc594dbc061726711d93",
+    "integrity": "sha512-+JeJmO+HzXjDwpfCOdGSyM2bNP8WzJNFKl/8TKivbInMYDtfRIuPIDLtnBNmQzcJw6GptbhHY6o5gaH6deCMEw==",
+    "filename": "harfbuzzjs-1.6.1.tgz",
+    "files": [
+      {
+        "path": "LICENSE",
+        "size": 1079,
+        "mode": 420
+      },
+      {
+        "path": "README.md",
+        "size": 4164,
+        "mode": 420
+      },
+      {
+        "path": "dist/harfbuzz-subset.wasm",
+        "size": 622493,
+        "mode": 420
+      },
+      {
+        "path": "dist/harfbuzz.d.ts",
+        "size": 143,
+        "mode": 420
+      },
+      {
+        "path": "dist/harfbuzz.js",
+        "size": 31763,
+        "mode": 420
+      },
+      {
+        "path": "dist/harfbuzz.wasm",
+        "size": 426620,
+        "mode": 420
+      },
+      {
+        "path": "dist/index.d.mts",
+        "size": 68646,
+        "mode": 420
+      },
+      {
+        "path": "dist/index.mjs",
+        "size": 82693,
+        "mode": 420
+      },
+      {
+        "path": "package.json",
+        "size": 1112,
+        "mode": 420
+      }
+    ],
+    "entryCount": 9,
+    "bundled": []
+  }
+]

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SP-3 polices réelles (essai)</title>
+<style>
+  body { font: 14px/1.4 system-ui, sans-serif; margin: 1rem; }
+  code { font-family: ui-monospace, monospace; font-size: 12px; word-break: break-all; }
+</style>
+</head>
+<body>
+<h1>SP-3 — polices réelles (ESSAI — NON NORMATIF)</h1>
+<p id="statut">Exécution…</p>
+<p>Environnement : <code id="env"></code> — passe <code id="passe"></code><br>Navigateur : <code id="ua"></code><br>Contexte sécurisé : <code id="securise"></code></p>
+<pre id="globales"></pre>
+<script type="module">
+  import * as hb from "./vendor/harfbuzzjs-1.6.1/package/dist/index.mjs";
+  import * as ot from "./vendor/opentype.js-2.0.0/opentype.mjs";
+  import { executer, toHex } from "./core.mjs";
+  import { MATRICE } from "./matrix.mjs";
+  import { POLICES } from "./polices.mjs";
+
+  const $ = (id) => document.getElementById(id);
+  const q = new URLSearchParams(location.search);
+  const env = q.get("env") ?? "manuel";
+  const passe = Number(q.get("passe") ?? "1");
+  $("env").textContent = env;
+  $("passe").textContent = String(passe);
+  $("ua").textContent = navigator.userAgent;
+  $("securise").textContent = String(window.isSecureContext);
+  const envoyer = (corps) => (env === "manuel" ? null : fetch(`/resultat?env=${encodeURIComponent(env)}&passe=${passe}`, { method: "POST", body: JSON.stringify(corps) }));
+  try {
+    if (!crypto.subtle) throw new Error("crypto.subtle indisponible (contexte non sécurisé)");
+    const lire = async (url) => new Uint8Array(await (await fetch(url, { cache: "no-store" })).arrayBuffer());
+    const debut = performance.now();
+    const r = await executer({
+      hb,
+      ot,
+      polices: Object.fromEntries(await Promise.all(POLICES.map(async (p) => [p.id, await lire("./" + p.fichier)]))),
+      bibliotheques: {
+        "opentype.mjs": await lire("./vendor/opentype.js-2.0.0/opentype.mjs"),
+        "harfbuzz.wasm": await lire("./vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz.wasm"),
+        "harfbuzz.js": await lire("./vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz.js"),
+      },
+      sha256Hex: async (octets) => toHex(new Uint8Array(await crypto.subtle.digest("SHA-256", octets))),
+      matrice: MATRICE,
+      details: false,
+    });
+    $("globales").textContent = JSON.stringify(r.globales, null, 2);
+    $("statut").textContent = "Terminé.";
+    await envoyer({ environnement: { runtime: env, userAgent: navigator.userAgent, hash: "WebCrypto crypto.subtle.digest", contexteSecurise: window.isSecureContext, passe, dureeMs: Math.round(performance.now() - debut) }, ...r });
+  } catch (e) {
+    $("statut").textContent = "ERREUR : " + e.message;
+    await envoyer({ environnement: { runtime: env, userAgent: navigator.userAgent, passe }, erreur: String(e.message) });
+  }
+</script>
+</body>
+</html>

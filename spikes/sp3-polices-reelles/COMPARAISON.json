@@ -1,0 +1,679 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF",
+  "environnementsExecutes": [
+    "node",
+    "chrome",
+    "edge"
+  ],
+  "incomplets": {
+    "firefox": "INCOMPLETE — non installé sur le poste d'exécution",
+    "safari-ios-reel": "INCOMPLETE — non pilotable depuis le poste d'exécution"
+  },
+  "entrees": {
+    "node": {
+      "matrice": "b9788fed50fa56299d09465925fd6116806f25d366c7298843a770ea47dde79b",
+      "polices": {
+        "dejavu-sans-2.37": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+        "gentium-plus-regular": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+        "libre-baskerville-wght": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d"
+      },
+      "bibliotheques": {
+        "opentype.mjs": "e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb",
+        "harfbuzz.wasm": "37777ced92a2ba10279c33e1dbacf08835ddcacc215b7fcb3131e558dd01ce71",
+        "harfbuzz.js": "ba43463df44851fd58211ef8c19aa7956965390857727ae867b70dc7b3682de1"
+      },
+      "environnement": {
+        "runtime": "node",
+        "version": "v24.18.0",
+        "plateforme": "Windows_NT 10.0.26200 x64",
+        "hash": "node:crypto",
+        "passe": 1,
+        "dureeMs": 935
+      }
+    },
+    "chrome": {
+      "matrice": "b9788fed50fa56299d09465925fd6116806f25d366c7298843a770ea47dde79b",
+      "polices": {
+        "dejavu-sans-2.37": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+        "gentium-plus-regular": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+        "libre-baskerville-wght": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d"
+      },
+      "bibliotheques": {
+        "opentype.mjs": "e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb",
+        "harfbuzz.wasm": "37777ced92a2ba10279c33e1dbacf08835ddcacc215b7fcb3131e558dd01ce71",
+        "harfbuzz.js": "ba43463df44851fd58211ef8c19aa7956965390857727ae867b70dc7b3682de1"
+      },
+      "environnement": {
+        "runtime": "chrome",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36",
+        "hash": "WebCrypto crypto.subtle.digest",
+        "contexteSecurise": true,
+        "passe": 1,
+        "dureeMs": 581,
+        "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+      }
+    },
+    "edge": {
+      "matrice": "b9788fed50fa56299d09465925fd6116806f25d366c7298843a770ea47dde79b",
+      "polices": {
+        "dejavu-sans-2.37": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+        "gentium-plus-regular": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b",
+        "libre-baskerville-wght": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d"
+      },
+      "bibliotheques": {
+        "opentype.mjs": "e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb",
+        "harfbuzz.wasm": "37777ced92a2ba10279c33e1dbacf08835ddcacc215b7fcb3131e558dd01ce71",
+        "harfbuzz.js": "ba43463df44851fd58211ef8c19aa7956965390857727ae867b70dc7b3682de1"
+      },
+      "environnement": {
+        "runtime": "edge",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0",
+        "hash": "WebCrypto crypto.subtle.digest",
+        "contexteSecurise": true,
+        "passe": 1,
+        "dureeMs": 562,
+        "executable": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe"
+      }
+    }
+  },
+  "intraEnvironnement": {
+    "node": {
+      "comparaisons": 315,
+      "identiques": 315,
+      "ecarts": [],
+      "globalesIdentiques": true
+    },
+    "chrome": {
+      "comparaisons": 315,
+      "identiques": 315,
+      "ecarts": [],
+      "globalesIdentiques": true
+    },
+    "edge": {
+      "comparaisons": 315,
+      "identiques": 315,
+      "ecarts": [],
+      "globalesIdentiques": true
+    }
+  },
+  "interEnvironnements": {
+    "node↔chrome": {
+      "memeMatrice": true,
+      "memesPolices": true,
+      "memesBibliotheques": true,
+      "parMode": {
+        "harfbuzzjs-1.6.1": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        },
+        "opentypejs-2.0.0-shaping": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        },
+        "opentypejs-2.0.0-cmap": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        }
+      }
+    },
+    "node↔edge": {
+      "memeMatrice": true,
+      "memesPolices": true,
+      "memesBibliotheques": true,
+      "parMode": {
+        "harfbuzzjs-1.6.1": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        },
+        "opentypejs-2.0.0-shaping": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        },
+        "opentypejs-2.0.0-cmap": {
+          "comparaisons": 105,
+          "identiques": 105,
+          "ecarts": [],
+          "globalesIdentiques": true
+        }
+      }
+    }
+  },
+  "interMoteurs": {
+    "harfbuzzjs-1.6.1 ↔ opentypejs-2.0.0-shaping": {
+      "comparaisons": 105,
+      "lesDeuxOk": 34,
+      "formeIdentique": 27,
+      "positionIdentique": 28,
+      "geometrieIdentique": 0,
+      "erreursA": 0,
+      "erreursB": 71,
+      "parFamille": {
+        "ACC": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "NFD": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-NFD-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-NFD-03-L"
+          ]
+        },
+        "ABS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIG": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-LIG-01-L",
+            "SP3-LIG-02-L",
+            "SP3-LIG-03-L"
+          ],
+          "positionDifferente": []
+        },
+        "CCMP": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-CCMP-02-L",
+            "SP3-CCMP-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-CCMP-02-L",
+            "SP3-CCMP-03-L"
+          ]
+        },
+        "KERN": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "PONCT": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-PONCT-01-L",
+            "SP3-PONCT-03-L"
+          ]
+        },
+        "LIGNES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-LIGNES-04-L"
+          ]
+        },
+        "TROUS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "TAILLE": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIMITES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-LIMITES-03-L"
+          ],
+          "positionDifferente": []
+        }
+      }
+    },
+    "harfbuzzjs-1.6.1 ↔ opentypejs-2.0.0-cmap": {
+      "comparaisons": 105,
+      "lesDeuxOk": 105,
+      "formeIdentique": 81,
+      "positionIdentique": 61,
+      "geometrieIdentique": 0,
+      "erreursA": 0,
+      "erreursB": 0,
+      "parFamille": {
+        "ACC": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-ACC-02-D",
+            "SP3-ACC-03-D"
+          ]
+        },
+        "NFD": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-NFD-03-D",
+            "SP3-NFD-03-G",
+            "SP3-NFD-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-NFD-03-D",
+            "SP3-NFD-03-G",
+            "SP3-NFD-03-L"
+          ]
+        },
+        "ABS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIG": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-LIG-01-D",
+            "SP3-LIG-01-G",
+            "SP3-LIG-01-L",
+            "SP3-LIG-02-D",
+            "SP3-LIG-02-G",
+            "SP3-LIG-02-L",
+            "SP3-LIG-03-D",
+            "SP3-LIG-03-G",
+            "SP3-LIG-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-LIG-01-D",
+            "SP3-LIG-01-G",
+            "SP3-LIG-01-L",
+            "SP3-LIG-02-D",
+            "SP3-LIG-02-G",
+            "SP3-LIG-02-L",
+            "SP3-LIG-03-D",
+            "SP3-LIG-03-G",
+            "SP3-LIG-03-L"
+          ]
+        },
+        "CCMP": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-CCMP-01-D",
+            "SP3-CCMP-01-G",
+            "SP3-CCMP-01-L",
+            "SP3-CCMP-02-D",
+            "SP3-CCMP-02-G",
+            "SP3-CCMP-02-L",
+            "SP3-CCMP-03-D",
+            "SP3-CCMP-03-G",
+            "SP3-CCMP-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-CCMP-01-D",
+            "SP3-CCMP-01-G",
+            "SP3-CCMP-01-L",
+            "SP3-CCMP-02-D",
+            "SP3-CCMP-02-G",
+            "SP3-CCMP-02-L",
+            "SP3-CCMP-03-D",
+            "SP3-CCMP-03-G",
+            "SP3-CCMP-03-L"
+          ]
+        },
+        "KERN": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-KERN-01-D",
+            "SP3-KERN-02-D",
+            "SP3-KERN-03-D"
+          ]
+        },
+        "PONCT": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-PONCT-01-D",
+            "SP3-PONCT-01-L",
+            "SP3-PONCT-02-D",
+            "SP3-PONCT-03-D",
+            "SP3-PONCT-03-L"
+          ]
+        },
+        "LIGNES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-LIGNES-02-D",
+            "SP3-LIGNES-03-D",
+            "SP3-LIGNES-04-D",
+            "SP3-LIGNES-04-L"
+          ]
+        },
+        "TROUS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-TROUS-01-D",
+            "SP3-TROUS-03-D"
+          ]
+        },
+        "TAILLE": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [],
+          "positionDifferente": [
+            "SP3-TAILLE-01-D"
+          ]
+        },
+        "LIMITES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-LIMITES-03-D",
+            "SP3-LIMITES-03-G",
+            "SP3-LIMITES-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-LIMITES-01-D",
+            "SP3-LIMITES-02-D",
+            "SP3-LIMITES-03-D",
+            "SP3-LIMITES-03-G",
+            "SP3-LIMITES-03-L",
+            "SP3-LIMITES-04-D"
+          ]
+        }
+      }
+    },
+    "opentypejs-2.0.0-shaping ↔ opentypejs-2.0.0-cmap": {
+      "comparaisons": 105,
+      "lesDeuxOk": 34,
+      "formeIdentique": 29,
+      "positionIdentique": 30,
+      "geometrieIdentique": 29,
+      "erreursA": 71,
+      "erreursB": 0,
+      "parFamille": {
+        "ACC": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "NFD": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "ABS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIG": {
+          "comparaisons": 9,
+          "geometrieIdentique": 0,
+          "formeDifferente": [
+            "SP3-LIG-01-L",
+            "SP3-LIG-02-L",
+            "SP3-LIG-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-LIG-01-L",
+            "SP3-LIG-02-L",
+            "SP3-LIG-03-L"
+          ]
+        },
+        "CCMP": {
+          "comparaisons": 9,
+          "geometrieIdentique": 1,
+          "formeDifferente": [
+            "SP3-CCMP-03-L"
+          ],
+          "positionDifferente": []
+        },
+        "KERN": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "PONCT": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIGNES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 4,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "TROUS": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "TAILLE": {
+          "comparaisons": 9,
+          "geometrieIdentique": 3,
+          "formeDifferente": [],
+          "positionDifferente": []
+        },
+        "LIMITES": {
+          "comparaisons": 12,
+          "geometrieIdentique": 3,
+          "formeDifferente": [
+            "SP3-LIMITES-03-L"
+          ],
+          "positionDifferente": [
+            "SP3-LIMITES-03-L"
+          ]
+        }
+      }
+    }
+  },
+  "erreursMoteur": {
+    "opentypejs-2.0.0-shaping": {
+      "substitutionType : 62 lookupType: 6 - substFormat: 2 is not yet supported": [
+        "SP3-ACC-01-D",
+        "SP3-ACC-02-D",
+        "SP3-ACC-03-D",
+        "SP3-NFD-01-D",
+        "SP3-NFD-02-D",
+        "SP3-NFD-03-D",
+        "SP3-ABS-01-D",
+        "SP3-ABS-02-D",
+        "SP3-ABS-03-D",
+        "SP3-LIG-01-D",
+        "SP3-LIG-02-D",
+        "SP3-LIG-03-D",
+        "SP3-CCMP-01-D",
+        "SP3-CCMP-02-D",
+        "SP3-CCMP-03-D",
+        "SP3-KERN-01-D",
+        "SP3-KERN-02-D",
+        "SP3-KERN-03-D",
+        "SP3-PONCT-01-D",
+        "SP3-PONCT-02-D",
+        "SP3-PONCT-03-D",
+        "SP3-LIGNES-01-D",
+        "SP3-LIGNES-02-D",
+        "SP3-LIGNES-03-D",
+        "SP3-LIGNES-04-D",
+        "SP3-TROUS-01-D",
+        "SP3-TROUS-02-D",
+        "SP3-TROUS-03-D",
+        "SP3-TAILLE-01-D",
+        "SP3-TAILLE-02-D",
+        "SP3-TAILLE-03-D",
+        "SP3-LIMITES-01-D",
+        "SP3-LIMITES-02-D",
+        "SP3-LIMITES-03-D",
+        "SP3-LIMITES-04-D"
+      ],
+      "substitutionType : 52 lookupType: 5 - substFormat: 2 is not yet supported": [
+        "SP3-ACC-01-G",
+        "SP3-ACC-02-G",
+        "SP3-ACC-03-G",
+        "SP3-NFD-01-G",
+        "SP3-NFD-02-G",
+        "SP3-NFD-03-G",
+        "SP3-ABS-01-G",
+        "SP3-ABS-02-G",
+        "SP3-ABS-03-G",
+        "SP3-LIG-01-G",
+        "SP3-LIG-02-G",
+        "SP3-LIG-03-G",
+        "SP3-CCMP-01-G",
+        "SP3-CCMP-02-G",
+        "SP3-CCMP-03-G",
+        "SP3-KERN-01-G",
+        "SP3-KERN-02-G",
+        "SP3-KERN-03-G",
+        "SP3-PONCT-01-G",
+        "SP3-PONCT-02-G",
+        "SP3-PONCT-03-G",
+        "SP3-LIGNES-01-G",
+        "SP3-LIGNES-02-G",
+        "SP3-LIGNES-03-G",
+        "SP3-LIGNES-04-G",
+        "SP3-TROUS-01-G",
+        "SP3-TROUS-02-G",
+        "SP3-TROUS-03-G",
+        "SP3-TAILLE-01-G",
+        "SP3-TAILLE-02-G",
+        "SP3-TAILLE-03-G",
+        "SP3-LIMITES-01-G",
+        "SP3-LIMITES-02-G",
+        "SP3-LIMITES-03-G",
+        "SP3-LIMITES-04-G"
+      ],
+      "Substitution type 11 is not supported in chaining substitution": [
+        "SP3-CCMP-01-L"
+      ]
+    }
+  },
+  "diagnosticsHarfbuzz": {
+    "ccmp": [
+      "SP3-CCMP-01-D",
+      "SP3-CCMP-01-G",
+      "SP3-CCMP-01-L",
+      "SP3-CCMP-03-G",
+      "SP3-CCMP-03-L"
+    ],
+    "liga": [
+      "SP3-LIG-01-D",
+      "SP3-LIG-01-G",
+      "SP3-LIG-01-L",
+      "SP3-LIG-02-D",
+      "SP3-LIG-02-G",
+      "SP3-LIG-02-L",
+      "SP3-LIG-03-D",
+      "SP3-LIG-03-G",
+      "SP3-LIG-03-L",
+      "SP3-LIMITES-03-D",
+      "SP3-LIMITES-03-G",
+      "SP3-LIMITES-03-L"
+    ],
+    "kern": [
+      "SP3-ACC-01-L",
+      "SP3-ACC-02-D",
+      "SP3-ACC-02-G",
+      "SP3-ACC-02-L",
+      "SP3-ACC-03-D",
+      "SP3-ACC-03-L",
+      "SP3-NFD-03-L",
+      "SP3-ABS-02-L",
+      "SP3-LIG-03-D",
+      "SP3-LIG-03-G",
+      "SP3-LIG-03-L",
+      "SP3-KERN-01-D",
+      "SP3-KERN-01-G",
+      "SP3-KERN-01-L",
+      "SP3-KERN-02-D",
+      "SP3-KERN-02-G",
+      "SP3-KERN-02-L",
+      "SP3-KERN-03-D",
+      "SP3-KERN-03-G",
+      "SP3-KERN-03-L",
+      "SP3-PONCT-01-D",
+      "SP3-PONCT-01-G",
+      "SP3-PONCT-01-L",
+      "SP3-PONCT-02-D",
+      "SP3-PONCT-02-G",
+      "SP3-PONCT-02-L",
+      "SP3-PONCT-03-D",
+      "SP3-PONCT-03-L",
+      "SP3-LIGNES-01-G",
+      "SP3-LIGNES-02-D",
+      "SP3-LIGNES-02-G",
+      "SP3-LIGNES-02-L",
+      "SP3-LIGNES-03-D",
+      "SP3-LIGNES-03-G",
+      "SP3-LIGNES-03-L",
+      "SP3-LIGNES-04-D",
+      "SP3-LIGNES-04-G",
+      "SP3-LIGNES-04-L",
+      "SP3-TROUS-01-D",
+      "SP3-TROUS-01-G",
+      "SP3-TROUS-01-L",
+      "SP3-TROUS-02-G",
+      "SP3-TROUS-03-D",
+      "SP3-TROUS-03-G",
+      "SP3-TROUS-03-L",
+      "SP3-TAILLE-01-D",
+      "SP3-TAILLE-01-G",
+      "SP3-TAILLE-01-L",
+      "SP3-TAILLE-02-G",
+      "SP3-TAILLE-02-L",
+      "SP3-TAILLE-03-G",
+      "SP3-LIMITES-01-D",
+      "SP3-LIMITES-01-L",
+      "SP3-LIMITES-02-D",
+      "SP3-LIMITES-02-L",
+      "SP3-LIMITES-04-D",
+      "SP3-LIMITES-04-G",
+      "SP3-LIMITES-04-L"
+    ],
+    "mark": [
+      "SP3-NFD-03-D",
+      "SP3-NFD-03-G",
+      "SP3-NFD-03-L",
+      "SP3-CCMP-01-D",
+      "SP3-CCMP-01-G",
+      "SP3-CCMP-01-L",
+      "SP3-CCMP-02-D",
+      "SP3-CCMP-02-G",
+      "SP3-CCMP-02-L",
+      "SP3-CCMP-03-D",
+      "SP3-CCMP-03-G",
+      "SP3-CCMP-03-L"
+    ]
+  }
+}

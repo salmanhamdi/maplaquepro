@@ -1,0 +1,155 @@
+{
+  "avertissement": "ESSAI SP-3 — NON NORMATIF. Aucune dépendance de production : package.json et package-lock.json inchangés.",
+  "artefacts": [
+    {
+      "nom": "opentype.js",
+      "version": "2.0.0",
+      "licence": "MIT",
+      "role": "moteur A (instrument expérimental, non retenu)",
+      "source": "repris tel quel de la branche spike/sp2-text-geometry (vendor SP-2, registre npm via npm pack)",
+      "integritePubliee": "SHA-256 opentype.mjs attendu (SP-2) e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb",
+      "dossier": "vendor/opentype.js-2.0.0",
+      "fichiers": [
+        {
+          "chemin": "vendor/opentype.js-2.0.0/LICENSE",
+          "octets": 1085,
+          "sha256": "a5b87c9bc191e7f9c06b07bd7cbbed3ed846dfdb50e859484b2c245aa1ab2e61"
+        },
+        {
+          "chemin": "vendor/opentype.js-2.0.0/opentype.mjs",
+          "octets": 494695,
+          "sha256": "e139522ac432bb38fb4878d772012f0ad351993c36d7815d65a9890fb3fe68fb"
+        }
+      ]
+    },
+    {
+      "nom": "harfbuzzjs",
+      "version": "1.6.1",
+      "licence": "MIT",
+      "role": "moteur B (instrument expérimental, non retenu)",
+      "source": "registre npm — https://registry.npmjs.org/harfbuzzjs/-/harfbuzzjs-1.6.1.tgz (npm pack), archive de 469 800 octets",
+      "integritePubliee": "dist.integrity npm sha512-+JeJmO+HzXjDwpfCOdGSyM2bNP8WzJNFKl/8TKivbInMYDtfRIuPIDLtnBNmQzcJw6GptbhHY6o5gaH6deCMEw== (recalculée identique)",
+      "dossier": "vendor/harfbuzzjs-1.6.1",
+      "fichiers": [
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/harfbuzzjs-1.6.1.tgz",
+          "octets": 469800,
+          "sha256": "dec3d3ff4005eff57acf1e2dfa669b06d50259e4c79c68c32ee3a53468b5cb86"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/pack.json",
+          "octets": 1267,
+          "sha256": "16a8ef2ce65c21b790254c20d16ed08ef051a96c0ed8060a43ca1dfd079a443e"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/LICENSE",
+          "octets": 1079,
+          "sha256": "5d09767b2cc476f08028b56d9384dc45061c5a3e90f9ad966e44addc8d26c8b1"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/README.md",
+          "octets": 4164,
+          "sha256": "69545a1140a1f5b3227280aa5280d3d536131efcf595b8db1e7c2060ab9bf800"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz-subset.wasm",
+          "octets": 622493,
+          "sha256": "6be44956ad4bc7f83383a7ac3a75c7ea739504ee5ee3e9dfbd65a849e9320242"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz.d.ts",
+          "octets": 143,
+          "sha256": "cefebb8ca09735209697b49bbf0a87647882973e21c7cf145a40693df57dfca2"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz.js",
+          "octets": 31763,
+          "sha256": "ba43463df44851fd58211ef8c19aa7956965390857727ae867b70dc7b3682de1"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/harfbuzz.wasm",
+          "octets": 426620,
+          "sha256": "37777ced92a2ba10279c33e1dbacf08835ddcacc215b7fcb3131e558dd01ce71"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/index.d.mts",
+          "octets": 68646,
+          "sha256": "c4a91bcf50954270e4970db99f0ff4d9a907a31d8406576df8c5168f1b4580ee"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/dist/index.mjs",
+          "octets": 82693,
+          "sha256": "04ece1914c8720ad96257728119c1bf24088ee4ef3ab2a2ca688c9a4895d4e7e"
+        },
+        {
+          "chemin": "vendor/harfbuzzjs-1.6.1/package/package.json",
+          "octets": 1112,
+          "sha256": "87c9095de05f059ed1391a2fcdb0e03b130f61b528210947869af93539dcd5a6"
+        }
+      ]
+    },
+    {
+      "nom": "DejaVu Sans",
+      "version": "2.37",
+      "licence": "licence DejaVu (Bitstream Vera / domaine public pour les modifications) — vendor/dejavu-fonts-ttf-2.37/LICENSE",
+      "role": "police de FIXTURE uniquement",
+      "source": "repris tel quel de la branche spike/sp2-text-geometry (release GitHub version_2_37)",
+      "integritePubliee": "SHA-256 attendu (SP-2) 7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954",
+      "dossier": "vendor/dejavu-fonts-ttf-2.37",
+      "fichiers": [
+        {
+          "chemin": "vendor/dejavu-fonts-ttf-2.37/DejaVuSans.ttf",
+          "octets": 757076,
+          "sha256": "7da195a74c55bef988d0d48f9508bd5d849425c1770dba5d7bfc6ce9ed848954"
+        },
+        {
+          "chemin": "vendor/dejavu-fonts-ttf-2.37/LICENSE",
+          "octets": 8816,
+          "sha256": "7a083b136e64d064794c3419751e5c7dd10d2f64c108fe5ba161eae5e5958a93"
+        }
+      ]
+    },
+    {
+      "nom": "Gentium Plus Regular",
+      "version": "fichier google/fonts main @ 1ac2012c34919f5fa2675aacf723fa98edb30b5f",
+      "licence": "SIL Open Font License 1.1 — vendor/gentiumplus/OFL.txt",
+      "role": "police de FIXTURE uniquement",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/gentiumplus/GentiumPlus-Regular.ttf et OFL.txt",
+      "integritePubliee": "SHA-1 de blob Git publié (API GitHub) : TTF 42cbe62ce01b975c209574c646796aea3ace9806, OFL.txt 5a7a2dd8330a6d5bd70468ca98c69fe8c0d73b3c (vérifiés, git hash-object --no-filters)",
+      "dossier": "vendor/gentiumplus",
+      "fichiers": [
+        {
+          "chemin": "vendor/gentiumplus/GentiumPlus-Regular.ttf",
+          "octets": 822956,
+          "sha256": "845e06bb4673a908a5f3b3b4ac9f38841750a07faa9aa45bfcb5796893346f0b"
+        },
+        {
+          "chemin": "vendor/gentiumplus/OFL.txt",
+          "octets": 4507,
+          "sha256": "c309a440be606e283ccacc746662d714b9c5b5a7a0a10dd2514b90206b55ddfe"
+        }
+      ]
+    },
+    {
+      "nom": "Libre Baskerville (fonte variable, axe wght)",
+      "version": "fichier google/fonts main @ 1ac2012c34919f5fa2675aacf723fa98edb30b5f",
+      "licence": "SIL Open Font License 1.1 — vendor/librebaskerville/OFL.txt",
+      "role": "police de FIXTURE uniquement ; instance par défaut (H-VAR)",
+      "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/librebaskerville/LibreBaskerville%5Bwght%5D.ttf et OFL.txt ; renommé LibreBaskerville-wght.ttf (crochets incompatibles avec les motifs de classement du lint)",
+      "integritePubliee": "SHA-1 de blob Git publié (API GitHub) : TTF eae4eba83203138da3a3a7603b598b7ebc5a5238, OFL.txt 92b1e6ca1cfa6f9dfe4ec67468596606fc334c4f (vérifiés, git hash-object --no-filters)",
+      "dossier": "vendor/librebaskerville",
+      "fichiers": [
+        {
+          "chemin": "vendor/librebaskerville/LibreBaskerville-wght.ttf",
+          "octets": 171900,
+          "sha256": "05a95421961341c5b2556285e8415df9db27dab4f4abe22b446b3c6a8b916c5d"
+        },
+        {
+          "chemin": "vendor/librebaskerville/OFL.txt",
+          "octets": 4542,
+          "sha256": "3624eddd4c8f8a908130a417ae7cd089c9da69899c4e0ca1a5217d0a6fae16fd"
+        }
+      ]
+    }
+  ]
+}
