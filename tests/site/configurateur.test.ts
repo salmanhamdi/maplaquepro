@@ -1,6 +1,7 @@
 // Configurateur v1 : catalogue de démonstration et traduction du verdict du moteur. Le moteur reste la source de vérité.
 import { describe, expect, it } from "vitest";
-import { ETAT_INITIAL, erreursDeSaisie, etatEtape, interpreter, lireMm, type Message, statutDepuis, TEXTES_STATUT, versConfiguration } from "../../src/components/configurateur/interpretation";
+import { dimensionsApercu, ETAT_INITIAL, erreursDeSaisie, etatEtape, interpreter, lireMm, type Message, statutDepuis, TEXTES_STATUT, versConfiguration } from "../../src/components/configurateur/interpretation";
+import { verifier } from "../../src/server/verification";
 import { evaluateFabricability, proposeAlternatives, validateCatalog } from "../../src/domain";
 import { CATALOGUE_DEMO, COMPOSITION_DEMO, POLICE_DEMO, PRODUIT_DEMO, referenceDemo } from "../../src/server/catalogue-demo";
 
@@ -89,6 +90,18 @@ describe("configurateur — verdict du moteur", () => {
   it("texte transmis tel que saisi (normalisation par le moteur) ; aucune ligne ⇒ pas de texte", () => {
     expect(versConfiguration({ ...ETAT_INITIAL, lignes: ["  A  "] }, ids("plexiglass")).design.text?.lines).toEqual(["  A  "]);
     expect(versConfiguration({ ...ETAT_INITIAL, lignes: ["", " "] }, ids("plexiglass")).design.text).toBeNull();
+  });
+});
+
+describe("configurateur — cotes de l'aperçu serveur (présentation)", () => {
+  it("dimensions lues dans le rendu serveur, identiques à la saisie fabricable ; SVG illisible ⇒ aucune cote", () => {
+    for (const [famille, largeur, hauteur] of [["plexiglass", "200", "100"], ["plexiglass", "347", "490"], ["troglass_metallic", "120,5", "60"]] as const) {
+      const v = verifier({ ...ETAT_INITIAL, famille, largeur, hauteur });
+      if (v.apercu.etat !== "disponible") throw new Error("aperçu attendu");
+      expect(dimensionsApercu(v.apercu.svg)).toEqual({ w: lireMm(largeur), h: lireMm(hauteur) });
+    }
+    expect(dimensionsApercu("<svg></svg>")).toBeNull();
+    expect(dimensionsApercu('<svg viewBox="0 0 0 10"></svg>')).toBeNull();
   });
 });
 

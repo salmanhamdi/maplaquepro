@@ -304,7 +304,7 @@ body:has(.cfg) .site-nav > .btn {
 .cfg-matiere {
   position: relative;
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 14px;
   padding: 14px 16px;
@@ -381,12 +381,13 @@ body:has(.cfg) .site-nav > .btn {
   color: var(--color-ink-soft);
 }
 .cfg-matiere__procede {
-  max-width: 13ch;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.35;
   letter-spacing: 0.02em;
-  text-align: right;
   color: var(--color-ink-soft);
+}
+.cfg-matiere__description {
+  margin-top: 2px;
 }
 .cfg-matiere.is-actif .cfg-matiere__procede {
   color: var(--color-accent-strong);
@@ -798,6 +799,12 @@ body:has(.cfg) .site-nav > .btn {
 }
 
 @media (max-width: 960px) {
+  /* L'aperçu est accroché sous l'en-tête : un en-tête opaque évite de voir défiler le panneau entre les deux. */
+  body:has(.cfg) .site-header {
+    background: var(--color-bg);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .cfg {
     padding-top: 0;
     padding-bottom: 112px;
@@ -811,9 +818,7 @@ body:has(.cfg) .site-nav > .btn {
     top: 64px;
     z-index: 20;
     padding: 10px var(--gutter);
-    background: rgb(242 241 236 / 0.94);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: var(--color-bg);
     border-bottom: 1px solid var(--color-line);
   }
   .cfg-scene {
@@ -898,13 +903,7 @@ body:has(.cfg) .site-nav > .btn {
 
 @media (max-width: 520px) {
   .cfg-matiere {
-    grid-template-columns: auto minmax(0, 1fr);
     padding: 13px 14px;
-  }
-  .cfg-matiere__procede {
-    grid-column: 2;
-    max-width: none;
-    text-align: left;
   }
   .cfg-matiere__description {
     display: none;
@@ -942,6 +941,72 @@ body:has(.cfg) .site-nav > .btn {
 .cfg-scene__plaque--serveur.is-maj {
   opacity: 0.55;
 }
+
+/* Cotes de l'aperçu serveur : boîte au ratio du rendu, contenue dans la scène (unités de conteneur). */
+.cfg-scene__plaque--serveur {
+  display: grid;
+  place-items: center;
+  container-type: size;
+}
+.cfg-cotes {
+  --ratio: 2;
+  --reserve-x: 64px;
+  --reserve-y: 34px;
+  position: relative;
+  width: min(100cqw - var(--reserve-x), (100cqh - var(--reserve-y)) * var(--ratio));
+  aspect-ratio: var(--ratio);
+  transform: translate(calc(var(--reserve-x) / -2 + 8px), calc(var(--reserve-y) / 2));
+}
+.cfg-cote {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-ink-soft);
+  pointer-events: none;
+}
+.cfg-cote > span {
+  padding: 0 6px;
+  background: var(--color-surface);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.cfg-cote--largeur {
+  left: 0;
+  right: 0;
+  bottom: calc(100% + 12px);
+  height: 9px;
+  border-inline: 1px solid var(--color-line-strong);
+  background: linear-gradient(var(--color-line-strong), var(--color-line-strong)) center / 100% 1px no-repeat;
+}
+.cfg-cote--hauteur {
+  top: 0;
+  bottom: 0;
+  left: calc(100% + 14px);
+  width: 9px;
+  border-block: 1px solid var(--color-line-strong);
+  background: linear-gradient(var(--color-line-strong), var(--color-line-strong)) center / 1px 100% no-repeat;
+}
+.cfg-cote--hauteur > span {
+  padding: 4px 0;
+  transform: translateX(calc(50% + 6px));
+}
+@media (max-width: 960px) {
+  .cfg-cotes {
+    --reserve-x: 96px;
+    --reserve-y: 26px;
+  }
+  .cfg-cote {
+    font-size: 10px;
+  }
+  .cfg-cote--largeur {
+    bottom: calc(100% + 8px);
+  }
+  .cfg-cote--hauteur {
+    left: calc(100% + 10px);
+  }
+}
 .cfg-scene__serveur {
   position: absolute;
   inset: 0;
@@ -949,7 +1014,8 @@ body:has(.cfg) .site-nav > .btn {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 14px 22px rgb(24 34 45 / 0.2)) drop-shadow(0 2px 3px rgb(24 34 45 / 0.12));
+  /* Liseré fin : les matières claires (Plexiglass) restent lisibles sur le fond de la scène. */
+  filter: drop-shadow(0 0 0.6px rgb(24 34 45 / 0.55)) drop-shadow(0 14px 22px rgb(24 34 45 / 0.2)) drop-shadow(0 2px 3px rgb(24 34 45 / 0.12));
 }
 @media (max-width: 960px) {
   .cfg-scene__repere {

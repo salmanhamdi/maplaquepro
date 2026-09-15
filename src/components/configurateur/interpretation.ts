@@ -44,6 +44,17 @@ export type Niveau = "bloquant" | "validation";
 
 export type Message = { id: string; champ: Champ; niveau: Niveau; titre: string; detail: string };
 
+/**
+ * Dimensions (mm) lues dans le viewBox de l'aperçu serveur, pour afficher ses cotes. Présentation uniquement :
+ * rien n'est recalculé, la valeur est celle du rendu produit par le serveur. null si le SVG n'est pas lisible.
+ */
+export function dimensionsApercu(svg: string): { w: number; h: number } | null {
+  const m = /viewBox="0 0 ([\d.]+) ([\d.]+)"/.exec(svg);
+  const w = Number(m?.[1]);
+  const h = Number(m?.[2]);
+  return m && w > 0 && h > 0 ? { w, h } : null;
+}
+
 /** Aperçu serveur (T4-a) : rendu de la géométrie canonique, uniquement pour une configuration fabricable. */
 export type ApercuServeur = { etat: "disponible"; svg: string } | { etat: "indisponible" } | { etat: "non_applicable" };
 

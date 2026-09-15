@@ -8,6 +8,7 @@ import { ArrowRight } from "@/components/site/ArrowRight";
 import { BORNES_DIMENSIONS_VR25, type MaterialFamily } from "@/domain";
 import {
   type Champ,
+  dimensionsApercu,
   ETAT_INITIAL,
   type EtatConfigurateur,
   type EtatEtape,
@@ -141,6 +142,7 @@ export function Configurateur() {
   const apercuVerdict = saisie.length === 0 && verdict?.statut === "fabricable" ? verdict.apercu : null;
   const svgServeur = apercuVerdict?.etat === "disponible" ? apercuVerdict.svg : null;
   const apercuIndisponible = apercuVerdict?.etat === "indisponible";
+  const cotesServeur = svgServeur ? dimensionsApercu(svgServeur) : null;
 
   const libelleDimensions = largeur && hauteur ? `${fmt(largeur)} × ${fmt(hauteur)} mm` : "—";
   const titreApercu = `Aperçu : plaque ${NOMS_FAMILLES[etat.famille]} de ${fmt(dernieres.current.w)} × ${fmt(dernieres.current.h)} mm${texteSaisi ? `, texte « ${etat.lignes.join(" ")} »` : ""}${etat.trous ? `, ${etat.trous} trous` : ""}`;
@@ -163,8 +165,20 @@ export function Configurateur() {
             </div>
             {svgServeur ? (
               <div className={`cfg-scene__plaque cfg-scene__plaque--serveur ${verification ? "is-maj" : ""}`}>
-                {/* Rendu calculé par le serveur à partir de la géométrie canonique : affiché comme image, jamais redessiné ici */}
-                <img className="cfg-scene__serveur" src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgServeur)}`} alt={`Aperçu indicatif calculé par le serveur : ${titreApercu.replace(/^Aperçu : /, "")}`} />
+                <div className="cfg-cotes" style={cotesServeur ? ({ "--ratio": cotesServeur.w / cotesServeur.h } as React.CSSProperties) : undefined}>
+                  {/* Rendu calculé par le serveur à partir de la géométrie canonique : affiché comme image, jamais redessiné ici */}
+                  <img className="cfg-scene__serveur" src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgServeur)}`} alt={`Aperçu indicatif calculé par le serveur : ${titreApercu.replace(/^Aperçu : /, "")}`} />
+                  {cotesServeur && (
+                    <>
+                      <span className="cfg-cote cfg-cote--largeur mono" aria-hidden="true">
+                        <span>{fmt(cotesServeur.w)} mm</span>
+                      </span>
+                      <span className="cfg-cote cfg-cote--hauteur mono" aria-hidden="true">
+                        <span>{fmt(cotesServeur.h)} mm</span>
+                      </span>
+                    </>
+                  )}
+                </div>
               </div>
             ) : (
             <div className="cfg-scene__plaque" key={etat.famille}>
@@ -241,9 +255,9 @@ export function Configurateur() {
                   <span className={`cfg-matiere__pastille cfg-matiere__pastille--${f}`} aria-hidden="true" />
                   <span className="cfg-matiere__texte">
                     <span className="cfg-matiere__nom">{NOMS_FAMILLES[f]}</span>
+                    <span className="cfg-matiere__procede mono">{PROCEDES[f]}</span>
                     <span className="cfg-matiere__description">{DESCRIPTIONS[f]}</span>
                   </span>
-                  <span className="cfg-matiere__procede mono">{PROCEDES[f]}</span>
                 </label>
               ))}
             </div>
@@ -425,9 +439,9 @@ export function Configurateur() {
           <span className="cfg-barre__resume">
             {NOMS_FAMILLES[etat.famille]} · <span className="mono">{largeur && hauteur ? `${fmt(largeur)}×${fmt(hauteur)}` : "—"}</span>
           </span>
-          <span className={`cfg-barre__statut cfg-barre__statut--${statut}`}>
+          <span className={`cfg-barre__statut cfg-barre__statut--${statut}`} aria-live="polite">
             <span className="cfg-scene__point" aria-hidden="true" />
-            {TEXTES_STATUT[statut].titre}
+            {suite && pret ? "BAT bientôt disponible" : TEXTES_STATUT[statut].titre}
           </span>
         </div>
         <button type="button" className="btn btn--accent" disabled={!pret} onClick={continuer}>
