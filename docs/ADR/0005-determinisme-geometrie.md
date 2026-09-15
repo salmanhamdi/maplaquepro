@@ -110,5 +110,17 @@ Preuves de **faisabilité** sur des périmètres expérimentaux. Elles ne consti
 ## D. Conséquences
 
 - ARCH-PREVIEW dispose de preuves partielles (SP-1, SP-2) ; le niveau 1 complet reste à démontrer sur la géométrie produit réelle.
-- SP-3 (polices réelles, bloqué par VR-08) et SP-4 (orientation, bloqué par R-1) restent non autorisés.
+- SP-4 (orientation, bloqué par R-1) reste non autorisé. SP-3 : voir révision E.
 - Toute révision de cet ADR exige un arbitrage du Supervisor.
+
+## E. Révision — arbitrages T1 (contrats du BAT réel)
+
+Arbitrage Supervisor consigné dans `docs/product/t1-contrats-bat.md`. Les parties A à D ne sont pas réécrites ; les points ci-dessous précisent leur statut.
+
+| ID | Statut après T1 |
+|---|---|
+| B-O2 | **Partiellement arbitré** : sérialisation par le `canonicalJson` existant ; géométrie arrondie à 0,001 mm selon la convention existante ; payload de l'empreinte du BAT versionné `{ schemaVersion: 1, content }`. Aucune autre canonicalisation. |
+| B-O3 | **Partiellement arbitré** : `contentHash` = SHA-256 côté serveur, hexadécimal minuscule (64), du contenu métier canonique, indépendant de l'identité et du cycle de vie ; distinct de `integrite`. Usages et définition des empreintes d'artefacts et de `fontHash` : non arbitrés. |
+| B-O1 | Inchangé : le mode exact de `roundMm` (demi-valeurs, négatifs) reste OPEN. |
+| B-O5, B-O6 | Inchangés (À VALIDER / OPEN) : objets du spike SP-3, sans décision. |
+| SP-3 | **Autorisé comme spike technique** (polices réelles, `TextGlyphPaths` déterministes, exigences VR-08). Il ne décide ni de la bibliothèque, ni de la police produit, ni des licences, ni des points VR-08 OPEN. |

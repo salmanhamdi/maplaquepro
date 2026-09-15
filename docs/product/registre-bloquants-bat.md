@@ -31,8 +31,8 @@ evaluateFabricability → resolveSpec → buildCanonicalGeometry → construireA
 | B9 | Perçage | `src/domain/catalog.ts` · `INITIAL_CATALOG.mountingRules` ; `src/domain/mounting.ts` | 6 paramètres À VALIDER | BAT avec trous | VR-22, VR-24, GATE 1 |
 | B10 | Références réelles | `src/server/catalogue-demo.ts` · `CATALOGUE_DEMO` | Voir détail B10 | Tout BAT réel | GATE 1 (VR-02 à VR-05, VR-22 à VR-25…) |
 | B11 | Sur mesure TroLase | `src/domain/fabricabilite.ts` · `evaluateFabricability` (CR-2) | Non activé | TroLase, TroLase Metallic | CR-2 |
-| B12 | Empreinte de contenu | `bat.ts` · `contentHash` ; `preparation-bat.ts` · `identite` | Reçue, jamais calculée ; périmètre non défini | Création et stockage | Q4 (liaison configuration), futur `bat_snapshots` |
-| B13 | Stockage du BAT | `src/server/db/schema.ts` | Aucune table BAT | BAT persistant | Rétention BAT, D-S1-1 |
+| B12 | Empreinte de contenu | `bat.ts` · `contentHash` ; `preparation-bat.ts` · `identite` | Contrat arbitré (T1) ; toujours reçue, jamais calculée (implémentation T2) | Création et stockage | T1 (`docs/product/t1-contrats-bat.md`), `plan-t2-bat-reel.md` |
+| B13 | Stockage du BAT | `src/server/db/schema.ts` | Principe arbitré (T1 : contenu immuable / cycle de vie séparé) ; aucune table | BAT persistant | T1, G2-D12, D-S1-1 |
 
 ### Détails
 
@@ -84,7 +84,7 @@ Détail des décisions, dépendances absentes et écarts avec le Master Plan : `
   - fiche de production (`fiche-production.ts` · `ficheProduction`) ;
   - intégrité enregistrée (`bat-enregistre.ts`, qui hache le BAT complet, empreinte comprise).
 - **Régénération :** `regenererArtefacts` réinjecte `bat.contentHash` dans les artefacts, et `verifierArtefacts` compare.
-- **Circularité potentielle :** si l'empreinte devait couvrir `artifacts`, il faudrait la connaître avant de produire les artefacts qui l'embarquent.
+- **Circularité :** écartée par l'arbitrage T1 — artefacts finaux, hash d'artefacts, `previewSvg`, identité et cycle de vie sont exclus de `contentHash`.
 - **Tests concernés :**
   - `tests/bat-contract/` : complétude, hybride, miroir UV ;
   - `tests/domain/` : BAT, `createBat`, intégration, BAT validé Phase 5, `preparerBat` ;
