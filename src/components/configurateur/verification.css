@@ -1,0 +1,336 @@
+/* ---------- Étape « Vérification » ---------- */
+
+/* L'appel « Créer ma plaque » de l'en-tête ferait doublon avec « Modifier la configuration ». */
+body:has(.vrf, .vrf-vide) .site-nav > .btn {
+  display: none;
+}
+
+.vrf {
+  --statut-ok: var(--color-blue);
+  --statut-ko: var(--color-accent-strong);
+  --statut-attente: var(--color-ink-soft);
+  padding-block: clamp(20px, 3vw, 40px) clamp(56px, 8vw, 96px);
+}
+.vrf__grille {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(380px, 0.9fr);
+  align-items: start;
+  gap: clamp(32px, 4.5vw, 72px);
+}
+
+.vrf-apercu {
+  position: sticky;
+  top: 92px;
+}
+.vrf-note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--color-ink-soft);
+}
+
+/* Parcours */
+.vrf-parcours {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.vrf-parcours li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-ink-soft);
+}
+.vrf-parcours li::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+}
+.vrf-parcours .is-fait::before {
+  background: currentColor;
+}
+.vrf-parcours .is-fait a {
+  color: inherit;
+  text-underline-offset: 4px;
+}
+.vrf-parcours .is-courant {
+  color: var(--color-accent-strong);
+}
+.vrf-parcours .is-courant::before {
+  background: currentColor;
+}
+.vrf-parcours .is-a-venir {
+  opacity: 0.6;
+}
+
+.vrf-entete {
+  padding-bottom: 8px;
+}
+.vrf-titre {
+  margin-top: 16px;
+  font-size: clamp(32px, 3.4vw, 44px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+.vrf-intro {
+  max-width: 48ch;
+  margin-top: 14px;
+  color: var(--color-ink-soft);
+}
+
+/* Blocs */
+.vrf-bloc {
+  padding-block: 22px 6px;
+  border-top: 1px solid var(--color-line);
+  margin-top: 20px;
+}
+.vrf-bloc__titre {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.vrf-fiche {
+  display: grid;
+  margin: 12px 0 0;
+}
+.vrf-fiche > div {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 16px;
+  padding: 11px 0;
+}
+.vrf-fiche > div + div {
+  border-top: 1px solid var(--color-line);
+}
+.vrf-fiche dt {
+  font-size: 14px;
+  color: var(--color-ink-soft);
+}
+.vrf-fiche dd {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
+
+/* Statut */
+.vrf-statut {
+  --v: var(--statut-attente);
+  margin-top: 12px;
+  padding: 16px 18px;
+  border-left: 3px solid var(--v);
+  border-radius: 0 var(--radius-s) var(--radius-s) 0;
+  background: var(--color-surface);
+  box-shadow: inset 0 0 0 1px var(--color-line);
+}
+.vrf-statut--fabricable {
+  --v: var(--statut-ok);
+  background: rgb(31 75 126 / 0.06);
+}
+.vrf-statut--bloque {
+  --v: var(--statut-ko);
+  background: rgb(212 88 42 / 0.07);
+}
+.vrf-statut--verification .vrf-statut__titre {
+  animation: cfg-pulse 1200ms ease-in-out infinite;
+}
+.vrf-statut__titre {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--v);
+}
+.vrf-statut__detail {
+  margin-top: 4px;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+.vrf-reessayer {
+  margin-top: 12px;
+  min-height: 42px;
+}
+.vrf-groupe {
+  margin-top: 18px;
+}
+.vrf-groupe__titre {
+  font-size: 13px;
+  font-weight: 600;
+}
+.vrf-remarque {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-ink-soft);
+}
+
+/* Relecture */
+.vrf-confirmations {
+  display: grid;
+  gap: 4px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.vrf-case {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+  padding: 10px 12px;
+  margin-inline: -12px;
+  border-radius: var(--radius-s);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease);
+}
+.vrf-case:hover {
+  background: rgb(24 34 45 / 0.035);
+}
+.vrf-case input {
+  width: 20px;
+  height: 20px;
+  margin: 1px 0 0;
+  accent-color: var(--color-ink);
+  cursor: pointer;
+}
+.vrf-case input:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+}
+
+/* Actions */
+.vrf-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-ink);
+}
+.vrf-modifier svg {
+  transition: transform 200ms var(--ease);
+}
+.vrf-modifier:hover svg {
+  transform: translateX(-3px);
+}
+.vrf-suite {
+  display: grid;
+  justify-items: end;
+  max-width: 280px;
+}
+.vrf-suite .vrf-remarque {
+  text-align: right;
+}
+
+/* États vides */
+.vrf-vide {
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  max-width: 640px;
+  padding-block: clamp(48px, 9vw, 112px);
+}
+.vrf-vide .btn {
+  margin-top: 24px;
+}
+
+.vrf-barre {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .vrf {
+    padding-top: 12px;
+    padding-bottom: 104px;
+  }
+  .vrf__grille {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .vrf-apercu {
+    position: static;
+    order: 0;
+  }
+  .vrf .cfg-scene {
+    height: 44vw;
+    min-height: 220px;
+    max-height: 340px;
+  }
+  .vrf-panneau {
+    order: 1;
+  }
+  .vrf-entete {
+    order: -1;
+  }
+  .vrf-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+  }
+  .vrf-actions .btn,
+  .vrf-suite {
+    width: 100%;
+    max-width: none;
+    justify-items: stretch;
+  }
+  .vrf-suite .vrf-remarque {
+    text-align: left;
+  }
+  .vrf-barre {
+    position: fixed;
+    inset: auto 0 0;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--color-line);
+    background: var(--color-surface);
+  }
+  .vrf-barre .btn {
+    min-height: 46px;
+    padding: 0 16px;
+  }
+  .vrf-barre .cfg-barre__statut {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+    overflow: hidden;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--statut-attente);
+  }
+  .vrf-barre .cfg-barre__statut--fabricable {
+    color: var(--statut-ok);
+  }
+  .vrf-barre .cfg-barre__statut--bloque {
+    color: var(--statut-ko);
+  }
+}
+
+@media (max-width: 520px) {
+  .vrf .cfg-scene {
+    height: 230px;
+  }
+  .vrf-fiche > div {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 12px;
+  }
+}

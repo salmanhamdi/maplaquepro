@@ -196,6 +196,23 @@ body:has(.cfg) .site-nav > .btn {
   text-transform: uppercase;
 }
 
+.cfg-restauration {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 14px;
+  margin-top: 12px;
+  padding: 8px 12px;
+  border-radius: var(--radius-s);
+  background: rgb(31 75 126 / 0.06);
+  font-size: 13px;
+  color: var(--color-ink);
+}
+.cfg-restauration .cfg-lien {
+  min-height: 32px;
+  font-size: 13px;
+}
+
 /* Progression */
 .cfg-progression {
   display: grid;

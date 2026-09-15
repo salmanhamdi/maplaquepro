@@ -1,14 +1,15 @@
 "use client";
 // Configurateur : l'aperçu est un visuel client ; la fabricabilité vient du moteur, via l'action serveur.
 // Aucun état métier n'est créé ici : les états d'étape reflètent la saisie et les messages du moteur.
+import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, useTransition } from "react";
 import { verifierConfiguration } from "@/app/configurateur/actions";
-import { PlaqueVisuel } from "@/components/plaque/PlaqueVisuel";
 import { ArrowRight } from "@/components/site/ArrowRight";
+import { ApercuPlaque } from "./ApercuPlaque";
+import { chargerBrouillon, effacerBrouillon, enregistrerBrouillon, stockageNavigateur } from "./brouillon";
 import { BORNES_DIMENSIONS_VR25, type MaterialFamily } from "@/domain";
 import {
   type Champ,
-  dimensionsApercu,
   ETAT_INITIAL,
   type EtatConfigurateur,
   type EtatEtape,
@@ -94,7 +95,9 @@ export function Configurateur() {
   const [etat, setEtat] = useState<EtatConfigurateur>(ETAT_INITIAL);
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [verification, demarrer] = useTransition();
-  const [suite, setSuite] = useState(false);
+  // Brouillon local (§8) : « attente » tant qu'il n'a pas été lu, pour ne jamais écraser un brouillon avant restauration.
+  const [restauration, setRestauration] = useState<"attente" | "aucune" | "restauree" | "invalide">("attente");
+  const router = useRouter();
   const requete = useRef(0);
 
   const saisie = useMemo(() => erreursDeSaisie(etat), [etat]);
@@ -106,8 +109,21 @@ export function Configurateur() {
   const dernieres = useRef({ w: 200, h: 100 });
   if (largeur && hauteur) dernieres.current = { w: largeur, h: hauteur };
 
+  // Lecture unique : un brouillon invalide est effacé dès la première lecture ; le relire donnerait « absent ».
+  const brouillonLu = useRef(false);
   useEffect(() => {
-    setSuite(false);
+    if (brouillonLu.current) return;
+    brouillonLu.current = true;
+    const lecture = chargerBrouillon(stockageNavigateur());
+    if (lecture.statut === "restaure") setEtat(lecture.etat);
+    setRestauration(lecture.statut === "restaure" ? "restauree" : lecture.statut === "invalide" ? "invalide" : "aucune");
+  }, []);
+
+  useEffect(() => {
+    if (restauration !== "attente") enregistrerBrouillon(stockageNavigateur(), etat);
+  }, [etat, restauration]);
+
+  useEffect(() => {
     if (saisie.length > 0) {
       setVerdict(null);
       return;
@@ -142,12 +158,20 @@ export function Configurateur() {
   const apercuVerdict = saisie.length === 0 && verdict?.statut === "fabricable" ? verdict.apercu : null;
   const svgServeur = apercuVerdict?.etat === "disponible" ? apercuVerdict.svg : null;
   const apercuIndisponible = apercuVerdict?.etat === "indisponible";
-  const cotesServeur = svgServeur ? dimensionsApercu(svgServeur) : null;
 
   const libelleDimensions = largeur && hauteur ? `${fmt(largeur)} × ${fmt(hauteur)} mm` : "—";
   const titreApercu = `Aperçu : plaque ${NOMS_FAMILLES[etat.famille]} de ${fmt(dernieres.current.w)} × ${fmt(dernieres.current.h)} mm${texteSaisi ? `, texte « ${etat.lignes.join(" ")} »` : ""}${etat.trous ? `, ${etat.trous} trous` : ""}`;
 
-  const continuer = () => setSuite(true);
+  const peutVerifier = saisie.length === 0 && restauration !== "attente";
+  const verifierMaPlaque = () => {
+    enregistrerBrouillon(stockageNavigateur(), etat);
+    router.push("/configurateur/verification");
+  };
+  const recommencer = () => {
+    effacerBrouillon(stockageNavigateur());
+    setEtat(ETAT_INITIAL);
+    setRestauration("aucune");
+  };
 
   return (
     <div className="cfg">
@@ -163,39 +187,7 @@ export function Configurateur() {
               <span className="cfg-scene__point" />
               {TEXTES_STATUT[statut].titre}
             </div>
-            {svgServeur ? (
-              <div className={`cfg-scene__plaque cfg-scene__plaque--serveur ${verification ? "is-maj" : ""}`}>
-                <div className="cfg-cotes" style={cotesServeur ? ({ "--ratio": cotesServeur.w / cotesServeur.h } as React.CSSProperties) : undefined}>
-                  {/* Rendu calculé par le serveur à partir de la géométrie canonique : affiché comme image, jamais redessiné ici */}
-                  <img className="cfg-scene__serveur" src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgServeur)}`} alt={`Aperçu indicatif calculé par le serveur : ${titreApercu.replace(/^Aperçu : /, "")}`} />
-                  {cotesServeur && (
-                    <>
-                      <span className="cfg-cote cfg-cote--largeur mono" aria-hidden="true">
-                        <span>{fmt(cotesServeur.w)} mm</span>
-                      </span>
-                      <span className="cfg-cote cfg-cote--hauteur mono" aria-hidden="true">
-                        <span>{fmt(cotesServeur.h)} mm</span>
-                      </span>
-                    </>
-                  )}
-                </div>
-              </div>
-            ) : (
-            <div className="cfg-scene__plaque" key={etat.famille}>
-              <PlaqueVisuel
-                matiere={etat.famille}
-                widthMm={dernieres.current.w}
-                heightMm={dernieres.current.h}
-                lignes={texteSaisi ? etat.lignes : ["Votre texte"]}
-                exemple={!texteSaisi}
-                alignement={etat.alignement}
-                trous={etat.trous}
-                retraitTrouMm={etat.trous > 0 && retrait ? retrait : undefined}
-                cotes
-                titre={titreApercu}
-              />
-            </div>
-            )}
+            <ApercuPlaque etat={etat} svgServeur={svgServeur} illustration={dernieres.current} titre={titreApercu.replace(/^Aperçu : /, "")} miseAJour={verification} />
           </div>
           <dl className="cfg-fiche">
             <div>
@@ -229,6 +221,19 @@ export function Configurateur() {
               <span className="cfg-demo__etiquette mono">Démonstration</span>
               <span>Aucune commande possible. Matières d&apos;exemple, en attente de validation des références réelles.</span>
             </p>
+            {restauration === "restauree" && (
+              <p className="cfg-restauration" role="status">
+                <span>Votre configuration précédente a été restaurée.</span>
+                <button type="button" className="cfg-lien" onClick={recommencer}>
+                  Recommencer
+                </button>
+              </p>
+            )}
+            {restauration === "invalide" && (
+              <p className="cfg-restauration" role="status">
+                <span>Votre configuration précédente n&apos;a pas pu être relue : elle a été effacée.</span>
+              </p>
+            )}
             <ol className="cfg-progression" aria-label="Progression">
               {(
                 [
@@ -418,12 +423,12 @@ export function Configurateur() {
             )}
 
             <div className="cfg-action">
-              <button type="button" className="btn btn--accent cfg-cta" disabled={!pret} onClick={continuer}>
-                Continuer vers le BAT
+              <button type="button" className="btn btn--accent cfg-cta" disabled={!peutVerifier} onClick={verifierMaPlaque}>
+                Vérifier ma plaque
                 <ArrowRight />
               </button>
               <p className="cfg-note" aria-live="polite">
-                {suite ? "Configuration conforme. La préparation du BAT est la prochaine étape du parcours ; elle n'est pas encore disponible." : pret ? "Étape suivante : vérification du BAT." : "Disponible dès que la configuration est fabricable."}
+                {saisie.length > 0 ? "Renseignez les dimensions pour vérifier votre plaque." : "Étape suivante : relecture complète de votre plaque, avant la préparation du BAT."}
               </p>
               <a href="/bat-provisoire" className="cfg-lien cfg-exemple">
                 Voir un exemple de BAT provisoire
@@ -441,11 +446,11 @@ export function Configurateur() {
           </span>
           <span className={`cfg-barre__statut cfg-barre__statut--${statut}`} aria-live="polite">
             <span className="cfg-scene__point" aria-hidden="true" />
-            {suite && pret ? "BAT bientôt disponible" : TEXTES_STATUT[statut].titre}
+            {TEXTES_STATUT[statut].titre}
           </span>
         </div>
-        <button type="button" className="btn btn--accent" disabled={!pret} onClick={continuer}>
-          Continuer
+        <button type="button" className="btn btn--accent" disabled={!peutVerifier} onClick={verifierMaPlaque}>
+          Vérifier
           <ArrowRight />
         </button>
       </div>
