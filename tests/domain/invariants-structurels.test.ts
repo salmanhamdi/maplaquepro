@@ -74,6 +74,7 @@ describe("INV-18 — aucun champ tenant / marque (§21)", () => {
 describe("I-6 — tarification non définie jusqu'à VR-07", () => {
   const base = {
     id: "prix-test",
+    version: "fixture-1",
     base: aValider(),
     byVariant: {},
     byThickness: {},
@@ -91,8 +92,16 @@ describe("I-6 — tarification non définie jusqu'à VR-07", () => {
     expect(priceRulesSchema.safeParse(base).success).toBe(true);
   });
 
-  it("refuse une tarification sur mesure ou des paliers déclarés DEFINIE", () => {
+  it("VR-07 : sur mesure DEFINIE uniquement par paliers de dimensions ; tarif libre au cm², paliers de quantité, texte ou options refusés", () => {
+    const palier = { id: "P1", grandCoteMinMm: 10, grandCoteMaxMm: 200, petitCoteMinMm: 10, petitCoteMaxMm: 100, montant: aValider() };
+    expect(priceRulesSchema.safeParse({ ...base, customDimensionPricing: { etat: "DEFINIE", valeur: { modele: "paliers_dimensions", paliers: [palier] } } }).success).toBe(true);
     expect(priceRulesSchema.safeParse({ ...base, customDimensionPricing: { etat: "DEFINIE", valeur: { parMm2: 1 } } }).success).toBe(false);
+    expect(priceRulesSchema.safeParse({ ...base, customDimensionPricing: { etat: "DEFINIE", valeur: { modele: "paliers_dimensions", paliers: [] } } }).success).toBe(false);
+    expect(priceRulesSchema.safeParse({ ...base, customDimensionPricing: { etat: "DEFINIE", valeur: { modele: "paliers_dimensions", paliers: [{ ...palier, grandCoteMinMm: 300 }] } } }).success).toBe(false);
     expect(priceRulesSchema.safeParse({ ...base, quantityTiers: { etat: "DEFINIE", valeur: [] } }).success).toBe(false);
+    expect(priceRulesSchema.safeParse({ ...base, texte: { etat: "SANS_OBJET" } }).success).toBe(false);
+    expect(priceRulesSchema.safeParse({ ...base, options: { etat: "SANS_OBJET" } }).success).toBe(false);
+    const { version: _version, ...sansVersion } = base;
+    expect(priceRulesSchema.safeParse(sansVersion).success).toBe(false);
   });
 });

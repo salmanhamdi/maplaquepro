@@ -39,6 +39,7 @@ const artworkResolu = {
 
 const prixResolu: PriceRules = {
   id: "p",
+  version: "fixture-1",
   base: definie(100),
   byVariant: { v: definie(1) },
   byThickness: {},
@@ -90,6 +91,12 @@ describe("INV-02 — règles", () => {
     expect(codes(avec({ priceRules: [{ ...prixResolu, vatRate: aValider() }] }))).toEqual(["priceRules.p.vatRate"]);
     expect(codes(avec({ priceRules: [{ ...prixResolu, customDimensionPricing: { etat: "A_VALIDER" } }] }))).toEqual(["priceRules.p.customDimensionPricing"]);
     expect(codes(avec({ priceRules: [{ ...prixResolu, quantityTiers: { etat: "A_VALIDER" } }] }))).toEqual(["priceRules.p.quantityTiers"]);
+    const paliers = (montant: PriceRules["base"]): PriceRules["customDimensionPricing"] => ({
+      etat: "DEFINIE",
+      valeur: { modele: "paliers_dimensions", paliers: [{ id: "P1", grandCoteMinMm: 10, grandCoteMaxMm: 200, petitCoteMinMm: 10, petitCoteMaxMm: 100, montant }] },
+    });
+    expect(codes(avec({ priceRules: [{ ...prixResolu, customDimensionPricing: paliers(aValider()) }] }))).toEqual(["priceRules.p.customDimensionPricing.valeur.paliers.0.montant"]);
+    expect(codes(avec({ priceRules: [{ ...prixResolu, customDimensionPricing: paliers(definie(400)) }] }))).toEqual([]);
     expect(codes(avec({ priceRules: [prixResolu] }))).toEqual([]);
     expect(codes(avec({ priceRules: [{ ...prixResolu, base: aValider(), pricingStatus: "draft" }] }))).toEqual([]);
   });

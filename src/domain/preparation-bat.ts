@@ -6,7 +6,6 @@
 import { construireArtefacts } from "./artefacts-bat";
 import { buildBatDraft, type ResultatBrouillon } from "./bat-brouillon";
 import type { Catalog } from "./catalog";
-import type { PriceRules } from "./pricing";
 import type { Fabricable } from "./fabricabilite";
 import { buildCanonicalGeometry, canonicalJson, type CanonicalGeometry } from "./geometrie-canonique";
 import { resolveSpec } from "./resolved-spec";
@@ -22,7 +21,6 @@ export type EntreePreparationBat = {
   /** Fonction de hachage fournie par le serveur (P7 : aucun algorithme dans le domaine). */
   hacher: (contenu: string) => string;
   artworkFichier?: { artworkHash: string; normalizedHash: string; mime: string };
-  priceRules?: PriceRules;
   jobRef?: string;
 };
 
@@ -67,7 +65,6 @@ export function preparerBat(e: EntreePreparationBat): ResultatPreparationBat {
     rendu: { geometryJson: geometry, geometryHash, previewSvg: e.previewSvg, artifacts: artefacts.artifacts },
     engineVersions: e.engineVersions,
     ...(e.artworkFichier ? { artworkFichier: e.artworkFichier } : {}),
-    ...(e.priceRules ? { priceRules: e.priceRules } : {}),
   });
   return brouillon.ok ? { ...brouillon, geometry } : brouillon;
 }

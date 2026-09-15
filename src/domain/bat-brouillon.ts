@@ -7,8 +7,7 @@ import { type BatBrouillon, createBatDraft, type ResultatBat } from "./bat";
 import type { Catalog } from "./catalog";
 import type { Fabricable } from "./fabricabilite";
 import type { CanonicalGeometry } from "./geometrie-canonique";
-import type { PriceRules } from "./pricing";
-import { computePrice } from "./prix";
+import { computePrice, referenceGrille, selectionnerGrillePrix } from "./prix";
 import type { ProductionArtifact } from "./production";
 import { findPendingValues, type ResolvedSpec } from "./resolved-spec";
 import { violation } from "./violation";
@@ -22,8 +21,6 @@ export type EntreeBrouillonBat = {
   engineVersions: { design: string; mounting: string; geometry: string; render: string; production: string };
   /** Fichiers d'artwork issus du pipeline (original et version normalisée). */
   artworkFichier?: { artworkHash: string; normalizedHash: string; mime: string };
-  /** Règles de prix applicables : leur sélection n'est pas définie ; absentes ⇒ prix À VALIDER. */
-  priceRules?: PriceRules;
 };
 
 export type ResultatBrouillon = ResultatBat<BatBrouillon> & { enAttente?: string[] };
@@ -51,9 +48,11 @@ export function buildBatDraft(e: EntreeBrouillonBat): ResultatBrouillon {
     };
   }
 
-  const prix = e.priceRules
+  // VR-07 : grille unique sélectionnée dans le catalogue (jamais fournie par l'appelant ni par le client).
+  const selection = selectionnerGrillePrix(catalog.priceRules);
+  const prix = selection.ok
     ? computePrice({
-        rules: e.priceRules,
+        rules: selection.grille,
         variantId: config.materialVariantId,
         thicknessId: config.thicknessId,
         workflowId: spec.workflow.id,
@@ -71,7 +70,8 @@ export function buildBatDraft(e: EntreeBrouillonBat): ResultatBrouillon {
     versions: {
       configurationVersion: config.configurationVersion,
       catalogVersion: catalog.catalogVersion,
-      pricingVersion: aValider(),
+      // Version de la grille figée avec le prix : uniquement si le prix est complet (jamais de référence sans prix).
+      pricingVersion: selection.ok && prix?.etat === "DEFINIE" ? definie(referenceGrille(selection.grille)) : aValider(),
       designRulesVersion: aValider(),
       engineVersions: e.engineVersions,
     },

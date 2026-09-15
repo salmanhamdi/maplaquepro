@@ -88,7 +88,8 @@ describe("evaluateFabricability — étape 8 texte", () => {
   });
 });
 
-const entree = (priceRules?: PriceRules) => {
+// VR-07 : la grille n'est jamais injectée en entrée ; elle est sélectionnée dans le catalogue.
+const entree = (priceRules: PriceRules[] = []) => {
   const fab = evaluateFabricability(config(), catalogue);
   if (!fab.ok) throw new Error(JSON.stringify(fab.violations));
   const spec = resolveSpec(fab, catalogue);
@@ -96,11 +97,10 @@ const entree = (priceRules?: PriceRules) => {
   return {
     fabricable: fab,
     spec: spec.spec,
-    catalog: catalogue,
+    catalog: { ...catalogue, priceRules },
     identite: { batId: "bat-test", createdAt: "2026-01-01T00:00:00Z", contentHash: "h" },
     rendu: { geometryJson: geometrieCanoniqueTest(), geometryHash: "g", previewSvg: "<svg/>", artifacts: [] },
     engineVersions: { design: "t", mounting: "t", geometry: "t", render: "t", production: "t" },
-    ...(priceRules ? { priceRules } : {}),
   };
 };
 
@@ -123,6 +123,7 @@ describe("buildBatDraft (§15)", () => {
   it("règles de prix incomplètes ⇒ prix À VALIDER (jamais partiel)", () => {
     const partielles: PriceRules = {
       id: "p",
+      version: "fixture-1",
       base: definie(100),
       byVariant: {},
       byThickness: {},
@@ -133,10 +134,63 @@ describe("buildBatDraft (§15)", () => {
       artworkProcessingFee: definie(0),
       quantityTiers: { etat: "SANS_OBJET" },
       vatRate: { etat: "A_VALIDER" },
-      pricingStatus: "draft",
+      pricingStatus: "active",
     };
-    const r = buildBatDraft(entree(partielles));
+    const r = buildBatDraft(entree([partielles]));
     expect(r.ok && r.bat.price).toEqual({ etat: "A_VALIDER" });
+    expect(r.ok && r.bat.versions.pricingVersion).toEqual({ etat: "A_VALIDER" });
+  });
+
+  // FIXTURE DE TEST fictive couvrant la configuration de test (Plexiglass 300 × 200, quantité 2, sans trou ni artwork).
+  const grilleComplete = (o: Partial<PriceRules> = {}): PriceRules => ({
+    id: "grille-fixture",
+    version: "fixture-1",
+    base: definie(1000),
+    byVariant: { [plexi.id]: definie(200) },
+    byThickness: { th_3_0: definie(50) },
+    byFormat: {},
+    customDimensionPricing: { etat: "DEFINIE", valeur: { modele: "paliers_dimensions", paliers: [{ id: "P2", grandCoteMinMm: 201, grandCoteMaxMm: 400, petitCoteMinMm: 101, petitCoteMaxMm: 300, montant: definie(900) }] } },
+    byWorkflow: { PLEXIGLASS_UV: definie(150) },
+    byMounting: { "0": sansObjet() },
+    artworkProcessingFee: sansObjet(),
+    quantityTiers: { etat: "SANS_OBJET" },
+    vatRate: definie(0.2),
+    pricingStatus: "active",
+    ...o,
+  });
+
+  it("VR-07 : grille unique complète ⇒ prix complet et version de grille figés dans le brouillon", () => {
+    const r = buildBatDraft(entree([grilleComplete({ id: "grille-fixture", version: "fixture-0", pricingStatus: "draft" }), grilleComplete()]));
+    if (!r.ok) throw new Error(JSON.stringify(r.violations));
+    expect(r.bat.versions.pricingVersion).toEqual({ etat: "DEFINIE", valeur: "grille-fixture@fixture-1" });
+    expect(r.bat.price).toEqual({
+      etat: "DEFINIE",
+      valeur: {
+        grille: { id: "grille-fixture", version: "fixture-1" },
+        composantes: { base: 1000, reference: 200, epaisseur: 50, dimensions: 900, workflow: 150, artwork: 0, trous: 0 },
+        unitaireHtCentimes: 2300,
+        quantite: 2,
+        totalHtCentimes: 4600,
+        tauxTvaPourcent: 20,
+        tvaCentimes: 920,
+        totalTtcCentimes: 5520,
+        pricingStatus: "active",
+      },
+    });
+    expect(r.enAttente?.sort()).toEqual(["expiresAt", "versions.designRulesVersion"]);
+  });
+
+  it("VR-07 : zéro ou plusieurs grilles applicables ⇒ prix et version de grille À VALIDER", () => {
+    for (const grilles of [[], [grilleComplete({ pricingStatus: "draft" })], [grilleComplete(), grilleComplete({ version: "fixture-2" })]]) {
+      const r = buildBatDraft(entree(grilles));
+      expect(r.ok && [r.bat.price, r.bat.versions.pricingVersion]).toEqual([{ etat: "A_VALIDER" }, { etat: "A_VALIDER" }]);
+    }
+  });
+
+  it("VR-07 : dimension hors de tout palier ⇒ prix À VALIDER, jamais de prix par défaut", () => {
+    const horsGrille = grilleComplete({ customDimensionPricing: { etat: "DEFINIE", valeur: { modele: "paliers_dimensions", paliers: [{ id: "P1", grandCoteMinMm: 10, grandCoteMaxMm: 200, petitCoteMinMm: 10, petitCoteMaxMm: 100, montant: definie(400) }] } } });
+    const r = buildBatDraft(entree([horsGrille]));
+    expect(r.ok && [r.bat.price, r.bat.versions.pricingVersion]).toEqual([{ etat: "A_VALIDER" }, { etat: "A_VALIDER" }]);
   });
 
   it("texte présent ⇒ bloc texte non constructible (VR-08)", () => {
