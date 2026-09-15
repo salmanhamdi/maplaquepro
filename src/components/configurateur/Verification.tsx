@@ -69,7 +69,7 @@ function Contenu({ etat }: { etat: EtatConfigurateur }) {
     setEchec(false);
     setVerdict(null);
     verifierConfiguration(etat)
-      .then(setVerdict)
+      .then((v) => (v.statut === "saisie_invalide" ? setEchec(true) : setVerdict(v)))
       .catch(() => setEchec(true));
   }, [etat]);
 

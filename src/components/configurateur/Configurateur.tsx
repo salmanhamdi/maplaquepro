@@ -132,7 +132,7 @@ export function Configurateur() {
     const minuterie = setTimeout(() => {
       demarrer(async () => {
         const v = await verifierConfiguration(etat);
-        if (numero === requete.current) setVerdict(v);
+        if (numero === requete.current) setVerdict(v.statut === "saisie_invalide" ? null : v);
       });
     }, 260);
     return () => clearTimeout(minuterie);

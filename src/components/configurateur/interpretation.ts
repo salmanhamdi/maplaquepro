@@ -66,6 +66,9 @@ export type Verdict = {
   apercu: ApercuServeur;
 };
 
+/** Entrée refusée à la frontière serveur (état de saisie absent, non conforme ou incomplet) : aucun verdict métier. */
+export type SaisieInvalide = { statut: "saisie_invalide" };
+
 /** Nombre saisi en mm (virgule ou point) ; null si vide ou non numérique. Aucune valeur n'est arrondie. */
 export function lireMm(saisie: string): number | null {
   const t = saisie.trim().replace(",", ".");
