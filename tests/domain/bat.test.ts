@@ -134,6 +134,17 @@ describe("BAT — validation (P7, §15)", () => {
     expect(!r.ok && r.violations.map((v) => v.path).sort()).toEqual(["expiresAt", "price", "versions.designRulesVersion"]);
   });
 
+  it("G2-D12 : avec contexte, expiresAt calculé depuis validatedAt (15 j, ou 7 j client inscrit) ; sans contexte, À VALIDER refusé", () => {
+    const b = (acknowledgeWorkflow(draft({ expiresAt: aValider() }), "t") as { bat: BatBrouillon }).bat;
+    expect(code(validateBat(b, "2026-03-02T10:00:00.000Z"))).toEqual(["VALIDATION_REQUIRED"]);
+    const standard = validateBat(b, "2026-03-02T10:00:00.000Z", { clientInscrit: false });
+    expect(standard.ok && [standard.bat.validatedAt, standard.bat.expiresAt]).toEqual(["2026-03-02T10:00:00.000Z", { etat: "DEFINIE", valeur: "2026-03-17T10:00:00.000Z" }]);
+    const inscrit = validateBat(b, "2026-03-02T10:00:00.000Z", { clientInscrit: true });
+    expect(inscrit.ok && inscrit.bat.expiresAt).toEqual({ etat: "DEFINIE", valeur: "2026-03-09T10:00:00.000Z" });
+    expect(code(validateBat(b, "t", { clientInscrit: false }))).toEqual(["HORODATAGE_INVALIDE"]);
+    expect(b.expiresAt).toEqual({ etat: "A_VALIDER" });
+  });
+
   it("validation atelier d'un contrat À VALIDER (VR-42) ⇒ BAT non validable", () => {
     const b = draft({ productionContracts: [{ contractId: "PRODUCTION_SVG_CONTRACT_v1", conformite: "conforme", validationAtelier: aValider() }] });
     expect(batValidationViolations(b).map((v) => v.path)).toContain("productionContracts.0.validationAtelier");

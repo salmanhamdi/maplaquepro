@@ -22,7 +22,7 @@ evaluateFabricability → resolveSpec → buildCanonicalGeometry → construireA
 |---|---|---|---|---|---|
 | B1 | Prix | `src/domain/pricing.ts` · `priceRulesSchema` ; `src/domain/prix.ts` · `computePrice` | Voir détail B1 | Tout BAT | VR-07, OD-37, VR-09, VR-10, GATE 6 |
 | B2 | Version tarifaire | `src/domain/bat-brouillon.ts` · `buildBatDraft` (`pricingVersion: aValider()`) | Toujours À VALIDER | Tout BAT | VR-07 |
-| B3 | Expiration commerciale | `src/domain/bat.ts` · `expiresAt` ; `bat-brouillon.ts` (`aValider()`) | Toujours À VALIDER | Tout BAT | G2-D12 |
+| B3 | Expiration commerciale | `src/domain/bat.ts` · `validateBat(bat, at, { clientInscrit })` ; `cycle-vie-bat.ts` | Arbitrée ; calculée à la validation avec contexte (brouillon toujours À VALIDER) ; appelants serveur non branchés | Tout BAT | G2-D12 (`docs/product/g2-d12-cycle-vie-bat.md`) |
 | B4 | Version des règles de design | `bat-brouillon.ts` (`designRulesVersion: aValider()`) | Toujours À VALIDER | Tout BAT | VR-08 |
 | B5 | Texte | Voir détail B5 | — | BAT avec texte | VR-08, SP-3 |
 | B6 | Contrat laser | `src/domain/referentiels.ts` · `CONTRACT_IDS` ; `bat.ts` · `CONTRACT_STATUS_MISSING` | Aucun statut au catalogue (`productionContracts: []`) | Tout BAT | VR-20, VR-42, GATE 4 |
@@ -66,12 +66,12 @@ catalogue (mountingRules, À VALIDER)
 
 | Notion | Représentation dans le modèle | État |
 |---|---|---|
-| Validité commerciale du BAT | `bat.expiresAt` (seul champ temporel prévu à cet effet) | À VALIDER (G2-D12) |
-| Conservation technique (brouillon, BAT non payé) | Aucun champ | Non représentée |
-| Rétention RGPD (BAT orphelin, artwork) | Aucun champ ; durées décrites au Master Plan §9.6 / §25 | Non représentée ; à réconcilier avec les faits atelier |
-| Conservation d'une commande payée | Aucune entité commande | Non représentée |
+| Validité commerciale du BAT | `bat.expiresAt`, calculé par `validateBat` avec contexte | Arbitrée (G2-D12) : 15 j, 7 j client inscrit non payé |
+| Brouillon, checkout, orphelin, fabrication | `cycle-vie-bat.ts` · `CycleVieBat`, `actionDue` (moteur pur) | Arbitrés (G2-D12) ; aucune persistance ni purge exécutée |
+| Rétention RGPD de l'artwork | Aucun champ ; Master Plan §9.6 / §25 | Non représentée (VR-29) |
+| Avoirs | `avoirs.ts` (domaine pur) | Arbitrés (G2-D12) ; non persistés |
 
-Le modèle actuel ne distingue que la **validité commerciale**. Les autres notions n'ont aucune représentation. Leur séparation relève d'un arbitrage.
+Détail des décisions, dépendances absentes et écarts avec le Master Plan : `docs/product/g2-d12-cycle-vie-bat.md`.
 
 ## 5. Empreinte de contenu : cartographie
 

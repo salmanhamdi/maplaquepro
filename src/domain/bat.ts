@@ -1,18 +1,21 @@
 // BAT (§15, Annexe A) : entité serveur, immuable après validation. Structure, états, confirmations et invariants.
 // Règles appliquées : P7 (aucun À VALIDER), G-2 (G2-D1 à G2-D4), ART-1 (D1, D3, D4, D6, D8).
-// Restent OPEN et ne sont jamais présumés : prix (VR-07), expiration commerciale (G2-D12), catégorie ART-1 d'une
+// Expiration commerciale arbitrée (G2-D12) : calculée à la validation (cycle-vie-bat.ts) ; conservation et purge hors BAT.
+// Restent OPEN et ne sont jamais présumés : prix (VR-07), catégorie ART-1 d'une
 // transformation (ART1-DOC), version des règles de design (VR-08), contrat UV (VR-33), validation atelier (VR-42).
 // Tant qu'un de ces éléments est À VALIDER dans un BAT, sa validation est refusée (P7). Les hash sont reçus en entrée.
 import { z } from "zod";
 import { artworkPlacementSchema } from "./artwork";
 import { textSpecSchema } from "./configuration";
 import { statutContratSchema } from "./contrats";
-import { etatSchema } from "./etat";
+import { calculerExpirationCommerciale, profilValidite } from "./cycle-vie-bat";
+import { definie, etatSchema } from "./etat";
 import { canonicalGeometrySchema } from "./geometrie-canonique";
 import { mountingPatternSchema } from "./mounting";
 import { productionArtifactSchema } from "./production";
 import { CONFIGURATION_VERSION } from "./referentiels";
 import { findPendingValues, resolvedSpecSchema } from "./resolved-spec";
+import { estHorodatageUtc } from "./temps";
 import { type DomainViolation, violation } from "./violation";
 
 const horodatage = z.string().min(1);
@@ -184,11 +187,19 @@ export function batValidationViolations(bat: BatBrouillon): DomainViolation[] {
   return out;
 }
 
-/** Validation client du BAT : refusée si un invariant n'est pas satisfait ; le BAT validé est gelé (immuable). */
-export function validateBat(bat: Bat, at: string): ResultatBat<BatValide> {
+/**
+ * Validation client du BAT : refusée si un invariant n'est pas satisfait ; le BAT validé est gelé (immuable).
+ * G2-D12 : avec `contexte`, `expiresAt` = `at` (validatedAt) + 15 jours, ou 7 jours pour un client inscrit (profil figé à la validation).
+ */
+export function validateBat(bat: Bat, at: string, contexte?: { clientInscrit: boolean }): ResultatBat<BatValide> {
   if (bat.status === "validated") return immuable();
-  const violations = batValidationViolations(bat);
+  let cible: BatBrouillon = bat;
+  if (contexte) {
+    if (!estHorodatageUtc(at)) return { ok: false, violations: [violation("HORODATAGE_INVALIDE", "validatedAt", "horodatage UTC ISO 8601 attendu (G2-D12)")] };
+    cible = { ...bat, expiresAt: definie(calculerExpirationCommerciale(at, profilValidite(contexte.clientInscrit))) };
+  }
+  const violations = batValidationViolations(cible);
   if (violations.length > 0) return { ok: false, violations };
-  const valide = batValideSchema.parse({ ...structuredClone(bat), status: "validated", validatedAt: at });
+  const valide = batValideSchema.parse({ ...structuredClone(cible), status: "validated", validatedAt: at });
   return { ok: true, bat: geler(valide) };
 }
